@@ -1,9 +1,9 @@
 # CS362-Winter2025-Team20
 
 ## Collaborators
--Ivan Wong
--Tristan Vosburg
--Nicholas Woodley
+- Ivan Wong
+- Tristan Vosburg
+- Nicholas Woodley
 - Raymond Cen
 
 ## Living Document
