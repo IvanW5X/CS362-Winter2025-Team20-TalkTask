@@ -2,3 +2,4 @@
 
 ## Collaborators
 -Ivan Wong
+-Tristan Vosburg
