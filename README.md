@@ -3,3 +3,7 @@
 ## Collaborators
 -Ivan Wong
 -Tristan Vosburg
+
+
+## Living Document
+URL: https://docs.google.com/document/d/1J60M_Al2YHyAhfpb04SEJciqiLy4aSYEoeWJ91M9fCs/edit?usp=sharing
