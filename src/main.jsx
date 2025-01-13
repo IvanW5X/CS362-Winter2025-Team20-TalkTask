@@ -1,3 +1,11 @@
+/********************************************************************
+ * File Name: main.jsx (Completed)
+ * Date: 1/13/2025
+ * Description: Main display JSX file to display
+ * Author(s): NA
+ ********************************************************************/
+
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -7,4 +15,4 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);

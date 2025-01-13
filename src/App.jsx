@@ -1,3 +1,11 @@
+/********************************************************************
+ * File Name:
+ * Date:
+ * Description: DELETE ALL CONTENT IN RETURN AND CONST LINE
+ * Author(s):
+ ********************************************************************/
+
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -29,7 +37,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
 export default App
