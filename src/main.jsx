@@ -2,7 +2,7 @@
  * File Name: main.jsx (Completed)
  * Date: 1/13/2025
  * Description: Main display JSX file to display
- * Author(s): NA
+ * Author(s): CS 362-Team 20
  ********************************************************************/
 
 
