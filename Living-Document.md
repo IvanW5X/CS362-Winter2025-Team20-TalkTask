@@ -11,27 +11,6 @@
 - Bailey Bundlong (UI/UX Designer)  
 - Jordan L Cowan (Front-End Developer)
 
-**Important Resources:**
-
-- Git Repository: [https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask](https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask)  
-- WebSpeech API Documentation: [https://developer.mozilla.org/en-US/docs/Web/API/Web\_Speech\_API/Using\_the\_Web\_Speech\_API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)  
-- Database (MongoDB): [https://www.mongodb.com/](https://www.mongodb.com/)  
-- OSU Web Server  
-- React \+ Vite  
-- Node.js
-
-**Communication Channels:**
-
-- Microsoft Teams chat that all members have been invited too  
-- Direct message group chat for simple communication  
-- Email
-
-**Rules of Communication:**
-
-- Each team member must ensure they check each mode of communication at least twice a day.  
-- Each team member must respond to every message, It could be as simple as a thumbs up as long as the message is acknowledged.  
-- Each team member must ensure the team knows about any issues that prevents them from completing their tasks or from attending meetings and classes.
-
 **Abstract:**  
 TalkTask is a web application that utilizes speech recognition to streamline to-do list management. Using speech recognition, we are able to allow users to add, remove, prioritize, and even schedule daily tasks with simple voice commands for multiple languages including, but not limited to English, Spanish, French, and more. Designed with accessibility and flexibility in mind, TalkTask provides a hands-free and user-friendly experience across various devices such as desktops and mobile devices. The platform prioritizes ease-of-access for all users and user privacy, ensuring secure handling of voice input. Stretch goals or future iterations aim to implement a database to allow users to save and store their tasks after going offline, and set reminders for upcoming tasks if given a time requirement.
 
@@ -48,7 +27,6 @@ Our to-do list will be different in the way that it will draw from many common d
 **Effects:**  
 As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.  
 **Use Cases:**
-
 1.   
    * **Actors:**   
    * **Triggers:**   
@@ -65,16 +43,15 @@ As with other to-do list applications, ours will help users plan their time effi
 7. 
 
 **Non-functional Requirements:**
-
 1.   
 2.   
 3. 
 
 **External Requirements:**
 
-* **\*How we’ll host the application for users to access**  
-* **\*How we’ll handle errors, invalid user inputs, etc**  
-* **\*How we’ll allow others to setup their own instance of our application**
+* **How we’ll host the application for users to access**  
+* **How we’ll handle errors, invalid user inputs, etc**  
+* **How we’ll allow others to setup their own instance of our application**
 
 **Technical Approach:**  
 Our web application will be implemented using the React framework, the Vite build tool for efficient builds and improved performance, JavaScript for backend/business logic, and (hopefully) the OSU web server to publish our website onto the internet. The main component of the project will be based on the WebSpeech API, which will be used to get input from the user, so that our program will be able to parse it and handle the commands given.  We will split up the user interface into components for a modular design, so that with each sprint, we are able to integrate changes and features seamlessly and effectively. Additionally, if we have the time, we can use tools like MongoDB to implement a database and user accounts to store tasks onto the cloud, so that users will be able to exit and return to the application with their previous session data saved. Collaboration and communication will be done via Git, MS Teams, Zoom, text messages, and in-person meetings to increase productivity and push changes into the codebase. Other tools, such as Figma are still being decided on whether or not we will use it, but if so, we will use it for a reference as to how our web UI will be designed, so that there’s no room for ambiguity for how the UI shall be implemented.

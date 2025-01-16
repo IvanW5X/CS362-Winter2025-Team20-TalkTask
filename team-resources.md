@@ -16,6 +16,8 @@
 * [React](https://react.dev/learn)
 * [Vite-Build-Tool](https://vite.dev/guide/)
 * [Node.js](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
+* [Netlify](https://docs.netlify.com/)
+* [Hugging-Face](https://huggingface.co/docs)
 
 ## Communication Channels
 
