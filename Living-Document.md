@@ -75,10 +75,10 @@ There are two risks facing our group as we attempt to design, create and impleme
 
 **Use Cases**
 
-1. Actors
+1. The actors is the user who wants a task management application and maybe also struggles with a disability that prevents the use of traditional applications
 2. Triggers
-3. Preocnditions
-4. Postconditions(sucess scenario)
+3. The preconditions is the user's need for task management application that is more accessible to them.
+4. The postcondition is the user confirming the creation of a new task or manipulation of a task using voice or traditional input.
 5. List of steps (success scenario)
 6. Extensions/variations of the success scenario
 7. Exceptions: failure conditions an scenarios
