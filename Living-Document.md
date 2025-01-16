@@ -1,5 +1,5 @@
-Project: TalkTask  
-Your Personal To-Do List Tracker
+# Project: TalkTask  
+## Your Personal To-Do List Tracker
 
 **Contributors (Team 20):**
 
