@@ -9,7 +9,7 @@
 * Bailey Bundlong (UI/UX Designer)
 * Jordan L Cowan (Front-End Developer)
 
-## Resourse Links
+## Resource Links
 * [WebSpeechAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
 * [DataBase-MongoDB](https://www.mongodb.com/)
 * [OSU-Web-Servers](https://web.engr.oregonstate.edu/~wongiv)
