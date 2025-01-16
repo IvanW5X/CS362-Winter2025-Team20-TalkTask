@@ -72,4 +72,20 @@ There are two risks facing our group as we attempt to design, create and impleme
 - Optional Idea: Gamify the web application to keep current users engaged and promote continuation of using the app into continuing using our app for productivity.  
 - Extend AI API functionality to process natural language and allow users to communicate naturally to our speech recognition system and convert their commands into a dedicated function for the to-do list management system.
 
+
+**Use Cases**
+
+1. Actors
+2. Triggers
+3. Preocnditions
+4. Postconditions(sucess scenario)
+5. List of steps (success scenario)
+6. Extensions/variations of the success scenario
+7. Exceptions: failure conditions an scenarios
+
+
+**Non-functional Requirements**
+
+**External Requirements**
+
 **Team process description:**  
