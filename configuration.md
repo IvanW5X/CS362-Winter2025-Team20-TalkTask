@@ -33,6 +33,7 @@
 * npm run preview to ensure functionality is as desired
 
 ## Back-End
+* To run the backend side of the web application, consider the following directions.
 
 ### Developer Instructions
 * To run the backend server, run the following commands.
@@ -42,3 +43,9 @@
 * Ctrl + c to stop running server
 ### Deploying Instructions
 * Currently investigating
+
+## Additional Notes
+* To store and hide our API key and other sensitive information, consider the following directions.
+* cd path/to/project/directory
+* Add a .env file to the project root
+* Add "AI_API_KEY=API_KEY" to the .env file and replave API_KEY with the actual API key
