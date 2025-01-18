@@ -23,7 +23,7 @@ function App() {
   // Update website if data changes
   useEffect(() => {
     fetchTest();
-  },[testArray]);
+  }, [testArray]);
 
   return (
     <div>

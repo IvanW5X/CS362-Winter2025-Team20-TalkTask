@@ -3,13 +3,13 @@
 ## Installing Packages and Initailizing Directories (Dev)
 
 ## Front-End
-* To initialize the frontend directory, install the node_modules package. You do so by the following directions.
+* To initialize the frontend directory, install the node_modules package. You can do so by the following directions.
 * cd frontend
 * npm install
 * Done, ensure that git marks node_modules as untracked
 
 ## Back-End
-* To initialize the backend directory, install the node_modules package. The package files have been configured to depend on express and nodemon, so you can do so by following the directions.
+* To initialize the backend directory, install the node_modules package. The package files have been configured to dependancies, so you can do so by following the directions.
 * cd backend
 * npm install
 * Done, ensure that git marks node_modules as untrackde
@@ -36,13 +36,13 @@
 * To run the backend side of the web application, consider the following directions.
 
 ### Developer Instructions
-* To run the backend server, run the following commands.
+* To run the backend server in developer mode, run the following commands.
 * cd backend
 * npm run dev
 * Console/Terminal should say that the server is listening on a port
 * Ctrl + c to stop running server
 ### Deploying Instructions
-* Currently investigating
+* Currently investigating   
 
 ## Additional Notes
 * To store and hide our API key and other sensitive information, consider the following directions.
