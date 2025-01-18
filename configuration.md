@@ -38,7 +38,7 @@
 ### Developer Instructions
 * To run the backend server, run the following commands.
 * cd backend
-* npm start
+* npm run dev
 * Console/Terminal should say that the server is listening on a port
 * Ctrl + c to stop running server
 ### Deploying Instructions

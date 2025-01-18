@@ -20,6 +20,8 @@
 * [Netlify](https://docs.netlify.com/)
 * [Hugging-Face](https://huggingface.co/docs)
 * [Figma](https://help.figma.com/hc/en-us/categories/360002042553)
+* [Axios](https://www.digitalocean.com/community/tutorials/react-axios-react)
+* [Cors](https://expressjs.com/en/resources/middleware/cors.html)
 
 ## Communication Channels
 
