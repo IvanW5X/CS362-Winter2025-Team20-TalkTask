@@ -21,13 +21,15 @@ const corsOptions = {
   origin: "http://localhost:5173",
 };
 
+// Enable cross origin resource sharing
 app.use(cors(corsOptions));
 
 // TESTING PURPOSES, INFO TO BE DISPLAYED
 app.get("/testing", (req, res) => {
-  res.json({ info: ["data_1", "data_2", "data_3"] });
+  res.json({ info: ["data_1", "data_2", "data_3", "data_4"] });
 });
 
 app.listen(SERVER_PORT, () => {
   console.log(`Server is listening on port ${SERVER_PORT}`);
+  console.log(`TEST KEY: ${AI_ACCESS_TOKEN}`);
 });

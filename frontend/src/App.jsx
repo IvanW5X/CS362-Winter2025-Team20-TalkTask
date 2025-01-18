@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <h1>Hello TalkTask</h1>
-      {testArray.map((data, key) => {
+      {testArray.map((data, key) => {   // Loop through testArray
         return (
           <div key={key}>
             <p>{data}</p>
