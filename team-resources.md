@@ -22,6 +22,7 @@
 * [Figma](https://help.figma.com/hc/en-us/categories/360002042553)
 * [Axios](https://www.digitalocean.com/community/tutorials/react-axios-react)
 * [Cors](https://expressjs.com/en/resources/middleware/cors.html)
+* [dotenv](https://www.dotenv.org/blog/2023/03/13/how-to-use-dotenv.html)
 
 ## Communication Channels
 
