@@ -28,10 +28,11 @@ Our to-do list will be different in the way that it will draw from many common d
 As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.  
 **Use Cases:**
 1.   
-   * **Actors:**   
+
+   * **Actors: The actors is the user who wants a task management application and maybe also struggles with a disability that prevents the use of traditional applications**   
    * **Triggers:**   
-   * **Preconditions:**  
-   * **Postconditions:**  
+   * **Preconditions: The preconditions is the user's need for task management application that is more accessible to them.**  
+   * **Postconditions: The postcondition is the user confirming the creation of a new task or manipulation of a task using voice or traditional input.**  
    * **List of steps:**  
    * **Extensions/variations of the success scenario**  
    * **Exceptions: failure conditions and scenarios**  
