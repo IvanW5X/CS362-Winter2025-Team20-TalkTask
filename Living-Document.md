@@ -65,6 +65,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**
@@ -74,6 +75,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**
@@ -83,6 +85,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**
@@ -92,6 +95,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**
@@ -101,6 +105,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**
@@ -110,6 +115,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **List of steps:**
 * **Extensions/variations of the success scenario**
 * **Exceptions: failure conditions and scenarios**
+<br>
 
 * **Case Designer: NAME**
 * **Actors:**

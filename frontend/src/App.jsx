@@ -11,18 +11,18 @@ import axios from "axios";
 
 const SERVER_PORT = 5001;
 
+// Get data from server, add try/catch later with tasks data 
+const fetchTest = async (setTestArray) => {
+  const res = await axios.get(`http://localhost:${SERVER_PORT}/testing`);
+  setTestArray(res.data.info);
+};
+
 function App() {
   const [testArray, setTestArray] = useState([]);
 
-  // Get data from server
-  const fetchTest = async () => {
-    const res = await axios.get(`http://localhost:${SERVER_PORT}/testing`);
-    setTestArray(res.data.info);
-  };
-
   // Update website if data changes
   useEffect(() => {
-    fetchTest();
+    fetchTest(setTestArray);
   }, [testArray]);
 
   return (
