@@ -184,9 +184,9 @@ As with other to-do list applications, ours will help users plan their time effi
 * **Exceptions: failure conditions and scenarios**
 
 ### Non-functional Requirements:
-* When code is deployed for users to access, it should be kept and maintained with security in mind.  Bad-faith actors shouldn't have easy access to any holes.
-* 
-* 
+* When code is deployed for users to access, it should be kept and maintained with security in mind. Users will not be able to access the database and data will not be shared with any third-parties. Bad-faith actors shouldn't have easy access to any holes.
+* The application should work across all devices ranging from desktop to mobile phone. All features including the voice input and UI should seamlessly work across all platforms.
+* The application should be able to handle a large influx of users. There should be minimal peformance issues and the application should stay functional and responsive if lots of users are using it.
 
 ### External Requirements:
 * **How we’ll host the application for users to access:**
