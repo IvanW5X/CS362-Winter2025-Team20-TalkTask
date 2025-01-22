@@ -210,7 +210,7 @@ As with other to-do list applications, ours will help users plan their time effi
 Our web application will be implemented using many frameworks and APIs, such as the React framework for frontend development, the Vite build tool for efficient builds and improved performance, JavaScript for backend/business logic, and (hopefully) Netlify to publish our website onto the internet. The main component of the project will be based on the WebSpeech API, which will be used to get input from the user, so that our program will be able to parse it and handle the commands given. We will split up the user interface into components for a modular design, so that with each sprint, we are able to integrate changes and features seamlessly and effectively. Additionally, we will use tools like MongoDB to implement a database and user accounts to store tasks onto the cloud, so that users will be able to exit and return to the application with their previous session data saved on other devices. Another feature we plan to implement will include the use of an open source AI model to recommend tasks based on user's previous task history, to a provide more personalized product for our users. Collaboration and communication will be done via Git, MS Teams, Zoom, text messages, and in-person meetings to increase productivity and push changes into the codebase. Other tools, such as Figma are will be used for a reference as to how our web UI will be designed, so that there’s no room for ambiguity for how the UI shall be implemented. Further research will be conducted by our software configuration coordinator (Ivan) to provide tools that will make our lives as developers easier.
 
 ### Risk:
-There are a few risks facing our group as we attempt to design, create and implement this application. We have worked together as a group before, so we are aware of the fact that we are prone to procrastination and underestimating the work required to complete certain tasks. To avoid this problem, we plan on setting checkpoints for what we expect to have completed each week. Additionally, each checkpoint will have small tasks associated with it. Each group member will be responsible for completing their small tasks. At each stand-up meeting, the status of each small task will be checked in to see if help is needed, changes need to be made, or if our stretch goals can be attempted because we are ahead of schedule. Our second challenge is implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database managment or have previously taken a database course at OSU will be responsible for leading the database development side of things. The third risk we will come across is implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilitizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks. We plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product.
+There are a few risks facing our group as we attempt to design, create and implement this application. We have worked together as a group before, so underestimating the work required to complete certain tasks could impose deadline risks. To avoid this problem, we plan on setting checkpoints for what we expect to have completed each week. Additionally, each checkpoint will have small tasks associated with it. Each group member will be responsible for completing their small tasks. At each stand-up meeting, the status of each small task will be checked in to see if help is needed, changes need to be made, or if our stretch goals can be attempted because we are ahead of schedule. Our second challenge is implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database managment or have previously taken a database course at OSU will be responsible for leading the database development side of things. The third risk we will come across is implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilitizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks. We plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product.
 
 ### Team-Info:
 - Ivan Wong (Software Configuration Management Coordinator)
@@ -322,22 +322,33 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
     * Share documentation with the team.
 
 #### Ivan Wong (Software Configuration Management Coordinator)
-**Week 3: GOAL**
+**Week 3: Software Research**
 - Deliverables:
+  * Find and create and AI API key from Hugging Face to select an AI model that best fits our use cases.
+  * Find a free backend server deployment tool powerful enough to host our backend logic.
 - Milestones:
+  * All team members have access to the AI API key and shall ensure that it works.
+  * Deploy backend web server for client-server communication over the internet.
 <br>
 
-**Week 4: GOAL**
+**Week 4: Modular File Organization**
 - Deliverables:
+  * Create directories and files based on modularization practices for essential front and backend components.
+  * Import necessary APIs and tools for each source code file.
 - Milestones:
+  * Organized Git repository for an MVP.
 <br>
 
-**Week 5: GOAL**
+**Week 5: Assist Developers**
 - Deliverables:
+  * Aid in the development of to-do list functionality to create and finish essential aspects of to-do list management.
+  * Aid in development of UI to create a user-friendly interface for users.
 - Milestones:
+  * Essential to-do lists functionality completed.
+  * UI designed to include essential web page functionality and room for improvement.
 <br>
 
-**Week 6: GOAL**
+**Week 6: **
 - Deliverables:
 - Milestones:
 <br>
@@ -352,13 +363,14 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 - Milestones:
 <br>
 
-**Week 9: GOAL**
+**Week 9: Finalize Project**
 - Deliverables:
 - Milestones:
 <br>
 
-**Week 10: GOAL**
+**Week 10: Deployment of TalkTask**
 - Deliverables:
+  * 
 - Milestones:
 <br>
 
@@ -568,10 +580,10 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 ### Timeline:
-| Group | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
-| ------ |------|------|------|------|------|------|------|------|
-| Front End |||||||||
-| Back End ||||Save Button Works|||||
-| UI/UX |||||||||
-| Database  ||||||||||
-| Overall Project |Find essential tools needed for basic web server configuration and to-do lists management|||||||||
+| Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
+| --------------------|------|------|------|------|------|------|------|------ |
+| Front End           |      |      |      |      |      |      |      |       |
+| Back End            |      |      |      |Save Button Works|      |       |       |              |
+| UI/UX               |      |      |      |      |      |      |      |       |
+| Database            |      |      |      |      |      |      |      |      ||
+| Software Management | Essential tools needed for basic web server configuration and to-do lists management|||||||||
