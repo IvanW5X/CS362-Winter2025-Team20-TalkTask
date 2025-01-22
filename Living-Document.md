@@ -161,13 +161,21 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Bailey Bundlong
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
+* **Actors:** The user who is a student
+* **Triggers:** They have been given a homework assignment
+* **Preconditions:** They have access to TalkTask
+* **Postconditions:** An entry in TalkTask has been made for their homework assignment
 * **List of steps:**
-* **Extensions/variations of the success scenario**
+  1. User opens the TalkTask application
+  2. User logs into Talktalk
+  3. From the home screen, user clicks on create new task button
+  4. User fills in data fields in task creation window
+  5. User clicks out of the task creation window
+  6. Task is created and saved
+* **Extensions/variations of the success scenario** User duplicates or edits existing task to track new task.
 * **Exceptions: failure conditions and scenarios**
+  User enters invalid data into task creation fields, and is presented an error.
+  User decides that Talktask is able to sufficiently track their task, and leaves.
 <br>
 
 * **Case Designer:** Jordan L Cowan 
