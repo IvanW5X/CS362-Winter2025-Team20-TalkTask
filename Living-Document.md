@@ -205,9 +205,88 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Tristan Vosburg (Back-End Developer)
 - Nicholas Woodley (Front-End Developer)
 - Kai Lindskog-Coffin (Database Developer)
+-    Database Developer (Kai Lindskog-Coffin): TalkTask will need to log user information      including login information, and previous tasks. I really enjoyed CS 340:          
+     Introduction    to Databases, and I feel that I can create a database that can       
+     manage user data in a secure and efficient manner.
+
 - Raymond Cen (Back-End Developer)
 - Bailey Bundlong (UI/UX Designer)
 - Jordan L Cowan (Front-End Developer)
+### Software Toolset:
+
+### Team Member Schedule:
+Kai Lindskog (Database Developer)
+Week 3: Database Design
+	Deliverables: 
+	•	Design the database schema for tasks, users, and AI training data.
+	•	Identify necessary fields for each collection (e.g., tasks, users, settings).
+	•	Create an Entity-Relationship Diagram (ERD) for visualizing relationships between collections.
+	Milestones:
+	•	Submit the database schema for team approval.
+	•	Upload ERD to the Git repository.
+
+Week 4: Database Setup
+	•	Deliverables:
+	•	Set up a MongoDB cluster.
+	•	Implement the connection between the application and the database using Node.js (via Mongoose).
+	•	Test the connection with simple read/write operations.
+	•	Milestones:
+	•	Successfully connect the application to MongoDB.
+	•	Verify data can be stored and retrieved.
+
+Week 5: Basic Task Management
+Deliverables:
+	•	Implement CRUD (Create, Read, Update, Delete) operations for the tasks collection.
+	•	Create endpoints for:
+	•	Adding a task
+	•	Editing a task
+	•	Deleting a task
+	•	Fetching all tasks for a specific user
+	•	Ensure endpoints follow RESTful principles.
+Milestones:
+	•	Test and demonstrate CRUD functionality using Postman or similar tools.
+
+Week 6: User Management
+Deliverables:
+	•	Design and implement a users collection with authentication details (e.g., email, hashed password).
+	•	Create endpoints for user registration, login, and logout.
+	•	Ensure secure storage of user credentials (e.g., using bcrypt for hashing passwords).
+Milestones:
+	•	Test user registration and login processes with database integration.
+
+Week 7: Task Prioritization and Recurrence
+Deliverables:
+	•	Add support for recurring tasks (e.g., daily, weekly, monthly) in the tasks schema.
+	•	Include fields for priority and recurrence intervals.
+	•	Update task-related endpoints to handle recurring tasks.
+Milestones:
+	•	Validate recurring task functionality through testing with mock data.
+
+Week 8: Integration with AI module
+Deliverables:
+	•	Design the ai_training collection to store data for AI training (e.g., task patterns, user preferences).
+	•	Implement methods to feed task-related data into the AI module.
+	•	Collaborate with back-end developers to integrate AI-generated task suggestions.
+Milestones:
+	•	Demonstrate the AI module fetching data from the database for training and providing suggestions.
+
+Week 9: Testing and Optimization
+Deliverables:
+	•	Perform database optimization to improve query performance (e.g., indexing, query restructuring).
+	•	Conduct load testing to ensure database scalability for multiple users.
+	•	Identify and resolve potential bottlenecks or security vulnerabilities.
+Milestones:
+	•	Submit a report on optimization results and changes implemented.
+
+Week 10: Final Integration and Documentation:
+Deliverables:
+	•	Finalize database integration with all application modules.
+	•	Document the database schema, endpoints, and instructions for deployment in the Git repository.
+	•	Create a troubleshooting guide for common database issues.
+Milestones:
+	•	Present a fully functional database integrated into the application.
+	•	Share documentation with the team.
+
 
 ### Timeline:
 | Group | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
