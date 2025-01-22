@@ -63,6 +63,13 @@ As with other to-do list applications, ours will help users plan their time effi
 5.   
 6.   
 7. 
+   * **Actors:**   All users
+   * **Triggers:**   When a user access the application for a second time
+   * **Preconditions:**  The user has their schedule saved on a server and it can be accessed as needed.
+   * **Postconditions:**  If a user accesses the file on their account for the second time, all the info they wrote on the last use is still present.
+   * **List of steps:**  
+   * **Extensions/variations of the success scenario**  
+   * **Exceptions: failure conditions and scenarios**  
 
 **Non-functional Requirements:**
 
