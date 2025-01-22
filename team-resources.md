@@ -11,11 +11,18 @@
 
 ## Resource Links
 * [WebSpeechAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+* [ExpressAPI](https://expressjs.com/en/api.html)
+* [Nodemon](https://www.npmjs.com/package/nodemon)
 * [DataBase-MongoDB](https://www.mongodb.com/)
-* [OSU-Web-Servers](https://web.engr.oregonstate.edu/~wongiv)
 * [React](https://react.dev/learn)
 * [Vite-Build-Tool](https://vite.dev/guide/)
 * [Node.js](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
+* [Netlify](https://docs.netlify.com/)
+* [Hugging-Face](https://huggingface.co/docs)
+* [Figma](https://help.figma.com/hc/en-us/categories/360002042553)
+* [Axios](https://www.digitalocean.com/community/tutorials/react-axios-react)
+* [Cors](https://expressjs.com/en/resources/middleware/cors.html)
+* [dotenv](https://www.dotenv.org/blog/2023/03/13/how-to-use-dotenv.html)
 
 ## Communication Channels
 
