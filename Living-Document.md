@@ -26,57 +26,37 @@ The to-do list is a powerful tool that can be used to help organize, categorize,
 
 Our to-do list will be different in the way that it will draw from many common day practices of the present to better aid the person in their own daily lives. The to-do list can be utilized beyond a simple stack of deliverables, and we feel that it can be used to help organize much more than one’s day. Using modern day technology, we are able to create a product that seperates us from other competitors by using speech recognition, AI models, and a database to give users access to a personal to-do list that works on various devices, free of charge.
 
-1.   
-   * **Actors:**   
-   * **Triggers:**   
-   * **Preconditions:**  
-   * **Postconditions:**  
-   * **List of steps:**  
-   * **Extensions/variations of the success scenario**  
-   * **Exceptions: failure conditions and scenarios**  
-2.   As a college student who is actively trying to budget and save money, I want to be able to track recurring payments and subscriptions on TalkTask.
-   * Actors: College student who needs to cut down on costs/ be more conscious of their spending.
-   * Triggers: The user needs to monitor their spending, as well as when and where their money is leaving their                 account.
-   * Preconditions: 
-      1.) User has access to TalkTask. 
-      2.) Application is connected to the internet.
-      3.) The user has created an account.
-   * Postconditions: 
-      1.) A task for the recurring payment or subscription is created.
-      2.) Task is stored in database.
-   * List of steps:
-      1.) User opens TalkTask.
-      2.) User logs into TalkTask
-      3.) User can either speak or manually enter their recurring payment/subscription as a task.
-      4.) User can specify when this bill is due (e.g. monthly, weekly, yearly, etc.)
-      5.) System creates the task.
-      6.) Task is stored in the database and registered to the user.
-      7.) TalkTask will remind them to pay it next month.
-   * Extensions/variations of the success scenario:
-          Users can add multiple recurring payments at once, each being registered as separate bills.
-   * Exceptions:
-      1.) Recurring payment was canceled and not updated in TalkTask.
-      2.) User does not enter a recurring date of payment.
-
-3.   
-4.   
-5.   
-6.   
-7. 
-  
-   
 ### Effects: 
 As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.
 
 ### Use Cases:
 * **Case Designer:** Ivan Wong
 * **Actors:**
+    * User interacting with the website.
 * **Triggers:**
+    * The user wants to access a specific feature of section within the web application without unecessary steps or confusion.
 * **Preconditions:**
+    * User's device is connected to the internet or has internet access.
+    * User has launched TalkTask web page.
+    * The navigation system is operational
+    * The web page is responsive to user input.
 * **Postconditions:**
+    * The user is directed to the intended section or feature they requested.
+    * The navigation system remains operational after navigating to their desired section or feature.
 * **List of steps:**
-* **Extensions/variations of the success scenario**
-* **Exceptions: failure conditions and scenarios**
+    1. The user opens the TalkTask web page.
+    2. The user interacts with the navigation system, such as clicking a button or using speech recognition to access sections or features.
+    3. The system processes the input correctly and provides feedback, expected section, or expected feature for the user.
+    4. The user is able to access the desired content or functionality with minimal effort.
+* **Extensions/variations of the success scenario:**
+    * The user uses buttons to navigate through specific sections or features within the system.
+    * The user uses the keyboard and shortcuts to navigate through the web page and sections with ease.
+    * The user uses speech recognition to let the web page process voice commands into navigation to specific sections or features within the system.
+* **Exceptions (failure conditions and scenarios):**
+    * Broken links or buttons that lead to 404 error page; displays a message to refresh page or try again later.
+    * Slow loading, so navigation is delayed due to poor internet connection; system displays a loading spinner or error message.
+    * Unresponsive navigation system, where the web page does navigate to section as intended; prompted to refresh page.
+    * Unclear navigation system, where buttons or labels are confusing; an additional tooltips pop-up or page is provided to help guide users through webpage.
 <br>
 
 * **Case Designer:** Tristan Vosburg
@@ -132,13 +112,29 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Kai Lindskog-Coffin
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
-* **List of steps:**
-* **Extensions/variations of the success scenario**
-* **Exceptions: failure conditions and scenarios**
+* As a college student who is actively trying to budget and save money, I want to be able to track recurring payments and subscriptions on TalkTask.
+* Actors: College student who needs to cut down on costs/ be more conscious of their spending.
+* Triggers: The user needs to monitor their spending, as well as when and where their money is leaving their account.
+* Preconditions: 
+  1. User has access to TalkTask. 
+  2. Application is connected to the internet.
+  3. The user has created an account.
+* Postconditions: 
+  1. A task for the recurring payment or subscription is created.
+  2. Task is stored in database.
+* List of steps:
+  1. User opens TalkTask.
+  2. User logs into TalkTask
+  3. User can either speak or manually enter their recurring payment/subscription as a task.
+  4. User can specify when this bill is due (e.g. monthly, weekly, yearly, etc.)
+  5. System creates the task.
+  6. Task is stored in the database and registered to the user.
+  7. TalkTask will remind them to pay it next month.
+* Extensions/variations of the success scenario:
+    Users can add multiple recurring payments at once, each being registered as separate bills.
+* Exceptions:
+  1. Recurring payment was canceled and not updated in TalkTask.
+  2. User does not enter a recurring date of payment.
 <br>
 
 * **Case Designer:** Raymond Cen
