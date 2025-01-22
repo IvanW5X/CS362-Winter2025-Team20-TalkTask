@@ -222,6 +222,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Raymond Cen (Back-End Developer)
 - Bailey Bundlong (UI/UX Designer)
 - Jordan L Cowan (Front-End Developer)
+    - It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
 
 ### Software Toolset:
 Because many APIs will be used for the developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
