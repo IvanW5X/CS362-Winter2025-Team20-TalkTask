@@ -202,7 +202,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 
 ### Team-Info:
 - Ivan Wong (Software Configuration Management Coordinator)
-    - Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized.
+    - Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized. This role is needed because with many APIs frameworks being used, their needs to be a dedicated person to research which tools would help speed up production and keep everything orgranized for scalability and future feature implementations. I am best suited for this role because I have experience in configuring build environments for GUI applications and have devloped & deployed my own frontend portfolio website using similar tools.
 - Tristan Vosburg (Back-End Developer)
 - Nicholas Woodley (Front-End Developer)
 - Kai Lindskog-Coffin (Database Developer)
@@ -210,9 +210,26 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Raymond Cen (Back-End Developer)
 - Bailey Bundlong (UI/UX Designer)
 - Jordan L Cowan (Front-End Developer)
+
 ### Software Toolset:
+Because many APIs will be used for the developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
+* React Framework:
+    * React will be used to design the frontend side of things. Not only will this introduce us the React framework which is widely used in web development industry, it offers component based architecture and allows for easier scalability and modularized practices, allowing for easier readability.
+* Node.js:
+    * Node will be used to not only install dependencies in our build environment, but also run JavaScript in server-side logic to allow high performance, real-time data updates, and interacting with the database.
+* Express API:
+    * The Express API will be used to run our backend server and simplify our server setup source code. It will also provide middlware support which makes it easier to extend functionality of to-do lists management functionality and powerfule routing functionality.
+* Vite Build Tool:
+    * Vite is a blazing fast frontend building tool that utilizes modern JavaScript functionality and is optimized to obtain faster and more high performance websites compared to the widely used Webpack build tool.
+* WebSpeech API
+    * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list funcitonality, to provide a hands-free experience and more accesibility features.
+* Hugging Face:
+    * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous one. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. 
+* MongoDB:
+    * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database, so MongoDB was chosen to store user tasks in a JSON like format, so that users can access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 
 ### Team Member Schedule:
+
 #### Kai Lindskog (Database Developer)
 **Week 3: Database Design:**
 - Deliverables: 
