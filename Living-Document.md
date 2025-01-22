@@ -446,44 +446,75 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 #### Raymond Cen (Back-End Developer)
-**Week 3: GOAL**
-- Deliverables:
+**Week 3: Design backend communication:**
+- Deliverables: 
+    * Design the backend communciation with database.
+    * Identify necessary implementations for communication with APIs.
 - Milestones:
+    * Submit ideas for team approval.
 <br>
 
-**Week 4: GOAL**
+**Week 4: Communication with backend:**
 - Deliverables:
+    * Set up communication with WebSpeech API.
+    * Implement the connection with WebSpeech API using JavaScript.
+    * Test the connection with simple voice input.
 - Milestones:
+    * Successfull connection with WebSpeech API.
 <br>
 
-**Week 5: GOAL**
+**Week 5: Basic Task Management:**
 - Deliverables:
+    * Implement basic web speech commands.
+    * 
 - Milestones:
+    * Test web speech commands thoroughly.
 <br>
 
-**Week 6: GOAL**
+**Week 6: User Management:**
 - Deliverables:
+    * Design and implement a users collection with authentication details (e.g., email, hashed password).
+    * Create endpoints for user registration, login, and logout.
+    * Ensure secure storage of user credentials (e.g., using bcrypt for hashing passwords).
 - Milestones:
+    * Test user registration and login processes with database integration.
 <br>
 
-**Week 7: GOAL**
+**Week 7: Task Prioritization and Recurrence:**
 - Deliverables:
+    * Add support for recurring tasks (e.g., daily, weekly, monthly) in the tasks schema.
+    * Include fields for priority and recurrence intervals.
+    * Update task-related endpoints to handle recurring tasks.
 - Milestones:
+    * Validate recurring task functionality through testing with mock data.
 <br>
 
-**Week 8: GOAL**
+**Week 8: Integration with AI module:**
 - Deliverables:
+    * Design the ai_training collection to store data for AI training (e.g., task patterns, user preferences).
+    * Implement methods to feed task-related data into the AI module.
+    * Collaborate with back-end developers to integrate AI-generated task suggestions.
 - Milestones:
+    * Demonstrate the AI module fetching data from the database for training and providing suggestions.
 <br>
 
-**Week 9: GOAL**
+**Week 9: Testing and Optimization:**
 - Deliverables:
+    * Perform database optimization to improve query performance (e.g., indexing, query restructuring).
+    * Conduct load testing to ensure database scalability for multiple users.
+    * Identify and resolve potential bottlenecks or security vulnerabilities.
 - Milestones:
+    * Submit a report on optimization results and changes implemented.
 <br>
 
-**Week 10: GOAL**
+**Week 10: Final Integration and Documentation:**
 - Deliverables:
+    * Finalize database integration with all application modules.
+    * Document the database schema, endpoints, and instructions for deployment in the Git repository.
+    * Create a troubleshooting guide for common database issues.
 - Milestones:
+    * Present a fully functional database integrated into the application.
+    * Share documentation with the team.
 <br>
 
 #### Bailey Bundlong (UI/UX Designer)
