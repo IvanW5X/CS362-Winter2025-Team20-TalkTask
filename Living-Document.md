@@ -213,7 +213,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 ### Software Toolset:
 
 ### Team Member Schedule:
-#### Kai Lindskog (Database Developer)**
+#### Kai Lindskog (Database Developer)
 **Week 3: Database Design:**
 - Deliverables: 
     * Design the database schema for tasks, users, and AI training data.
@@ -222,6 +222,8 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Milestones:
     * Submit the database schema for team approval.
     * Upload ERD to the Git repository.
+<br>
+
 **Week 4: Database Setup:**
 - Deliverables:
     * Set up a MongoDB cluster.
@@ -230,6 +232,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Milestones:
     * Successfully connect the application to MongoDB.
     * Verify data can be stored and retrieved.
+<br>
+
 **Week 5: Basic Task Management:**
 - Deliverables:
     * Implement CRUD (Create, Read, Update, Delete) operations for the tasks collection.
@@ -241,6 +245,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Ensure endpoints follow RESTful principles.
 - Milestones:
     * Test and demonstrate CRUD functionality using Postman or similar tools.
+<br>
+
 **Week 6: User Management:**
 - Deliverables:
     * Design and implement a users collection with authentication details (e.g., email, hashed password).
@@ -248,6 +254,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Ensure secure storage of user credentials (e.g., using bcrypt for hashing passwords).
 - Milestones:
     * Test user registration and login processes with database integration.
+<br>
+
 **Week 7: Task Prioritization and Recurrence:**
 - Deliverables:
     * Add support for recurring tasks (e.g., daily, weekly, monthly) in the tasks schema.
@@ -255,6 +263,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Update task-related endpoints to handle recurring tasks.
 - Milestones:
     * Validate recurring task functionality through testing with mock data.
+<br>
+
 **Week 8: Integration with AI module:**
 - Deliverables:
     * Design the ai_training collection to store data for AI training (e.g., task patterns, user preferences).
@@ -262,6 +272,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Collaborate with back-end developers to integrate AI-generated task suggestions.
 - Milestones:
     * Demonstrate the AI module fetching data from the database for training and providing suggestions.
+<br>
+
 **Week 9: Testing and Optimization:**
 - Deliverables:
     * Perform database optimization to improve query performance (e.g., indexing, query restructuring).
@@ -269,6 +281,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     * Identify and resolve potential bottlenecks or security vulnerabilities.
 - Milestones:
     * Submit a report on optimization results and changes implemented.
+<br>
+
 **Week 10: Final Integration and Documentation:**
 - Deliverables:
     * Finalize database integration with all application modules.
@@ -277,7 +291,6 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Milestones:
     * Present a fully functional database integrated into the application.
     * Share documentation with the team.
-
 
 ### Timeline:
 | Group | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
