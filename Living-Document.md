@@ -32,12 +32,31 @@ As with other to-do list applications, ours will help users plan their time effi
 ### Use Cases:
 * **Case Designer:** Ivan Wong
 * **Actors:**
+    * User interacting with the website.
 * **Triggers:**
+    * The user wants to access a specific feature of section within the web application without unecessary steps or confusion.
 * **Preconditions:**
+    * User's device is connected to the internet or has internet access.
+    * User has launched TalkTask web page.
+    * The navigation system is operational
+    * The web page is responsive to user input.
 * **Postconditions:**
+    * The user is directed to the intended section or feature they requested.
+    * The navigation system remains operational after navigating to their desired section or feature.
 * **List of steps:**
-* **Extensions/variations of the success scenario**
-* **Exceptions: failure conditions and scenarios**
+    1. The user opens the TalkTask web page.
+    2. The user interacts with the navigation system, such as clicking a button or using speech recognition to access sections or features.
+    3. The system processes the input correctly and provides feedback, expected section, or expected feature for the user.
+    4. The user is able to access the desired content or functionality with minimal effort.
+* **Extensions/variations of the success scenario:**
+    * The user uses buttons to navigate through specific sections or features within the system.
+    * The user uses the keyboard and shortcuts to navigate through the web page and sections with ease.
+    * The user uses speech recognition to let the web page process voice commands into navigation to specific sections or features within the system.
+* **Exceptions (failure conditions and scenarios):**
+    * Broken links or buttons that lead to 404 error page; displays a message to refresh page or try again later.
+    * Slow loading, so navigation is delayed due to poor internet connection; system displays a loading spinner or error message.
+    * Unresponsive navigation system, where the web page does navigate to section as intended; prompted to refresh page.
+    * Unclear navigation system, where buttons or labels are confusing; an additional tooltips pop-up or page is provided to help guide users through webpage.
 <br>
 
 * **Case Designer:** Tristan Vosburg
