@@ -188,7 +188,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **Exceptions: failure conditions and scenarios**
 
 ### Non-functional Requirements:
-* 
+* When code is deployed for users to access, it should be kept and maintained with security in mind.  Bad-faith actors shouldn't have easy access to any holes.
 * 
 * 
 
