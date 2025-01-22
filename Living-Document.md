@@ -226,19 +226,19 @@ There are a few risks facing our group as we attempt to design, create and imple
 ### Software Toolset:
 Because many APIs will be used for the developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
 * React Framework:
-    * React will be used to design the frontend side of things. Not only will this introduce us the React framework which is widely used in web development industry, it offers component based architecture and allows for easier scalability and modularized practices, allowing for easier readability.
+    * React will be used to design the frontend side of things. Not only will this introduce us the React framework which is widely used in web development industry, but it offers component based architecture and allows for easier scalability and modularized practices, allowing for easier readability and development.
 * Node.js:
-    * Node will be used to not only install dependencies in our build environment, but also run JavaScript in server-side logic to allow high performance, real-time data updates, and interacting with the database.
+    * Node will be used to not only install dependencies in our build environment, but also run JavaScript in server-side logic to allow high performance, real-time data updates, interacting with the database, and consistency across developers using the same language.
 * Express API:
-    * The Express API will be used to run our backend server and simplify our server setup source code. It will also provide middlware support which makes it easier to extend functionality of to-do lists management functionality and powerfule routing functionality.
+    * The Express API will be used to run our backend server and simplify our server setup source code. It will also provide middlware support which makes it easier to extend functionality of to-do lists management functionality and powerful routing functionality.
 * Vite Build Tool:
     * Vite is a blazing fast frontend building tool that utilizes modern JavaScript functionality and is optimized to obtain faster and more high performance websites compared to the widely used Webpack build tool.
 * WebSpeech API
     * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list funcitonality, to provide a hands-free experience and more accesibility features.
 * Hugging Face:
-    * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous one. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. 
+    * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. Further research is being conducted as to which AI model will be used to best fit our use cases.
 * MongoDB:
-    * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database, so MongoDB was chosen to store user tasks in a JSON like format, so that users can access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
+    * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 
 ### Team Member Schedule:
 
@@ -321,6 +321,252 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
     * Present a fully functional database integrated into the application.
     * Share documentation with the team.
 
+#### Ivan Wong (Software Configuration Management Coordinator)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+#### Tristan Vosburg (Back-End Developer)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+#### Nicholas Woodley (Front-End Developer)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+#### Raymond Cen (Back-End Developer)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+#### Bailey Bundlong (UI/UX Designer)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+#### Jordan L Cowan (Front-End Developer)
+**Week 3: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 4: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 5: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 6: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 7: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 8: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 9: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
+**Week 10: GOAL**
+- Deliverables:
+- Milestones:
+<br>
+
 ### Timeline:
 | Group | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | ------ |------|------|------|------|------|------|------|------|
@@ -328,3 +574,4 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 | Back End ||||Save Button Works|||||
 | UI/UX |||||||||
 | Database  ||||||||||
+| Overall Project |Find essential tools needed for basic web server configuration and to-do lists management|||||||||
