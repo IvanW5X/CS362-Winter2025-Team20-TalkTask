@@ -175,13 +175,25 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Jordan L Cowan 
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
+* **Actors:** Users want to add a task hands-free.
+* **Triggers:** The user prefers to use speech-to-text.
+* **Preconditions:** The user has pressed the button to enable speech-to-text.
+* **Postconditions:** The user can speak and it will be transferred to text and create a task for the user.
 * **List of steps:**
+  1. The user presses the speech-to-text button 
+  2. The user says their tasks
+  3. The system recognizes the speech and converts it to text
+  4.The system parses the text input to identify the parameters (the task, due date, type)
+  5. The task is created using the parameters.
+
 * **Extensions/variations of the success scenario**
+   * The user pauses mid-sentence and the system prompts for clarification
+   * The user keeps talking and doesn’t realize the speech-to-text is still running any excess text is filtered
+
 * **Exceptions: failure conditions and scenarios**
+   * If the voice input isn’t recognized then provide a prompt for retrying or manual input if it can’t.
+   * Background noise interference then prompt the user to try again in a quieter environment.
+
 
 ### Non-functional Requirements:
 * When code is deployed for users to access, it should be kept and maintained with security in mind. Users will not be able to access the database and data will not be shared with any third-parties. Bad-faith actors shouldn't have easy access to any holes.
