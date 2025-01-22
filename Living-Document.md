@@ -26,7 +26,6 @@ The to-do list is a powerful tool that can be used to help organize, categorize,
 
 Our to-do list will be different in the way that it will draw from many common day practices of the present to better aid the person in their own daily lives. The to-do list can be utilized beyond a simple stack of deliverables, and we feel that it can be used to help organize much more than one’s day. Using modern day technology, we are able to create a product that seperates us from other competitors by using speech recognition, AI models, and a database to give users access to a personal to-do list that works on various devices, free of charge.
 
-<<<<<<< HEAD
 1.   
    * **Actors:**   
    * **Triggers:**   
@@ -41,17 +40,10 @@ Our to-do list will be different in the way that it will draw from many common d
 5.   
 6.   
 7. 
-   * **Actors:**   All users
-   * **Triggers:**   When a user access the application for a second time
-   * **Preconditions:**  The user has their schedule saved on a server and it can be accessed as needed.
-   * **Postconditions:**  If a user accesses the file on their account for the second time, all the info they wrote on the last use is still present.
-   * **List of steps:**  
-   * **Extensions/variations of the success scenario**  
-   * **Exceptions: failure conditions and scenarios**  
-=======
+  
+   
 ### Effects: 
 As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.
->>>>>>> 0371ba7ad5668f021e2b7c356867e48a4345c91c
 
 ### Use Cases:
 * **Case Designer:** Ivan Wong
@@ -65,13 +57,24 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Tristan Vosburg
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
-* **List of steps:**
+* **Actors:**   
+   * All users
+* **Triggers:**   
+   * When a user access the application for a second time
+* **Preconditions:**  
+   * The user has their schedule saved on a server and it can be accessed as needed.
+* **Postconditions:**  
+   * If a user accesses the file on their account for the second time, all the info they wrote on the last use is still present.
+* **List of steps:** 
+   * Log in to the application for the first time.  
+   * Input an event
+   * Save
+   * Log Out
+   * Log In at a later time
 * **Extensions/variations of the success scenario**
+   *  User inputs should continue to be tracked and saved through any number of logins.
 * **Exceptions: failure conditions and scenarios**
+   * If the user doesn't save, their inputs won't be saved.
 <br>
 
 * **Case Designer:** Nicholas Woodley
