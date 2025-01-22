@@ -60,53 +60,118 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Tristan Vosburg
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
-* **List of steps:**
+* **Actors:**   
+   * All users
+* **Triggers:**   
+   * When a user access the application for a second time
+* **Preconditions:**  
+   * The user has their schedule saved on a server and it can be accessed as needed.
+* **Postconditions:**  
+   * If a user accesses the file on their account for the second time, all the info they wrote on the last use is still present.
+* **List of steps:** 
+   * Log in to the application for the first time.  
+   * Input an event
+   * Save
+   * Log Out
+   * Log In at a later time
 * **Extensions/variations of the success scenario**
+   *  User inputs should continue to be tracked and saved through any number of logins.
 * **Exceptions: failure conditions and scenarios**
+   * If the user doesn't save, their inputs won't be saved.
 <br>
 
 * **Case Designer:** Nicholas Woodley
+  * As a user, I want to remove tasks using voice commands so that I can update my to-do list hands-free when my tasks are completed.
 * **Actors:**
+  * All users
 * **Triggers:**
+  * The user activates the voice command to remove a task
 * **Preconditions:**
+  * The user has an internet connection
+  * User is logged in
+  * The task to be removed exists
 * **Postconditions:**
+  * The specific task is removed from the to-do list
+  * The updated list is displayed without the removed task
 * **List of steps:**
+  1. User activates voice command on application
+  2. User speaks the command
+  3. TalkTask processes the command and identifies which task is supposed to be removed
+  4. TalkTask checks if the task exists
+  5. If the task exists, then it is removed
+  6. The application displays the updated to-do list
 * **Extensions/variations of the success scenario**
+  * User gets confirmation to remove before the task is deleted
+  * User can specify multiple tasks to be deleted
 * **Exceptions: failure conditions and scenarios**
+  * Task not found: if no task is found, then the system will notify the user that the selected task does not exist
+  * Multiple tasks with similar name: If multiple tasks exists with similar names, the system will ask the user to clarify which task to remove
+  * No tasks exist: the system will notify the user that no tasks exist
+  * Speech error: the system will ask the user to repeat their command
+
 <br>
 
 * **Case Designer:** Kai Lindskog-Coffin
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
-* **List of steps:**
-* **Extensions/variations of the success scenario**
-* **Exceptions: failure conditions and scenarios**
+* As a college student who is actively trying to budget and save money, I want to be able to track recurring payments and subscriptions on TalkTask.
+* Actors: College student who needs to cut down on costs/ be more conscious of their spending.
+* Triggers: The user needs to monitor their spending, as well as when and where their money is leaving their account.
+* Preconditions: 
+  1. User has access to TalkTask. 
+  2. Application is connected to the internet.
+  3. The user has created an account.
+* Postconditions: 
+  1. A task for the recurring payment or subscription is created.
+  2. Task is stored in database.
+* List of steps:
+  1. User opens TalkTask.
+  2. User logs into TalkTask
+  3. User can either speak or manually enter their recurring payment/subscription as a task.
+  4. User can specify when this bill is due (e.g. monthly, weekly, yearly, etc.)
+  5. System creates the task.
+  6. Task is stored in the database and registered to the user.
+  7. TalkTask will remind them to pay it next month.
+* Extensions/variations of the success scenario:
+    Users can add multiple recurring payments at once, each being registered as separate bills.
+* Exceptions:
+  1. Recurring payment was canceled and not updated in TalkTask.
+  2. User does not enter a recurring date of payment.
 <br>
 
 * **Case Designer:** Raymond Cen
-* **Actors:**
-* **Triggers:**
+* **Actors:** Student
+* **Triggers:** The student has many assignments due this week.
 * **Preconditions:**
+    * The student is already enrolled in classes with assignments to complete.
 * **Postconditions:**
+    * The student can mark tasks as complete or update them.
 * **List of steps:**
+  1. The student logs into the system using valid credentials.
+  2. The student creates a new task.
+  3. The application adds the task.
+  4. The student can create, edit, delete, mark them as complete and rearrange the order of tasks by due date or priority.
 * **Extensions/variations of the success scenario**
+  * Student can set special reminder notifications such as weekly quizzes.
 * **Exceptions: failure conditions and scenarios**
+  * The student leaves in the middle of the creating a task.
+  * The student does not meet the deadline of the assignment.
 <br>
 
 * **Case Designer:** Bailey Bundlong
-* **Actors:**
-* **Triggers:**
-* **Preconditions:**
-* **Postconditions:**
+* **Actors:** The user who is a student
+* **Triggers:** They have been given a homework assignment
+* **Preconditions:** They have access to TalkTask
+* **Postconditions:** An entry in TalkTask has been made for their homework assignment
 * **List of steps:**
-* **Extensions/variations of the success scenario**
+  1. User opens the TalkTask application
+  2. User logs into Talktalk
+  3. From the home screen, user clicks on create new task button
+  4. User fills in data fields in task creation window
+  5. User clicks out of the task creation window
+  6. Task is created and saved
+* **Extensions/variations of the success scenario** User duplicates or edits existing task to track new task.
 * **Exceptions: failure conditions and scenarios**
+  User enters invalid data into task creation fields, and is presented an error.
+  User decides that Talktask is able to sufficiently track their task, and leaves.
 <br>
 
 * **Case Designer:** Jordan L Cowan 
