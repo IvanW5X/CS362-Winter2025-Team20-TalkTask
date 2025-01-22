@@ -101,13 +101,34 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Nicholas Woodley
+  * As a user, I want to remove tasks using voice commands so that I can update my to-do list hands-free when my tasks are completed.
 * **Actors:**
+  * All users
 * **Triggers:**
+  * The user activates the voice command to remove a task
 * **Preconditions:**
+  * The user has an internet connection
+  * User is logged in
+  * The task to be removed exists
 * **Postconditions:**
+  * The specific task is removed from the to-do list
+  * The updated list is displayed without the removed task
 * **List of steps:**
+  1. User activates voice command on application
+  2. User speaks the command
+  3. TalkTask processes the command and identifies which task is supposed to be removed
+  4. TalkTask checks if the task exists
+  5. If the task exists, then it is removed
+  6. The application displays the updated to-do list
 * **Extensions/variations of the success scenario**
+  * User gets confirmation to remove before the task is deleted
+  * User can specify multiple tasks to be deleted
 * **Exceptions: failure conditions and scenarios**
+  * Task not found: if no task is found, then the system will notify the user that the selected task does not exist
+  * Multiple tasks with similar name: If multiple tasks exists with similar names, the system will ask the user to clarify which task to remove
+  * No tasks exist: the system will notify the user that no tasks exist
+  * Speech error: the system will ask the user to repeat their command
+
 <br>
 
 * **Case Designer:** Kai Lindskog-Coffin
