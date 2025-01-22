@@ -259,7 +259,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
     * Set up a MongoDB cluster.
     * Implement the connection between the application and the database using Node.js (via Mongoose).
     * Test the connection with simple read/write operations.
-    * Milestones:
+- Milestones:
     * Successfully connect the application to MongoDB.
     * Verify data can be stored and retrieved.
 <br>
@@ -340,39 +340,56 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * Organized Git repository for an MVP.
 <br>
 
-**Week 5: Assist Developers**
+**Week 5: Configure Database w/ To-Do List Functionality**
 - Deliverables:
-  * Aid in the development of to-do list functionality to create and finish essential aspects of to-do list management.
-  * Aid in development of UI to create a user-friendly interface for users.
+  * Managing a task through to-do list updates database.
+  * Ensure database data is formatted correctly.
 - Milestones:
-  * Essential to-do lists functionality completed.
-  * UI designed to include essential web page functionality and room for improvement.
+  * Link database with to-do list functionality.
+  * Data in database is parsed correctly and ready for future implementations.
 <br>
 
-**Week 6: **
+**Week 6: Configuring AI and Speech Recognition APIs**
 - Deliverables:
+  * Add and configure AI and WebSpeech APIs for developers to use with current to-do list functionality.
+  * Ensure APIs work as intended for implementation of speech recognition and recommended tasks.
 - Milestones:
+  * AI and Speech recognition features are ready to be implemented.
 <br>
 
-**Week 7: GOAL**
+**Week 7: Assist Developers**
 - Deliverables:
+  * Aid in development of more complex features, such as AI recommended tasks and processing speech inputs.
+  * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
 - Milestones:
+  * Complex features implemented or close to being finished.
+  * UI design is nearly completed and needs finishing touches.
 <br>
 
-**Week 8: GOAL**
+**Week 8: Implementing Stretch Goals**
 - Deliverables:
+  * Add additional AI feature to process natural language into to-do list functionality.
+  * Add email notifications for users that choose to select remind me option for timely tasks.
 - Milestones:
+  * Additional stretch goals, such as reminders and natural language processing implemented and working as intended.
 <br>
 
-**Week 9: Finalize Project**
+**Week 9: Finishing Touches**
 - Deliverables:
+  * Create detailed test cases to catch underlying bugs not caught by previous tests.
+  * Update and add finalizing documentation.
 - Milestones:
+  * TalkTask is ready to be deployed.
+  * Documentation is up-to-date and being reviewed.
 <br>
 
 **Week 10: Deployment of TalkTask**
 - Deliverables:
-  * 
+  * TalkTask web page is deployed onto the internet using Netlify and another tool for hosting backend servers.
+  * Documentation is fully completed and published to the Git repository.
 - Milestones:
+  * TalkTask web page complete.
+  * TalkTask documentation complete.
 <br>
 
 #### Tristan Vosburg (Back-End Developer)
@@ -587,4 +604,4 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 | Back End            |      |      |      |Save Button Works|      |       |       |              |
 | UI/UX               |      |      |      |      |      |      |      |       |
 | Database            |      |      |      |      |      |      |      |      ||
-| Software Management | Essential tools needed for basic web server configuration and to-do lists management|||||||||
+| Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies|||||||||
