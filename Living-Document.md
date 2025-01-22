@@ -34,7 +34,30 @@ Our to-do list will be different in the way that it will draw from many common d
    * **List of steps:**  
    * **Extensions/variations of the success scenario**  
    * **Exceptions: failure conditions and scenarios**  
-2.   
+2.   As a college student who is actively trying to budget and save money, I want to be able to track recurring payments and subscriptions on TalkTask.
+   * Actors: College student who needs to cut down on costs/ be more conscious of their spending.
+   * Triggers: The user needs to monitor their spending, as well as when and where their money is leaving their                 account.
+   * Preconditions: 
+      1.) User has access to TalkTask. 
+      2.) Application is connected to the internet.
+      3.) The user has created an account.
+   * Postconditions: 
+      1.) A task for the recurring payment or subscription is created.
+      2.) Task is stored in database.
+   * List of steps:
+      1.) User opens TalkTask.
+      2.) User logs into TalkTask
+      3.) User can either speak or manually enter their recurring payment/subscription as a task.
+      4.) User can specify when this bill is due (e.g. monthly, weekly, yearly, etc.)
+      5.) System creates the task.
+      6.) Task is stored in the database and registered to the user.
+      7.) TalkTask will remind them to pay it next month.
+   * Extensions/variations of the success scenario:
+          Users can add multiple recurring payments at once, each being registered as separate bills.
+   * Exceptions:
+      1.) Recurring payment was canceled and not updated in TalkTask.
+      2.) User does not enter a recurring date of payment.
+
 3.   
 4.   
 5.   
