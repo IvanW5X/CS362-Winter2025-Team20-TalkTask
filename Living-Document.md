@@ -98,13 +98,22 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Raymond Cen
-* **Actors:**
-* **Triggers:**
+* **Actors:** Student
+* **Triggers:** The student has many assignments due this week.
 * **Preconditions:**
+    * The student is already enrolled in classes with assignments to complete.
 * **Postconditions:**
+    * The student can mark tasks as complete or update them.
 * **List of steps:**
+  1. The student logs into the system using valid credentials.
+  2. The student creates a new task.
+  3. The application adds the task.
+  4. The student can create, edit, delete, mark them as complete and rearrange the order of tasks by due date or priority.
 * **Extensions/variations of the success scenario**
+  * Student can set special reminder notifications such as weekly quizzes.
 * **Exceptions: failure conditions and scenarios**
+  * The student leaves in the middle of the creating a task.
+  * The student does not meet the deadline of the assignment.
 <br>
 
 * **Case Designer:** Bailey Bundlong
