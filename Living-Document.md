@@ -540,7 +540,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask web page completed, deployed and being maintained.
 <br>
 
-#### UI/UX Designer
+#### Bailey Budlong - UI/UX Designer
 **Week 3: UI Sketches**
 - Deliverables: Sketches of overall UI design for group to review
 - Milestones: Application idea and functionality confirmed
