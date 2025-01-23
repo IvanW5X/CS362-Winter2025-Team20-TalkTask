@@ -31,7 +31,7 @@
 * npm run build
 * Locate dist directory and ensure it exists
 * npm run preview to ensure functionality is as desired
-* Optional: deploy the dist folder to a web server hosting application, we used Netlify, but any tool would s
+* Deploy the dist folder to a web server hosting application, we used Netlify, but any tool would suffice
 
 ## Back-End
 * To run the backend side of the web application, consider the following directions.
@@ -46,7 +46,7 @@
 * Currently investigating   
 
 ## Additional Notes
-* To store and hide our API key and other sensitive information, consider the following directions.
+* To store and hide your own API key and other sensitive information, consider the following directions.
 * cd path/to/project/directory
-* Add a .env file to the project root
-* Add "AI_API_KEY=API_KEY" to the .env file and replave API_KEY with the actual API key
+* Add a .env file to the project root directory
+* Add "AI_API_KEY=API_KEY" to the .env file and replace API_KEY with the actual API key
