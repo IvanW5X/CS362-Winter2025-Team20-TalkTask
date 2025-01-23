@@ -216,6 +216,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Ivan Wong (Software Configuration Management Coordinator)
     - Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized. This role is needed because with many APIs frameworks being used, their needs to be a dedicated person to research which tools would help speed up production and keep everything orgranized for scalability and future feature implementations. I am best suited for this role because I have experience in configuring build environments for GUI applications and have devloped & deployed my own frontend portfolio website using similar tools.
 - Tristan Vosburg (Back-End Developer)
+  - TalkTask will need a way to communicate between the front-end and the database.  Without this, the website wouldn't be able to store information between log-ins.  Building this bridge will be a large part of what will allow TalkTask to work.
 - Nicholas Woodley (Front-End Developer)
 - Kai Lindskog-Coffin (Database Developer)
     - TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
