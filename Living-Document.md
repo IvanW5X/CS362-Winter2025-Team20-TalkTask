@@ -626,7 +626,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           |      |      |      |      |      |      |      |       |
-| Back End            |      |      |      |Save Button Works|      |       |       |              |
+| Back End            | Design for communication with WebSpeechAPI completed|List of commands and functions determined|WebSpeechAPI coded into backend|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready.|TalkTask web page completed, deployed and being maintained.|
 | UI/UX               |      |      |      |      |      |      |      |       |
 | Database            |      |      |      |      |      |      |      |      ||
 | Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies|||||||||
