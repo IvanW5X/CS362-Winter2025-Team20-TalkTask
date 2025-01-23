@@ -208,6 +208,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **How we’ll allow others to setup their own instance of our application:**
   * Refer to configuration.md in our git repository.
 * **How we'll take external feedback:**
+  * Important feedback we'll need from people outside of our website will include all aspects of our web page from a user being able to login to a user wanting a suggested task using speech recognition. The most critical point of feedback will be during our speech recognition and AI suggested tasks. The tester should be able to speak into their device and add the desired tasks and be able consider adding the suggested task into their list.
   * We will have a section/page that is dedicated for feedback. It will contain two fields, an email and textbox. The user will have to enter a valid email address and a message that they want to send to the developer.
 
 ### Technical Approach:
