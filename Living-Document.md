@@ -204,7 +204,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **How we’ll host the application for users to access:**
     * TalkTask will be divided into two servers to seperate concerns for modular, and scalable software. Deployment tools will include Netlify for the frontend server and backend deployment tools are still being researched to find open source tools that are free to use and fit our use cases.
 * **How we’ll handle errors, invalid user inputs, etc:**  
-    * 
+    * For WebSpeechAPI, when the user uses the voice input feature it will check if the command given matches any of the current commands. If not it will reprompt the user, asking the user to say the command again. But if it does match a functionality, it will prompt a confirmation screen while keep the voice input on. That way the user can confirm the action by saying "yes" or "no".
 * **How we’ll allow others to setup their own instance of our application:**
 
 ### Technical Approach:
