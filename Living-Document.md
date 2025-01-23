@@ -476,6 +476,66 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 
+
+#### Jordan Cowan - Front-End Developer
+**Week 3: To-Do List**
+- Deliverables:
+   * Design basic to-do list functionality.
+- Milestones:
+   * To-do is created at a basic level with ability to create, update, and delete tasks.
+<br>
+
+**Week 4: **
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 5: Connecting to Other Features**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 6: Task Management Integration**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 7: UI Enhancements**
+- Deliverables:
+   *  
+- Milestones:
+   * 
+<br>
+
+**Week 8: Task Scheduling**
+- Deliverables:
+   *  
+- Milestones:
+   * 
+<br>
+
+**Week 9:  Finalizing and Testing**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 10: Documentation**
+- Deliverables:
+   * 
+- Milestones:
+   *  
+<br>
+
+
+
 #### Raymond Cen - Back-End Developers
 **Week 3: Backend Communication**
 - Deliverables:
