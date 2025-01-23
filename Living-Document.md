@@ -583,7 +583,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 ### Timeline:
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
-| Front End           |      |      |      |      |      |      |      |       |
+| Front End           |   Design Navigation   |    Start front-end implementation  |  Test and connect front-end calls to back-end    |   Implement API to front-end calls   |  Develop user feedback features    |   Implement other features (such as notifications)   |  Finalizing and testing    |    Deploy and finish documentation   |
 | Back End            | Design for communication with WebSpeechAPI completed|List of commands and functions determined|WebSpeechAPI coded into backend|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready.|TalkTask web page completed, deployed and being maintained.|
 | UI/UX               |UI Sketches|Draft Figma wireframe UI design|Incorporate group feedback, draft designs for all UI elements/pages|Visual styling decided, Unique visual assets generated|Preliminary front end implemented with front end developers|Test UI functionality for revisions|Make final changes for UI design and assets|Verify UI is functioning and correct|
 | Database            |      |      |      |      |      |      |      |       |
