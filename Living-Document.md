@@ -221,6 +221,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Kai Lindskog-Coffin (Database Developer)
     - TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
 - Raymond Cen (Back-End Developer)
+    - Responsible for the use of the WebSpeechAPI and the communcation between frontend and backend.This role is needed because the use of voice input using WebSpeechAPI is a main component of this project. As well as communication between the frontend and backend. I am best suited for this because I have experience in working with APIs in a web project and designing a communucation pipeline between a frontend file and backend file.
 - Bailey Bundlong (UI/UX Designer)
 - Jordan L Cowan (Front-End Developer)
     - It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
