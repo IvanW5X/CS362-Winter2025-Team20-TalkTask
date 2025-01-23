@@ -204,6 +204,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **How we’ll host the application for users to access:**
     * TalkTask will be divided into two servers to seperate concerns for modular, and scalable software. Deployment tools will include Netlify for the frontend server and backend deployment tools are still being researched to find open source tools that are free to use and fit our use cases.
 * **How we’ll handle errors, invalid user inputs, etc:**  
+    * 
 * **How we’ll allow others to setup their own instance of our application:**
 
 ### Technical Approach:
@@ -506,7 +507,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 - Deliverables:
   * Begin the full implementation of WebSpeechAPI with application, with simple functionalties such as add and remove.
 - Milestones:
-  * WebSpeechAPI is partially implemented into the backend, specifically add and remove functionality.
+  * WebSpeechAPI add and remove functionality is implemented.
 <br>
 
 **Week 7: Full Implementation of WebSpeechAPI**
@@ -514,7 +515,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * Add other functionalities of application that use WebSpeechAPI such as edit, sort, and view.
   * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
 - Milestones:
-  * WebSpeechAPI is implemented fully into the backend.
+  * WebSpeechAPI is implemented fully into the backend with the rest of the features.
 <br>
 
 **Week 8: Testing Backend Implementation of WebSpeechAPI**
@@ -522,15 +523,15 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * Rigourous testing of the WebSpeechAPI application using voice commands.
   * Ensure WebSpeechAPI and backend functionalities work properly in sync with one another.
 - Milestones:
-  * WebSpeechAPI works properly within the backend.
+  * WebSpeechAPI works properly with voice commands and error handles within the backend.
 <br>
 
 **Week 9: Assist Communication with Frontend.**
 - Deliverables:
   * Assist frontend and backend developers with communication with backend.
-  * Assist in seamless communcation with the WebSpeechAPI.
+  * Assist in seamless communcation with the WebSpeechAPI and frontend.
 - Milestones:
-  * Communication between frontend and backend is fully established and ready.
+  * Communication between frontend and backend is fully established and ready to be deployed.
 <br>
 
 **Week 10: Maintenance of WebSpeechAPI and backend**
