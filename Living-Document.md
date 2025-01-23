@@ -203,7 +203,7 @@ As with other to-do list applications, ours will help users plan their time effi
 ### External Requirements:
 * **How we’ll host the application for users to access:**
     * TalkTask will be divided into two servers to seperate concerns for modular, and scalable software. Deployment tools will include Netlify for the frontend server and backend deployment tools are still being researched to find open source tools that are free to use and fit our use cases.
-* **How we’ll handle errors, invalid user inputs, etc:**  
+* **How we’ll handle errors, invalid user inputs, etc:**
 * **How we’ll allow others to setup their own instance of our application:**
 
 ### Technical Approach:
@@ -364,8 +364,8 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * Aid in development of more complex features, such as AI recommended tasks and processing speech inputs.
   * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
 - Milestones:
-  * Complex features implemented or close to being finished.
-  * UI design is nearly completed and needs finishing touches.
+  * Complex features, such as AI recommendations and speech recognition implemented and ready to be debugged.
+  * UI design is fully implemented and needs finishing touches for a clean UI.
 <br>
 
 **Week 8: Implementing Stretch Goals**
@@ -390,8 +390,8 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask web page is deployed onto the internet using Netlify and another tool for hosting backend servers.
   * Documentation is fully completed and published to the Git repository.
 - Milestones:
-  * TalkTask web page complete.
-  * TalkTask documentation complete.
+  * TalkTask web page complete and deployed.
+  * TalkTask documentation complete and revised.
 <br>
 
 #### Tristan Vosburg (Back-End Developer)
@@ -488,7 +488,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 **Week 4: WebSpeechAPI Commands**
 - Deliverables:
   * Determine certain phrases and words that the application will use.
-  * Determine which phrases wilkl correlate with which function of the application.
+  * Determine which phrases will correlate with which function of the application.
 - Milestones:
   * List of phrases and words that the correlate with functions created.
 <br>
@@ -629,4 +629,4 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 | Back End            | Design for communication with WebSpeechAPI completed|List of commands and functions determined|WebSpeechAPI coded into backend|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready.|TalkTask web page completed, deployed and being maintained.|
 | UI/UX               |      |      |      |      |      |      |      |       |
 | Database            |      |      |      |      |      |      |      |      ||
-| Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies|||||||||
+| Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.|Files organized in a modularized manner to allow for easier implementation and OO practices.|Database implementation inputs correctly formatted data.|AI and WebSpeech APIs configured and ready for developers.||Continue developing complex features, such as AI and speech recognition implementations|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.|Run and test finalized product for any underlying bugs or errors.|TalkTask deployed and plan for maintenence stage begins.|
