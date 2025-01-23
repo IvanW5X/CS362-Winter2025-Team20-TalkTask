@@ -206,6 +206,18 @@ As with other to-do list applications, ours will help users plan their time effi
 * **How we’ll handle errors, invalid user inputs, etc:**  
     * For WebSpeechAPI, when the user uses the voice input feature it will check if the command given matches any of the current commands. If not it will reprompt the user, asking the user to say the command again. But if it does match a functionality, it will prompt a confirmation screen while keep the voice input on. That way the user can confirm the action by saying "yes" or "no".
 * **How we’ll allow others to setup their own instance of our application:**
+    * Get an API key and store it in a .env file on the root directory
+      * The .env file should look like this: AI_API_KEY=API_KEY where API_KEY is reaplce with your own API key
+    * Setting up the frontend
+        1. run 'npm install' into the terminal while in the frontend directory
+        2. when node_modules is installed in the directory, run 'npm run dev'
+        3. o + enter to open the website
+        4. q + enter to stop running
+    * Setting the up backend
+        1. run 'npm install' into the terminal while in the backend directory
+        2. when node_modules is installed in the directory, run 'npm run dev'
+        3. ensure the terminal says that the server is listening on a port
+        4. q + enter to stop running
 
 ### Technical Approach:
 Our web application will be implemented using many frameworks and APIs, such as the React framework for frontend development, the Vite build tool for efficient builds and improved performance, JavaScript for backend/business logic, and (hopefully) Netlify to publish our website onto the internet. The main component of the project will be based on the WebSpeech API, which will be used to get input from the user, so that our program will be able to parse it and handle the commands given. We will split up the user interface into components for a modular design, so that with each sprint, we are able to integrate changes and features seamlessly and effectively. Additionally, we will use tools like MongoDB to implement a database and user accounts to store tasks onto the cloud, so that users will be able to exit and return to the application with their previous session data saved on other devices. Another feature we plan to implement will include the use of an open source AI model to recommend tasks based on user's previous task history, to a provide more personalized product for our users. Collaboration and communication will be done via Git, MS Teams, Zoom, text messages, and in-person meetings to increase productivity and push changes into the codebase. Other tools, such as Figma are will be used for a reference as to how our web UI will be designed, so that there’s no room for ambiguity for how the UI shall be implemented. Further research will be conducted by our software configuration coordinator (Ivan) to provide tools that will make our lives as developers easier.
