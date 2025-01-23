@@ -138,8 +138,10 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Raymond Cen
-* **Actors:** Student
-* **Triggers:** The student has many assignments due this week.
+* **Actors:**
+  * Student
+* **Triggers:**
+  * The student has many assignments due this week.
 * **Preconditions:**
     * The student is already enrolled in classes with assignments to complete.
 * **Postconditions:**
@@ -157,10 +159,14 @@ As with other to-do list applications, ours will help users plan their time effi
 <br>
 
 * **Case Designer:** Bailey Budlong
-* **Actors:** The user who is a student
-* **Triggers:** They have been given a homework assignment
-* **Preconditions:** They have access to TalkTask
-* **Postconditions:** An entry in TalkTask has been made for their homework assignment
+* **Actors:** 
+  * The user who is a student
+* **Triggers:**
+  * They have been given a homework assignment
+* **Preconditions:**
+  * They have access to TalkTask
+* **Postconditions:** 
+  * An entry in TalkTask has been made for their homework assignment
 * **List of steps:**
   1. User opens the TalkTask application
   2. User logs into Talktalk
@@ -168,22 +174,27 @@ As with other to-do list applications, ours will help users plan their time effi
   4. User fills in data fields in task creation window
   5. User clicks out of the task creation window
   6. Task is created and saved
-* **Extensions/variations of the success scenario** User duplicates or edits existing task to track new task.
+* **Extensions/variations of the success scenario** 
+  * User duplicates or edits existing task to track new task.
 * **Exceptions: failure conditions and scenarios**
   User enters invalid data into task creation fields, and is presented an error.
   User decides that Talktask is able to sufficiently track their task, and leaves.
 <br>
 
 * **Case Designer:** Jordan L Cowan
-* **Actors:** Users want to add a task hands-free.
-* **Triggers:** The user prefers to use speech-to-text.
-* **Preconditions:** The user has pressed the button to enable speech-to-text.
-* **Postconditions:** The user can speak and it will be transferred to text and create a task for the user.
+* **Actors:** 
+  * Users want to add a task hands-free.
+* **Triggers:**
+  * The user prefers to use speech-to-text.
+* **Preconditions:**
+  * The user has pressed the button to enable speech-to-text.
+* **Postconditions:**
+  * The user can speak and it will be transferred to text and create a task for the user.
 * **List of steps:**
   1. The user presses the speech-to-text button 
   2. The user says their tasks
   3. The system recognizes the speech and converts it to text
-  4.The system parses the text input to identify the parameters (the task, due date, type)
+  4. The system parses the text input to identify the parameters (the task, due date, type)
   5. The task is created using the parameters.
 * **Extensions/variations of the success scenario**
    * The user pauses mid-sentence and the system prompts for clarification
@@ -536,7 +547,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 
 
 
-#### Raymond Cen - Back-End Developers
+#### Raymond Cen - Back-End Developer
 **Week 3: Backend Communication**
 - Deliverables:
   * Design a way to communciate with Web Speech API using JavaScript.
@@ -560,7 +571,6 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 - Milestones:
   * WebSpeechAPI implemented for voice input into backend.
 <br>
-
 
 **Week 6: Application Implementation of WebSpeechAPI**
 - Deliverables:
