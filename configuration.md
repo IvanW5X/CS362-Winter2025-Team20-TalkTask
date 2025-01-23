@@ -31,7 +31,7 @@
 * npm run build
 * Locate dist directory and ensure it exists
 * npm run preview to ensure functionality is as desired
-* Optional: deploy the dist folder to a web server hosting application, we used Netlify, but any tool would suffice.
+* Optional: deploy the dist folder to a web server hosting application, we used Netlify, but any tool would s
 
 ## Back-End
 * To run the backend side of the web application, consider the following directions.
