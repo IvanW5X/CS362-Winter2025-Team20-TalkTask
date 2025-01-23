@@ -540,44 +540,44 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 #### UI/UX Designer
-**Week 3: GOAL**
-- Deliverables:
-- Milestones:
+**Week 3: UI Sketches**
+- Deliverables: Sketches of overall UI design for group to review
+- Milestones: Application idea and functionality confirmed
 <br>
 
-**Week 4: GOAL**
-- Deliverables:
-- Milestones:
+**Week 4: Figma Wireframe Designs**
+- Deliverables: Wireframe designs for the UI, done in Figma
+- Milestones: UI scope determined
 <br>
 
-**Week 5: GOAL**
-- Deliverables:
-- Milestones:
+**Week 5: Continue Figma Designs and Incorperate Feedback**
+- Deliverables: Designs in Figma for all UI pages/elements
+- Milestones: Figma designs shared with team
 <br>
 
-**Week 6: GOAL**
-- Deliverables:
-- Milestones:
+**Week 6: Visual Styling and Unique Assets**
+- Deliverables: Visual styling sheet/guide, Unique visual assets ex: Logo, backdrops
+- Milestones: Designs for all application pages complete
 <br>
 
-**Week 7: GOAL**
-- Deliverables:
-- Milestones:
+**Week 7: Assist Implementing Front End**
+- Deliverables: Assist and communicate with front end developers
+- Milestones: Full UI mockup complete
 <br>
 
-**Week 8: GOAL**
-- Deliverables:
-- Milestones:
+**Week 8: UI testing**
+- Deliverables: Document UI testing, going through use cases
+- Milestones: Prototype front end UI
 <br>
 
-**Week 9: GOAL**
-- Deliverables:
-- Milestones:
+**Week 9: Final Revisions**
+- Deliverables: Communicate with team about any necessary final changes
+- Milestones: Full functioning front end UI
 <br>
 
-**Week 10: GOAL**
-- Deliverables:
-- Milestones:
+**Week 10: Verification**
+- Deliverables: Final approval of implementation
+- Milestones: Deployed application
 <br>
 
 ### Timeline:
