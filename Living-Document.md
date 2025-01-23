@@ -223,6 +223,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 - Tristan Vosburg (Back-End Developer)
   - TalkTask will need a way to communicate between the front-end and the database.  Without this, the website wouldn't be able to store information between log-ins.  Building this bridge will be a large part of what will allow TalkTask to work.
 - Nicholas Woodley (Front-End Developer)
+  - Responsible for front-end navigation, pages, and other accessibility features needed for the to-do list.
 - Kai Lindskog-Coffin (Database Developer)
     - TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
 - Raymond Cen (Back-End Developer)
