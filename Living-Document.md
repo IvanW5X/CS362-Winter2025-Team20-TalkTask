@@ -249,9 +249,9 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 * MongoDB:
     * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 
-### Development Schedules:
+### Team Member Schedules:
 
-#### Database Developer
+####  Kai Lindskog - Database Developer
 **Week 3: Database Design:**
 - Deliverables: 
     * Design the database schema for tasks, users, and AI training data.
@@ -330,7 +330,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
     * Present a fully functional database integrated into the application.
     * Share documentation with the team.
 
-#### Software Configuration Management Coordinator
+#### Ivan Wong - Software Configuration Management Coordinator
 **Week 3: Software Research**
 - Deliverables:
   * Find and create and AI API key from Hugging Face to select an AI model that best fits our use cases.
@@ -475,7 +475,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 
-#### Back-End Developers
+#### Raymond Cen - Back-End Developers
 **Week 3: Backend Communication**
 - Deliverables:
   * Design a way to communciate with Web Speech API using JavaScript.
