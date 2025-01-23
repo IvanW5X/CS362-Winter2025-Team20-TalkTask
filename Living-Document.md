@@ -496,53 +496,58 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
    * To-do is created at a basic level with ability to create, update, and delete tasks.
 <br>
 
-**Week 4: **
+**Week 4: Side Bar**
+- Deliverables:
+   * Design a basic side bar allowing the user to look at their profile, settings, and go to the main menu.
+   * Implement a basic "ad" that will pop up in the tasks section.
+- Milestones:
+   * Setup for several pages for different functionality.
+<br>
+
+**Week 5:**
 - Deliverables:
    * 
 - Milestones:
    * 
 <br>
 
-**Week 5: Connecting to Other Features**
+**Week 6:**
 - Deliverables:
    * 
 - Milestones:
    * 
 <br>
 
-**Week 6: Task Management Integration**
-- Deliverables:
-   * 
-- Milestones:
-   * 
-<br>
-
-**Week 7: UI Enhancements**
+**Week 7:**
 - Deliverables:
    *  
 - Milestones:
    * 
 <br>
 
-**Week 8: Task Scheduling**
+**Week 8:**
 - Deliverables:
    *  
 - Milestones:
    * 
 <br>
 
-**Week 9:  Finalizing and Testing**
+**Week 9: Finalizing and Testing**
 - Deliverables:
-   * 
+   * Finalize all pages and UI
+   * Work on documentation for the front-end
 - Milestones:
-   * 
+   * Incorporate final design improvements based on testing results
+   * Implement use case feedback
 <br>
 
 **Week 10: Documentation**
 - Deliverables:
-   * 
+   * Optimize code (latency)
+   * Finalize front-end documentation for codebase and user interface
 - Milestones:
-   *  
+   *  Complete the front-end deployment and ensure it works
+   * Make sure no bugs exist
 <br>
 
 
