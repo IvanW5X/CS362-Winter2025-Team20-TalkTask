@@ -401,7 +401,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask documentation complete and revised.
 <br>
 
-#### Front-End Developer (Nicholas Woodley,
+#### Nicholas Woodley - Front-End Developer
 **Week 3: Front-End Research**
 - Deliverables:
    * Conduct research on front-end frameworks compatible with speech recognition (React)
@@ -474,6 +474,66 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
    *  Complete the front-end deployment and ensure it works
    *  Make sure no bugs exist
 <br>
+
+
+
+#### Jordan Cowan - Front-End Developer
+**Week 3: To-Do List**
+- Deliverables:
+   * Design basic to-do list functionality.
+- Milestones:
+   * To-do is created at a basic level with ability to create, update, and delete tasks.
+<br>
+
+**Week 4: **
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 5: Connecting to Other Features**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 6: Task Management Integration**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 7: UI Enhancements**
+- Deliverables:
+   *  
+- Milestones:
+   * 
+<br>
+
+**Week 8: Task Scheduling**
+- Deliverables:
+   *  
+- Milestones:
+   * 
+<br>
+
+**Week 9:  Finalizing and Testing**
+- Deliverables:
+   * 
+- Milestones:
+   * 
+<br>
+
+**Week 10: Documentation**
+- Deliverables:
+   * 
+- Milestones:
+   *  
+<br>
+
 
 
 #### Raymond Cen - Back-End Developers
