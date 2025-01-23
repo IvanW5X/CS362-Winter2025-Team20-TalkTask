@@ -401,7 +401,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask documentation complete and revised.
 <br>
 
-#### Front-End Developer (Nicholas Woodley,
+#### Nicholas Woodley - Front-End Developer
 **Week 3: Front-End Research**
 - Deliverables:
    * Conduct research on front-end frameworks compatible with speech recognition (React)
