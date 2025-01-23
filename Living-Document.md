@@ -174,7 +174,7 @@ As with other to-do list applications, ours will help users plan their time effi
   User decides that Talktask is able to sufficiently track their task, and leaves.
 <br>
 
-* **Case Designer:** Jordan L Cowan 
+* **Case Designer:** Jordan L Cowan
 * **Actors:** Users want to add a task hands-free.
 * **Triggers:** The user prefers to use speech-to-text.
 * **Preconditions:** The user has pressed the button to enable speech-to-text.
@@ -185,11 +185,9 @@ As with other to-do list applications, ours will help users plan their time effi
   3. The system recognizes the speech and converts it to text
   4.The system parses the text input to identify the parameters (the task, due date, type)
   5. The task is created using the parameters.
-
 * **Extensions/variations of the success scenario**
    * The user pauses mid-sentence and the system prompts for clarification
    * The user keeps talking and doesn’t realize the speech-to-text is still running any excess text is filtered
-
 * **Exceptions: failure conditions and scenarios**
    * If the voice input isn’t recognized then provide a prompt for retrying or manual input if it can’t.
    * Background noise interference then prompt the user to try again in a quieter environment.
