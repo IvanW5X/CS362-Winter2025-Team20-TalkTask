@@ -476,75 +476,67 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 <br>
 
 #### Raymond Cen (Back-End Developer)
-**Week 3: Design backend communication:**
-- Deliverables: 
-    * Design the backend communciation with database.
-    * Identify necessary implementations for communication with APIs.
+**Week 3: Backend Communication**
+- Deliverables:
+  * Design a way to communciate with Web Speech API using JavaScript.
+  * Find Web Speech API implementation methods and how to communicate with frontend.
 - Milestones:
-    * Submit ideas for team approval.
+  * Web Speech API communication method with backend is shared with other backend developer.
 <br>
 
-**Week 4: Communication with backend:**
+**Week 4: WebSpeechAPI Commands**
 - Deliverables:
-    * Set up communication with WebSpeech API.
-    * Implement the connection with WebSpeech API using JavaScript.
-    * Test the connection with simple voice input.
+  * Determine certain phrases and words that the application will use.
+  * Determine which phrases wilkl correlate with which function of the application.
 - Milestones:
-    * Successfull connection with WebSpeech API.
+  * List of phrases and words that the correlate with functions created.
 <br>
 
-**Week 5: Basic Task Management:**
+**Week 5: Simple WebSpeechAPI Implementation**
 - Deliverables:
-    * Implement basic web speech commands.
-    * 
+  * Implement WebSpeechAPI into backend.
+  * Test voice input and ensure the WebSpeechAPI voice input is working properly.
 - Milestones:
-    * Test web speech commands thoroughly.
+  * WebSpeechAPI implemented for voice input into backend.
 <br>
 
-**Week 6: User Management:**
+
+**Week 6: Application Implementation of WebSpeechAPI**
 - Deliverables:
-    * Design and implement a users collection with authentication details (e.g., email, hashed password).
-    * Create endpoints for user registration, login, and logout.
-    * Ensure secure storage of user credentials (e.g., using bcrypt for hashing passwords).
+  * Begin the full implementation of WebSpeechAPI with application, with simple functionalties such as add and remove.
 - Milestones:
-    * Test user registration and login processes with database integration.
+  * WebSpeechAPI is partially implemented into the backend, specifically add and remove functionality.
 <br>
 
-**Week 7: Task Prioritization and Recurrence:**
+**Week 7: Full Implementation of WebSpeechAPI**
 - Deliverables:
-    * Add support for recurring tasks (e.g., daily, weekly, monthly) in the tasks schema.
-    * Include fields for priority and recurrence intervals.
-    * Update task-related endpoints to handle recurring tasks.
+  * Add other functionalities of application that use WebSpeechAPI such as edit, sort, and view.
+  * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
 - Milestones:
-    * Validate recurring task functionality through testing with mock data.
+  * WebSpeechAPI is implemented fully into the backend.
 <br>
 
-**Week 8: Integration with AI module:**
+**Week 8: Testing Backend Implementation of WebSpeechAPI**
 - Deliverables:
-    * Design the ai_training collection to store data for AI training (e.g., task patterns, user preferences).
-    * Implement methods to feed task-related data into the AI module.
-    * Collaborate with back-end developers to integrate AI-generated task suggestions.
+  * Rigourous testing of the WebSpeechAPI application using voice commands.
+  * Ensure WebSpeechAPI and backend functionalities work properly in sync with one another.
 - Milestones:
-    * Demonstrate the AI module fetching data from the database for training and providing suggestions.
+  * WebSpeechAPI works properly within the backend.
 <br>
 
-**Week 9: Testing and Optimization:**
+**Week 9: Assist Communication with Frontend.**
 - Deliverables:
-    * Perform database optimization to improve query performance (e.g., indexing, query restructuring).
-    * Conduct load testing to ensure database scalability for multiple users.
-    * Identify and resolve potential bottlenecks or security vulnerabilities.
+  * Assist frontend and backend developers with communication with backend.
+  * Assist in seamless communcation with the WebSpeechAPI.
 - Milestones:
-    * Submit a report on optimization results and changes implemented.
+  * Communication between frontend and backend is fully established and ready.
 <br>
 
-**Week 10: Final Integration and Documentation:**
+**Week 10: Maintenance of WebSpeechAPI and backend**
 - Deliverables:
-    * Finalize database integration with all application modules.
-    * Document the database schema, endpoints, and instructions for deployment in the Git repository.
-    * Create a troubleshooting guide for common database issues.
+  * TalkTask is deployed and being maintained ensuring communication between frontend and backend is seamless and working
 - Milestones:
-    * Present a fully functional database integrated into the application.
-    * Share documentation with the team.
+  * TalkTask web page completed, deployed and being maintained.
 <br>
 
 #### Bailey Bundlong (UI/UX Designer)
