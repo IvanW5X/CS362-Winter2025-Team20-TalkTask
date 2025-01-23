@@ -248,9 +248,9 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 * MongoDB:
     * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 
-### Team Member Schedule:
+### Development Schedules:
 
-#### Kai Lindskog (Database Developer)
+#### Database Developer
 **Week 3: Database Design:**
 - Deliverables: 
     * Design the database schema for tasks, users, and AI training data.
@@ -329,7 +329,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
     * Present a fully functional database integrated into the application.
     * Share documentation with the team.
 
-#### Ivan Wong (Software Configuration Management Coordinator)
+#### Software Configuration Management Coordinator
 **Week 3: Software Research**
 - Deliverables:
   * Find and create and AI API key from Hugging Face to select an AI model that best fits our use cases.
@@ -399,7 +399,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask documentation complete and revised.
 <br>
 
-#### Tristan Vosburg (Back-End Developer)
+#### Front-End Developers
 **Week 3: GOAL**
 - Deliverables:
 - Milestones:
@@ -440,48 +440,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 - Milestones:
 <br>
 
-#### Nicholas Woodley (Front-End Developer)
-**Week 3: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 4: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 5: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 6: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 7: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 8: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 9: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 10: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-#### Raymond Cen (Back-End Developer)
+#### Back-End Developers
 **Week 3: Backend Communication**
 - Deliverables:
   * Design a way to communciate with Web Speech API using JavaScript.
@@ -545,48 +504,7 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask web page completed, deployed and being maintained.
 <br>
 
-#### Bailey Bundlong (UI/UX Designer)
-**Week 3: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 4: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 5: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 6: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 7: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 8: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 9: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-**Week 10: GOAL**
-- Deliverables:
-- Milestones:
-<br>
-
-#### Jordan L Cowan (Front-End Developer)
+#### UI/UX Designer
 **Week 3: GOAL**
 - Deliverables:
 - Milestones:
