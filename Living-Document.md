@@ -156,7 +156,7 @@ As with other to-do list applications, ours will help users plan their time effi
   * The student does not meet the deadline of the assignment.
 <br>
 
-* **Case Designer:** Bailey Bundlong
+* **Case Designer:** Bailey Budlong
 * **Actors:** The user who is a student
 * **Triggers:** They have been given a homework assignment
 * **Preconditions:** They have access to TalkTask
@@ -227,7 +227,8 @@ There are a few risks facing our group as we attempt to design, create and imple
     - TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
 - Raymond Cen (Back-End Developer)
     - Responsible for the use of the WebSpeechAPI and the communcation between frontend and backend.This role is needed because the use of voice input using WebSpeechAPI is a main component of this project. As well as communication between the frontend and backend. I am best suited for this because I have experience in working with APIs in a web project and designing a communucation pipeline between a frontend file and backend file.
-- Bailey Bundlong (UI/UX Designer)
+- Bailey Budlong (UI/UX Designer)
+   - Responsible for overall UI design, and assisting front end developers. This role is important for having a cohesive, good looking and functioning UI, which can make or break whether users decided to user our application over competitors. Being responsible for creating a UI design for front end developers to implement, helps make sure the vision for the entire app works together to allow for a good user experience, and helps moderate design opinions of all group members. Additonally, I will be responsible for generating or aquiring any unique visual assets we will need for our application such as logos. I am suited to the role as I am very passionate and invested in UI/UX design, I often find myself in team projects, responsible for how the project appears visually. And frankly, being a mechanical engineering major, my other team members are better suited and more adept at implementing the designs that I. I also have experience working with photo and vector graphics software, which I imagine will come in handy.
 - Jordan L Cowan (Front-End Developer)
     - It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
 
