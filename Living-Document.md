@@ -400,46 +400,80 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
   * TalkTask documentation complete and revised.
 <br>
 
-#### Front-End Developers
-**Week 3: GOAL**
+#### Front-End Developer
+**Week 3: Front-End Research**
 - Deliverables:
+   * Conduct research on front-end frameworks compatible with speech recognition (React)
+   * Work on designing ways for buttons to call the speech recognition
 - Milestones:
+   * Finalize front-end framework choice
+   * Develop a basic design concept for how users will interact with speech recognition
 <br>
 
-**Week 4: GOAL**
+**Week 4: Start Implementation**
 - Deliverables:
+   * Set up the front-end project with React
+   * Design the UI for the task management features (add, edit, delete tasks)
 - Milestones:
+   * Complete project setup with React
+   * Finalize initial navigation for webpages
 <br>
 
-**Week 5: GOAL**
+**Week 5: Connecting to Other Features**
 - Deliverables:
+   * Work on calling back end framework on user navigation
+   * Set up pages for features (task list, task details, task creation)
+   * Implement navigation structure (routes) for the app
 - Milestones:
+   * Set up pages for task management
+   * Finish navigation
 <br>
 
-**Week 6: GOAL**
+**Week 6: Task Management Integration**
 - Deliverables:
+   * Integrate task data with front-end using back-end API calls
+   * Edit calls to back-end functions
 - Milestones:
+   * Complete task creation and editing
+   * Ensure task data is fetched and updated correctly
 <br>
 
-**Week 7: GOAL**
+**Week 7: UI Enhancements**
 - Deliverables:
+   *  Refine UI
+   *  Develop user feedback features (such as error messages)
 - Milestones:
+   * Finalize accessibility adjustments
+   * Complete and test user feedback and error handling features
 <br>
 
-**Week 8: GOAL**
+**Week 8: Task Scheduling**
 - Deliverables:
+   * Implement task scheduling feature calls to back-end
+   * Integrate reminder notifications on the front-end  
 - Milestones:
+   * Complete task scheduling functionality with UI
+   * Test reminder notifications and task scheduling with different use cases
 <br>
 
-**Week 9: GOAL**
+**Week 9:  Finalizing and Testing**
 - Deliverables:
+   * Finalize all pages and UI
+   * Work on documentation for the front-end
 - Milestones:
+   * Incorporate final design improvements based on testing results
+   * Implement use case feedback
 <br>
 
-**Week 10: GOAL**
+**Week 10: Documentation**
 - Deliverables:
+   * Optimize code (latency)
+   * Finalize front-end documentation for codebase and user interface
 - Milestones:
+   *  Complete the front-end deployment and ensure it works
+   *  Make sure no bugs exist
 <br>
+
 
 #### Back-End Developers
 **Week 3: Backend Communication**
