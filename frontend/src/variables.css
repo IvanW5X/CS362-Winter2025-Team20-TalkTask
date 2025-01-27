@@ -1,0 +1,13 @@
+/********************************************************************
+ * File Name: variables.css
+ * Date: 1/26/2025
+ * Description: Define CSS variables for other CSS files
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+.root {
+    --text-color: #000;
+    --primary-color: #fff;
+    --secondary-color: #37E03A;
+    --background-color: #DFDFDF;
+}
