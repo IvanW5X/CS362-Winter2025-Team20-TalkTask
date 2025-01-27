@@ -31,5 +31,4 @@ app.get("/testing", (req, res) => {
 
 app.listen(SERVER_PORT, () => {
   console.log(`Server is listening on port ${SERVER_PORT}`);
-  console.log(`TEST KEY: ${AI_ACCESS_TOKEN}`);
 });
