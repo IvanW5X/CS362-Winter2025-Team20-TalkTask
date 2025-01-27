@@ -25,6 +25,7 @@
 * [Axios](https://www.digitalocean.com/community/tutorials/react-axios-react)
 * [Cors](https://expressjs.com/en/resources/middleware/cors.html)
 * [dotenv](https://www.dotenv.org/blog/2023/03/13/how-to-use-dotenv.html)
+* [Microsoft-Azure](https://learn.microsoft.com/en-us/azure/?product=popular)
 
 ## Communication Channels
 
