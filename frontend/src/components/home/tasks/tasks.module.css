@@ -5,4 +5,8 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-@import "../../../variables.css"
+@import "../../../variables.css";
+
+.container {
+    width: 100%;
+}

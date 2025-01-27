@@ -9,11 +9,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
-const SERVER_PORT = 5001;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Get data from server, add try/catch later with tasks data
 const fetchTest = async (setTestArray) => {
-  const res = await axios.get(`http://localhost:${SERVER_PORT}/testing`);
+  const res = await axios.get(`${BACKEND_URL}/testing`);
   setTestArray(res.data.info);
 };
 
@@ -26,7 +26,7 @@ export const Tasks = () => {
   }, [testArray]);
 
   return (
-    <div>
+    <section className={styles.container}>
       <h2>Tasks</h2>
       {testArray.map((data, key) => {
         // Loop through testArray
@@ -37,6 +37,6 @@ export const Tasks = () => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
