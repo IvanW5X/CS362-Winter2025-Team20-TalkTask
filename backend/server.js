@@ -10,15 +10,17 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 
+const SERVER_PORT = 5001;
+
 // Add API key path
-const apiKeyPath = path.resolve("../", "./.env");
-dotenv.config({ path: apiKeyPath });
+const envFilePath = path.resolve("../", "./.env");
+dotenv.config({ path: envFilePath });
 
 const app = express();
-const SERVER_PORT = 5001;
 const AI_ACCESS_TOKEN = process.env.AI_API_KEY;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: FRONTEND_URL,
 };
 
 // Enable cross origin resource sharing
