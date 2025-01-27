@@ -1,6 +1,7 @@
 # Team Resources
 
 ## Team Members and Roles
+
 * Ivan Wong (Software Configuration Management Coordinator)
 * Tristan Vosburg (Back-End Developer)
 * Nicholas Woodley (Front-End Developer)
@@ -10,6 +11,7 @@
 * Jordan L Cowan (Front-End Developer)
 
 ## Resource Links
+
 * [WebSpeechAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
 * [ExpressAPI](https://expressjs.com/en/api.html)
 * [Nodemon](https://www.npmjs.com/package/nodemon)
@@ -27,14 +29,21 @@
 ## Communication Channels
 
 ### Microsoft Teams
-- Used for both async. and sync. communication
-- Responses shall be provided within 24 hours
+
+* Used for both async. and sync. communication
+* Responses shall be provided within 24 hours
+
 ### Text Messages
-- Used for async. communication
-- Responses shall be provided within 3-4 hours
+
+* Used for async. communication
+* Responses shall be provided within 3-4 hours
+
 ### Email
-- Used for async. communication
-- Responses shall be provided within 1-2 business days
+
+* Used for async. communication
+* Responses shall be provided within 1-2 business days
+
 ### Zoom
-- Used for sync. communication
-- All members shall show up to scheduled meetings unless absences are provided within 24 hours
+
+* Used for sync. communication
+* All members shall show up to scheduled meetings unless absences are provided within 24 hours
