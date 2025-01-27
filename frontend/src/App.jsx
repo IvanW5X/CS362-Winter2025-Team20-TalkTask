@@ -5,37 +5,16 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import axios from "axios";
-
-const SERVER_PORT = 5001;
-
-// Get data from server, add try/catch later with tasks data 
-const fetchTest = async (setTestArray) => {
-  const res = await axios.get(`http://localhost:${SERVER_PORT}/testing`);
-  setTestArray(res.data.info);
-};
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
+import { Home } from "./components/home/home";
 
 function App() {
-  const [testArray, setTestArray] = useState([]);
-
-  // Update website if data changes
-  useEffect(() => {
-    fetchTest(setTestArray);
-  }, [testArray]);
-
   return (
-    <div>
+    <div className={styles.App}>
       <h1>Hello TalkTask</h1>
-      {testArray.map((data, key) => {   // Loop through testArray
-        return (
-          <div key={key}>
-            <p>{data}</p>
-            <br />
-          </div>
-        );
-      })}
+      <Home />
     </div>
   );
 }
