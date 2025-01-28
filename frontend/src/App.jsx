@@ -10,6 +10,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./components/home/home";
 
+// Implement funcitonality for displaying about page or user home page; based on if user logged in
+  // Use local storage/cookies and Routes for this
+
 function App() {
   return (
     <div className={styles.App}>

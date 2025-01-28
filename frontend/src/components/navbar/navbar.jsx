@@ -9,9 +9,9 @@ import React from "react";
 import styles from "./navbar.module.css";
 
 export const Navbar = () => {
-    return (
-        <div>
-            <h2>Navbar</h2>
-        </div>
-    );
+  return (
+    <section>
+      <h2>Navbar</h2>
+    </section>
+  );
 };

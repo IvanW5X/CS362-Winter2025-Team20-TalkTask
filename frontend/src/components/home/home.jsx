@@ -7,13 +7,15 @@
 
 import React from "react";
 import styles from "./home.module.css";
-import { Tasks } from "./tasks/tasks";
+import { Navbar } from "../navbar/navbar";
 import { Sidebar } from "./sidebar/sidebar";
+import { Tasks } from "./tasks/tasks";
 
 export const Home = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Home Page</h1>
+            <Navbar />
             <Sidebar />
             <Tasks />
         </div>
