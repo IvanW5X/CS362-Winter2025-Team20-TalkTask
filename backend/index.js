@@ -6,8 +6,10 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectDatabase } from "./server.js";
+import { startServer, connectDatabase, connectServer } from "./server.js";
 
 connectDatabase();
+
+connectServer();
 
 startServer();
