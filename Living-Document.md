@@ -283,6 +283,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 * Microsoft Azure
   * Azure is going to be used to host our backend server to make calls and process data sent from the frontend server. Taking advantage of the $200 credit given to us when we first use the services, we are able to host our web application for the duration of the term, so that our peers are able to use our website.
+* Figma
+  * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
 
 ### Team Member Schedules
 
