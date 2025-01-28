@@ -16,6 +16,7 @@ const app = express();
 const envFilePath = path.resolve("../", "./.env");
 dotenv.config({ path: envFilePath });
 
+// Connect database to server
 export const connectDatabase = () => {
   const AI_ACCESS_TOKEN = process.env.AI_API_KEY;
   const FRONTEND_URL = process.env.FRONTEND_URL;
