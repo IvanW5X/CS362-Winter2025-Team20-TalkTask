@@ -9,9 +9,9 @@ import React from "react";
 import styles from "./sidebar.module.css";
 
 export const Sidebar = () => {
-    return (
-        <div>
-            <h2>Sidebar</h2>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Sidebar</h2>
+    </div>
+  );
 };

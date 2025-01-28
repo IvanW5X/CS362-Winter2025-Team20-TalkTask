@@ -10,13 +10,12 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 
-const SERVER_PORT = 5001;
-
 // Add API key path
 const envFilePath = path.resolve("../", "./.env");
 dotenv.config({ path: envFilePath });
 
 const app = express();
+const SERVER_PORT = process.env.SERVER_PORT;
 const AI_ACCESS_TOKEN = process.env.AI_API_KEY;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const corsOptions = {

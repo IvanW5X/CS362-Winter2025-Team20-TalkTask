@@ -265,7 +265,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 
 ### Software Toolset
 
-Because many APIs will be used for the developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
+Because many APIs will be used for developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
 
 * React Framework:
   * React will be used to design the frontend side of things. Not only will this introduce us the React framework which is widely used in web development industry, but it offers component based architecture and allows for easier scalability and modularized practices, allowing for easier readability and development.
@@ -278,9 +278,13 @@ Because many APIs will be used for the developing TalkTask, I will only go over 
 * WebSpeech API
   * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list funcitonality, to provide a hands-free experience and more accesibility features.
 * Hugging Face:
-  * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. Further research is being conducted as to which AI model will be used to best fit our use cases.
+  * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. Further research is being conducted as to which AI model(s) will be used to best fit our use cases.
 * MongoDB:
   * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
+* Microsoft Azure
+  * Azure is going to be used to host our backend server to make calls and process data sent from the frontend server. Taking advantage of the $200 credit given to us when we first use the services, we are able to host our web application for the duration of the term, so that our peers are able to use our website.
+* Figma
+  * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
 
 ### Team Member Schedules
 
