@@ -8,7 +8,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
-import { Home } from "./components/home/home";
+import { Home } from "./pages/home/home";
 
 // Implement funcitonality for displaying about page or user home page; based on if user logged in
   // Use local storage/cookies and Routes for this

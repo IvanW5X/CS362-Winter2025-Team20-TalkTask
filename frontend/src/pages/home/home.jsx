@@ -7,9 +7,9 @@
 
 import React from "react";
 import styles from "./home.module.css";
-import { Navbar } from "../navbar/navbar";
-import { Sidebar } from "./sidebar/sidebar";
-import { Tasks } from "./tasks/tasks";
+import { Navbar } from "../../components/navbar/navbar";
+import { Sidebar } from "../../components/sidebar/sidebar";
+import { Tasks } from "../../components/tasks/tasks";
 
 export const Home = () => {
     return (
