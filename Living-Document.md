@@ -798,12 +798,12 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### Process Description
 
-## Risk Assessment
+ ## Risk Assessment
 
-## Project Schedule 
+ ## Project Schedule 
 
-## Team Structure
+ ## Team Structure
 
-## Test Plan and Bugs
+ ## Test Plan and Bugs
 
-## Documentation Plan
+ ## Documentation Plan
