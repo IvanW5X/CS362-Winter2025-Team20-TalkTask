@@ -786,24 +786,32 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 
 
-
+<br>
 
 ### Software Architecture
 
+<br>
 ### Software Design
 
-
+<br>
 ### Coding Guideline
 
-
+<br>
 ### Process Description
 
- ## Risk Assessment
 
- ## Project Schedule 
+* Risk Assessment
+  
+<br>
+* Project Schedule 
 
- ## Team Structure
+<br>
+* Team Structure
 
- ## Test Plan and Bugs
+<br>
+* Test Plan and Bugs
 
- ## Documentation Plan
+<br>
+* Documentation Plan
+
+<br>
