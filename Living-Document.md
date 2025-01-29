@@ -783,3 +783,40 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 | UI/UX               |UI Sketches|Draft Figma wireframe UI design|Incorporate group feedback, draft designs for all UI elements/pages|Visual styling decided, Unique visual assets generated|Preliminary front end implemented with front end developers|Test UI functionality for revisions|Make final changes for UI design and assets|Verify UI is functioning and correct|
 | Database            |      |      |      |      |      |      |      |       |
 | Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.|Files organized in a modularized manner to allow for easier implementation and OO practices.|Database implementation inputs correctly formatted data.|AI and WebSpeech APIs configured and ready for developers.|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.|Continue developing complex features, such as AI and speech recognition implementations.|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.|Run and test finalized product for any underlying bugs or errors.|
+
+<br>
+
+### Software Architecture
+
+<br>
+
+### Software Design
+
+<br>
+
+### Coding Guideline
+
+<br>
+
+### Process Description
+
+
+* Risk Assessment
+  
+<br>
+
+* Project Schedule 
+
+<br>
+
+* Team Structure
+
+<br>
+
+* Test Plan and Bugs
+
+<br>
+
+* Documentation Plan
+
+<br>
