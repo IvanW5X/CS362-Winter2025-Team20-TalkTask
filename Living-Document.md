@@ -4,7 +4,7 @@
 
 ### Problem Statement
 
-Modern day todo list applications rely on manul input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications. TalkTask addresses those issues by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other todo list applications today don't offer.
+Modern day todo list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications. TalkTask addresses those issues by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other todo list applications today don't offer.
 
 ### Abstract
 
