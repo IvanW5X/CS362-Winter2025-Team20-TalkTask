@@ -13,17 +13,21 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Get data from server, add try/catch later with tasks data
 const fetchTest = async (setTestArray) => {
-  const res = await axios.get(`${BACKEND_URL}/testing`);
-  setTestArray(res.data.info);
+  try {
+    const res = await axios.get(`${BACKEND_URL}/testing`);
+    setTestArray(res.data.info);
+  } catch (error) {
+    console.log("Error getting data");
+  }
 };
 
 export const Tasks = () => {
   const [testArray, setTestArray] = useState([]);
 
-  // Update website if data changes
+  // Update website on mount
   useEffect(() => {
     fetchTest(setTestArray);
-  }, [testArray]);
+  }, []);
 
   return (
     <section className={styles.container}>
