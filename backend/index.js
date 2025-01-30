@@ -6,7 +6,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectDatabase, connectServer } from "./server.js";
+import { startServer, connectDatabase, connectTTDB} from "./server.js";
 
 connectDatabase();
 
