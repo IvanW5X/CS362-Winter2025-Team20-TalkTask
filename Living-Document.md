@@ -797,33 +797,33 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 ### Software Design
 
 * **Speech Recognition Component**
- * Uses WebSpeechAPI to capture and process voice commands.
- * Speech command extracts task-related information from speech.
- * Error Handling & Feedback prompts users for retry or manual input if speech is unclear.
+  * Uses WebSpeechAPI to capture and process voice commands.
+  * Speech command extracts task-related information from speech.
+  * Error Handling & Feedback prompts users for retry or manual input if speech is unclear.
 * **Task Management System**
- * Task model (MongoDB) defines task structure (title, due date, priority).
- * Task controller (Backend API) handles task creation, editing, deletion, and retrieval.
- * Task service (Business Logic) manages sorting, prioritization, and recurrence.
- * Task UI components (React) displays task lists and controls.
+  * Task model (MongoDB) defines task structure (title, due date, priority).
+  * Task controller (Backend API) handles task creation, editing, deletion, and retrieval.
+  * Task service (Business Logic) manages sorting, prioritization, and recurrence.
+  * Task UI components (React) displays task lists and controls.
 * **User Authentication & Account Management**
- * User model stores login credentials securely with encryption.
- * Authentication controller (Backend API) handles registration, login, and logout.
- * Session management maintains user authentication across sessions.
+  * User model stores login credentials securely with encryption.
+  * Authentication controller (Backend API) handles registration, login, and logout.
+  * Session management maintains user authentication across sessions.
 * **AI-Based Task Recommendation System**
- * HuggingFace AI analyzes past tasks to suggest new ones.
- * Recommendation system learns user habits and prioritization patterns.
- * User preference storage retains AI suggestions and personal task habits.
+  * HuggingFace AI analyzes past tasks to suggest new ones.
+  * Recommendation system learns user habits and prioritization patterns.
+  * User preference storage retains AI suggestions and personal task habits.
 * **Database & Storage**
- * MongoDB + Mongoose stores user tasks, preferences, and AI data.
- * Data backup & sync ensures consistency across multiple devices.
+  * MongoDB + Mongoose stores user tasks, preferences, and AI data.
+  * Data backup & sync ensures consistency across multiple devices.
 * **Frontend UI & User Experience**
- * React components for task management, navigation, and interaction.
- * Navigation bar ensures smooth movement between app sections.
- * Accessibility features include voice support.
+  * React components for task management, navigation, and interaction.
+  * Navigation bar ensures smooth movement between app sections.
+  * Accessibility features include voice support.
 * **Backend API & Server Logic**
- * Express.js server processes user requests and communicates with the database.
- * Middleware validates inputs and enforces security policies.
- * API Routes define endpoints for tasks, authentication, and AI recommendations.
+  * Express.js server processes user requests and communicates with the database.
+  * Middleware validates inputs and enforces security policies.
+  * API Routes define endpoints for tasks, authentication, and AI recommendations.
 
 <br>
 
