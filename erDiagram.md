@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     USER ||--o{ TASK : "creates"
     USER ||--o{ SPEECHCOMMAND : "uses"
@@ -35,3 +36,4 @@ erDiagram
         string commandText
         int CustomerID
     }
+```
