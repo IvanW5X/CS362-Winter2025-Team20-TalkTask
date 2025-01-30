@@ -1,8 +1,8 @@
-```mermaid
 erDiagram
     USER ||--o{ TASK : "creates"
+    USER ||--o{ SPEECHCOMMAND : "uses"
+    SPEECHCOMMAND ||--o{ TASK : "creates"
     TASK ||--o{ REMINDER : "has"
-    TASK ||--o{ SPEECHCOMMAND : "triggered_by"
 
     USER {
         int CustomerID
@@ -33,6 +33,5 @@ erDiagram
     SPEECHCOMMAND {
         int commandID
         string commandText
-        int taskID
+        int CustomerID
     }
-```
