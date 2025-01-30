@@ -285,8 +285,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. Further research is being conducted as to which AI model(s) will be used to best fit our use cases.
 * MongoDB:
   * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
-* Microsoft Azure
-  * Azure is going to be used to host our backend server to make calls and process data sent from the frontend server. Taking advantage of the $200 credit given to us when we first use the services, we are able to host our web application for the duration of the term, so that our peers are able to use our website.
+* Render
+  * Render is a web service platform that offers free hosting with limited resources. Since this project isn't expected to go big anytime soon, the free plan Render offers should be enough to allow our peers to test the web application on the internet.
 * Figma
   * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
 
@@ -782,7 +782,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
-| Front End           |   Design Navigation   |    Start front-end implementation  |  Test and connect front-end calls to back-end    |   Implement API to front-end calls   |  Develop user feedback features    |   Implement other features (such as notifications)   |  Finalizing and testing    |    Deploy and finish documentation   |
+| Front End           |Design Navigation|Start front-end implementation|Test and connect front-end calls to back-end|Implement API to front-end calls|Develop user feedback features|Implement other features (such as notifications)|Finalizing and testing|Deploy and finish documentation|
 | Back End            | Design for communication with WebSpeechAPI completed|List of commands and functions determined|WebSpeechAPI coded into backend|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready.|TalkTask web page completed, deployed and being maintained.|
 | UI/UX               |UI Sketches|Draft Figma wireframe UI design|Incorporate group feedback, draft designs for all UI elements/pages|Visual styling decided, Unique visual assets generated|Preliminary front end implemented with front end developers|Test UI functionality for revisions|Make final changes for UI design and assets|Verify UI is functioning and correct|
 | Database            |      |      |      |      |      |      |      |       |
@@ -809,7 +809,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   
 <br>
 
-* Project Schedule 
+* Project Schedule
 
 <br>
 
