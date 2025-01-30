@@ -11,14 +11,15 @@ import path from "path";
 import cors from "cors";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
+// Load environment variables
+dotenv.config();
 const app = express();
 
 // Add API key path
 const envFilePath = path.resolve("../", "./.env");
 dotenv.config({ path: envFilePath });
 
-// Load environment variables
-dotenv.config();
+
 
 // Get MongoDB URI from environment variables
 const uri = process.env.MONGO_URI;
