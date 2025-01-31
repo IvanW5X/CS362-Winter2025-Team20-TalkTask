@@ -10,4 +10,6 @@ import { startServer, connectDatabase, connectTTDB} from "./server.js";
 
 connectDatabase();
 
+connectServer();
+
 startServer();

@@ -48,7 +48,10 @@ export { client };
 
 // Connect database to server
 export const connectDatabase = () => {
-  const AI_ACCESS_TOKEN = process.env.AI_API_KEY;
+
+};
+
+export const connectServers = () => {
   const FRONTEND_URL = process.env.FRONTEND_URL;
   const corsOptions = {
     origin: FRONTEND_URL,
@@ -56,7 +59,7 @@ export const connectDatabase = () => {
   // Enable cross origin resource sharing
   app.use(cors(corsOptions));
 
-  // TESTING PURPOSES, INFO TO BE DISPLAYED
+  // TESTING PURPOSES, INFO TO BE DISPLAYED FOR FRONTEND
   app.get("/testing", (req, res) => {
     res.json({ info: ["data_1", "data_2", "data_3", "data_4"] });
   });
