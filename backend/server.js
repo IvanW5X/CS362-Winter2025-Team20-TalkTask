@@ -11,21 +11,19 @@ import path from "path";
 import cors from "cors";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-// Load environment variables
+// Load environment variables to process.env
 dotenv.config();
-const app = express();
 
-// Add API key path
+// Add .env path
 const envFilePath = path.resolve("../", "./.env");
 dotenv.config({ path: envFilePath });
 
-
-
-// Get MongoDB URI from environment variables
+// Variables
+const app = express();
 const uri = process.env.MONGO_URI;
 
 // Create MongoDB client
-const client = new MongoClient(uri, {
+export const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -41,14 +39,6 @@ export const connectTTDB = async () => {
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
     }
-};
-
-// Export client for database operations
-export { client };
-
-// Connect database to server
-export const connectDatabase = () => {
-
 };
 
 export const connectServers = () => {
