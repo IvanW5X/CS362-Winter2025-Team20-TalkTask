@@ -4,7 +4,13 @@
 
 ### Problem Statement
 
-Modern day todo list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications. TalkTask addresses those issues by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other todo list applications today don't offer.
+Modern day to-do list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications.
+
+A simple Google search will show you multiple articles and research papers that to-do lists actually work and can increase productivity, increase self dicipline, even reduce feelings of stress and/or anxiety if used correctly. To-do lists offer a way to structure, plan your days out improve time management skills and organization skills, which in turn can making you feel less overwhelmed. The feeling of completing a task has even been shown to release a small spike of dopamine giving yourself a sense of accomplishment.
+
+Most to-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other todo list applications today don't offer. We will also offer users to create multiple task lists based on their chosen catagory, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities.
+
+With TalkTask, we’re turning your to-do list into a seamless, hands-free experience that enhances productivity and accessibility. By leveraging the power of speech recognition, we’re giving you the freedom to manage your tasks more efficiently, so you can focus on what really matters. Say goodbye to overwhelming lists and hello to a more organized, stress-free way to tackle your day.
 
 ### Abstract
 
