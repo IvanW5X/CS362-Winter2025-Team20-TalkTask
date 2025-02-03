@@ -6,10 +6,18 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectTTDB} from "./server.js";
+import { startServer, connectServers, connectTTDB} from "./server.js";
+import { test } from "./services/testSetupAI.js";
 
-connectTTDB();
+async function Initialize () {
+    // await connectTTDB();
+    await connectServers();
+    console.log("Backend sent test data response!");
+    
+    await test();
 
-connectServer();
+    startServer();
 
-startServer();
+}
+
+Initialize();
