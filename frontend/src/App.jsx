@@ -10,8 +10,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
 import { Navbar } from "./components/navbar/navbar";
-import { Tasks } from "../../components/tasks/tasks";
-import { About } from "../../pages/about/about";
+import { Tasks } from "./components/tasks/tasks";
+import { About } from "./pages/about/about";
 
 
 
@@ -21,11 +21,13 @@ import { About } from "../../pages/about/about";
 function App() {
   return (
     <div className={styles.App}>
-      <h1>TalkTask</h1>
+      <div className={styles.curvedsquare}>
+        <h1>TalkTask</h1>
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/navbar" element={<Navbar />} />
+          <Route className={styles.curvedsquare} path="/navbar" element={<Navbar />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/about" element={<About />} />
         </Routes>

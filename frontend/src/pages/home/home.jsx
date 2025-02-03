@@ -11,17 +11,24 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.curvedsquares}>
             <h1>Home Page</h1>
+            
             <button>
                 <Link to="/navbar">Go to Navbar</Link>
             </button>
+            <br />
+
             <button>
                 <Link to="/tasks">Tasks</Link>
             </button>
+            <br />
+
             <button>
                 <Link to="/about">About Page</Link>
             </button>
+            <br />
+
         </div>
     );
 };

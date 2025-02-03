@@ -6,3 +6,28 @@
  ********************************************************************/
 
 @import "../../variables.css";
+
+.curvedsquares {
+    background-color: #fff;
+    border-color: green;
+    border-style: solid;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10%;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
