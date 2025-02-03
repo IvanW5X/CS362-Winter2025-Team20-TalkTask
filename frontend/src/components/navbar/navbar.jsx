@@ -10,7 +10,7 @@ import styles from "./navbar.module.css";
 
 export const Navbar = () => {
   return (
-    <section>
+    <section className={styles.navbar}>
       <h2>Navbar</h2>
     </section>
   );
