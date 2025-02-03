@@ -33,6 +33,7 @@ export const Home = () => {
     return (
       <div className={styles.container}>
         <h1>Home Page</h1>
+        <Tasks />
         <button type="button" onClick={toggleMic}>
           {isListening ? "Stop Voice Input" : "Start Voice Input"}
         </button>
