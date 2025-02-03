@@ -1,7 +1,8 @@
 /********************************************************************
  * File Name: server.js
  * Date: 1/13/2025
- * Description: Entry point for server side of development
+ * Description: File serves to define function definitions for
+ *              connecting external high level software components
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
@@ -24,24 +25,24 @@ const uri = process.env.MONGO_URI;
 
 // Create MongoDB client
 export const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 });
 
 // Function to connect to MongoDB
 export const connectTTDB = async () => {
-    try {
-        await client.connect();
-        console.log("Successfully connected to MongoDB!");
-    } catch (error) {
-        console.error("Error connecting to MongoDB:", error);
-    }
+  try {
+    await client.connect();
+    console.log("Successfully connected to MongoDB!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
 };
 
-export const connectServers = () => {
+export const connectServers = async () => {
   const FRONTEND_URL = process.env.FRONTEND_URL;
   const corsOptions = {
     origin: FRONTEND_URL,
