@@ -4,7 +4,13 @@
 
 ### Problem Statement
 
-Modern day todo list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications. TalkTask addresses those issues by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other todo list applications today don't offer.
+Modern day to-do list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications.
+
+A simple Google search will show you multiple articles and research papers that to-do lists actually work and can increase productivity, self dicipline, and even reduce feelings of stress and/or anxiety if used correctly. To-do lists offer a way to structure/plan your days out, improve time management skills and organization skills, which in turn can making you feel less overwhelmed. The feeling of completing a task has even been shown to release a small spike of dopamine giving yourself a sense of accomplishment.
+
+Most to-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other to-do list applications today don't offer. We will also offer users a way to create multiple task lists based on their chosen catagory, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities. Furthermore, we are also providing users access to an AI model able to generate suggested tasks based on what the user already has to-do or has completed, offering a personalized experience for all.
+
+With TalkTask, we’re turning your to-do list into a seamless, hands-free experience that enhances productivity and accessibility. By leveraging the power of speech recognition and AI, we’re giving you the freedom to manage your tasks more efficiently, so you can focus on what really matters. Say goodbye to overwhelming lists and hello to a more organized, stress-free way to tackle your day.
 
 ### Abstract
 
@@ -289,6 +295,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Render is a web service platform that offers free hosting with limited resources. Since this project isn't expected to go big anytime soon, the free plan Render offers should be enough to allow our peers to test the web application on the internet.
 * Figma
   * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
+* Auth0 API
+  * The Auth0 API will allow users to create and login to their accounts safely and securely across multiple devices to access their data. The Auth0 API gives us developers to seamlessly authenticate and authorize users to provide them with corresponding data and permissions.
 
 ### Team Member Schedules
 
@@ -791,6 +799,44 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 ### Software Architecture
+
+* **Major Components**
+  * To-Do List Functionality
+    * Our web app is a to-do list program, so to-do list functionality is essential to our web app. Since actual to-do list functionality is relatively simple to implement, the software component has been grouped into one big component to avoid over explaining the specific features.
+    * Features will include...
+      * Add/Remove task
+      * Mark task as complete
+      * Clear completed tasks
+      * Catagorize tasks
+      * Add priority to tasks
+      * Add deadlines to tasks
+      * Search and filter tasks by properties
+      * Modify/Update tasks
+      * Count tasks
+      * Undo last action to give flexibility for user mistakes
+  * Speech Recognition- WebSpeechAPI
+    * The speech recognition component shall be able to handle and process voice commands from the user into text for the backend to process and frontend to display.
+  * Frontend Design & Functionality - React
+    * A relatively simple, but clean UI design shall be implemented using React, so that users will be able to interact with the web application and render components.
+    * Web application navigation shall be implemented in the frontend component, so that users are able to view target pages and interact with UI components.
+  * Backend Environment - Node.js
+    * Our backend environment shall be able to handle API calls from the client server and can be easily integrated with our frontend technology (React).
+  * Server Side Logic & Routes- Express.js
+    * Our server side logic component shall be able to handle API routes, so that the client server will be able to interact with the backend server, allowing the user to manage their to-do list. This component will serve to allow the frontend interact with backend components and interact with the database to provide the user's corresponding data.
+  * Database Management - MongoDB
+    * A database shall be used to allow our AI model to provide suggested tasks based on their previous ones and allow users to access their lists over various devices, using their login information as the key.
+    * Specifically MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
+  * AI Model - Hugging Face
+    * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
+  * Secure Logins & Permissions - Auth0
+    * User's need to be able to login to their accounts securely and safely, so that they can access their tasks on the database and through various devices.
+    * Additionally, since our web application is meant to provide ease of access for users, they shall be able to login via their Google or GitHub account, so that users are able to start managing their to-do lists right away. Auth0 is the technology our team will be using, so security measures can be implemented seamlessly within our app.
+  * Frontend Deployment - Netlify & Vite
+    * To allow users to actually use our web application, we will need to build our source files into strictly HTML, CSS, and JavaScript, so that web browsers are able to render our UI correctly. Once our frontend source files are built, we will need to use a web service hosting platform to allow users to use our application.
+    * Frontend deployement will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
+  * Backend Deployment - Render
+    * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
+    * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
 
 <br>
 
