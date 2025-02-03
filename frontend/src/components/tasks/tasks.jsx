@@ -16,6 +16,7 @@ const fetchTest = async (setTestArray) => {
   try {
     const res = await axios.get(`${BACKEND_URL}/testing`);
     setTestArray(res.data.info);
+    console.log("Frontend recieved test data response!")
   } catch (error) {
     console.log("Error getting data");
   }
