@@ -834,9 +834,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Frontend Deployment - Netlify & Vite
     * To allow users to actually use our web application, we will need to build our source files into strictly HTML, CSS, and JavaScript, so that web browsers are able to render our UI correctly. Once our frontend source files are built, we will need to use a web service hosting platform to allow users to use our application.
     * Frontend deployement will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
-  * Backend deployment will be consi
-      * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
-      * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
+  * Backend Deployment - Render
+    * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
+    * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
 
 <br>
 
