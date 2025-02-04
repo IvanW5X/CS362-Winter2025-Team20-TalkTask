@@ -1027,6 +1027,27 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   - Implement a **"smart filter"** to eliminate irrelevant tasks.
 - **Changes Since Requirements Document:**  
   - Added **feedback collection mechanism** to refine AI suggestions.
+
+### 5️ Risk: Deployment & Hosting Challenges
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - Need to support **frontend (Netlify)** and **backend (Render)** hosting.
+  - Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
+  - Risk of **downtime or unexpected hosting costs**.
+- **Mitigation Steps:**
+  - Use **logging & monitoring tools** (e.g., PM2 for Node.js).
+  - Keep **database queries optimized** to minimize API calls.
+  - Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
+- **Detection Plan:**  
+  - Monitor **server logs** for errors or high resource usage.
+  - Implement **uptime monitoring tools** (e.g., UptimeRobot).
+- **Mitigation Plan (If it Occurs):**  
+  - Migrate to **a more scalable hosting provider** if needed.
+  - Implement **rate limiting & caching** to reduce API load.
+- **Changes Since Requirements Document:**  
+  - More emphasis on **scalability** and **backup hosting solutions**.
+
 <br>
 
 * Project Schedule
