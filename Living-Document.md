@@ -830,15 +830,25 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
      * Tasks → Stores task details
      * Reminders → Stores scheduled reminders for tasks
      * Speech Commands → Stores voice-based commands
-     Field	Type	Description
-     CustomerID	|Number (Unique)	Unique identifier for each user
-     email	     |String (Unique)	User email (used for login)
-     password	String	Hashed password for security
-     dob	Date	User’s date of birth
-     Fname	String	First name
-     Mname	String	Middle name (optional)
-     Lname	String	Last name
-     createdAt	Date	Timestamp of user registration
+     |------------|-----------------|---------------------------------|
+     |Field	      |Type	            |Description                      |
+     |------------|-----------------|---------------------------------|
+     |CustomerID	|Number (Unique)	|Unique identifier for each user  |
+     |------------|-----------------|---------------------------------|
+     |email	      |String (Unique)	|User email (used for login)      |
+     |------------|-----------------|---------------------------------|
+     |password	  |String	          |                                 |
+     |------------|-----------------|---------------------------------|
+     |dob	        |Date	            |User’s date of birth             |
+     |------------|-----------------|---------------------------------|
+     |Fname	      |String	          |First name                       |
+     |------------|-----------------|---------------------------------|
+     |Mname	      |String	          |Middle name (optional)           |
+     |------------|-----------------|---------------------------------|
+     |Lname	      |String	          |Last name                        |
+     |------------|-----------------|---------------------------------|
+     |createdAt	  |Date	            |Timestamp of user registration   |
+     |------------|-----------------|---------------------------------|
      * 
     * Specifically MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
