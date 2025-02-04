@@ -880,7 +880,17 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       |---------------|-------------------------|-----------------------------------------|
       |reminderDate	  |Date	                    |When the reminder should trigger         |
       |---------------|-------------------------|-----------------------------------------|
-    * Specifically MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
+    * Speech Command Schema
+      |-------------|-----------------------|--------------------------------------|
+      |Field	      |Type	                  |Description                           |
+      |-------------|-----------------------|--------------------------------------|
+      |commandID	  |Number (Unique)	      |Unique identifier for each command    |
+      |-------------|-----------------------|--------------------------------------|
+      |commandText	|String	                |The spoken command text               |
+      |-------------|-----------------------|--------------------------------------|
+      |CustomerID	  |ObjectId (Ref: users)	|Links command to a specific user      |
+      |-------------|-----------------------|--------------------------------------|
+    * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
     * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
   * Secure Logins & Permissions - Auth0
