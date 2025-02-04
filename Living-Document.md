@@ -946,6 +946,26 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 
 * Risk Assessment
+### 1️ Risk: Speech Recognition Accuracy Issues
+- **Likelihood:** **High**
+- **Impact:** **High**
+- **Evidence:**
+  - Speech recognition models struggle with different accents, background noise, and ambiguous commands.
+  - WebSpeech API has limitations, such as requiring internet access and limited offline support.
+  - User testing in different environments exposes inconsistent recognition rates.
+- **Mitigation Steps:**
+  - Conduct **usability testing** with diverse users.
+  - Implement **error handling & retry mechanisms** for unclear commands.
+  - Allow **manual task editing** in case of recognition failure.
+  - Use **AI-powered NLP** to interpret voice commands more flexibly.
+- **Detection Plan:**  
+  - Implement **logging for failed speech-to-text conversions**.
+  - Track **user feedback** for misrecognized commands.
+- **Mitigation Plan (If it Occurs):**  
+  - Implement **fallback manual input methods**.
+  - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
+- **🔄 Changes Since Requirements Document:**  
+  - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
   
 <br>
 
