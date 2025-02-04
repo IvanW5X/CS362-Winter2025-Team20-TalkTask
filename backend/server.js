@@ -18,7 +18,7 @@ dotenv.config();
 const envFilePath = path.resolve("../", "./.env");
 dotenv.config({ path: envFilePath });
 
-
+const app = express();
 
 export const connectServers = () => {
   const FRONTEND_URL = process.env.FRONTEND_URL;
