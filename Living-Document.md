@@ -964,9 +964,28 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 - **Mitigation Plan (If it Occurs):**  
   - Implement **fallback manual input methods**.
   - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
-- **🔄 Changes Since Requirements Document:**  
+- **Changes Since Requirements Document:**  
   - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
-  
+
+  ### 2️ Risk: Backend & Database Integration Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - The backend must support **real-time task updates** across devices.
+  - MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
+  - API failures could lead to **data inconsistencies** (e.g., task duplication).
+- **Mitigation Steps:**
+  - Define **clear API endpoints** and test early.
+  - Implement **database indexing** for performance optimization.
+  - Use **MongoDB transactions** to prevent inconsistent task states.
+- **Detection Plan:**  
+  - Write **unit tests** for database operations.
+  - Use **Postman & Jest** for API testing.
+- **Mitigation Plan (If it Occurs):**  
+  - Implement **logging and error recovery** (e.g., retry failed database operations).
+  - **Backup task data** to prevent loss.
+- **Changes Since Requirements Document:**  
+  - More emphasis on **testing and database integrity checks**.
 <br>
 
 * Project Schedule
