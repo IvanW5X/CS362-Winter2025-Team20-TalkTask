@@ -1006,6 +1006,27 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   - Introduce **keyboard shortcuts** for key functionalities.
 - **Changes Since Requirements Document:**  
   - Added **manual fallback options** and ensured **accessibility compliance**.
+
+
+### 4️ Risk: AI Task Recommendation Limitations
+- **Likelihood:** **High**
+- **Impact:** **Medium**
+- **Evidence:**
+  - AI recommendations rely on **user task history**.
+  - Poor dataset or limited data can lead to **irrelevant suggestions**.
+  - AI models might **misinterpret** user needs.
+- **Mitigation Steps:**
+  - Allow users to **provide feedback on AI suggestions**.
+  - Use **a mix of rule-based logic and AI** for better recommendations.
+  - Store **user preferences** to fine-tune AI behavior.
+- **Detection Plan:**  
+  - Track **AI-generated task acceptance rates**.
+  - Monitor **user-reported errors** in AI recommendations.
+- **Mitigation Plan (If it Occurs):**  
+  - **Refine the AI model** based on real-world data.
+  - Implement a **"smart filter"** to eliminate irrelevant tasks.
+- **Changes Since Requirements Document:**  
+  - Added **feedback collection mechanism** to refine AI suggestions.
 <br>
 
 * Project Schedule
