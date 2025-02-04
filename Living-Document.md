@@ -910,7 +910,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 * Project Schedule
-  * Noteable
+  * Notable conflicts and updates to our schedule are what features are dependant on others being done to be completed.  Specifically, features that interface with the database need to have the database set up, and back-end support before they can be functional.  Other than this, there have been no changes to the schedule.
 <br>
 
 * Team Structure
@@ -939,9 +939,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Front-End:
       * Week 5: User can open menu buttons to create tasks, view tasks, and task details
       * Week 6: CRUD operations on non-recurring tasks work
-        * This is dependant on Database team
+        * This is dependant on Database team and Back-End Team to create dependant features.
       * Week 8: CRUD operations on recurring tasks work
-        * This is dependant on Database team
+        * This is dependant on Database team and Back-End Team to create dependant features.
       * Week 9: User accessability tests pass
       * Week 10: Full functionality tests.
 
