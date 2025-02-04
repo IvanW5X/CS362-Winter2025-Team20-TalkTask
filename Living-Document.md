@@ -401,7 +401,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * Deliverables:
   * Find and create and AI API key from Hugging Face to select an AI model that best fits our use cases.
   * Find a free backend server deployment tool powerful enough to host our backend logic.
-* Milestones:
+* Milestones: 
   * All team members have access to the AI API key and shall ensure that it works.
   * Deploy backend web server for client-server communication over the internet.
 
@@ -930,7 +930,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 * Project Schedule
-
+  * Noteable
 <br>
 
 * Team Structure
@@ -938,6 +938,33 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 * Test Plan and Bugs
+  * Notable Tests By Week
+    * Database:
+      * Week 4: Can preform simple SQL operations on non-recurring task related tables through the command line.
+      * Week 5: Full suite of test cases for CRUD operations on the non-recurring task related tables.
+      * Week 6: Full suite of test cases for OAuth functionality
+      * Week 7: Full suite of test cases for recurring test cases
+      * Week 8: When a user gives a set input to the AI chatbot, they should receive a logical output from the AI
+      * Week 9: Optimization updates to meet minimum speed requirements
+      * Week 10: Full functionality tests.
+    * Back-End:
+      * Week 5: Text to speech API will output the given input
+      * Week 6: Speech input support add and delete task functionality.  
+        * This is dependant on the AI functionality being done
+      * Week 7: Remainder of speech input commands are complete.
+        * This is dependant on the AI functionality being done
+      * Week 8: Reoccurring event detection works
+        * This is dependant on the AI functionality being done
+      * Week 10: Full functionality tests.
+    * Front-End:
+      * Week 5: User can open menu buttons to create tasks, view tasks, and task details
+      * Week 6: CRUD operations on non-recurring tasks work
+        * This is dependant on Database team
+      * Week 8: CRUD operations on recurring tasks work
+        * This is dependant on Database team
+      * Week 9: User accessability tests pass
+      * Week 10: Full functionality tests.
+
 
 <br>
 
