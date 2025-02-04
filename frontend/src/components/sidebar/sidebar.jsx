@@ -10,8 +10,8 @@ import styles from "./sidebar.module.css";
 
 export const Sidebar = () => {
   return (
-    <div>
+    <section>
       <h2>Sidebar</h2>
-    </div>
+    </section>
   );
 };

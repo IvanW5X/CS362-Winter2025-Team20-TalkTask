@@ -38,7 +38,6 @@ export const Tasks = () => {
         return (
           <div key={key}>
             <p>{data}</p>
-            <br />
           </div>
         );
       })}

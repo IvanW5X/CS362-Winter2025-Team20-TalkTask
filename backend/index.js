@@ -12,7 +12,6 @@ import { test } from "./services/testSetupAI.js";
 async function Initialize () {
     // await connectTTDB();
     await connectServers();
-    console.log("Backend sent test data response!");
     
     await test();
 

@@ -54,6 +54,7 @@ export const connectServers = async () => {
   app.get("/testing", (req, res) => {
     res.json({ info: ["data_1", "data_2", "data_3", "data_4"] });
   });
+  console.log("Backend sent test data response!");
 };
 
 // Listening function
