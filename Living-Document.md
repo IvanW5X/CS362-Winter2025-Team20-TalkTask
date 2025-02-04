@@ -986,6 +986,26 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   - **Backup task data** to prevent loss.
 - **Changes Since Requirements Document:**  
   - More emphasis on **testing and database integrity checks**.
+
+  ### 3️ Risk: User Adoption & Accessibility Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - Users may struggle with **speech-based navigation**.
+  - Accessibility concerns for **speech-impaired users**.
+  - Some users may prefer **keyboard/mouse over voice input**.
+- **Mitigation Steps:**
+  - Design **multi-modal interaction** (support both speech and manual inputs).
+  - Ensure compliance with **WCAG 2.1 accessibility guidelines**.
+  - Gather **early user feedback** via surveys and beta testing.
+- **Detection Plan:**  
+  - **Track feature usage** (e.g., how often users switch to manual input).
+  - **Monitor support requests** related to accessibility.
+- **Mitigation Plan (If it Occurs):**  
+  - Offer **customizable input options**.
+  - Introduce **keyboard shortcuts** for key functionalities.
+- **Changes Since Requirements Document:**  
+  - Added **manual fallback options** and ensured **accessibility compliance**.
 <br>
 
 * Project Schedule
