@@ -824,7 +824,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Server Side Logic & Routes- Express.js
     * Our server side logic component shall be able to handle API routes, so that the client server will be able to interact with the backend server, allowing the user to manage their to-do list. This component will serve to allow the frontend interact with backend components and interact with the database to provide the user's corresponding data.
   * Database Management - MongoDB
-    * A database shall be used to allow our AI model to provide suggested tasks based on their previous ones and allow users to access their lists over various devices, using their login information as the key.
+    * Overview: Our system stores and manages user data, tasks, reminders, and speech commands using a MongoDB database. The database follows a document-based schema using Mongoose, which defines structured models for each entity.
     * Specifically MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
     * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
