@@ -8,12 +8,13 @@
 
 import { startServer, connectServers, connectTTDB} from "./server.js";
 import { test } from "./services/testSetupAI.js";
+import { connectTTDB } from "./db/connection.js";
 
 async function Initialize () {
-    // await connectTTDB();
+    await connectTTDB();
     await connectServers();
     
-    await test();
+    // await test();
 
     startServer();
 
