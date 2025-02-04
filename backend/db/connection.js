@@ -1,8 +1,6 @@
-import express from "express";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 // Variables
-const app = express();
 const uri = process.env.MONGO_URI;
 
 // Create MongoDB client
