@@ -899,6 +899,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Backend Deployment - Render
     * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
     * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
+    * Software decsions and alternatives
+      * Client Server
+      * Database 
 
 <br>
 
