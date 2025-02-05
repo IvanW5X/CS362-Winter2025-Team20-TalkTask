@@ -1098,6 +1098,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Before testing frontend/backend: Frontend-backend interaction must be functional.
   * Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
  
+  * 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
+ 
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           | Design Navigation (1)|Start front-end implementation (2) |Test and connect front-end calls to back-end(2)|Implement API to front-end calls(1)|Develop user feedback features(1)|Implement other features (such as notifications)(2)|Finalizing and testing(1)|Deploy and finish documentation(1)|
