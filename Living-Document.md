@@ -845,33 +845,47 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 
     * Task Schema
-
-      |Field        |Type                   |Description                                       |
       |---------------|-----------------------|---------------------------------------------------|
-      |taskID     |Number (Unique)     |Unique identifier for each task                    |
-      |description  |String                |Task description                                   |
-      |dateCreated  |Date                  |Timestamp when task was created                    |
-      |dateCompleted  |Date                  |Timestamp when task was completed                  |
-      |recurringDate  |Date                  |If the task repeats, its recurrence date           |
-      |priority      |Number                |Priority level (1-5)                               |
-      |status         |String                |Task status (pending, in-progress, completed)      |
-      |userId        |ObjectId (Ref: users)  |Links the task to a specific user                  |
+      |Field          |Type                   |Description                                        |
+      |---------------|-----------------------|---------------------------------------------------|
+      |taskID         |Number (Unique)        |Unique identifier for each task                    |
+      |---------------|-----------------------|---------------------------------------------------|
+      |description    |String                 |Task description                                   |
+      |---------------|-----------------------|---------------------------------------------------|
+      |dateCreated    |Date                   |Timestamp when task was created                    |
+      |---------------|-----------------------|---------------------------------------------------|
+      |dateCompleted  |Date                   |Timestamp when task was completed                  |
+      |---------------|-----------------------|---------------------------------------------------|
+      |recurringDate  |Date                   |If the task repeats, its recurrence date           |
+      |---------------|-----------------------|---------------------------------------------------|
+      |priority       |Number                 |Priority level (1-5)                               |
+      |---------------|-----------------------|---------------------------------------------------|
+      |status         |String                 |Task status (pending, in-progress, completed)      |
+      |---------------|-----------------------|---------------------------------------------------|
+      |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
+      |---------------|-----------------------|---------------------------------------------------|
 
     * Reminder Schema
-
-    |Field        |Type                    |Description                              |
-    |---------------|-------------------------|-----------------------------------------|
-    |reminderID    |Number (Unique)        |Unique identifier for the reminder       |
-    |taskID        |ObjectId (Ref: tasks)  |Links to the task this reminder is for   |
+    |--------------|------------------------|-----------------------------------------|
+    |Field         |Type                    |Description                              |
+    |--------------|------------------------|-----------------------------------------|
+    |reminderID    |Number (Unique)         |Unique identifier for the reminder       |
+    |--------------|------------------------|-----------------------------------------|
+    |taskID        |ObjectId (Ref: tasks)   |Links to the task this reminder is for   |
+    |--------------|------------------------|-----------------------------------------|
     |reminderDate  |Date                    |When the reminder should trigger         |
+    |--------------|------------------------|-----------------------------------------|
 
     * Speech Command Schema
-
-    |Field      |Type                  |Description                           |
     |-------------|-----------------------|--------------------------------------|
-    |commandID  |Number (Unique)      |Unique identifier for each command    |
-    |commandText|String                |The spoken command text               |
-    |CustomerID  |ObjectId (Ref: users)|Links command to a specific user      |
+    |Field        |Type                   |Description                           |
+    |-------------|-----------------------|--------------------------------------|
+    |commandID    |Number (Unique)        |Unique identifier for each command    |
+    |-------------|-----------------------|--------------------------------------|
+    |commandText  |String                 |The spoken command text               |
+    |-------------|-----------------------|--------------------------------------|
+    |CustomerID   |ObjectId (Ref: users)  |Links command to a specific user      |
+    |-------------|-----------------------|--------------------------------------|
 
     * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
@@ -885,7 +899,18 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Backend Deployment - Render
     * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
     * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
+    * Software decsions and alternatives
+      * Client Server Architecture:
+      * Database: Local storage via local JSON files
+          Pros:
+          * Simple to implement, as there is no database to set up and configure.
+          * Files can be backed up easily on the client side via copying or syncing files.
+          * Extremely lightweight, as it does not consume as many developer and sever resources
 
+          Cons:
+          * Not Scalable: storing files locally becomes difficult to sustain on larger scales
+          * Cocurrency Issues: file corruption if multiple users write simultaneously
+          * No built in querying: Difficult to filter, search, and sort efficiently.
 <br>
 
 * **Interfaces**
@@ -962,6 +987,28 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 ### Coding Guideline
+
+ * **JavaScript (React/Node.js)**
+   - **Guideline**: [JavaScript Style Guide](https://github.com/airbnb/javascript)
+   - **Reason**: Airbnb's style guide is widely adopted in the industry, comprehensive, and covers both JavaScript and React best practices. It promotes clean, readable, and maintainable code.
+   - **Enforcement**: Use ESLint with the Airbnb configuration (`eslint-config-airbnb`) to automatically enforce the rules during development.
+
+* **HTML**
+   - **Guideline**: [HTML Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
+   - **Reason**: Google's style guide is simple, well-structured, and focuses on best practices for writing clean and semantic HTML.
+   - **Enforcement**: Use an HTML linter like `htmlhint` with a configuration aligned with the Google style guide.
+
+* **CSS**
+   - **Guideline**: [CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
+   - **Reason**: The same guide covers CSS, ensuring consistency in styling practices and maintainability.
+   - **Enforcement**: Use a CSS linter like `stylelint` with a configuration aligned with the Google style guide.
+
+* **MongoDB**
+   - **Guideline**: [MongoDB Best Practices/Style Guide](https://www.mongodb.com/docs/meta/style-guide/)
+   - **Reason**: MongoDB's official documentation provides clear and practical guidelines for database design, indexing, and query optimization.
+   - **Enforcement**: Code reviews and manual checks during development to ensure adherence to best practices.
+
+---
 
 <br>
 
