@@ -900,9 +900,17 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
     * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
     * Software decsions and alternatives
-      * Client Server
-      * Database 
+      * Client Server Architecture:
+      * Database: Local storage via local JSON files
+          Pros:
+          * Simple to implement, as there is no database to set up and configure.
+          * Files can be backed up easily on the client side via copying or syncing files.
+          * Extremely lightweight, as it does not consume as many developer and sever resources
 
+          Cons:
+          * Not Scalable: storing files locally becomes difficult to sustain on larger scales
+          * Cocurrency Issues: file corruption if multiple users write simultaneously
+          * No built in querying: Difficult to filter, search, and sort efficiently.
 <br>
 
 * **Interfaces**
