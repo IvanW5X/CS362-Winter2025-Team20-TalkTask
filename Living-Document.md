@@ -895,22 +895,31 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Additionally, since our web application is meant to provide ease of access for users, they shall be able to login via their Google or GitHub account, so that users are able to start managing their to-do lists right away. Auth0 is the technology our team will be using, so security measures can be implemented seamlessly within our app.
   * Frontend Deployment - Netlify & Vite
     * To allow users to actually use our web application, we will need to build our source files into strictly HTML, CSS, and JavaScript, so that web browsers are able to render our UI correctly. Once our frontend source files are built, we will need to use a web service hosting platform to allow users to use our application.
-    * Frontend deployement will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
+    * Frontend deployment will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
   * Backend Deployment - Render
     * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
     * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
-    * Software decsions and alternatives
-      * Client Server Architecture:
-      * Database: Local storage via local JSON files
-          Pros:
-          * Simple to implement, as there is no database to set up and configure.
-          * Files can be backed up easily on the client side via copying or syncing files.
-          * Extremely lightweight, as it does not consume as many developer and sever resources
 
-          Cons:
-          * Not Scalable: storing files locally becomes difficult to sustain on larger scales
-          * Cocurrency Issues: file corruption if multiple users write simultaneously
-          * No built in querying: Difficult to filter, search, and sort efficiently.
+* Software decsions and alternatives
+  * Client Server Architecture: Monolithic Architecture
+    * **Pros:**
+      * Easier to implement, good option if the project is not being planned to be scalable or development process is limited on a time constraint.
+    * **Cons:**
+      * Increasing coupling between front and backend logic.
+      * Harder to debug when issues arise because components are so connected.
+      * More resources are need to deploy the web application because front and backend components are implemented into one server. Not ideal for free web hosting services where resource usage is limited.
+
+  * Database: Local storage via local JSON files
+    * **Pros:**
+    * Simple to implement, as there is no database to set up and configure.
+    * Files can be backed up easily on the client side via copying or syncing files.
+    * Extremely lightweight, as it does not consume as many developer and sever resources
+
+    * **Cons:**
+    * Not Scalable: storing files locally becomes difficult to sustain on larger scales
+    * Cocurrency Issues: file corruption if multiple users write simultaneously
+    * No built in querying: Difficult to filter, search, and sort efficiently.
+
 <br>
 
 * **Interfaces**
