@@ -980,22 +980,22 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### Coding Guideline
 
-## 1. **JavaScript (React/Node.js)**
+ * **JavaScript (React/Node.js)**
    - **Guideline**: [JavaScript Style Guide](https://github.com/airbnb/javascript)
    - **Reason**: Airbnb's style guide is widely adopted in the industry, comprehensive, and covers both JavaScript and React best practices. It promotes clean, readable, and maintainable code.
    - **Enforcement**: Use ESLint with the Airbnb configuration (`eslint-config-airbnb`) to automatically enforce the rules during development.
 
-## 2. **HTML**
+* **HTML**
    - **Guideline**: [HTML Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
    - **Reason**: Google's style guide is simple, well-structured, and focuses on best practices for writing clean and semantic HTML.
    - **Enforcement**: Use an HTML linter like `htmlhint` with a configuration aligned with the Google style guide.
 
-## 3. **CSS**
+* **CSS**
    - **Guideline**: [CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
    - **Reason**: The same guide covers CSS, ensuring consistency in styling practices and maintainability.
    - **Enforcement**: Use a CSS linter like `stylelint` with a configuration aligned with the Google style guide.
 
-## 4. **MongoDB**
+* **MongoDB**
    - **Guideline**: [MongoDB Best Practices/Style Guide](https://www.mongodb.com/docs/manual/administration/best-practices/)
    - **Reason**: MongoDB's official documentation provides clear and practical guidelines for database design, indexing, and query optimization.
    - **Enforcement**: Code reviews and manual checks during development to ensure adherence to best practices.
