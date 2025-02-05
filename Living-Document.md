@@ -906,7 +906,21 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 * **Interfaces**
-
+ * Frontend (React) and Backend (Node.js)
+    * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
+ * Backend (Node.js) and Database (MongoDB)
+    * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
+ * Frontend (React) and Speech Recognition (Web Speech API)
+    * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
+ * AI Model (Hugging Face) and Backend (Node.js)
+    * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
+ * Authentication (Auth0) and Frontend (React) and Backend (Node.js)
+    * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
+ * Frontend Deployment (Netlify & Vite) and Users
+    * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
+ * Backend Deployment (Render) and Frontend & Database
+    * Render will host backend logic for the frontend and database to interact with.
+  
 <br>
 
 * **Assumptions**
