@@ -905,6 +905,28 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 <br>
 
+* **Assumptions**
+  * WebSpeech API Will Accurately Process Commands
+    * Assumption: The WebSpeech API will correctly interpret voice commands
+    * Justification: Although voice recognition technology has advanced, performance may still be impacted by elements including background noise, accents, and speech clarity. Manual input and error handling act as mitigating measures.
+  * MongoDB Can Handle Dynamic and Scalable Data
+    * Assumption: MongoDB will accommodate an expanding user base while managing structured and unstructured data effectively.
+    * Justification: Because MongoDB is a flexible NoSQL database, it can grow with the system without being constrained by rigid schemas.
+  * AI Task Recommendations Will Improve User Experience
+    * Assumption: AI-powered suggestions (using Hugging Face) will provide relevant and helpful task recommendations.
+    * Justification: The AI model makes the assumption that there is sufficient task data from the past to generate relevant predictions. The accuracy of recommendations may suffer if users have insufficient history.
+  * Authentication via Auth0 Will Be Secure and Reliable
+    * Assumption: Auth0 will provide secure, seamless authentication across devices.
+    * Justification: Third-party authentication services like Auth0 are trusted for handling OAuth logins and security, reducing development overhead.
+  * Hosting Services (Netlify & Render) Will Provide Stable Deployment
+    * Assumption: Netlify (Frontend) and Render (Backend) will offer reliable uptime and performance.
+    * Justification: These platforms are widely used for web applications and include free tiers, but scalability issues may arise with high traffic.
+  * Users Will Want Cross-Device Accessibility
+    * Assumption: Users will want to access their to-do lists from multiple devices.
+    * Justification: A cloud-based approach ensures synchronization across desktops and mobile devices, making the system more convenient.
+
+<br>
+
 ### Software Design
 
 * **Speech Recognition Component**
