@@ -826,70 +826,53 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Database Management - MongoDB
     * Overview: Our system stores and manages user data, tasks, reminders, and speech  commands using a MongoDB database. The database follows a document-based schema using Mongoose, which defines structured models for each entity.
     * High level Database Schema:
-     * Users → Stores user information
-     * Tasks → Stores task details
-     * Reminders → Stores scheduled reminders for tasks
-     * Speech Commands → Stores voice-based commands
+    * Users → Stores user information
+    * Tasks → Stores task details
+    * Reminders → Stores scheduled reminders for tasks
+    * Speech Commands → Stores voice-based commands
     * User Schema
+
+      | Field       | Type            | Description                     |
       |-------------|-----------------|---------------------------------|
-      |Field	      |Type	            |Description                      |
-      |-------------|-----------------|---------------------------------|
-      |CustomerID	  |Number (Unique)	|Unique identifier for each user  |
-      |-------------|-----------------|---------------------------------|
-      |email	      |String (Unique)	|User email (used for login)      |
-      |-------------|-----------------|---------------------------------|
-      |password	    |String	          |                                 |
-      |-------------|-----------------|---------------------------------|
-      |dob	        |Date	            |User’s date of birth             |
-      |-------------|-----------------|---------------------------------|
-      |Fname	      |String	          |First name                       |
-      |-------------|-----------------|---------------------------------|
-      |Mname	      |String	          |Middle name (optional)           |
-      |-------------|-----------------|---------------------------------|
-      |Lname	      |String	          |Last name                        |
-      |-------------|-----------------|---------------------------------|
-      |createdAt	  |Date	            |Timestamp of user registration   |
-      |-------------|-----------------|---------------------------------|
+      | CustomerID  | Number (Unique) | Unique identifier for each user |
+      | email       | String (Unique) | User email (used for login)     |
+      | password    | String          |                                 |
+      | dob         | Date            | User’s date of birth            |
+      | Fname       | String          | First name                      |
+      | Mname       | String          | Middle name (optional)          |
+      | Lname       | String          | Last name                       |
+      | createdAt   | Date            | Timestamp of user registration  |
+
+
     * Task Schema
+
+      |Field        |Type                   |Description                                       |
       |---------------|-----------------------|---------------------------------------------------|
-      |Field	        |Type                   |	Description                                       |
-      |---------------|-----------------------|---------------------------------------------------|
-      |taskID	        |Number (Unique)	      |Unique identifier for each task                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |description	  |String	                |Task description                                   |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCreated	  |Date	                  |Timestamp when task was created                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCompleted  |Date	                  |Timestamp when task was completed                  |
-      |---------------|-----------------------|---------------------------------------------------|
-      |recurringDate  |Date	                  |If the task repeats, its recurrence date           |
-      |---------------|-----------------------|---------------------------------------------------|
-      |priority	      |Number	                |Priority level (1-5)                               |
-      |---------------|-----------------------|---------------------------------------------------|
-      |status         |String	                |Task status (pending, in-progress, completed)      |
-      |---------------|-----------------------|---------------------------------------------------|
-      |userId	        |ObjectId (Ref: users)  |Links the task to a specific user                  |
-      |---------------|-----------------------|---------------------------------------------------|
+      |taskID     |Number (Unique)     |Unique identifier for each task                    |
+      |description  |String                |Task description                                   |
+      |dateCreated  |Date                  |Timestamp when task was created                    |
+      |dateCompleted  |Date                  |Timestamp when task was completed                  |
+      |recurringDate  |Date                  |If the task repeats, its recurrence date           |
+      |priority      |Number                |Priority level (1-5)                               |
+      |status         |String                |Task status (pending, in-progress, completed)      |
+      |userId        |ObjectId (Ref: users)  |Links the task to a specific user                  |
+
     * Reminder Schema
-      |---------------|-------------------------|-----------------------------------------|
-      |Field	        |Type	                    |Description                              |
-      |---------------|-------------------------|-----------------------------------------|
-      |reminderID	    |Number (Unique)	        |Unique identifier for the reminder       |
-      |---------------|-------------------------|-----------------------------------------|
-      |taskID	        |ObjectId (Ref: tasks)	  |Links to the task this reminder is for   |
-      |---------------|-------------------------|-----------------------------------------|
-      |reminderDate	  |Date	                    |When the reminder should trigger         |
-      |---------------|-------------------------|-----------------------------------------|
+
+    |Field        |Type                    |Description                              |
+    |---------------|-------------------------|-----------------------------------------|
+    |reminderID    |Number (Unique)        |Unique identifier for the reminder       |
+    |taskID        |ObjectId (Ref: tasks)  |Links to the task this reminder is for   |
+    |reminderDate  |Date                    |When the reminder should trigger         |
+
     * Speech Command Schema
-      |-------------|-----------------------|--------------------------------------|
-      |Field	      |Type	                  |Description                           |
-      |-------------|-----------------------|--------------------------------------|
-      |commandID	  |Number (Unique)	      |Unique identifier for each command    |
-      |-------------|-----------------------|--------------------------------------|
-      |commandText	|String	                |The spoken command text               |
-      |-------------|-----------------------|--------------------------------------|
-      |CustomerID	  |ObjectId (Ref: users)	|Links command to a specific user      |
-      |-------------|-----------------------|--------------------------------------|
+
+    |Field      |Type                  |Description                           |
+    |-------------|-----------------------|--------------------------------------|
+    |commandID  |Number (Unique)      |Unique identifier for each command    |
+    |commandText|String                |The spoken command text               |
+    |CustomerID  |ObjectId (Ref: users)|Links command to a specific user      |
+
     * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
     * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
@@ -1108,11 +1091,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 | Database            |Design database schema (1)|Set up MongoDB (1)|Configure database for tasks(2)|Implement save, update, and delete functionality (2)|Integrate AI and WebSpeech API with database (2)|Ensure data is correct between backend and database(2) |Testing and ensuring database integrity (2)|Final database testing and deployment (1)|
 | Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.(1)|Files organized in a modularized manner to allow for easier implementation and OO practices.(1)|Database implementation inputs correctly formatted data.(1)|AI and WebSpeech APIs configured and ready for developers.(1)|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.(3)|Continue developing complex features, such as AI and speech recognition implementations.(2)|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.(1)|Run and test finalized product for any underlying bugs or errors.(1)|
 
-<br>
-
-* Team Structure
-
-<br>
+### Team Structure
 
 * Test Plan and Bugs
   * Notable Tests By Week
@@ -1141,10 +1120,24 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
         * This is dependant on Database team and Back-End Team to create dependant features.
       * Week 9: User accessability tests pass
       * Week 10: Full functionality tests.
+    * Software Configuration Management Coordinator (Will be updated to Full Stack Developer by next week):
+      * Week 5: Front and backend communication established by sending test requests and responses with expected outcome.
+      * Week 6: Basic to-do list functionality (includes creating, removing, and updating) properly updates database and responses accurately represent user-modified tasks.
+      * Week 7: Speech recognition commands fully integrated and tested for creating, updating, and deleting tasks.
+        * Ensure commands trigger corresponding backend functions and update the database accurately.
+        * Validate error handling for speech recognition failures and incomplete commands.
+      * Week 8: AI-based task suggestions integrated and tested in combination with speech recognition.
+        * Test AI output consistency for varied user inputs.
+        * Verify the correct insertion of suggested tasks into the database.
+        * Recurring event detection works reliably and displays properly on the frontend.
+      * Week 9: Performance optimization and accessibility testing completed.
+        * Measure response time for speech commands, AI suggestions, and database operations to meet minimum speed requirements.
+        * Run accessibility tests for speech input, keyboard navigation, and screen reader compatibility.
+      * Week 10: Full functionality tests and final integration in deployment.
+        * End-to-end tests for complete user flows (speech command → AI suggestion → task creation/update).
+        * Security tests for speech input validation, database integrity, and role-based access control.
+        * Final performance review and bug fixes for production readiness.
 
-
-<br>
-
-* Documentation Plan
+### Documentation Plan
 
 <br>
