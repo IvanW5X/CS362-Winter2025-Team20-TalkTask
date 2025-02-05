@@ -905,6 +905,46 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 <br>
 
+* **Interfaces**
+  * Frontend (React) and Backend (Node.js)
+     * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
+  * Backend (Node.js) and Database (MongoDB)
+     * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
+  * Frontend (React) and Speech Recognition (Web Speech API)
+     * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
+  * AI Model (Hugging Face) and Backend (Node.js)
+     * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
+  * Authentication (Auth0) and Frontend (React) and Backend (Node.js)
+     * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
+  * Frontend Deployment (Netlify & Vite) and Users
+     * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
+  * Backend Deployment (Render) and Frontend & Database
+     * Render will host backend logic for the frontend and database to interact with.
+  
+<br>
+
+* **Assumptions**
+  * WebSpeech API Will Accurately Process Commands
+    * Assumption: The WebSpeech API will correctly interpret voice commands
+    * Justification: Although voice recognition technology has advanced, performance may still be impacted by elements including background noise, accents, and speech clarity. Manual input and error handling act as mitigating measures.
+  * MongoDB Can Handle Dynamic and Scalable Data
+    * Assumption: MongoDB will accommodate an expanding user base while managing structured and unstructured data effectively.
+    * Justification: Because MongoDB is a flexible NoSQL database, it can grow with the system without being constrained by rigid schemas.
+  * AI Task Recommendations Will Improve User Experience
+    * Assumption: AI-powered suggestions (using Hugging Face) will provide relevant and helpful task recommendations.
+    * Justification: The AI model makes the assumption that there is sufficient task data from the past to generate relevant predictions. The accuracy of recommendations may suffer if users have insufficient history.
+  * Authentication via Auth0 Will Be Secure and Reliable
+    * Assumption: Auth0 will provide secure, seamless authentication across devices.
+    * Justification: Third-party authentication services like Auth0 are trusted for handling OAuth logins and security, reducing development overhead.
+  * Hosting Services (Netlify & Render) Will Provide Stable Deployment
+    * Assumption: Netlify (Frontend) and Render (Backend) will offer reliable uptime and performance.
+    * Justification: These platforms are widely used for web applications and include free tiers, but scalability issues may arise with high traffic.
+  * Users Will Want Cross-Device Accessibility
+    * Assumption: Users will want to access their to-do lists from multiple devices.
+    * Justification: A cloud-based approach ensures synchronization across desktops and mobile devices, making the system more convenient.
+
+<br>
+
 ### Software Design
 
 * **Speech Recognition Component**
@@ -964,13 +1004,110 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 - **Mitigation Plan (If it Occurs):**  
   - Implement **fallback manual input methods**.
   - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
-- **🔄 Changes Since Requirements Document:**  
+- **Changes Since Requirements Document:**  
   - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
-  
+
+  ### 2️ Risk: Backend & Database Integration Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - The backend must support **real-time task updates** across devices.
+  - MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
+  - API failures could lead to **data inconsistencies** (e.g., task duplication).
+- **Mitigation Steps:**
+  - Define **clear API endpoints** and test early.
+  - Implement **database indexing** for performance optimization.
+  - Use **MongoDB transactions** to prevent inconsistent task states.
+- **Detection Plan:**  
+  - Write **unit tests** for database operations.
+  - Use **Postman & Jest** for API testing.
+- **Mitigation Plan (If it Occurs):**  
+  - Implement **logging and error recovery** (e.g., retry failed database operations).
+  - **Backup task data** to prevent loss.
+- **Changes Since Requirements Document:**  
+  - More emphasis on **testing and database integrity checks**.
+
+  ### 3️ Risk: User Adoption & Accessibility Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - Users may struggle with **speech-based navigation**.
+  - Accessibility concerns for **speech-impaired users**.
+  - Some users may prefer **keyboard/mouse over voice input**.
+- **Mitigation Steps:**
+  - Design **multi-modal interaction** (support both speech and manual inputs).
+  - Ensure compliance with **WCAG 2.1 accessibility guidelines**.
+  - Gather **early user feedback** via surveys and beta testing.
+- **Detection Plan:**  
+  - **Track feature usage** (e.g., how often users switch to manual input).
+  - **Monitor support requests** related to accessibility.
+- **Mitigation Plan (If it Occurs):**  
+  - Offer **customizable input options**.
+  - Introduce **keyboard shortcuts** for key functionalities.
+- **Changes Since Requirements Document:**  
+  - Added **manual fallback options** and ensured **accessibility compliance**.
+
+
+### 4️ Risk: AI Task Recommendation Limitations
+- **Likelihood:** **High**
+- **Impact:** **Medium**
+- **Evidence:**
+  - AI recommendations rely on **user task history**.
+  - Poor dataset or limited data can lead to **irrelevant suggestions**.
+  - AI models might **misinterpret** user needs.
+- **Mitigation Steps:**
+  - Allow users to **provide feedback on AI suggestions**.
+  - Use **a mix of rule-based logic and AI** for better recommendations.
+  - Store **user preferences** to fine-tune AI behavior.
+- **Detection Plan:**  
+  - Track **AI-generated task acceptance rates**.
+  - Monitor **user-reported errors** in AI recommendations.
+- **Mitigation Plan (If it Occurs):**  
+  - **Refine the AI model** based on real-world data.
+  - Implement a **"smart filter"** to eliminate irrelevant tasks.
+- **Changes Since Requirements Document:**  
+  - Added **feedback collection mechanism** to refine AI suggestions.
+
+### 5️ Risk: Deployment & Hosting Challenges
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - Need to support **frontend (Netlify)** and **backend (Render)** hosting.
+  - Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
+  - Risk of **downtime or unexpected hosting costs**.
+- **Mitigation Steps:**
+  - Use **logging & monitoring tools** (e.g., PM2 for Node.js).
+  - Keep **database queries optimized** to minimize API calls.
+  - Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
+- **Detection Plan:**  
+  - Monitor **server logs** for errors or high resource usage.
+  - Implement **uptime monitoring tools** (e.g., UptimeRobot).
+- **Mitigation Plan (If it Occurs):**  
+  - Migrate to **a more scalable hosting provider** if needed.
+  - Implement **rate limiting & caching** to reduce API load.
+- **Changes Since Requirements Document:**  
+  - More emphasis on **scalability** and **backup hosting solutions**.
+
 <br>
 
 * Project Schedule
   * Notable conflicts and updates to our schedule are what features are dependant on others being done to be completed.  Specifically, features that interface with the database need to have the database set up, and back-end support before they can be functional.  Other than this, there have been no changes to the schedule.
+  * Before implementing the frontend: UI design, API design, and basic backend setup.
+  * Before implementing the backend: Database design and frontend design.
+  * Before implementing the database: Backend to make sure data is being stored correctly.
+  * Before testing frontend/backend: Frontend-backend interaction must be functional.
+  * Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
+ 
+  * 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
+ 
+| Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
+| --------------------|------|------|------|------|------|------|------|------ |
+| Front End           | Design Navigation (1)|Start front-end implementation (2) |Test and connect front-end calls to back-end(2)|Implement API to front-end calls(1)|Develop user feedback features(1)|Implement other features (such as notifications)(2)|Finalizing and testing(1)|Deploy and finish documentation(1)|
+| Back End            | Design for communication with WebSpeechAPI completed(1)|List of commands and functions determined(1)|WebSpeechAPI coded into backend(2)|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready(1)|TalkTask web page completed, deployed and being maintained(1)|
+| UI/UX               |UI Sketches(1)|Draft Figma wireframe UI design(1)|Incorporate group feedback, draft designs for all UI elements/pages(2)|Visual styling decided, Unique visual assets generated(1)|Preliminary front end implemented with front end developers(2)|Test UI functionality for revisions(1)|Make final changes for UI design and assets(1)|Verify UI is functioning and correct(1)|
+| Database            |Design database schema (1)|Set up MongoDB (1)|Configure database for tasks(2)|Implement save, update, and delete functionality (2)|Integrate AI and WebSpeech API with database (2)|Ensure data is correct between backend and database(2) |Testing and ensuring database integrity (2)|Final database testing and deployment (1)|
+| Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.(1)|Files organized in a modularized manner to allow for easier implementation and OO practices.(1)|Database implementation inputs correctly formatted data.(1)|AI and WebSpeech APIs configured and ready for developers.(1)|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.(3)|Continue developing complex features, such as AI and speech recognition implementations.(2)|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.(1)|Run and test finalized product for any underlying bugs or errors.(1)|
+
 <br>
 
 * Team Structure
