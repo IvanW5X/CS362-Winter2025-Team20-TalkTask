@@ -996,7 +996,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
    - **Enforcement**: Use a CSS linter like `stylelint` with a configuration aligned with the Google style guide.
 
 * **MongoDB**
-   - **Guideline**: [MongoDB Best Practices/Style Guide](https://www.mongodb.com/docs/manual/administration/best-practices/)
+   - **Guideline**: [MongoDB Best Practices/Style Guide](https://www.mongodb.com/docs/meta/style-guide/)
    - **Reason**: MongoDB's official documentation provides clear and practical guidelines for database design, indexing, and query optimization.
    - **Enforcement**: Code reviews and manual checks during development to ensure adherence to best practices.
 
