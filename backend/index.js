@@ -6,15 +6,17 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectServers, connectTTDB} from "./server.js";
+import { startServer, connectServers} from "./server.js";
 import { test } from "./services/testSetupAI.js";
 import { connectTTDB } from "./db/connection.js";
 
 async function Initialize () {
     await connectTTDB();
+
     await connectServers();
-    
-    // await test();
+    console.log("Client-Server Connection");
+
+    await test();
 
     startServer();
 

@@ -24,7 +24,7 @@ const inference = new HfInference(AI_API_KEY);
 const model = "";
 
 const testData =
-  "Generate a different suggested task based off the current tasks. Limit to one task only: Study for midterm, finish presentation, sleep";
+  "Given the following tasks: Study for midterm, finish presentation, sleep, generate a single recommended task related to these.";
 
 export const test = async () => {
   console.log("Generating text...");
