@@ -832,60 +832,45 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Speech Commands → Stores voice-based commands
     * User Schema
 
-      | Field       | Type            | Description                     |
-      |-------------|-----------------|---------------------------------|
-      | CustomerID  | Number (Unique) | Unique identifier for each user |
-      | email       | String (Unique) | User email (used for login)     |
-      | password    | String          |                                 |
-      | dob         | Date            | User’s date of birth            |
-      | Fname       | String          | First name                      |
-      | Mname       | String          | Middle name (optional)          |
-      | Lname       | String          | Last name                       |
-      | createdAt   | Date            | Timestamp of user registration  |
-
+    | Field       | Type            | Description                     |
+    |-------------|-----------------|---------------------------------|
+    | CustomerID  | Number (Unique) | Unique identifier for each user |
+    | email       | String (Unique) | User email (used for login)     |
+    | password    | String          |                                 |
+    | dob         | Date            | User’s date of birth            |
+    | Fname       | String          | First name                      |
+    | Mname       | String          | Middle name (optional)          |
+    | Lname       | String          | Last name                       |
+    | createdAt   | Date            | Timestamp of user registration  |
 
     * Task Schema
-      |---------------|-----------------------|---------------------------------------------------|
-      |Field          |Type                   |Description                                        |
-      |---------------|-----------------------|---------------------------------------------------|
-      |taskID         |Number (Unique)        |Unique identifier for each task                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |description    |String                 |Task description                                   |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCreated    |Date                   |Timestamp when task was created                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCompleted  |Date                   |Timestamp when task was completed                  |
-      |---------------|-----------------------|---------------------------------------------------|
-      |recurringDate  |Date                   |If the task repeats, its recurrence date           |
-      |---------------|-----------------------|---------------------------------------------------|
-      |priority       |Number                 |Priority level (1-5)                               |
-      |---------------|-----------------------|---------------------------------------------------|
-      |status         |String                 |Task status (pending, in-progress, completed)      |
-      |---------------|-----------------------|---------------------------------------------------|
-      |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
-      |---------------|-----------------------|---------------------------------------------------|
+
+    |Field          |Type                   |Description                                        |
+    |---------------|-----------------------|---------------------------------------------------|
+    |taskID         |Number (Unique)        |Unique identifier for each task                    |
+    |description    |String                 |Task description                                   |
+    |dateCreated    |Date                   |Timestamp when task was created                    |
+    |dateCompleted  |Date                   |Timestamp when task was completed                  |
+    |recurringDate  |Date                   |If the task repeats, its recurrence date           |
+    |priority       |Number                 |Priority level (1-5)                               |
+    |status         |String                 |Task status (pending, in-progress, completed)      |
+    |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
 
     * Reminder Schema
-    |--------------|------------------------|-----------------------------------------|
+
     |Field         |Type                    |Description                              |
     |--------------|------------------------|-----------------------------------------|
     |reminderID    |Number (Unique)         |Unique identifier for the reminder       |
-    |--------------|------------------------|-----------------------------------------|
     |taskID        |ObjectId (Ref: tasks)   |Links to the task this reminder is for   |
-    |--------------|------------------------|-----------------------------------------|
     |reminderDate  |Date                    |When the reminder should trigger         |
-    |--------------|------------------------|-----------------------------------------|
 
     * Speech Command Schema
-    |-------------|-----------------------|--------------------------------------|
+
     |Field        |Type                   |Description                           |
     |-------------|-----------------------|--------------------------------------|
     |commandID    |Number (Unique)        |Unique identifier for each command    |
-    |-------------|-----------------------|--------------------------------------|
     |commandText  |String                 |The spoken command text               |
-    |-------------|-----------------------|--------------------------------------|
     |CustomerID   |ObjectId (Ref: users)  |Links command to a specific user      |
-    |-------------|-----------------------|--------------------------------------|
 
     * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
@@ -1200,7 +1185,5 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
 * **Developer Guide**
   * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
-* **Admin Guides**
-  * 
 
 <br>
