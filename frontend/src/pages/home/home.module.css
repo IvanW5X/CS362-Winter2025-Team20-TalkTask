@@ -9,22 +9,21 @@
 
 .curvedsquares {
     background-color: #fff;
-    border-color: green;
-    border-style: solid;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 0px 0px 15px 15px;
     text-align: left;
+    height: 100vh;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: lime;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 2px 0px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 10%;
+    width: 15vw;
 }
 
 button a {
