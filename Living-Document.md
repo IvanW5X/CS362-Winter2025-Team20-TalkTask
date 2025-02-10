@@ -1141,7 +1141,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * Test Plan and Bugs
   * Notable Tests By Week
     * Database:
-      * Week 4: Can preform simple SQL operations on non-recurring task related tables through the command line.
+      * Week 4: Can preform simple CRUD operations on non-recurring task related tables through the command line.
       * Week 5: Full suite of test cases for CRUD operations on the non-recurring task related tables.
       * Week 6: Full suite of test cases for OAuth functionality
       * Week 7: Full suite of test cases for recurring test cases
