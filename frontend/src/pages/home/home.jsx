@@ -10,6 +10,7 @@ import styles from "./home.module.css";
 import { Tasks } from "../../components/tasks/tasks";
 import { Link } from "react-router-dom";
 
+/*
 function MyTask () {
     return (
         <div className={styles.tasksquare}>
@@ -36,12 +37,13 @@ function MyTask () {
         </div>
     );
 }
+*/
 
 export const Home = () => {
     return (
         <div className={styles.curvedsquares}>
             
-            <MyTask />
+            <Tasks />
 
 
         </div>
