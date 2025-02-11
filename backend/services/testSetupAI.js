@@ -19,14 +19,12 @@ const AI_API_KEY = process.env.AI_API_KEY;
 // Initialize Hugging Face Inference class
 const inference = new HfInference(AI_API_KEY);
 
-// DeepSeek was too big for the free account :(
-// If no model specified, Hugging Face picks one for you, kinda nice
-const model = "";
+const model = "mistralai/Mistral-7B-Instruct-v0.2";
 
 const testData =
-  "Given the following tasks: Study for midterm, finish presentation, sleep, generate a single recommended task related to these.";
+  "I am an AI model that takes in a list of tasks to produce a single suggested task.";
 
-export const test = async () => {
+export const setupAI = async () => {
   console.log("Generating text...");
 
   // Get output
@@ -36,7 +34,24 @@ export const test = async () => {
       inputs: testData,
     });
     console.log(`${result.generated_text || result[0]?.generated_text}`);
+    return result.generated_text || result[0]?.generated_text;
+  
   } catch (error) {
-    console.log("Failed to fetch test output from AI model.");
+    console.log(error);
+    return "Failed to generte task."
   }
+};
+
+const list = "Finish presentation, study midterm, go to the gym.";
+
+export const test = async () => {
+  try {
+    const result = await inference.textGeneration ({
+      inputs: list,
+    });
+    console.log(`${result.generated_text || result[0]?.generated_text}`);
+  } catch (error) {
+    console.log(error);
+  }
+
 };

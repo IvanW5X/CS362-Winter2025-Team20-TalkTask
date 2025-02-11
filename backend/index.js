@@ -7,19 +7,20 @@
  ********************************************************************/
 
 import { startServer, connectServers} from "./server.js";
-import { test } from "./services/testSetupAI.js";
+import { setupAI, test } from "./services/testSetupAI.js";
 import { connectTTDB } from "./db/connection.js";
 
 async function Initialize () {
-    await connectTTDB();
+    // await connectTTDB();
 
     await connectServers();
     console.log("Client-Server Connection");
 
-    await test();
-
     startServer();
-
+    
+    await setupAI();
+    console.log("\n\n");
+    await test();
 }
 
 Initialize();

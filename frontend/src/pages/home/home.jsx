@@ -11,10 +11,8 @@ import { Navbar } from "../../components/navbar/navbar";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Tasks } from "../../components/tasks/tasks";
 
-
 //testing button
 import { recognition } from "../../services/webSpeech";
-
 
 export const Home = () => {
     const [isListening, setIsListening] = useState(false);
