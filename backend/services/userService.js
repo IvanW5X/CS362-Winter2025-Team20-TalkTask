@@ -13,6 +13,14 @@ export const createUser = async (userData) => {
 
 
 // Read A User
+export const getUser = async (userID) => {
+    try {
+        const user = await User.findById(userID);
+        return user;
+    } catch (error) {
+        throw new Error("Error getting user: " + error.message);
+    }
+};
 
 // Update A User
 
