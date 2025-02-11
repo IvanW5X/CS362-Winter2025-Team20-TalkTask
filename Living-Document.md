@@ -905,6 +905,12 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 <br>
 
+
+![Image of the the level 3 architecture To-Do list input](assignments/To-Do_List_Input_Architecture.png "To-Do List Input")
+![Image of the the level 3 architecture Voice Input](assignments/Voice_Input_Architecture.png "Voice Input")
+![Image of the the level 3 architecture To-Do List Processing](assignments/To-Do_List_Processing_Architecture.png "To-Do List Processing")
+![Image of the the level 3 architecture Suggest A Task](assignments/Suggest-A-Task_Architecture.png "Suggest A Task")
+
 * **Interfaces**
   * Frontend (React) and Backend (Node.js)
      * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
