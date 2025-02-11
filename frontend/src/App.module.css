@@ -6,6 +6,7 @@
  ********************************************************************/
  
 @import "./variables.css";
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
 .App {
     background-color: white;
@@ -16,7 +17,7 @@
 
 .curvedsquare {
     display: flex;
-    padding: 8px 100px;
+    padding: 15px 777px 14px 150px;
     width: vw;
     height: 69px;
     flex-shrink: 0;
