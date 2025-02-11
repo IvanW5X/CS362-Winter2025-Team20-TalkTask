@@ -6,10 +6,10 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectTTDB} from "./server.js";
-
+import { startServer, connectServers} from "./server.js";
+import { connectTTDB } from "./db/connection.js";
 connectTTDB();
 
-connectServer();
+connectServers();
 
 startServer();

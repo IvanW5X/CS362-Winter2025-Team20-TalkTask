@@ -26,6 +26,7 @@
 * [Cors](https://expressjs.com/en/resources/middleware/cors.html)
 * [dotenv](https://www.dotenv.org/blog/2023/03/13/how-to-use-dotenv.html)
 * [Render](https://render.com/docs)
+* [Auth0](https://auth0.com/docs/api)
 
 ## Communication Channels
 
