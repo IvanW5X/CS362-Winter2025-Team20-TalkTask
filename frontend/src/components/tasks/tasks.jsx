@@ -9,8 +9,50 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
-//*this is commented out due to the backend not being started yet which causes an error in the display.
-//const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
+export const Tasks = () => {
+    return (
+        <div className={styles.tasksquare}>
+            <div className={styles.tasklabel}>
+                <h2>Tasks</h2>
+            </div>
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Get data from server, add try/catch later with tasks data
 const fetchTest = async (setTestArray) => {
@@ -31,7 +73,7 @@ export const Tasks = () => {
   }, []);
 
   return (
-    <section className={styles.tasks}>
+    <section className={styles.container}>
       <h2>Tasks</h2>
       {testArray.map((data, key) => {
         // Loop through testArray
@@ -45,3 +87,4 @@ export const Tasks = () => {
     </section>
   );
 };
+*/

@@ -9,9 +9,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
-import { Navbar } from "./components/navbar/navbar";
-import { Tasks } from "./components/tasks/tasks";
-import { About } from "./pages/about/about";
+
 
 
 
@@ -27,9 +25,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route className={styles.curvedsquare} path="/navbar" element={<Navbar />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </div>
