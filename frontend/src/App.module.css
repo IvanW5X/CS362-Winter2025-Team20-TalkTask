@@ -10,3 +10,13 @@
 .App {
     background-color: var(--background-color);
 }
+
+img{
+    width: 112px;
+    height: 64px;
+    flex-shrink: 0;
+    aspect-ratio: 7/4;
+    padding: 3px 771px 184px px;
+}
+
+/*184px 3px 771px 2px;*/
