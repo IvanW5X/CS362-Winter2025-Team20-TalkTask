@@ -10,3 +10,70 @@
 .container {
     width: 100%;
 }
+
+
+
+.tasksquare {
+    background-color: #cdcdcd;
+    text-align: center;
+    color: white;
+    padding: 14px 20px;
+    margin: 2px 0px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 474px;
+    align-items: stretch;
+    flex-shrink: 0;
+}
+
+.tasklabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 8px 12px;
+    width: 434px;
+    min-width: 150px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.tasklabel span {
+    flex-grow: 1;
+}
+
+.tasklist {
+    text-align: center;
+    margin: 10px 10px 10px 0px;
+    width: 434px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    color: black;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+p {
+    display: flex;
+    width: 136px;
+    height: 26px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

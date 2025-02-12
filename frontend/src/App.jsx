@@ -10,14 +10,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
 
+
+
+
 // Implement funcitonality for displaying about page or user home page; based on if user logged in
   // Use local storage/cookies and Routes for this
 
 function App() {
   return (
     <div className={styles.App}>
-      <h1>Hello TalkTask</h1>
-      <Home />
+      <div className={styles.curvedsquare}>
+        <h1>TalkTask</h1>
+      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
