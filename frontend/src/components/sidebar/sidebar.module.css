@@ -1,8 +1,84 @@
 /********************************************************************
- * File Name: sidebar.jsx
+ * File Name: sidebar.module.css
  * Date: 1/26/2025
- * Description: 
+ * Description: CSS Style Sheet for Sidebar
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
 @import "../../variables.css";
+
+.sidebar {
+    width: 200px;
+    height: 80vh;
+    border-radius: 0px 0px 0px 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.menuIcon {
+    width: 40px;
+    height: 40px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 30V26.6667H35V30H5ZM5 21.6667V18.3333H35V21.6667H5ZM5 13.3333V10H35V13.3333H5Z" fill="black"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.sidebarList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebarItem {
+    padding: 10px;
+    font-size: 10px;
+    color: #000;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #E5E5E5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebarItem:hover {
+    background: #D0D0D0;
+}
+
+.subMenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    display: none;
+}
+
+/* Each task group should be alternating colors */
+.subMenu li {
+    background: #E5E5E5;
+    margin-left: -20px;
+    padding-left: 20px;
+}
+
+.subMenu li:nth-child(odd) {
+    background: #FFF;
+}
+
+.subMenu li:nth-child(even) {
+    background: #DFDFDF;
+}
+
+.show {
+    display: block;
+}
+
+.plusIcon {
+    font-size: 18px;
+    font-weight: bold;
+}
