@@ -39,6 +39,8 @@ function MyTask () {
 }
 */
 
+
+/* add <Sidebar /> curved squares class to see the sidebar */
 export const Home = () => {
     return (
         <div className={styles.curvedsquares}>

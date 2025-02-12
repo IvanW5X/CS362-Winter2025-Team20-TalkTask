@@ -905,11 +905,30 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 <br>
 
+* **General Architecture**
+![General Architecture](assignments/General-Architecture.PNG)
 
-![Image of the the level 3 architecture To-Do list input](assignments/To-Do_List_Input_Architecture.png "To-Do List Input")
-![Image of the the level 3 architecture Voice Input](assignments/Voice_Input_Architecture.png "Voice Input")
-![Image of the the level 3 architecture To-Do List Processing](assignments/To-Do_List_Processing_Architecture.png "To-Do List Processing")
-![Image of the the level 3 architecture Suggest A Task](assignments/Suggest-A-Task_Architecture.png "Suggest A Task")
+* **User Login Architecture**
+![User Login Architecture](assignments/User-Login-Arch.PNG)
+
+* **Backend Architecture**
+![Backend Architecture](assignments/Backend-Database-Arch.PNG)
+
+* **Backend-Database Architecture**
+![Backend-Database Architecture](assignments/Backend-Database-Arch.PNG)
+
+* **Todo List Input Architecture**
+![Todo List Input Architecture](assignments/Todo-List-Input.PNG)
+
+* **Voice Input Architecture**
+![Voice Input](assignments/Voice_Input_Architecture.png)
+
+* **Todo List Processing Architecture**
+![Todo List Processing Architecture](assignments/To-Do_List_Processing_Architecture.PNG)
+
+* **Suggest a Task Architecture**
+![Suggest a Task Architecture](assignments/Suggest-A-Task_Architecture.png)
+
 
 * **Interfaces**
   * Frontend (React) and Backend (Node.js)
