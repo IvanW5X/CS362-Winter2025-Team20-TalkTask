@@ -16,7 +16,7 @@ import { Calendar } from "../../components/calendar/calendar";
 /* add <Sidebar /> curved squares class to see the sidebar */
 export const Home = () => {
     return (
-        <div>
+        <div className={styles.curvedsquares}>
             <Calendar />
             <Tasks />
         </div>

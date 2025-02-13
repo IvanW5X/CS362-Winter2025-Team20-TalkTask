@@ -12,7 +12,9 @@
     padding: 20px;
     border-radius: 0px 0px 15px 15px;
     text-align: left;
-    height: 92vh;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -24,6 +26,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
     width: 15vw;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: darkgreen;
 }
 
 button a {

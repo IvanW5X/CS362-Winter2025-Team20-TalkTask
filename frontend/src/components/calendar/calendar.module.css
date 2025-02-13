@@ -8,22 +8,107 @@
 @import "../../variables.css";
 
 
+@import "../../variables.css";
 
-.calendar {
-    text-align: center;
-    width: 873px;
-    height: 69px;
-    flex-shrink: 0;
-    margin: 10px 170px;
-    background-color: red;
+.calendarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
 }
 
-.calendar h1 {
-    color: #000;
+.dates {
+    display: flex;
+    gap: 22px;
+}
+
+.dateButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 67px;
+    height: 81px;
+    border: none;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: bold;
+    box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.25);
+    transition: background 0.3s;
+}
+
+.dateButton:hover {
+    background: #e0e0e0;
+}
+
+.selected {
+    background: #37E03A;
+    color: white;
+}
+
+.date {
     text-align: center;
+    width: 36px;
+    height: 33px;
+    font-weight: bold;
+    color: #000;
     font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
+    font-size: 27px;
     font-weight: 800;
+    font-style: normal;
     line-height: normal;
+}
+
+.day {
+    text-align: center;
+    width: 33px;
+    height: 18px;
+    font-size: 15px;
+    color: #000;
+    font-family: Inter;
+    font-weight: 500;
+    font-style: normal;
+    line-height: normal;
+}
+
+.month {
+    text-align: center;
+    width: 27px;
+    height: 18px;
+    font-size: 15px;
+    color: #000;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.navButton {
+    margin: 15px;
+    background: white;
+    color: black;
+    border: none;
+    width: 50px;
+    height: 50px;
+    /* Keep the circle's size the same */
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navButton::before {
+    display:inline-block;
+    /* Set font size of the arrow */
+    transform: scaleY(4);
+    /* Make the arrow taller */
 }
