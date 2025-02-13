@@ -23,5 +23,21 @@ export const getUser = async (userID) => {
 };
 
 // Update A User
+export const updateUser = async (userID, updateData) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(userID, updateData, { new: true });
+        return updatedUser;
+    } catch (error) {
+        throw new Error("Error updating user: " + error.message);
+    }
+};
 
 // Delete A User
+export const deleteUser = async (userID) => {
+    try {
+        await User.findByIdAndDelete(userID);
+        return { message: "User deleted successfully" };
+    } catch (error) {
+        throw new Error("Error deleting user: " + error.message);
+    }
+};
