@@ -11,30 +11,44 @@ import axios from "axios";
 
 
 
-export const Tasks = () => {
+
+
+export const Tasks = ({userId}) => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/tasks");
+        setTasks(response.data);
+      } catch (error) {
+        console.log("Error getting data", error);
+      }
+    };
+
+    fetchTasks();
+  }, [userId]);
+
+
     return (
-        <div className={styles.tasksquare}>
-            <div className={styles.tasklabel}>
-                <h2>Tasks</h2>
-            </div>
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-        </div>
+      <div className={styles.tasksquare}>
+          <div className={styles.tasklabel}>
+              <h2>Tasks</h2>
+          </div>
+          <div className={styles.tasklist}>
+            {tasks.length > 0 ? (
+              tasks.map(task => ( 
+                <div key={task.taskID}>
+                  <p>{task.description} ({task.status})</p>
+                  <button onClick={() => handleStatusUpdate(task.taskID, 'completed')}>Complete</button>
+                  <button onClick={() => handleDelete(task.taskID)}>Delete</button>
+                </div>
+              ))
+        ) : (
+          <p>No tasks found</p>
+        )}
+          </div>
+      </div>
     );
 }
 

@@ -6,7 +6,6 @@
  ********************************************************************/
 
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
 import logo from "../assets/TalkTaskLogo1.png"
@@ -23,11 +22,7 @@ function App() {
       <div className={styles.curvedsquare}>
         <img src={logo} alt="TalkTask Logo" />
       </div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <Home />
     </div>
   );
 }

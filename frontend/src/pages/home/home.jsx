@@ -8,46 +8,17 @@
 import React from "react";
 import styles from "./home.module.css";
 import { Tasks } from "../../components/tasks/tasks";
-import { Link } from "react-router-dom";
-
-/*
-function MyTask () {
-    return (
-        <div className={styles.tasksquare}>
-            <div className={styles.tasklabel}>
-                <h2>Tasks</h2>
-            </div>
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-        </div>
-    );
-}
-*/
+import { Sidebar } from "../../components/sidebar/sidebar";
+import { Calendar } from "../../components/calendar/calendar";
+//import { Link } from "react-router-dom";
 
 
 /* add <Sidebar /> curved squares class to see the sidebar */
 export const Home = () => {
     return (
-        <div className={styles.curvedsquares}>
-            
+        <div>
+            <Calendar />
             <Tasks />
-
-
         </div>
     );
 };

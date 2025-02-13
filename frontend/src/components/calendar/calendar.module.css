@@ -1,0 +1,29 @@
+/********************************************************************
+ * File Name: calendar.module.css
+ * Date: 2/12/2025
+ * Description: Module CSS file for calendar
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+@import "../../variables.css";
+
+
+
+.calendar {
+    text-align: center;
+    width: 873px;
+    height: 69px;
+    flex-shrink: 0;
+    margin: 10px 170px;
+    background-color: red;
+}
+
+.calendar h1 {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
