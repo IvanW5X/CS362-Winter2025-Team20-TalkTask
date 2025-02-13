@@ -14,6 +14,10 @@ import { Calendar } from "../../components/calendar/calendar";
 
 
 /* add <Sidebar /> curved squares class to see the sidebar */
+/* Make sure to add in this order for proper spacing:
+<Navbar />
+<Sidebar />
+*/
 export const Home = () => {
     return (
         <div className={styles.curvedsquares}>

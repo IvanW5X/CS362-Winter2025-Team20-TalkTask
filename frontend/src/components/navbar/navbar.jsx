@@ -19,20 +19,14 @@ export const Navbar = () => {
       .catch((error) => console.error("Error fetching navigation links:", error)); //error handling
   }, []);
 
-  return (
-    <nav className={styles.navbar}>
-      <h2>Navbar</h2>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-
-        {/* Navigation for API */}
-        {apiLinks.map((link) => (
-          <li key={link.id}>
-            <Link to={`/dynamic/${link.id}`}>{link.name}</Link>
-          </li>
-        ))}
-      </ul>
+ return (
+    <nav className={styles.menuIcon}>
+      <div className={styles.menuIcon}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </nav>
   );
 };
+
