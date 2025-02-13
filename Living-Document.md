@@ -832,60 +832,45 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Speech Commands → Stores voice-based commands
     * User Schema
 
-      | Field       | Type            | Description                     |
-      |-------------|-----------------|---------------------------------|
-      | CustomerID  | Number (Unique) | Unique identifier for each user |
-      | email       | String (Unique) | User email (used for login)     |
-      | password    | String          |                                 |
-      | dob         | Date            | User’s date of birth            |
-      | Fname       | String          | First name                      |
-      | Mname       | String          | Middle name (optional)          |
-      | Lname       | String          | Last name                       |
-      | createdAt   | Date            | Timestamp of user registration  |
-
+    | Field       | Type            | Description                     |
+    |-------------|-----------------|---------------------------------|
+    | CustomerID  | Number (Unique) | Unique identifier for each user |
+    | email       | String (Unique) | User email (used for login)     |
+    | password    | String          |                                 |
+    | dob         | Date            | User’s date of birth            |
+    | Fname       | String          | First name                      |
+    | Mname       | String          | Middle name (optional)          |
+    | Lname       | String          | Last name                       |
+    | createdAt   | Date            | Timestamp of user registration  |
 
     * Task Schema
-      |---------------|-----------------------|---------------------------------------------------|
-      |Field          |Type                   |Description                                        |
-      |---------------|-----------------------|---------------------------------------------------|
-      |taskID         |Number (Unique)        |Unique identifier for each task                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |description    |String                 |Task description                                   |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCreated    |Date                   |Timestamp when task was created                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCompleted  |Date                   |Timestamp when task was completed                  |
-      |---------------|-----------------------|---------------------------------------------------|
-      |recurringDate  |Date                   |If the task repeats, its recurrence date           |
-      |---------------|-----------------------|---------------------------------------------------|
-      |priority       |Number                 |Priority level (1-5)                               |
-      |---------------|-----------------------|---------------------------------------------------|
-      |status         |String                 |Task status (pending, in-progress, completed)      |
-      |---------------|-----------------------|---------------------------------------------------|
-      |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
-      |---------------|-----------------------|---------------------------------------------------|
+
+    |Field          |Type                   |Description                                        |
+    |---------------|-----------------------|---------------------------------------------------|
+    |taskID         |Number (Unique)        |Unique identifier for each task                    |
+    |description    |String                 |Task description                                   |
+    |dateCreated    |Date                   |Timestamp when task was created                    |
+    |dateCompleted  |Date                   |Timestamp when task was completed                  |
+    |recurringDate  |Date                   |If the task repeats, its recurrence date           |
+    |priority       |Number                 |Priority level (1-5)                               |
+    |status         |String                 |Task status (pending, in-progress, completed)      |
+    |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
 
     * Reminder Schema
-    |--------------|------------------------|-----------------------------------------|
+
     |Field         |Type                    |Description                              |
     |--------------|------------------------|-----------------------------------------|
     |reminderID    |Number (Unique)         |Unique identifier for the reminder       |
-    |--------------|------------------------|-----------------------------------------|
     |taskID        |ObjectId (Ref: tasks)   |Links to the task this reminder is for   |
-    |--------------|------------------------|-----------------------------------------|
     |reminderDate  |Date                    |When the reminder should trigger         |
-    |--------------|------------------------|-----------------------------------------|
 
     * Speech Command Schema
-    |-------------|-----------------------|--------------------------------------|
+
     |Field        |Type                   |Description                           |
     |-------------|-----------------------|--------------------------------------|
     |commandID    |Number (Unique)        |Unique identifier for each command    |
-    |-------------|-----------------------|--------------------------------------|
     |commandText  |String                 |The spoken command text               |
-    |-------------|-----------------------|--------------------------------------|
     |CustomerID   |ObjectId (Ref: users)  |Links command to a specific user      |
-    |-------------|-----------------------|--------------------------------------|
 
     * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
@@ -921,6 +906,31 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * No built in querying: Difficult to filter, search, and sort efficiently.
 
 <br>
+
+* **General Architecture**
+![General Architecture](assignments/architectures/General-Architecture.PNG)
+
+* **User Login Architecture**
+![User Login Architecture](assignments/architectures/User-Login-Arch.PNG)
+
+* **Backend Architecture**
+![Backend Architecture](assignments/architectures/Backend-Database-Arch.PNG)
+
+* **Backend-Database Architecture**
+![Backend-Database Architecture](assignments/architectures/Backend-Database-Arch.PNG)
+
+* **Todo List Input Architecture**
+![Todo List Input Architecture](assignments/architectures/Todo-List-Input.PNG)
+
+* **Voice Input Architecture**
+![Voice Input](assignments/architectures/Voice_Input_Architecture.png)
+
+* **Todo List Processing Architecture**
+![Todo List Processing Architecture](assignments/architectures/To-Do_List_Processing_Architecture.PNG)
+
+* **Suggest a Task Architecture**
+![Suggest a Task Architecture](assignments/architectures/Suggest-A-Task_Architecture.png)
+
 
 * **Interfaces**
   * Frontend (React) and Backend (Node.js)
@@ -1026,68 +1036,71 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * Risk Assessment
 ### 1️ Risk: Speech Recognition Accuracy Issues
-- **Likelihood:** **High**
-- **Impact:** **High**
-- **Evidence:**
-  - Speech recognition models struggle with different accents, background noise, and ambiguous commands.
-  - WebSpeech API has limitations, such as requiring internet access and limited offline support.
-  - User testing in different environments exposes inconsistent recognition rates.
-- **Mitigation Steps:**
-  - Conduct **usability testing** with diverse users.
-  - Implement **error handling & retry mechanisms** for unclear commands.
-  - Allow **manual task editing** in case of recognition failure.
-  - Use **AI-powered NLP** to interpret voice commands more flexibly.
-- **Detection Plan:**  
-  - Implement **logging for failed speech-to-text conversions**.
-  - Track **user feedback** for misrecognized commands.
-- **Mitigation Plan (If it Occurs):**  
-  - Implement **fallback manual input methods**.
-  - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
-- **Changes Since Requirements Document:**  
-  - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
 
-  ### 2️ Risk: Backend & Database Integration Issues
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - The backend must support **real-time task updates** across devices.
-  - MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
-  - API failures could lead to **data inconsistencies** (e.g., task duplication).
-- **Mitigation Steps:**
-  - Define **clear API endpoints** and test early.
-  - Implement **database indexing** for performance optimization.
-  - Use **MongoDB transactions** to prevent inconsistent task states.
-- **Detection Plan:**  
-  - Write **unit tests** for database operations.
-  - Use **Postman & Jest** for API testing.
-- **Mitigation Plan (If it Occurs):**  
-  - Implement **logging and error recovery** (e.g., retry failed database operations).
-  - **Backup task data** to prevent loss.
-- **Changes Since Requirements Document:**  
-  - More emphasis on **testing and database integrity checks**.
+* **Likelihood:** **High**
+* **Impact:** **High**
+* **Evidence:**
+  * Speech recognition models struggle with different accents, background noise, and ambiguous commands.
+  * WebSpeech API has limitations, such as requiring internet access and limited offline support.
+  * User testing in different environments exposes inconsistent recognition rates.
+* **Mitigation Steps:**
+  * Conduct **usability testing** with diverse users.
+  * Implement **error handling & retry mechanisms** for unclear commands.
+  * Allow **manual task editing** in case of recognition failure.
+  * Use **AI*powered NLP** to interpret voice commands more flexibly.
+* **Detection Plan:**  
+  * Implement **logging for failed speech-to-text conversions**.
+  * Track **user feedback** for misrecognized commands.
+* **Mitigation Plan (If it Occurs):**  
+  * Implement **fallback manual input methods**.
+  * Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
+* **Changes Since Requirements Document:**  
+  * Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
 
-  ### 3️ Risk: User Adoption & Accessibility Issues
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - Users may struggle with **speech-based navigation**.
-  - Accessibility concerns for **speech-impaired users**.
-  - Some users may prefer **keyboard/mouse over voice input**.
-- **Mitigation Steps:**
-  - Design **multi-modal interaction** (support both speech and manual inputs).
-  - Ensure compliance with **WCAG 2.1 accessibility guidelines**.
-  - Gather **early user feedback** via surveys and beta testing.
-- **Detection Plan:**  
-  - **Track feature usage** (e.g., how often users switch to manual input).
-  - **Monitor support requests** related to accessibility.
-- **Mitigation Plan (If it Occurs):**  
-  - Offer **customizable input options**.
-  - Introduce **keyboard shortcuts** for key functionalities.
-- **Changes Since Requirements Document:**  
-  - Added **manual fallback options** and ensured **accessibility compliance**.
+### 2️ Risk: Backend & Database Integration Issues
 
+* **Likelihood:** **Medium**
+* **Impact:** **High**
+* **Evidence:**
+  * The backend must support **real-time task updates** across devices.
+  * MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
+  * API failures could lead to **data inconsistencies** (e.g., task duplication).
+* **Mitigation Steps:**
+  * Define **clear API endpoints** and test early.
+  * Implement **database indexing** for performance optimization.
+  * Use **MongoDB transactions** to prevent inconsistent task states.
+* **Detection Plan:**  
+  * Write **unit tests** for database operations.
+  * Use **Postman & Jest** for API testing.
+* **Mitigation Plan (If it Occurs):**  
+  * Implement **logging and error recovery** (e.g., retry failed database operations).
+  * **Backup task data** to prevent loss.
+* **Changes Since Requirements Document:**  
+  * More emphasis on **testing and database integrity checks**.
+
+### 3️ Risk: User Adoption & Accessibility Issues
+
+* **Likelihood:** **Medium**
+* **Impact:** **High**
+* **Evidence:**
+  * Users may struggle with **speech-based navigation**.
+  * Accessibility concerns for **speech-impaired users**.
+  * Some users may prefer **keyboard/mouse over voice input**.
+* **Mitigation Steps:**
+  * Design **multi-modal interaction** (support both speech and manual inputs).
+  * Ensure compliance with **WCAG 2.1 accessibility guidelines**.
+  * Gather **early user feedback** via surveys and beta testing.
+* **Detection Plan:**  
+  * **Track feature usage** (e.g., how often users switch to manual input).
+  * **Monitor support requests** related to accessibility.
+* **Mitigation Plan (If it Occurs):**  
+  * Offer **customizable input options**.
+  * Introduce **keyboard shortcuts** for key functionalities.
+* **Changes Since Requirements Document:**  
+  * Added **manual fallback options** and ensured **accessibility compliance**.
 
 ### 4️ Risk: AI Task Recommendation Limitations
+
 - **Likelihood:** **High**
 - **Impact:** **Medium**
 - **Evidence:**
@@ -1108,6 +1121,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   - Added **feedback collection mechanism** to refine AI suggestions.
 
 ### 5️ Risk: Deployment & Hosting Challenges
+
 - **Likelihood:** **Medium**
 - **Impact:** **High**
 - **Evidence:**
@@ -1136,9 +1150,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Before implementing the database: Backend to make sure data is being stored correctly.
   * Before testing frontend/backend: Frontend-backend interaction must be functional.
   * Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
- 
+
   * 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
- 
+
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           | Design Navigation (1)|Start front-end implementation (2) |Test and connect front-end calls to back-end(2)|Implement API to front-end calls(1)|Develop user feedback features(1)|Implement other features (such as notifications)(2)|Finalizing and testing(1)|Deploy and finish documentation(1)|
@@ -1152,7 +1166,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * Test Plan and Bugs
   * Notable Tests By Week
     * Database:
-      * Week 4: Can preform simple SQL operations on non-recurring task related tables through the command line.
+      * Week 4: Can preform simple CRUD operations on non-recurring task related tables through the command line.
       * Week 5: Full suite of test cases for CRUD operations on the non-recurring task related tables.
       * Week 6: Full suite of test cases for OAuth functionality
       * Week 7: Full suite of test cases for recurring test cases
@@ -1200,7 +1214,3 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
 * **Developer Guide**
   * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
-* **Admin Guides**
-  * 
-
-<br>

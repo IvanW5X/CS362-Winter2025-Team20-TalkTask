@@ -17,9 +17,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongodb": "^6.12.0",
-    "mongoose": "^8.9.6"
-  },
-  "devDependencies": {
+    "react-router-dom": "^7.1.4",
+    "mongoose": "^8.9.6",
     "nodemon": "^3.1.9"
   }
 }

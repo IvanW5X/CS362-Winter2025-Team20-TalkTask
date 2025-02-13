@@ -9,6 +9,49 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
+
+
+export const Tasks = () => {
+    return (
+        <div className={styles.tasksquare}>
+            <div className={styles.tasklabel}>
+                <h2>Tasks</h2>
+            </div>
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+
+            <div className={styles.tasklist}>
+                <p>
+                    ataeijt
+                </p>
+            </div>
+        </div>
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Get data from server, add try/catch later with tasks data
@@ -44,3 +87,4 @@ export const Tasks = () => {
     </section>
   );
 };
+*/
