@@ -19,7 +19,7 @@
     display: flex;
     padding: 15px 20px;
     width: 100vw;
-    height: 69px;
+    height: 74px;
     flex-shrink: 0;
     border-radius: 10px 10px 0px 0px;
     background: #37E03A;
@@ -44,15 +44,14 @@ h1 {
 }
 
 .logo {
-    width: 112px;
-    height: 64px;
+    width: 120px;
+    height: 68.4px;
     aspect-ratio: 7/4;
-    margin: 3px 20px;
+    margin: 3px 184px;
 }
 
 .profilePicture {
-    width: 64px;
-    height: 64px;
-    margin: 10px;
+    width: 70px;
+    margin: 26px;
     aspect-ratio: 1/1;
 }

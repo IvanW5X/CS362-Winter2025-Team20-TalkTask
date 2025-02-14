@@ -10,6 +10,23 @@ import styles from "./tasks.module.css";
 import axios from "axios";
 
 
+const handleStatusUpdate = async (taskId, status) => {
+  try {
+    await axios.patch(`http://localhost:5000/tasks/${taskId}`, { status });
+    setTasks(tasks.map(task => task.taskID === taskId ? { ...task, status } : task));
+  } catch (error) {
+    console.error("Error updating task status:", error);
+  }
+};
+
+const handleDelete = async (taskId) => {
+  try {
+    await axios.delete(`http://localhost:5000/tasks/${taskId}`);
+    setTasks(tasks.filter(task => task.taskID !== taskId));
+  } catch (error) {
+    console.error("Error deleting task:", error);
+  }
+};
 
 
 
