@@ -19,13 +19,19 @@ export const connectTTDB = async () => {
         console.log("Successfully connected to MongoDB!");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+    } finally {
+        await client.close();
     }
 };
 
 // Handle graceful shutdown
 process.on("SIGINT", async () => {
-    console.log("\nClosing MongoDB connection...");
-    await client.close();
-    console.log("MongoDB connection closed.");
+    try {
+        console.log("\nClosing MongoDB connection...");
+        await client.close();
+        console.log("MongoDB connection closed.");
+    } catch (error) {
+        console.log("MongoDB already closed...")
+    }
     process.exit(0);
 });
