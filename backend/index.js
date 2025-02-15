@@ -7,9 +7,18 @@
  ********************************************************************/
 
 import { startServer, connectServers} from "./server.js";
+import { suggestTask } from "./services/generateTask.js";
 import { connectTTDB } from "./db/connection.js";
-connectTTDB();
 
-connectServers();
+async function Initialize () {
+    await connectTTDB();
 
-startServer();
+    await connectServers();
+    console.log("Client-Server Connection");
+
+    startServer();
+    
+    //await suggestTask();
+}
+
+Initialize();

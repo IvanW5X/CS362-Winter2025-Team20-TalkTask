@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./home.module.css";
 import { Tasks } from "../../components/tasks/tasks";
 import { Link } from "react-router-dom";
@@ -42,6 +42,19 @@ function MyTask () {
 
 /* add <Sidebar /> curved squares class to see the sidebar */
 export const Home = () => {
+    const [isListening, setIsListening] = useState(false);
+  
+    const toggleMic = () => {
+      if (isListening) {
+        recognition.stop();
+        console.log("Microphone stopped");
+      } else {
+        recognition.start();
+        console.log("Microphone started");
+      }
+      setIsListening(!isListening);
+    };
+  
     return (
         <div className={styles.curvedsquares}>
             
@@ -50,4 +63,4 @@ export const Home = () => {
 
         </div>
     );
-};
+  };
