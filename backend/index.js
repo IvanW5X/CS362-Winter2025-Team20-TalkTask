@@ -7,7 +7,7 @@
  ********************************************************************/
 
 import { startServer, connectServers} from "./server.js";
-import { setupAI, test } from "./services/testSetupAI.js";
+import { test } from "./services/generateTask.js";
 import { connectTTDB } from "./db/connection.js";
 
 async function Initialize () {
@@ -18,8 +18,6 @@ async function Initialize () {
 
     startServer();
     
-    await setupAI();
-    console.log("\n\n");
     await test();
 }
 
