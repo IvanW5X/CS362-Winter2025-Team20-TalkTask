@@ -19,7 +19,7 @@ const genAI = new GoogleGenerativeAI(AI_API_KEY);
 
 // Create tasks and prompt
 const tasks = [ "Cook dinner", "Buy groceries", "Hangout with friends", "Go to the gym", "Practice speech" ];
-const testData = `Here is a list of tasks: \n- ${ tasks.join('\n- ') }\nSuggest one additional related task. Ouput only the task name and a brief description separated by "." Do not include any extra text.`;
+const testData = `Tasks: ${ tasks.join(', ') }\nSuggest one additional related task. Ouput as TaskName-Description. Do not include any extra text.`;
 
 export const suggestTask = async () => {
   try {
@@ -27,19 +27,11 @@ export const suggestTask = async () => {
     const model = genAI.getGenerativeModel({ 
       model: "gemini-2.0-flash"
     });
-    const result = await model.generateContent({
-      // Input prompt for user
-      contents: [
-        {
-          role: 'user',
-          parts: [{
-            text: testData,
-          }],
-        }
-      ],
+    const result = await model.generateContent(testData, {
+      
       // Limit output and low temperture for predicable outputs
       generationConfig: {
-        maxOutputTokens: 200,
+        maxOutputTokens: 50,
         temperature: 0.3,
       }
     });
