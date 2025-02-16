@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name: connection.js
+ * Date: 2/15/2025
+ * Description: File for connecting to MongoDB (TalkTask)
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 // Variables
