@@ -17,23 +17,3 @@
     flex-direction: column;
 }
 
-button {
-    background-color: lime;
-    color: white;
-    padding: 14px 20px;
-    margin: 2px 0px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 15vw;
-    transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-    background-color: darkgreen;
-}
-
-button a {
-    color: white;
-    text-decoration: none;
-}

@@ -54,18 +54,35 @@ h2 {
 }
 
 .tasklist {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 12px 18px;
     margin: 10px 10px 10px 0px;
     width: 641px;
-    max-width: 100%;
+    max-width: 100%;    
     height: 46px;
     flex-shrink: 0;
-    border-radius: 10px;
-    background: #FFF;
-    color: black;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
+
+button{
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    font-style: normal;
+    line-height: normal;
+    border: none;
+}
+
+button:hover {
+    background-color: #cdcdcd;
+}
+
 
 p {
     display: flex;

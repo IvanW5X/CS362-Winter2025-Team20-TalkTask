@@ -1,5 +1,5 @@
 /********************************************************************
- * File Name: task.jsx
+ * File Name: tasks.jsx
  * Date: 1/26/2025
  * Description: JSX file for tasks UI component
  * Author(s): CS 362-Team 20
@@ -9,65 +9,70 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
-
-const handleStatusUpdate = async (taskId, status) => {
-  try {
-    await axios.patch(`http://localhost:5000/tasks/${taskId}`, { status });
-    setTasks(tasks.map(task => task.taskID === taskId ? { ...task, status } : task));
-  } catch (error) {
-    console.error("Error updating task status:", error);
-  }
-};
-
-const handleDelete = async (taskId) => {
-  try {
-    await axios.delete(`http://localhost:5000/tasks/${taskId}`);
-    setTasks(tasks.filter(task => task.taskID !== taskId));
-  } catch (error) {
-    console.error("Error deleting task:", error);
-  }
-};
-
-
-
-export const Tasks = ({userId}) => {
+export const Tasks = ({ userId }) => {
   const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/tasks");
+        const response = await axios.get(`http://localhost:5000/tasks/${userId}`);
         setTasks(response.data);
       } catch (error) {
-        console.log("Error getting data", error);
+        console.error("Error fetching tasks:", error);
       }
     };
 
-    fetchTasks();
+    if (userId) fetchTasks();
   }, [userId]);
 
+  const handleAddTask = async () => {
+    if (!newTask.trim()) return;
 
-    return (
-      <div className={styles.tasksquare}>
-          <div className={styles.tasklabel}>
-              <h2>Tasks</h2>
-          </div>
-          <div className={styles.tasklist}>
-            {tasks.length > 0 ? (
-              tasks.map(task => ( 
-                <div key={task.taskID}>
-                  <p>{task.description} ({task.status})</p>
-                  <button onClick={() => handleStatusUpdate(task.taskID, 'completed')}>Complete</button>
-                  <button onClick={() => handleDelete(task.taskID)}>Delete</button>
-                </div>
-              ))
-        ) : (
-          <p>No tasks found</p>
-        )}
-          </div>
+    try {
+      const response = await axios.post("http://localhost:5000/tasks", {
+        description: newTask,
+        userId,
+      });
+
+      setTasks((prevTasks) => [...prevTasks, response.data]); // Append new task to state
+      setNewTask(""); // Clear input
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
+  };
+
+  return (
+    <div className={styles.tasksquare}>
+      <div className={styles.tasklabel}>
+        <h2>Tasks</h2>
       </div>
-    );
-}
+
+      <input
+        type="text"
+        placeholder="New Task"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+      />
+      <button onClick={handleAddTask}>Add Task</button>
+      
+      <div>
+        {tasks.length > 0 ?(
+          tasks.map((task) => (
+            <div key={tasks.taskID}>
+              <p>{tasks.description}</p>
+              <button>Complete</button>
+              <button>Delete</button>
+            </div>
+          ))
+        ) : (
+          <p>No tasks</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 
 
 
