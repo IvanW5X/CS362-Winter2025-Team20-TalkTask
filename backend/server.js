@@ -6,19 +6,12 @@
  ********************************************************************/
 
 import express from "express";
-import dotenv from "dotenv";
-import path from "path";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
-
-// Add .env path
-const envFilePath = path.resolve("../", "./.env");
-dotenv.config({ path: envFilePath });
+import { FRONTEND_URL } from "./variables.js";
 
 const app = express();
-
-const FRONTEND_URL = process.env.FRONTEND_URL;
 const corsOptions = {
   origin: FRONTEND_URL,
 };

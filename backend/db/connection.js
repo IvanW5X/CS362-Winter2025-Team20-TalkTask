@@ -6,12 +6,10 @@
  ********************************************************************/
 
 import { MongoClient, ServerApiVersion } from "mongodb";
-
-// Variables
-const uri = process.env.MONGO_URI;
+import { MONGO_URI } from "../variables.js"
 
 // Create MongoDB client
-export const client = new MongoClient(uri, {
+export const client = new MongoClient(MONGO_URI, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,

@@ -7,17 +7,9 @@
 
 import app from "./server.js";
 import { connectTTDB } from "./db/connection.js";
-import dotenv from "dotenv";
-import path from "path";
+import { SERVER_PORT } from "./variables.js";
 
 async function Initialize() {
-  dotenv.config();
-  // Add .env path
-  const envFilePath = path.resolve("../", "./.env");
-  dotenv.config({ path: envFilePath });
-
-  const SERVER_PORT = process.env.SERVER_PORT;
-
   // Connect to database first
   await connectTTDB();
 
