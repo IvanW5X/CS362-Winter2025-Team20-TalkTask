@@ -67,7 +67,7 @@ if(!SpeechRecognition){
 
 //replace with db comamnds when fully implemented
 function execCommand(command) {
-  switch (command.type) {
+  switch (command.type) { //switch case for all possible commands, add more to this later
     case 'add':
       addTask(command.task);
       break;

@@ -11,7 +11,7 @@ import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
 import logo from "../assets/TalkTaskLogo1.png";
 
-//test
+//test, delete later
 import { TestSpeech } from "./pages/WebSpeechTest/testspeech";
 
 console.log(logo);
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* test */}
+          {/* test speech, delete later http://localhost:5173/testspeech*/}
           <Route path="/testspeech" element={<TestSpeech />} /> 
 
         </Routes>
