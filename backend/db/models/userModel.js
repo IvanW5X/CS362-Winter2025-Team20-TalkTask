@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name: userModel.js
+ * Date: 2/15/2025
+ * Description: Fie for user schema
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
