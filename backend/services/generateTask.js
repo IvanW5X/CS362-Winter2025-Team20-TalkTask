@@ -7,42 +7,30 @@
  ********************************************************************/
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import path from "path";
-import dotenv from "dotenv";
+import { AI_API_KEY } from "../variables.js";
 
-// Add .env path
-const envFilePath = path.resolve("../", "./.env");
-dotenv.config({ path: envFilePath });
-
-const AI_API_KEY = process.env.AI_API_KEY;
 const genAI = new GoogleGenerativeAI(AI_API_KEY);
 
-// Create tasks and prompt
-const tasks = [
-  "Cook dinner",
-  "Buy groceries",
-  "Hangout with friends",
-  "Go to the gym",
-  "Practice speech",
-];
-const testData = `Tasks: ${tasks.join(
-  ", "
-)}\nSuggest one additional related task. Ouput as Task Name-Description. Do not include any extra text.`;
-
-export const suggestTask = async () => {
+export const suggestTask = async (taskList) => {
   try {
+    // Add tasks to prompt
+    const prompt = `Tasks: ${taskList.join(
+      ", "
+    )}\nSuggest one additional related task. Ouput as Task Name-Description. Do not include any extra text.`;
+
     // Use Gemini 2.0 Flash model
     const model = genAI.getGenerativeModel({
       model: "gemini-2.0-flash",
     });
-    const result = await model.generateContent(testData, {
-      // Limit output and low temperture for predicable outputs
+
+    // Limit output and low temperture for predicable outputs
+    const result = await model.generateContent(prompt, {
       generationConfig: {
         maxOutputTokens: 50,
         temperature: 0.3,
       },
     });
-    console.log("\nPrompt:\n" + testData + "\n" + result.response.text());
+    console.log("\nPrompt:\n" + prompt + "\n" + result.response.text());
     return result.response.text();
   } catch (error) {
     console.log(`\nCouldn't generate response: ${error}`);
