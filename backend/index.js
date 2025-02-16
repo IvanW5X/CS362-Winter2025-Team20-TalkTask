@@ -1,15 +1,22 @@
 /********************************************************************
  * File Name: index.js
  * Date: 1/27/2025
- * Description: JS file for connecting servers, databases, and APIs.
- *              Entry point for backend server
+ * Description: JS for starting server and listening for connections
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { startServer, connectServers} from "./server.js";
+import app from "./server.js";
 import { connectTTDB } from "./db/connection.js";
-connectTTDB();
+import { SERVER_PORT } from "./variables.js";
 
-connectServers();
+async function Initialize() {
+  // Connect to database first
+  await connectTTDB();
 
-startServer();
+  // Start server
+  app.listen(SERVER_PORT, () => {
+    console.log(`Server is listening on port ${SERVER_PORT}`);
+  });
+}
+
+Initialize();

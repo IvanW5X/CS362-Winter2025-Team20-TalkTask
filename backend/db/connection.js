@@ -1,10 +1,15 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+/********************************************************************
+ * File Name: connection.js
+ * Date: 2/15/2025
+ * Description: File for connecting to MongoDB (TalkTask)
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
 
-// Variables
-const uri = process.env.MONGO_URI;
+import { MongoClient, ServerApiVersion } from "mongodb";
+import { MONGO_URI } from "../variables.js"
 
 // Create MongoDB client
-export const client = new MongoClient(uri, {
+export const client = new MongoClient(MONGO_URI, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -16,16 +21,22 @@ export const client = new MongoClient(uri, {
 export const connectTTDB = async () => {
     try {
         await client.connect();
-        console.log("✅ Successfully connected to MongoDB!");
+        console.log("Successfully connected to MongoDB!");
     } catch (error) {
-        console.error("❌ Error connecting to MongoDB:", error);
+        console.error("Error connecting to MongoDB:", error);
+    } finally {
+        await client.close();
     }
 };
 
 // Handle graceful shutdown
 process.on("SIGINT", async () => {
-    console.log("\n🔌 Closing MongoDB connection...");
-    await client.close();
-    console.log("🛑 MongoDB connection closed.");
+    try {
+        console.log("\nClosing MongoDB connection...");
+        await client.close();
+        console.log("MongoDB connection closed.");
+    } catch (error) {
+        console.log("MongoDB already closed...")
+    }
     process.exit(0);
 });
