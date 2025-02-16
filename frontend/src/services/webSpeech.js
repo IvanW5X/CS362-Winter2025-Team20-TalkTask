@@ -34,7 +34,7 @@ recognition.grammars = speechGrammarList;
 recognition.continuous = false; //stop listening after command
 recognition.lang = 'en-US';
 recognition.interimResults = false;
-recognition.maxAlternatives = 1; //for accepting different # of comamnds, w.i.p
+recognition.maxAlternatives = 1; //for accepting different # of comamnds, can chain if increased i think
 
 
 //recognition.start();
@@ -43,12 +43,12 @@ recognition.maxAlternatives = 1; //for accepting different # of comamnds, w.i.p
 recognition.onresult = (event) => {
   //store voice input
   const transcript = event.results[0][0].transcript.toLowerCase();
-  console.log('You said:', transcript);
+  //console.log('voice input:', transcript);
 
   //parse voice input
-  const command = parseComm(transcript);
+  const command = parseCommand(transcript);
   if (command) {
-    exeComm(command);
+    execCommand(command);
   }
 };
 
@@ -63,16 +63,30 @@ recognition.onend = () => {
   recognition.start(); //restart
 };
 
+//replace with db comamnds when fully implemented
+function execCommand(command) {
+  switch (command.type) {
+    case 'add':
+      addTask(command.task);
+      break;
+    case 'remove':
+      removeTask(command.task);
+      break;
+    case 'mark':
+      markTaskAsComplete(command.task);
+      break;
+    default:
+      console.warn('Unknown command type:', command.type);
+  }
+}
 
-function execComm(command) {
+//no idea rn w.i.p
+function parseCommand(command) {
 
 }
 
-function parseComm(command) {
 
-}
-
-
+//replace with db comamnds when fully implemented
 function addTask(task) {
   console.log('Added:', task);
 }
@@ -83,6 +97,6 @@ function removeTask(task) {
 }
 
 // Example function to mark a task as complete
-function markTaskAsComplete(task) {
+function markTask(task) {
   console.log('Marked:', task);
 }

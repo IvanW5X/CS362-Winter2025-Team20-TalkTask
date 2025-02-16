@@ -9,8 +9,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import { Home } from "./pages/home/home";
-import logo from "../assets/TalkTaskLogo1.png"
+import logo from "../assets/TalkTaskLogo1.png";
 
+//test
+import { TestSpeech } from "./pages/WebSpeechTest/testspeech";
 
 console.log(logo);
 
@@ -26,6 +28,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* test */}
+          <Route path="/testspeech" element={<TestSpeech />} /> 
+
         </Routes>
       </BrowserRouter>
       <h1>Hello TalkTask</h1>
