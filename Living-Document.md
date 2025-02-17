@@ -1212,5 +1212,13 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **User Guides (TalkTask)**
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
+
 * **Developer Guide**
   * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
+
+* **User Documentation**
+  * High Level Description:
+  * How to install: 
+  * How to run:
+  * How to report a bug
+  * Known bugs:
