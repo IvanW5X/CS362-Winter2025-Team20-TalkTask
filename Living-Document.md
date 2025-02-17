@@ -1226,7 +1226,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
         i.    npm install
         ii.   npm install mongoose
         iii.  npm install express
-      
+      3. In the terminal, cd into 'backend', then 'npm run dev' + enter to start server
   * How to run:
   * How to report a bug
   * Known bugs:
