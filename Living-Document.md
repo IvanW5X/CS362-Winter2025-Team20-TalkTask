@@ -1222,6 +1222,11 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Prerequisites: Node.js (v18.0 or later), MongoDB (v6.0 or later), Git (Optional for repository cloning)
     * Installation Steps:
       1. Clone Repository via visiting https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask, copying the repository by clicking '<> code' in the main branch, and paste into Visual Studio Code's 'Clone Repository'.
+      2. Install dependecies via running these commands in the terminal:
+        i.    npm install
+        ii.   npm install mongoose
+        iii.  npm install express
+      
   * How to run:
   * How to report a bug
   * Known bugs:
