@@ -1222,3 +1222,11 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * How to run:
   * How to report a bug
   * Known bugs:
+
+* **Developer Documentation**
+  * How to obtain source code:
+  * Directory structure: 
+  * How to build:
+  * How to test:
+  * How to add a test:
+  * How to build a specific release:
