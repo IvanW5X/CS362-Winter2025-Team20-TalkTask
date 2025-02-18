@@ -1033,8 +1033,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### Process Description
 
-
 * Risk Assessment
+
 ### 1️ Risk: Speech Recognition Accuracy Issues
 
 * **Likelihood:** **High**
@@ -1101,45 +1101,45 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### 4️ Risk: AI Task Recommendation Limitations
 
-- **Likelihood:** **High**
-- **Impact:** **Medium**
-- **Evidence:**
-  - AI recommendations rely on **user task history**.
-  - Poor dataset or limited data can lead to **irrelevant suggestions**.
-  - AI models might **misinterpret** user needs.
-- **Mitigation Steps:**
-  - Allow users to **provide feedback on AI suggestions**.
-  - Use **a mix of rule-based logic and AI** for better recommendations.
-  - Store **user preferences** to fine-tune AI behavior.
-- **Detection Plan:**  
-  - Track **AI-generated task acceptance rates**.
-  - Monitor **user-reported errors** in AI recommendations.
-- **Mitigation Plan (If it Occurs):**  
-  - **Refine the AI model** based on real-world data.
-  - Implement a **"smart filter"** to eliminate irrelevant tasks.
-- **Changes Since Requirements Document:**  
-  - Added **feedback collection mechanism** to refine AI suggestions.
+* **Likelihood:** **High**
+* **Impact:** **Medium**
+* **Evidence:**
+  * AI recommendations rely on **user task history**.
+  * Poor dataset or limited data can lead to **irrelevant suggestions**.
+  * AI models might **misinterpret** user needs.
+* **Mitigation Steps:**
+  * Allow users to **provide feedback on AI suggestions**.
+  * Use **a mix of rule-based logic and AI** for better recommendations.
+  * Store **user preferences** to fine-tune AI behavior.
+* **Detection Plan:**  
+  * Track **AI-generated task acceptance rates**.
+  * Monitor **user-reported errors** in AI recommendations.
+* **Mitigation Plan (If it Occurs):**  
+  * **Refine the AI model** based on real-world data.
+  * Implement a **"smart filter"** to eliminate irrelevant tasks.
+* **Changes Since Requirements Document:**  
+  * Added **feedback collection mechanism** to refine AI suggestions.
 
 ### 5️ Risk: Deployment & Hosting Challenges
 
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - Need to support **frontend (Netlify)** and **backend (Render)** hosting.
-  - Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
-  - Risk of **downtime or unexpected hosting costs**.
-- **Mitigation Steps:**
-  - Use **logging & monitoring tools** (e.g., PM2 for Node.js).
-  - Keep **database queries optimized** to minimize API calls.
-  - Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
-- **Detection Plan:**  
-  - Monitor **server logs** for errors or high resource usage.
-  - Implement **uptime monitoring tools** (e.g., UptimeRobot).
-- **Mitigation Plan (If it Occurs):**  
-  - Migrate to **a more scalable hosting provider** if needed.
-  - Implement **rate limiting & caching** to reduce API load.
-- **Changes Since Requirements Document:**  
-  - More emphasis on **scalability** and **backup hosting solutions**.
+* **Likelihood:** **Medium**
+* **Impact:** **High**
+* **Evidence:**
+  * Need to support **frontend (Netlify)** and **backend (Render)** hosting.
+  * Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
+  * Risk of **downtime or unexpected hosting costs**.
+* **Mitigation Steps:**
+  * Use **logging & monitoring tools** (e.g., PM2 for Node.js).
+  * Keep **database queries optimized** to minimize API calls.
+  * Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
+* **Detection Plan:**  
+  * Monitor **server logs** for errors or high resource usage.
+  * Implement **uptime monitoring tools** (e.g., UptimeRobot).
+* **Mitigation Plan (If it Occurs):**  
+  * Migrate to **a more scalable hosting provider** if needed.
+  * Implement **rate limiting & caching** to reduce API load.
+* **Changes Since Requirements Document:**  
+  * More emphasis on **scalability** and **backup hosting solutions**.
 
 <br>
 
@@ -1218,29 +1218,47 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **User Documentation**
   * High Level Description: TalkTask is a voice-controlled task management system designed to help users manage their daily tasks hands-free. The application integrates speech recognition and AI-based task recommendations to provide an intuitive to-do list experience
-  * How to install: 
-    * Prerequisites: Node.js (v18.0 or later), MongoDB (v6.0 or later), Git (Optional for repository cloning)
+  * How to install:
+    * Prerequisites: Web browser such as Chrome, Mozilla, Safari, etc.
     * Installation Steps:
-      1. Clone Repository via visiting https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask, copying the repository by clicking '<> code' in the main branch, and paste into Visual Studio Code's 'Clone Repository'.
-      2. Install dependecies via running these commands in the terminal:
-        i.    npm install
-        ii.   npm install mongoose
-        iii.  npm install express
-      3. In the terminal, cd into 'backend', then 'npm run dev' + enter to start server
+      * Talktalk is a web application, no need to install any outside software
   * How to run:
-    * Backend:
-      1. From root directory, type 'cd backend' into the terminal and hit enter
-      2. Type 'npm run dev' + enter
-    * Frontend:
-      1. From root directory, type 'cd frontend' into the terminal and hit enter
-      2. Type 'npm run dev' + enter
-  * How to report a bug: 
-  * Known bugs: 
+    * Enter our URL to a web browser of your choice on either desktop or mobile devices.
+  * How to use software:
+    * Once we get our website up and running, we will instruct users to...
+      1. Create an account via Email and password or your choice of service provider via OAuth, or login to an existing account.
+      2. Manage tasks using the task management list buttons or click other task lists on the sidebar - Functionality in progress
+  * How to report a bug: NICO
+  * Known bugs: NICO
 
 * **Developer Documentation**
   * How to obtain source code:
-  * Directory structure: 
+  * Directory structure:
+    * **Assignments**:
+      * Holds our architecture diagrams and assignments.
+    * **Designs**:
+      * Holds our Figma designs.
+    * **Documents**:
+      * Holds our main documents relating to our resources and configuration.
+    * **Reports**:
+      * Holds our weekly reports.
+    * **Frontend**:
+      * Holds our frontend components, pages, assets, and frontend related service files.
+      * **Tests**
+        * Holds test JSON files and other test related files for frontend components
+    * Backend:
+      * Holds our backend sources files
+      * **Tests**
+        * Holds test JSON files and other test related files for backend logic and components
   * How to build:
+    * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
+    * Backend:
+      1. Obtain an API key from and Google's AI API and obtain a mongoDB URI
+      2. From root directory, type 'cd backend' into the terminal and hit enter
+      3. Type 'npm run dev' + enter to run the server in developer mode
+    * Frontend:
+      1. From root directory, type 'cd frontend' into the terminal and hit enter
+      2. Type 'npm run dev' + enter to run the client in developer mode
   * How to test:
   * How to add a test:
   * How to build a specific release:
