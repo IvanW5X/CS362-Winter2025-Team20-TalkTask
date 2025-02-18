@@ -15,7 +15,8 @@ export const createTask = async (taskData) => {
     await newTask.save();
     return newTask;
   } catch (error) {
-    throw new Error("Error creating task: " + error.message);
+    logger.error(`createTask - UserID: ${taskData.userId} - Error: ${error.message}`);
+    return null;
   }
 };
 
