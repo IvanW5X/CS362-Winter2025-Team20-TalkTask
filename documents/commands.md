@@ -31,7 +31,7 @@
   Reorders the list to show high-priority tasks first.
 
   - **"Sort my list by due date"**  
-  Reorders the list to show taskw tih earlier due dates first.
+  Reorders the list to show task with earlier due dates first.
 
 - **"Add a deadline for [task name] on [date]"**  
   Sets a due date and time for the task.
@@ -69,7 +69,7 @@
 - **"How many tasks do I have left?"**  
   Provides a count of incomplete tasks.
 
-- **"Undo my last action"**  
+- **"Undo my last action"**
   Reverses the most recent action (e.g., deleting a task).
 
 ---
