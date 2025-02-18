@@ -1218,7 +1218,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **User Documentation**
   * High Level Description: TalkTask is a voice-controlled task management system designed to help users manage their daily tasks hands-free. The application integrates speech recognition and AI-based task recommendations to provide an intuitive to-do list experience
-  * How to install: 
+  * How to install:
     * Prerequisites: Node.js (v18.0 or later), MongoDB (v6.0 or later), Git (Optional for repository cloning)
     * Installation Steps:
       1. Clone Repository via visiting https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask, copying the repository by clicking '<> code' in the main branch, and paste into Visual Studio Code's 'Clone Repository'.
@@ -1234,13 +1234,13 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Frontend:
       1. From root directory, type 'cd frontend' into the terminal and hit enter
       2. Type 'npm run dev' + enter
-  * How to report a bug: 
-  * Known bugs: 
+  * How to report a bug:
+  * Known bugs:
 
 * **Developer Documentation**
   * How to obtain source code:
-  * Directory structure: 
-  * How to build:
+  * Directory structure: IVAN
+  * How to build: IVAN
   * How to test:
   * How to add a test:
   * How to build a specific release:
