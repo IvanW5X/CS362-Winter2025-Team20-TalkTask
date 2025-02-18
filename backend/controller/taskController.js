@@ -22,7 +22,12 @@ export const createTask = async (taskData) => {
 
 //  READ All Tasks (for a specific user)
 export const getTasksByUser = async (userId) => {
-  return await Task.find({ userId });
+  try {
+    return await Task.find({ userId });
+  } catch (error) {
+    logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
+    return [];
+  }
 };
 
 //  UPDATE Task Status
