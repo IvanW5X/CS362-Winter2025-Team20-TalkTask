@@ -1,6 +1,7 @@
 # Voice Commands
 
 ## Basic Task Management
+
 - **"Add [task name] to my list"**  
   Adds a new task with the specified name to the to-do list.
 
@@ -16,6 +17,7 @@
 ---
 
 ## Task Organization
+
 - **"Categorize [task name] under [category]"**  
   Assigns the task to a specific category (e.g., Work, Personal, Shopping).
 
@@ -37,6 +39,7 @@
 ---
 
 ## Search and Filter
+
 - **"Search for [keyword] in my list"**  
   Finds tasks containing the specified keyword.
 
@@ -49,6 +52,7 @@
 ---
 
 ## Editing and Updates
+
 - **"Change the name of [task name] to [new task name]"**  
   Updates the name of the specified task.
 
@@ -61,6 +65,7 @@
 ---
 
 ## Miscellaneous
+
 - **"How many tasks do I have left?"**  
   Provides a count of incomplete tasks.
 
@@ -70,6 +75,7 @@
 ---
 
 ## Advanced Features
+
 - **"Create a repeating task [task name] every on [day/week/month]"**  
   Sets up a task that repeats at the specified interval.
 
