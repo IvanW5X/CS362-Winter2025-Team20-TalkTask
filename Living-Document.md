@@ -1196,9 +1196,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Known bugs:
 
 * **Developer Documentation**
-  * How to obtain source code:
+  * How to obtain source code: TRISTAN
   * Directory structure: IVAN
   * How to build: IVAN
   * How to test:
   * How to add a test:
-  * How to build a specific release:
+  * How to build a specific release: TRISTAN
