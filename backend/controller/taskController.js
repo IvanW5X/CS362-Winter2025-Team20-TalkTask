@@ -42,5 +42,10 @@ export const updateTaskStatus = async (taskId, status) => {
 
 //  DELETE a Task
 export const deleteTask = async (taskId) => {
-  return await Task.findByIdAndDelete(taskId);
+  try {
+    return await Task.findByIdAndDelete(taskId);
+  } catch (error) {
+    logger.error(`deleteTask - TaskID: ${taskId} - Error: ${error.message}`);
+    return null;
+  }
 };
