@@ -7,6 +7,7 @@
  ********************************************************************/
 
 import { User } from "../db/models/userModel.js";
+import logger from "../utils/logger.js";
 
 // Create a User
 export const createUser = async (userData) => {
@@ -15,7 +16,8 @@ export const createUser = async (userData) => {
     await newUser.save();
     return newUser;
   } catch (error) {
-    throw new Error("Error creating user: " + error.message);
+    logger.error(`createUser - Error: ${error.message}`);
+    return null; // Or return an error response object
   }
 };
 
@@ -25,7 +27,8 @@ export const getUser = async (userID) => {
     const user = await User.findById(userID);
     return user;
   } catch (error) {
-    throw new Error("Error getting user: " + error.message);
+    logger.error(`getUser - UserID: ${userID} - Error: ${error.message}`);
+    return null;
   }
 };
 
@@ -37,7 +40,8 @@ export const updateUser = async (userID, updateData) => {
     });
     return updatedUser;
   } catch (error) {
-    throw new Error("Error updating user: " + error.message);
+    logger.error(`updateUser - UserID: ${userID} - Error: ${error.message}`);
+    return null;
   }
 };
 
@@ -47,6 +51,7 @@ export const deleteUser = async (userID) => {
     await User.findByIdAndDelete(userID);
     return { message: "User deleted successfully" };
   } catch (error) {
-    throw new Error("Error deleting user: " + error.message);
+    logger.error(`deleteUser - UserID: ${userID} - Error: ${error.message}`);
+    return null;
   }
 };

@@ -15,18 +15,29 @@ export const createTask = async (taskData) => {
     await newTask.save();
     return newTask;
   } catch (error) {
-    throw new Error("Error creating task: " + error.message);
+    logger.error(`createTask - UserID: ${taskData.userId} - Error: ${error.message}`);
+    return null;
   }
 };
 
 //  READ All Tasks (for a specific user)
 export const getTasksByUser = async (userId) => {
-  return await Task.find({ userId });
+  try {
+    return await Task.find({ userId });
+  } catch (error) {
+    logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
+    return [];
+  }
 };
 
 //  UPDATE Task Status
 export const updateTaskStatus = async (taskId, status) => {
-  return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+  try {
+    return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+  } catch (error) {
+    logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
+    return null;
+  }
 };
 
 //  DELETE a Task
