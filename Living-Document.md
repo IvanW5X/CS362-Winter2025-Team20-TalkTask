@@ -1234,8 +1234,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Frontend:
       1. From root directory, type 'cd frontend' into the terminal and hit enter
       2. Type 'npm run dev' + enter
-  * How to report a bug:
-  * Known bugs:
+  * How to report a bug: NICO
+  * Known bugs: NICO
 
 * **Developer Documentation**
   * How to obtain source code:
