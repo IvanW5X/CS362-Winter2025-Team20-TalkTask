@@ -32,7 +32,12 @@ export const getTasksByUser = async (userId) => {
 
 //  UPDATE Task Status
 export const updateTaskStatus = async (taskId, status) => {
-  return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+  try {
+    return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+  } catch (error) {
+    logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
+    return null;
+  }
 };
 
 //  DELETE a Task
