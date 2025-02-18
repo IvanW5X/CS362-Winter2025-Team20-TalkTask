@@ -1262,3 +1262,12 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * How to test:
   * How to add a test:
   * How to build a specific release:
+    * For specific releases...
+    * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
+    * Backend:
+      1. Obtain an API key from and Google's AI API and obtain a mongoDB URI
+      2. From root directory, type 'cd backend' into the terminal and hit enter
+      3. Type 'npm run dev' + enter to run the server in developer mode
+    * Frontend:
+      1. From root directory, type 'cd frontend' into the terminal and hit enter
+      2. Type 'npm run dev' + enter to run the client in developer mode
