@@ -1168,8 +1168,37 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       * Week 10: Full functionality tests.
 
 
-<br>
+* **User Guides (TalkTask)**
+  * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
 
-* Documentation Plan
+* **Developer Guide**
+  * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
 
-<br>
+* **User Documentation**
+  * High Level Description: TalkTask is a voice-controlled task management system designed to help users manage their daily tasks hands-free. The application integrates speech recognition and AI-based task recommendations to provide an intuitive to-do list experience
+  * How to install:
+    * Prerequisites: Node.js (v18.0 or later), MongoDB (v6.0 or later), Git (Optional for repository cloning)
+    * Installation Steps:
+      1. Clone Repository via visiting https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask, copying the repository by clicking '<> code' in the main branch, and paste into Visual Studio Code's 'Clone Repository'.
+      2. Install dependecies via running these commands in the terminal:
+        i.    npm install
+        ii.   npm install mongoose
+        iii.  npm install express
+      3. In the terminal, cd into 'backend', then 'npm run dev' + enter to start server
+  * How to run:
+    * Backend:
+      1. From root directory, type 'cd backend' into the terminal and hit enter
+      2. Type 'npm run dev' + enter
+    * Frontend:
+      1. From root directory, type 'cd frontend' into the terminal and hit enter
+      2. Type 'npm run dev' + enter
+  * How to report a bug:
+  * Known bugs:
+
+* **Developer Documentation**
+  * How to obtain source code:
+  * Directory structure: IVAN
+  * How to build: IVAN
+  * How to test:
+  * How to add a test:
+  * How to build a specific release:
