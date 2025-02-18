@@ -1228,8 +1228,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Once we get our website up and running, we will instruct users to...
       1. Create an account via Email and password or your choice of service provider via OAuth, or login to an existing account.
       2. Manage tasks using the task management list buttons or click other task lists on the sidebar - Functionality in progress
-  * How to report a bug:
-  * Known bugs:
+  * How to report a bug: NICO
+  * Known bugs: NICO
 
 * **Developer Documentation**
   * How to obtain source code:
