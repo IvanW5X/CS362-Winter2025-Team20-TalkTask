@@ -1,5 +1,5 @@
 /********************************************************************
- * File Name: generateTask.js
+ * File Name: suggestTask.js
  * Date: 2/2/2025
  * Description: Suggest task using AI model using Gemini 2.0 Flash
  *              AI Suggested task service
