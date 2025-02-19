@@ -908,28 +908,28 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 <br>
 
 * **General Architecture**
-![General Architecture](assignments/architectures/General-Architecture.PNG)
+![General Architecture](../assignments/architectures/General-Architecture.PNG)
 
 * **User Login Architecture**
-![User Login Architecture](assignments/architectures/User-Login-Arch.PNG)
+![User Login Architecture](../assignments/architectures/User-Login-Arch.PNG)
 
 * **Backend Architecture**
-![Backend Architecture](assignments/architectures/Backend-Database-Arch.PNG)
+![Backend Architecture](../assignments/architectures/Backend-Database-Arch.PNG)
 
 * **Backend-Database Architecture**
-![Backend-Database Architecture](assignments/architectures/Backend-Database-Arch.PNG)
+![Backend-Database Architecture](../assignments/architectures/Backend-Database-Arch.PNG)
 
 * **Todo List Input Architecture**
-![Todo List Input Architecture](assignments/architectures/Todo-List-Input.PNG)
+![Todo List Input Architecture](../assignments/architectures/Todo-List-Input.PNG)
 
 * **Voice Input Architecture**
-![Voice Input](assignments/architectures/Voice_Input_Architecture.png)
+![Voice Input](../assignments/architectures/Voice_Input_Architecture.png)
 
 * **Todo List Processing Architecture**
-![Todo List Processing Architecture](assignments/architectures/To-Do_List_Processing_Architecture.PNG)
+![Todo List Processing Architecture](../assignments/architectures/To-Do_List_Processing_Architecture.PNG)
 
 * **Suggest a Task Architecture**
-![Suggest a Task Architecture](assignments/architectures/Suggest-A-Task_Architecture.png)
+![Suggest a Task Architecture](../assignments/architectures/Suggest-A-Task_Architecture.png)
 
 
 * **Interfaces**
@@ -1033,8 +1033,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### Process Description
 
-
 * Risk Assessment
+
 ### 1️ Risk: Speech Recognition Accuracy Issues
 
 * **Likelihood:** **High**
@@ -1101,45 +1101,45 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### 4️ Risk: AI Task Recommendation Limitations
 
-- **Likelihood:** **High**
-- **Impact:** **Medium**
-- **Evidence:**
-  - AI recommendations rely on **user task history**.
-  - Poor dataset or limited data can lead to **irrelevant suggestions**.
-  - AI models might **misinterpret** user needs.
-- **Mitigation Steps:**
-  - Allow users to **provide feedback on AI suggestions**.
-  - Use **a mix of rule-based logic and AI** for better recommendations.
-  - Store **user preferences** to fine-tune AI behavior.
-- **Detection Plan:**  
-  - Track **AI-generated task acceptance rates**.
-  - Monitor **user-reported errors** in AI recommendations.
-- **Mitigation Plan (If it Occurs):**  
-  - **Refine the AI model** based on real-world data.
-  - Implement a **"smart filter"** to eliminate irrelevant tasks.
-- **Changes Since Requirements Document:**  
-  - Added **feedback collection mechanism** to refine AI suggestions.
+* **Likelihood:** **High**
+* **Impact:** **Medium**
+* **Evidence:**
+  * AI recommendations rely on **user task history**.
+  * Poor dataset or limited data can lead to **irrelevant suggestions**.
+  * AI models might **misinterpret** user needs.
+* **Mitigation Steps:**
+  * Allow users to **provide feedback on AI suggestions**.
+  * Use **a mix of rule-based logic and AI** for better recommendations.
+  * Store **user preferences** to fine-tune AI behavior.
+* **Detection Plan:**  
+  * Track **AI-generated task acceptance rates**.
+  * Monitor **user-reported errors** in AI recommendations.
+* **Mitigation Plan (If it Occurs):**  
+  * **Refine the AI model** based on real-world data.
+  * Implement a **"smart filter"** to eliminate irrelevant tasks.
+* **Changes Since Requirements Document:**  
+  * Added **feedback collection mechanism** to refine AI suggestions.
 
 ### 5️ Risk: Deployment & Hosting Challenges
 
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - Need to support **frontend (Netlify)** and **backend (Render)** hosting.
-  - Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
-  - Risk of **downtime or unexpected hosting costs**.
-- **Mitigation Steps:**
-  - Use **logging & monitoring tools** (e.g., PM2 for Node.js).
-  - Keep **database queries optimized** to minimize API calls.
-  - Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
-- **Detection Plan:**  
-  - Monitor **server logs** for errors or high resource usage.
-  - Implement **uptime monitoring tools** (e.g., UptimeRobot).
-- **Mitigation Plan (If it Occurs):**  
-  - Migrate to **a more scalable hosting provider** if needed.
-  - Implement **rate limiting & caching** to reduce API load.
-- **Changes Since Requirements Document:**  
-  - More emphasis on **scalability** and **backup hosting solutions**.
+* **Likelihood:** **Medium**
+* **Impact:** **High**
+* **Evidence:**
+  * Need to support **frontend (Netlify)** and **backend (Render)** hosting.
+  * Backend could **exceed free-tier limitations** (e.g., MongoDB request limits).
+  * Risk of **downtime or unexpected hosting costs**.
+* **Mitigation Steps:**
+  * Use **logging & monitoring tools** (e.g., PM2 for Node.js).
+  * Keep **database queries optimized** to minimize API calls.
+  * Have **contingency plans** for hosting (e.g., AWS, DigitalOcean).
+* **Detection Plan:**  
+  * Monitor **server logs** for errors or high resource usage.
+  * Implement **uptime monitoring tools** (e.g., UptimeRobot).
+* **Mitigation Plan (If it Occurs):**  
+  * Migrate to **a more scalable hosting provider** if needed.
+  * Implement **rate limiting & caching** to reduce API load.
+* **Changes Since Requirements Document:**  
+  * More emphasis on **scalability** and **backup hosting solutions**.
 
 <br>
 
@@ -1212,5 +1212,64 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **User Guides (TalkTask)**
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
+
 * **Developer Guide**
   * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
+
+* **User Documentation**
+  * High Level Description: TalkTask is a voice-controlled task management system designed to help users manage their daily tasks hands-free. The application integrates speech recognition and AI-based task recommendations to provide an intuitive to-do list experience
+  * How to install:
+    * Prerequisites: Web browser such as Chrome, Mozilla, Safari, etc.
+    * Installation Steps:
+      * Talktalk is a web application, no need to install any outside software
+  * How to run:
+    * Enter our URL to a web browser of your choice on either desktop or mobile devices.
+  * How to use software:
+    * Once we get our website up and running, we will instruct users to...
+      1. Create an account via Email and password or your choice of service provider via OAuth, or login to an existing account.
+      2. Manage tasks using the task management list buttons or click other task lists on the sidebar - Functionality in progress
+  * How to report a bug:
+    * If a bug is found in our application, they can be reported on the Github Issues page in our repository. Click "new issue", and provide these details: a concise title, steps to reproduce the issue, error messages, expected behavior, and other additional information.
+  * Known bugs:
+    * Known bugs will be kept in the Github Issues page. In order for users to not see the trivial bugs, issues will be assigned a label "major", "minor", "critical". Resolved issues will be removed or archived from the issues page.
+
+* **Developer Documentation**
+  * How to obtain source code:
+  * Directory structure:
+    * **Assignments**:
+      * Holds our architecture diagrams and assignments.
+    * **Designs**:
+      * Holds our Figma designs.
+    * **Documents**:
+      * Holds our main documents relating to our resources and configuration.
+    * **Reports**:
+      * Holds our weekly reports.
+    * **Frontend**:
+      * Holds our frontend components, pages, assets, and frontend related service files.
+      * **Tests**
+        * Holds test JSON files and other test related files for frontend components
+    * Backend:
+      * Holds our backend sources files
+      * **Tests**
+        * Holds test JSON files and other test related files for backend logic and components
+  * How to build:
+    * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
+    * Backend:
+      1. Obtain an API key from and Google's AI API and obtain a mongoDB URI
+      2. From root directory, type 'cd backend' into the terminal and hit enter
+      3. Type 'npm run dev' + enter to run the server in developer mode
+    * Frontend:
+      1. From root directory, type 'cd frontend' into the terminal and hit enter
+      2. Type 'npm run dev' + enter to run the client in developer mode
+  * How to build a specific release:
+    * Choosing a Release:
+      1. In the main directory of the git repository open the terminal
+      2. Type 'git tag'
+      3. This should display a list of available releases, choose the release you would like
+      4. Type 'git checkout < tag-name >'
+    * Above this guide you will find the 'How to build' guide follow that to build your chosen release.
+    * Switching back to main (optional):
+      1. Open Terminal
+      2. Type 'git checkout main'
+  * How to test:
+  * How to add a test:

@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./home.module.css";
 import { Tasks } from "../../components/tasks/tasks";
 import { Sidebar } from "../../components/sidebar/sidebar";
@@ -20,10 +20,23 @@ import { Navbar } from "../../components/navbar/navbar";
 <Sidebar />
 */
 export const Home = () => {
+    const [isListening, setIsListening] = useState(false);
+  
+    const toggleMic = () => {
+      if (isListening) {
+        recognition.stop();
+        console.log("Microphone stopped");
+      } else {
+        recognition.start();
+        console.log("Microphone started");
+      }
+      setIsListening(!isListening);
+    };
+  
     return (
         <div className={styles.curvedsquares}>
             <Calendar />
             <Tasks />
         </div>
     );
-};
+  };

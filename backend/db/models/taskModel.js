@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name: taskModel.js
+ * Date: 2/15/2025
+ * Description: File for task schema
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import mongoose from 'mongoose';
 
 const taskSchema = new mongoose.Schema({
@@ -6,7 +13,7 @@ const taskSchema = new mongoose.Schema({
     dateCreated: { type: Date, default: Date.now },
     dateCompleted: { type: Date },
     recurringDate: { type: Date },
-    priority: { type: Number, min: 1, max: 5, default: 3 }, // Priority scale 1-5
+    priority: { type: Number, min: 1, max: 3, default: 1 }, // Priority scale 1-3
     status: { type: String, enum: ['pending', 'in-progress', 'completed'], default: 'pending' },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });

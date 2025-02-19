@@ -51,6 +51,7 @@ const fetchTest = async (setTestArray) => {
   try {
     const res = await axios.get(`${BACKEND_URL}/testing`);
     setTestArray(res.data.info);
+    console.log("Frontend recieved test data response!")
   } catch (error) {
     console.log("Error getting data");
   }
@@ -72,7 +73,6 @@ export const Tasks = () => {
         return (
           <div key={key}>
             <p>{data}</p>
-            <br />
           </div>
         );
       })}

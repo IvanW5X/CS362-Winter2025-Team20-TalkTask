@@ -20,7 +20,7 @@
 * [Vite-Build-Tool](https://vite.dev/guide/)
 * [Node.js](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
 * [Netlify](https://docs.netlify.com/)
-* [Hugging-Face](https://huggingface.co/docs)
+* [Gemini-AI](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)
 * [Figma](https://help.figma.com/hc/en-us/categories/360002042553)
 * [Axios](https://www.digitalocean.com/community/tutorials/react-axios-react)
 * [Cors](https://expressjs.com/en/resources/middleware/cors.html)
