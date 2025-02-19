@@ -21,7 +21,7 @@ export const Sidebar = () => {
 
   return (
     <nav className={styles.sidebar}>
-      <div className={styles.menuIcon}>
+      <div className={styles.sidebarBlock}>
         <div></div>
         <div></div>
         <div></div>
