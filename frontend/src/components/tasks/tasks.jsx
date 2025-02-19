@@ -9,38 +9,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
-export const Tasks = ({ userId }) => {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState("");
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/tasks/${userId}`);
-        setTasks(response.data);
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
-    };
-
-    if (userId) fetchTasks();
-  }, [userId]);
-
-  const handleAddTask = async () => {
-    if (!newTask.trim()) return;
-
-    try {
-      const response = await axios.post("http://localhost:5000/tasks", {
-        description: newTask,
-        userId,
-      });
-
-      setTasks((prevTasks) => [...prevTasks, response.data]); // Append new task to state
-      setNewTask(""); // Clear input
-    } catch (error) {
-      console.error("Error adding task:", error);
-    }
-  };
+export const Tasks = () => {
 
   return (
     <div className={styles.tasksquare}>
@@ -48,28 +17,15 @@ export const Tasks = ({ userId }) => {
         <h2>Tasks</h2>
       </div>
 
-      <input
-        type="text"
-        placeholder="New Task"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-      />
-      <button onClick={handleAddTask}>Add Task</button>
+      <button>Add Task</button>
       
       <div>
-        {tasks.length > 0 ?(
-          tasks.map((task) => (
-            <div key={tasks.taskID}>
-              <p>{tasks.description}</p>
-              <button>Complete</button>
-              <button>Delete</button>
-            </div>
-          ))
-        ) : (
-          <p>No tasks</p>
-        )}
+        <p>Description</p>
+        <button>Complete</button>
+        <br />
+        <button>Delete</button>
       </div>
-    </div>
+      </div>
   );
 };
 
