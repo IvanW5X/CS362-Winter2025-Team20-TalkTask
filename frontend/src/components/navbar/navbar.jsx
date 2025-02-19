@@ -5,33 +5,27 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./navbar.module.css";
 import { Link } from "react-router-dom"; // For navigation
 
 export const Navbar = () => {
-  const [apiLinks, setApiLinks] = useState([]);
+  const [showItems, setShowItems] = useState(false); // state to toggle visibility of items
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts") //change to correct api, just basic stuff rn
-      .then((response) => response.json())
-      .then((data) => setApiLinks(data.map((item) => ({ id: item.id, name: item.title })))) //store
-      .catch((error) => console.error("Error fetching navigation links:", error)); //error handling
-  }, []);
+  const toggleItems = () => {
+    setShowItems(!showItems); // Toggle visibility of items
+  };
 
   return (
     <nav className={styles.navbar}>
-      <h2>Navbar</h2>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-
-        {/* Navigation for API */}
-        {apiLinks.map((link) => (
-          <li key={link.id}>
-            <Link to={`/dynamic/${link.id}`}>{link.name}</Link>
-          </li>
-        ))}
+      <div className={styles.menuIcon} onClick={toggleItems}></div>
+      
+      <ul className={styles.navbarList}>
+        <ul className={`${styles.subMenu} ${showItems ? styles.show : ""}`}>
+          <li className={styles.navbarItem}>page 1</li>
+          <li className={styles.navbarItem}>page 2</li>
+          <li className={styles.navbarItem}>page 3</li>
+        </ul>
       </ul>
     </nav>
   );
