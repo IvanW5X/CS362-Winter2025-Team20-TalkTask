@@ -8,7 +8,6 @@
 
 import { Task } from "../db/models/taskModel.js";
 import logger from "../logs/logger.js";
-import { suggestTask } from "../services/suggestTask.js";
 
 // CREATE a Task
 export const createTask = async (taskData) => {
