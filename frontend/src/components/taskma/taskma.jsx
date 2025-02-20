@@ -10,17 +10,11 @@ import styles from "./tasks.module.css";
 import axios from "axios";
 
 
-export const Tasks = () => {
+export const TasksManagement = () => {
 
   return (
     <div>
-      {/* task list section */}
-      <div className={styles.tasksquare}>
-        <div className={styles.tasklabel}>
-          <h2>Tasks</h2>
-        </div>
-      </div>
-
+      
       {/* task management section */}
       <div className={styles.tmanagement}>
         <button>Add Task</button>

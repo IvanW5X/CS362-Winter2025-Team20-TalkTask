@@ -7,7 +7,9 @@
 
 import React from "react";
 import styles from "./home.module.css";
-import { Tasks } from "../../components/tasks/tasks";
+import { TaskList } from "../../components/tasklist/tasklist";
+import { TasksManagement } from "../../components/taskma/taskma";
+
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
 import { Navbar } from "../../components/navbar/navbar";
@@ -23,7 +25,8 @@ export const Home = () => {
     return (
         <div className={styles.curvedsquares}>
             <Calendar />
-            <Tasks />
+            <TaskList />
+            <TasksManagement/>
         </div>
     );
 };
