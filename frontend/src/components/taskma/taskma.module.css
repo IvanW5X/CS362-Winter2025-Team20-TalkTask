@@ -1,0 +1,31 @@
+/********************************************************************
+ * File Name: tasks.module.css
+ * Date: 1/26/2025
+ * Description: Module CSS file for tasks UI component
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+@import "../../variables.css";
+
+.outter{
+    margin-left:200px;
+}
+
+
+.tmanagement{
+    margin-left: 1000px;
+    margin-top: -100px;
+    padding: 12px 18px;
+
+    background-color: #cdcdcd;
+
+}
+
+.title{
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+    font-style: normal;
+    line-height: normal;
+}

@@ -24,6 +24,8 @@ import { Navbar } from "../../components/navbar/navbar";
 export const Home = () => {
     return (
         <div className={styles.curvedsquares}>
+            <Navbar/>
+            <Sidebar/>
             <Calendar />
             <TaskList />
             <TasksManagement/>
