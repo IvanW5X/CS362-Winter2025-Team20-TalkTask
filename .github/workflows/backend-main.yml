@@ -1,3 +1,4 @@
+---
 #--------------------------------------------------
 # CI Pipeline for our backend service
 # CD Unecessary because Renders offers CD in their
@@ -6,38 +7,48 @@
 
 name: CI Backend Pipeline
 
-# Run jobs on push and pull requests from main branch
+# Run jobs on push and pull requests to main branch
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 # Run the following jobs
 jobs:
-    build:
-        # Run jobs in backend directory
-        defaults:
-            run:
-                working-directory: backend
-        runs-on: ubuntu-latest
+  build:
+    # Run jobs in backend directory
+    defaults:
+      run:
+        working-directory: backend
+    runs-on: ubuntu-latest
 
-        steps:
-            # Clone repo in runner environment
-            - name: Checkout repository
-              uses: actions/checkout@v4
-        
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: '20'
+    steps:
+      # Clone repo in runner environment
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            # Clean install with 'ci'
-            - name: Install dependencies
-              run: npm ci
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-            # Check for syntax errors and problems
-            - name: Run linter
-              run: npm run lint
+      # Cache dependencies if new ones are added, hash file to check for changes and find best match
+      - name: Cache packages
+        uses: actions/cache@v4
+        with:
+          path: /node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Clean install with 'ci'
+      - name: Install dependencies
+        run: npm ci
+
+      # Check for syntax errors and problems
+      - name: Run linter
+        run: npm run lint
