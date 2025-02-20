@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
 
 .root {
-    --text-color: #716868;
+    --text-color: #000;
     --primary-color: #fff;
     --secondary-color: #37E03A;
     --background-color: #DFDFDF;

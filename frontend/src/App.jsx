@@ -17,7 +17,7 @@ import profilePicture from "../assets/GenericAvatar.png";
 function App() {
   return (
     <div className={styles.App}>
-      <div className={styles.curvedsquare}>
+      <div className={styles.topbar}>
         <img className={styles.logo} src={logo} alt="TalkTask Logo" />
         <img className={styles.profilePicture} src={profilePicture} alt="Profile Picture" />
       </div>
