@@ -7,7 +7,7 @@
  ********************************************************************/
 
 import { User } from "../db/models/userModel.js";
-import logger from "../logs/logger.js";
+import logger from "../utils/logger.js";
 
 // Create a User
 export const createUser = async (userData) => {
