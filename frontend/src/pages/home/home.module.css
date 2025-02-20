@@ -12,21 +12,8 @@
     padding: 20px;
     border-radius: 0px 0px 15px 15px;
     text-align: left;
-    height: 100vh;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
 }
 
-button {
-    background-color: lime;
-    color: white;
-    padding: 14px 20px;
-    margin: 2px 0px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 15vw;
-}
-
-button a {
-    color: white;
-    text-decoration: none;
-}
