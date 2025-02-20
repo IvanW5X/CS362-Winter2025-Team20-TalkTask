@@ -5,6 +5,8 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
+import { createTask, updateTaskStatus, deleteTask } from "../../../backend/controller/taskController"
+
 //setup
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
@@ -48,7 +50,7 @@ if(!SpeechRecognition){
     //parse voice input
     const command = parseCommand(transcript);
     if (command) {
-      execCommand(command);
+      execCommand(command); //exec function based on command
     }
   };
 

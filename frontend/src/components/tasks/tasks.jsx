@@ -9,23 +9,31 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 
+
 export const Tasks = () => {
 
   return (
-    <div className={styles.tasksquare}>
-      <div className={styles.tasklabel}>
-        <h2>Tasks</h2>
+    <div>
+      {/* task list section */}
+      <div className={styles.tasksquare}>
+        <div className={styles.tasklabel}>
+          <h2>Tasks</h2>
+        </div>
       </div>
 
-      <button>Add Task</button>
+      {/* task management section */}
+      <div className={styles.tmanagement}>
+        <button>Add Task</button>
+        
+        <div>
+          <p>Description</p>
+          <button>Complete</button>
+          <br />
+          <button>Delete</button>
+        </div>
+      </div>
       
-      <div>
-        <p>Description</p>
-        <button>Complete</button>
-        <br />
-        <button>Delete</button>
-      </div>
-      </div>
+    </div>
   );
 };
 
