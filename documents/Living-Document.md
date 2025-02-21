@@ -1233,6 +1233,19 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **Developer Documentation**
   * How to obtain source code:
+  Source code for this project can be entirely found at [our GitHub repo](https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask).
+  To clone the repo:
+    * Enter the directory where you want the repository to be cloned too.
+    * Make sure you have [git installed](https://gitforwindows.org/)
+    * ```git clone https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask```
+    * Make sure you have an LTS release of [node.js installed](https://nodejs.org/en)
+    * ```cd ./frontend/```
+    * ```npm i```
+    * ```cd ./..```
+    * ```cd ./backend/```
+    * ```npm i```
+    This will clone all source code we have written.  Additionally, it will install all necessary npm packages we need for source code to work.  The list of packages for the front and backend are found in their respective ```package.json``` files.
+
   * Directory structure:
     * **Assignments**:
       * Holds our architecture diagrams and assignments.
@@ -1262,7 +1275,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * How to test:
   * How to add a test:
   * How to build a specific release:
-    * For specific releases...
+    * For specific releases navigate to the branch you are interested in using.  Then, clone it with the link provided by GitHub.  Then, follow the next steps depending on which part of the application you want to run.
     * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
     * Backend:
       1. Obtain an API key from and Google's AI API and obtain a mongoDB URI
