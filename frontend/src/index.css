@@ -4,8 +4,9 @@
  * Description: CSS file for main website display
  * Author(s): CS 362-Team 20
  ********************************************************************/
+ @import "tailwindcss";
 
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -14,4 +15,4 @@
 
 html {
     scroll-behavior: smooth;
-}
+} */

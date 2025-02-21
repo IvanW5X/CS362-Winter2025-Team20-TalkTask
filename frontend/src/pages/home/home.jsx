@@ -6,13 +6,13 @@
  ********************************************************************/
 
 import React from "react";
-import styles from "./home.module.css";
 import { TaskList } from "../../components/tasklist/tasklist";
 import { TasksManagement } from "../../components/taskma/taskma";
 
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
 import { Navbar } from "../../components/navbar/navbar";
+import { TopBar } from "../../components/topbar/topbar"
 //import { Link } from "react-router-dom";
 
 
@@ -23,12 +23,13 @@ import { Navbar } from "../../components/navbar/navbar";
 */
 export const Home = () => {
     return (
-        <div className={styles.curvedsquares}>
-            <Navbar/>
+        <div className="">
+            <TopBar/>
+            {/* <Navbar/>
             <Sidebar/>
             <Calendar />
             <TaskList />
-            <TasksManagement/>
+            <TasksManagement/> */}
         </div>
     );
 };
