@@ -1228,8 +1228,10 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Once we get our website up and running, we will instruct users to...
       1. Create an account via Email and password or your choice of service provider via OAuth, or login to an existing account.
       2. Manage tasks using the task management list buttons or click other task lists on the sidebar - Functionality in progress
-  * How to report a bug: NICO
-  * Known bugs: NICO
+  * How to report a bug:
+    * If a bug is found in our application, they can be reported on the Github Issues page in our repository. Click "new issue", and provide these details: a concise title, steps to reproduce the issue, error messages, expected behavior, and other additional information.
+  * Known bugs:
+    * Known bugs will be kept in the Github Issues page. In order for users to not see the trivial bugs, issues will be assigned a label "major", "minor", "critical". Resolved issues will be removed or archived from the issues page.
 
 * **Developer Documentation**
   * How to obtain source code:
