@@ -17,7 +17,7 @@ export const TopBar = () => {
   
   return (
     <>
-      <div className="w-screen h-[95px] bg-[#37E03A] flex items-center">
+      <div className="w-screen h-[95px] bg-[#37E03A] flex items-center select-none">
        <Navbar/>
 
         {/* 
@@ -35,7 +35,7 @@ export const TopBar = () => {
           add customizable image?
         */}
 
-        <img className="ml-[73.48vw] w-[75px] relative" 
+        <img className="ml-[73.48vw] w-[75px] relative cursor-pointer" 
               src="../assets/GenericAvatar.png" alt="Profile Picture" 
         />
       </div>

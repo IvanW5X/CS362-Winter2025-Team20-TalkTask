@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./navbar.module.css";
 import { Link } from "react-router-dom"; // For navigation
 
@@ -25,11 +25,19 @@ export const Navbar = () => {
         <IoMdMenu className="text-white text-[50px] cursor-pointer ml-[25px]" 
                   onClick={toggleItems}/>
         
-        <ul className={styles.navbarList}>
-          <ul className={`${styles.subMenu} ${showItems ? styles.show : ""}`}>
-            <li className={styles.navbarItem}>page 1</li>
-            <li className={styles.navbarItem}>page 2</li>
-            <li className={styles.navbarItem}>page 3</li>
+        {/* 
+          implement collapse sidebar when using navbar.
+          improve navbar look but function is fine for now.
+        */}
+
+        
+        <ul className="relative">
+          <ul className={`${showItems ? "block" : "hidden"}
+              absolute w-[200px] z-[1000] mt-[13px] ml-[10px] cursor-pointer bg-[#e0e0e0]
+          `}>
+            <li className="p-[10px]">Profile</li>
+            <li className="p-[10px]">About</li>
+            <li className="p-[10px]">Settings</li>
           </ul>
         </ul>
       </nav>
