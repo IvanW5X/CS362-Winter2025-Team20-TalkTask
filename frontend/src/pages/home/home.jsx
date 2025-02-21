@@ -25,8 +25,9 @@ export const Home = () => {
     return (
         <div className="">
             <TopBar/>
-            {/* <Navbar/>
-            <Sidebar/>
+            {/* <Navbar/> moved into with topbar*/}
+
+            {/* <Sidebar/>
             <Calendar />
             <TaskList />
             <TasksManagement/> */}

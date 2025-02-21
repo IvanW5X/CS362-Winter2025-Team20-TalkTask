@@ -6,6 +6,7 @@
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
+import { Navbar } from "../navbar/navbar";
 import axios from "axios";
 
 
@@ -17,15 +18,26 @@ export const TopBar = () => {
   return (
     <>
       <div className="w-screen h-[95px] bg-[#37E03A] flex items-center">
-       
-        <img className="w-[150px] ml-[230px]" 
+       <Navbar/>
+
+        {/* 
+          need to make responsive later. vw and vh is okay for now.
+          need to us stuff like md: and sm: later
+        */}
+
+        <img className="w-[150px] ml-[14vw] relative" 
               src="../assets/TalkTaskLogo1.png" alt="TalkTask Logo"
         />
 
-        <img className="ml-[1650px] w-[70px]" 
+        {/* 
+          add settings/profile settings?
+          add clickable image?
+          add customizable image?
+        */}
+
+        <img className="ml-[73.48vw] w-[75px] relative" 
               src="../assets/GenericAvatar.png" alt="Profile Picture" 
         />
-
       </div>
     </>
   );
