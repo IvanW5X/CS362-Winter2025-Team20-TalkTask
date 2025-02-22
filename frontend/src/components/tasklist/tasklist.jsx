@@ -13,14 +13,23 @@ import axios from "axios";
 export const TaskList = () => {
 
   return (
-    <div>
+    <>
       {/* task list section */}
-      <div className={styles.tasksquare}>
-        <div className={styles.tasklabel}>
-          <h2>Tasks</h2>
+      <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-[950px] h-[500px]">
+        {/* <div className={styles.tasksquare}>
+          <div className={styles.tasklabel}>
+            <h2>Tasks</h2>
+          </div>
+        </div> */}
+
+        <div className="justify-between rounded-2xl text-[20px] font-[600] font-[Inter] bg-white m-5 py-2 pl-5">
+          Tasks
+          <div></div>
         </div>
+        
+
       </div>
-    </div>
+    </>
   );
 };
 

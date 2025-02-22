@@ -6,7 +6,6 @@
  ********************************************************************/
 
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./navbar.module.css";
 import { Link } from "react-router-dom"; // For navigation
 
 import { IoMdMenu } from "react-icons/io";

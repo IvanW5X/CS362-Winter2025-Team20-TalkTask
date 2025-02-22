@@ -25,12 +25,13 @@ export const Home = () => {
     return (
         <div>
             <TopBar/>
-            {/* <Navbar/> moved into with topbar*/}
-
             <Sidebar/>
-            {/* <Calendar />
+
+            {/* redo calendar later */}
+            <Calendar />
+
             <TaskList />
-            <TasksManagement/> */}
+            {/* <TasksManagement/> */}
         </div>
     );
 };

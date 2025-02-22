@@ -24,22 +24,10 @@ export const Calendar = () => {
     ];
 
     return (
-        <div className={calendarStyles.calendarContainer}>
-            <button className={calendarStyles.navButton}>&#9664;</button> {/* Left Arrow */}
-            <div className={calendarStyles.dates}>
-                {days.map((d) => (
-                    <button
-                        key={d.date}
-                        className={`${calendarStyles.dateButton} ${selectedDate === d.date ? calendarStyles.selected : ""}`}
-                        onClick={() => setSelectedDate(d.date)}
-                    >
-                        <span className={calendarStyles.month}>{d.month}</span>
-                        <span className={calendarStyles.date}>{d.date}</span>
-                        <span className={calendarStyles.day}>{d.day}</span>
-                    </button>
-                ))}
-            </div>
-            <button className={calendarStyles.navButton}>&#9654;</button> {/* Right Arrow */}
-        </div>
+        <>
+          <div className="bg-red-200 w-[1000px] h-[130px] absolute mt-[110px] ml-[520px]">
+                {/* implement calender with actual functions */}
+          </div>
+        </>
     );
 };

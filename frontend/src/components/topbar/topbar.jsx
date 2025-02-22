@@ -27,7 +27,7 @@ export const TopBar = () => {
           need to us stuff like md: and sm: later
         */}
 
-        <img className="w-[150px] ml-[12vw] relative" 
+        <img className="w-[150px] ml-[14vw] relative" 
               src="../assets/TalkTaskLogo1.png" 
               alt="TalkTask Logo"
         />
