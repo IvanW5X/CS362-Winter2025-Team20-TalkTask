@@ -23,12 +23,12 @@ import { TopBar } from "../../components/topbar/topbar"
 */
 export const Home = () => {
     return (
-        <div className="">
+        <div>
             <TopBar/>
             {/* <Navbar/> moved into with topbar*/}
 
-            {/* <Sidebar/>
-            <Calendar />
+            <Sidebar/>
+            {/* <Calendar />
             <TaskList />
             <TasksManagement/> */}
         </div>

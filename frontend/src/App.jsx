@@ -14,7 +14,7 @@ import { Home } from "./pages/home/home";
 function App() {
   return (
     <>
-      <div className="bg-[#cdcdcd] h-screen w-screen">
+      <div className="bg-[#cdcdcd] h-screen w-full">
           <Home />
       </div>
     </>

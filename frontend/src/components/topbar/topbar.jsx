@@ -17,7 +17,7 @@ export const TopBar = () => {
   
   return (
     <>
-      <div className="w-screen h-[95px] bg-[#37E03A] flex items-center select-none">
+      <div className="absolute z-[1000] w-full h-[95px] bg-[#37E03A] flex items-center select-none">
        <Navbar/>
 
         {/* 
@@ -25,7 +25,7 @@ export const TopBar = () => {
           need to us stuff like md: and sm: later
         */}
 
-        <img className="w-[150px] ml-[14vw] relative" 
+        <img className="w-[150px] ml-[12vw] relative" 
               src="../assets/TalkTaskLogo1.png" alt="TalkTask Logo"
         />
 
@@ -35,7 +35,7 @@ export const TopBar = () => {
           add customizable image?
         */}
 
-        <img className="ml-[73.48vw] w-[75px] relative cursor-pointer" 
+        <img className="absolute ml-[94vw] w-[75px] cursor-pointer" 
               src="../assets/GenericAvatar.png" alt="Profile Picture" 
         />
       </div>

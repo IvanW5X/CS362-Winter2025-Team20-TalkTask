@@ -20,31 +20,28 @@ export const Sidebar = () => {
   };
 
   return (
-    <nav className={styles.sidebar}>
-      <div className={styles.sidebarBlock}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
-      <ul className={styles.sidebarList}>
-        <li
-          className={styles.sidebarItem}
-          onClick={() => setShowTasks(!showTasks)}
-        >
-          Tasks <span className={styles.plusIcon} onClick={addTask}>+</span>
-        </li>
-
-        <ul className={`${styles.subMenu} ${showTasks ? styles.show : ""}`}>
-          {tasks.map((task, index) => (
-            <li key={index} className={styles.sidebarItem}>
-              {task}
-            </li>
-          ))}
+    <>
+      <nav className="absolute bg-white h-screen w-[200px]">
+        
+        <ul className="mt-[95px]">
+          <li
+            className={styles.sidebarItem}
+            onClick={() => setShowTasks(!showTasks)}
+          >
+            Tasks <span className={styles.plusIcon} onClick={addTask}>+</span>
+          </li>
+  
+          <ul className={`${styles.subMenu} ${showTasks ? styles.show : ""}`}>
+            {tasks.map((task, index) => (
+              <li key={index} className={styles.sidebarItem}>
+                {task}
+              </li>
+            ))}
+          </ul>
+  
+          <li className={styles.sidebarItem}>About</li>
         </ul>
-
-        <li className={styles.sidebarItem}>About</li>
-      </ul>
-    </nav>
+      </nav>
+    </>
   );
 };
