@@ -6,6 +6,8 @@
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
+
 import { Navbar } from "../navbar/navbar";
 import axios from "axios";
 
@@ -21,12 +23,13 @@ export const TopBar = () => {
        <Navbar/>
 
         {/* 
-          need to make responsive later. vw and vh is okay for now.
+          need to make responsive later. vw and vh is okay for now with desktop.
           need to us stuff like md: and sm: later
         */}
 
         <img className="w-[150px] ml-[12vw] relative" 
-              src="../assets/TalkTaskLogo1.png" alt="TalkTask Logo"
+              src="../assets/TalkTaskLogo1.png" 
+              alt="TalkTask Logo"
         />
 
         {/* 
@@ -35,9 +38,7 @@ export const TopBar = () => {
           add customizable image?
         */}
 
-        <img className="absolute ml-[94vw] w-[75px] cursor-pointer" 
-              src="../assets/GenericAvatar.png" alt="Profile Picture" 
-        />
+        <FaUserCircle className="text-white text-[70px] absolute ml-[94vw] cursor-pointer" />
       </div>
     </>
   );
