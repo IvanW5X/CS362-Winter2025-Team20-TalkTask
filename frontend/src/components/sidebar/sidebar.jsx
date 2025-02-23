@@ -23,7 +23,7 @@ export const Sidebar = ({ menu_open }) => {
 
   return (
     <>
-     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[50px] w-[200px] shadow-xl 
+     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 
                       ${menu_open ? "block" : "hidden"}`}>
         <ul className="">
 
