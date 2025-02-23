@@ -10,13 +10,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 
-export const menuState = () => {
-  const [menu_open, set_menu_state] = useState(true);
-  return [menu_open, set_menu_state];
-};
 
 
-export const TopBar = () => {
+export const TopBar = ({menu_open, set_menu_state}) => {
 
   return (
     <>
@@ -27,7 +23,9 @@ export const TopBar = () => {
           need to us stuff like md: and sm: later
         */}
         <RxHamburgerMenu className="ml-[20px] text-[65px] cursor-pointer text-white "
-                          onClick={() => set_menu_state(!menu_open)}
+                          onClick={() => {
+                            set_menu_state(!menu_open);
+                          }}
         />
 
         <img className="w-[150px] -ml-[50%] " 

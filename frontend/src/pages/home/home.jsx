@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+import React , { useState }from "react";
 import { TaskList } from "../../components/tasklist/tasklist";
 import { TasksManagement } from "../../components/taskma/taskma";
 
@@ -20,11 +20,15 @@ import { TopBar } from "../../components/topbar/topbar"
 <Navbar />
 <Sidebar />
 */
+
+
+
 export const Home = () => {
+    const [menu_open, set_menu_state] = useState(true); 
     return (
         <div>
-            <TopBar/>
-            <Sidebar/>
+            <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
+            <Sidebar menu_open={menu_open}/>
 
             {/* redo calendar later */}
             {/* <Calendar /> */}

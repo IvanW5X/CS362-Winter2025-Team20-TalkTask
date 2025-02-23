@@ -7,11 +7,10 @@
 
 import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
-import { menuState } from "../topbar/topbar";
 
-export const Sidebar = () => {
+export const Sidebar = ({ menu_open }) => {
+
   const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
-  const [menu_open, set_menu_state] = menuState();
 
   const addCategory = () => {
     const newTask = prompt("Enter a new task:"); // Allows the user to input text
@@ -20,18 +19,18 @@ export const Sidebar = () => {
     }
   };
 
-  
 
 
   return (
     <>
-     {menu_open && (<nav className="z-[999] flex font-[Inter] flex-col bg-white h-screen w-[200px] shadow-xl">
+     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[50px] w-[200px] shadow-xl 
+                      ${menu_open ? "block" : "hidden"}`}>
         <ul className="">
 
           {/* Task title and + icon */}
           <li
-            className={`flex cursor-pointer p-[10px] text-[14px] font-[700] items-center justify-between bg-[#E5E5E5]
-                       `
+            className={`flex cursor-pointer p-[10px] text-[14px] font-[700] 
+                        items-center justify-between bg-[#E5E5E5]`
             }>
             Tasks
             <GoPlus className="cursor-pointer text-[25px] stroke-[.5]"
@@ -51,7 +50,7 @@ export const Sidebar = () => {
           </ul>
   
         </ul>
-      </nav>)}
+      </nav>
     </>
   );
 };
