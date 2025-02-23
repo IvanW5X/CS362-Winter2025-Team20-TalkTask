@@ -68,7 +68,7 @@ export const TaskList = () => {
   ];
 
   return (
-    <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-[950px] ">
+    <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-auto">
       {/* Header */}
       <div className="flex items-center justify-between rounded-2xl text-[20px] font-semibold bg-white m-5 px-5 py-3">
         <span>Tasks</span>
@@ -84,14 +84,17 @@ export const TaskList = () => {
             {/* Task text */}
             <div className="flex-1 text-base font-medium">{task.title}</div>
             {/* Times */}
-            <div className="text-sm mr-4">Start: {task.startTime}</div>
-            <div className="text-sm mr-4">End: {task.endTime}</div>
+            <div className="text-sm mr-4 hidden md:block">
+              <p></p>
+            </div>
+            <div className="text-sm mr-4 hidden md:block">Start: {task.startTime}</div>
+            <div className="text-sm mr-4 hidden md:block">End: {task.endTime}</div>
             {/* Pencil icon (you could replace with an actual icon component) */}
-            <button className="mr-4">✏️</button>
+            <button className="mr-4 hidden md:block">✏️</button>
             {/* Checkbox */}
             <input
               type="checkbox"
-              className="form-checkbox h-5 w-5"
+              className="form-checkbox h-5 w-5 hidden md:block"
               checked={task.completed}
               readOnly
             />
