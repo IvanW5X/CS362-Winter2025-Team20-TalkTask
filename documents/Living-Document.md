@@ -1308,3 +1308,29 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Jest can be installed via NPM into our front and backend directories as a dev dependency and using a tests directory, we can store our unit and module tests then run ```npm run test``` to run our tests, so Jest will let us know which tests pass or fail.
   * GitHub Actions: Continious Integration
     * GitHub Actions has been selected as our CI service. This tool has been selected because it was the easiest to integrate with our current project (since we can add a .yaml file to GitHub repo directly) and it has lots of documentation we can use to learn how to use it effectively. It will also allow us to run our tests automatically via steps in the .yaml files.
+  
+  | Label | GitHub Actions | CircleCI | TravisCI |
+  |-------|----------------|----------|----------|
+  | Pros  | Built in Git Integration | Simple YAML Configs | Easy to configure and operate |
+  |       | Free for our public repo | Fast and reliable | Deep GitHub integration |
+  |       | Lots of prebuilt actions, especially for Node.js apps | Allows concurrent testing, speeding up build and testing processes | Large community, so lots of documentation and tutorials available |
+  | Cons  | Can become complex for large projects | Steep learning curve for complex features | Less flexible than competitors |
+  |       | Relies on GitHub, if it's down, cannot test or integrate properly | Can become pricey as project grows, we want to avoid paying for services | Restricted build environments, lack complete access to virtual machine |
+
+  * Executed Tests
+    * Adding a task to the database - task added with appropiate information.
+    * Removing a task from the database - existing task removed from database.
+    * Marking task as complete - existing task displays as completed for the user and no reminders given to user about said task.
+    * Filter tasks - only display/ fetch tasks that have a specific attribute.
+    * Sort tasks - display tasks following a pattern with a specific attribute.
+    * Parse voice commands - Tokenize a string into commands and task attributes.
+    * Suggest a task - provide a logically related task with a short description given a list of tasks names.
+    * Create a user - create a new user when given new login credentials.
+    * Render speech recognition component - ensures WebSpeech API is listening when speech button is pressed/activated.
+    * Validate task input - adds task if and only if data provided is valid, rejects otherwise.
+    * Frontend form validation - sends task data to server if and only if task form is valid and non-empty, rejects otherwise.
+    * Task creation and retrieval - Creates a task, sends to database, task is then retrieved to from database using a GET method.
+    * Speech input validation - takes in a string, tokenizes to get task attributes, creates a task, sends to server, server processes data and adds to database, frontend retrieves task with a GET method.
+
+  * Trigger CI Build
+    * Our CI build will be triggered whenever a push or pull requests is committed to the main branch. That being said, we will then create a dev branch to ensure that when we are incrementally implementing code that passes these tests, we are able to push it the to the dev branch, so that the main branch will remain stable at all times.
