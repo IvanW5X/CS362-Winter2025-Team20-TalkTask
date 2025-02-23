@@ -297,6 +297,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
 * Auth0 API
   * The Auth0 API will allow users to create and login to their accounts safely and securely across multiple devices to access their data. The Auth0 API gives us developers to seamlessly authenticate and authorize users to provide them with corresponding data and permissions.
+* TailwindCSS
+  * TailwindCSS is a CSS framework that helps simplify the development process by providing pre-designed utility classes. It allows custom designs without writing your own custom CSS and simplifies the development of responsive designs.
 
 ### Team Member Schedules
 
@@ -1285,7 +1287,17 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       1. Open Terminal
       2. Type 'git checkout main'
   * How to test:
+    * Jest will be used to test both our frontend and backend.
+    * We will create a directory named "test" in the frontend and backend which will hold all of our tests.
+    * Inside each test directory we will have JavaScript files that name ____.test.js based on which part we are testing.
+    * Navigate to either the frontend or backend and have the Jest package installed.
+    * Run the command ```npm run test```.
+    * Results will be displayed into the terminal.
+    * You can also run ```npm run test --coverage``` to see a detailed report on the coverage of the test. Showing which lines were and were not covered by the test.
   * How to add a test:
+    * Inside the folder we will create a file and write a test using Jest's API.
+    * Save the file.
+    * Run ```npm run test```
   * How to build a specific release:
     * For specific releases navigate to the branch you are interested in using.  Then, clone it with the link provided by GitHub.  Then, follow the next steps depending on which part of the application you want to run.
     * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
