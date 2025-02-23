@@ -1263,7 +1263,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       * Holds our frontend components, pages, assets, and frontend related service files.
       * **Tests**
         * Holds test JSON files and other test related files for frontend components
-    * Backend:
+    * **Backend**:
       * Holds our backend sources files
       * **Tests**
         * Holds test JSON files and other test related files for backend logic and components
@@ -1329,7 +1329,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   | Cons  | Can become complex for large projects | Steep learning curve for complex features | Less flexible than competitors |
   |       | Relies on GitHub, if it's down, cannot test or integrate properly | Can become pricey as project grows, we want to avoid paying for services | Restricted build environments, lack complete access to virtual machine |
 
-* Executed Tests
+* **Executed Tests**
   * Adding a task to the database - task added with appropiate information.
   * Removing a task from the database - existing task removed from database.
   * Marking task as complete - existing task displays as completed for the user and no reminders given to user about said task.
@@ -1344,5 +1344,5 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Task creation and retrieval - Creates a task, sends to database, task is then retrieved to from database using a GET method.
   * Speech input validation - takes in a string, tokenizes to get task attributes, creates a task, sends to server, server processes data and adds to database, frontend retrieves task with a GET method.
 
-* Trigger CI Build
+* **Trigger CI Build**
   * Our CI build will be triggered whenever a push or pull requests is committed to the main branch. That being said, we will then create a dev branch to ensure that when we are incrementally implementing code that passes these tests, we are able to push it the to the dev branch, so that the main branch will remain stable at all times.
