@@ -9,30 +9,98 @@ import React, { useEffect, useState } from "react";
 import styles from "./tasklist.module.css";
 import axios from "axios";
 
-
-export const TaskList = () => {
-
-  return (
-    <>
-      {/* task list section */}
-      <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-[950px] h-[500px]">
-        {/* <div className={styles.tasksquare}>
-          <div className={styles.tasklabel}>
-            <h2>Tasks</h2>
-          </div>
-        </div> */}
-
-        <div className="justify-between rounded-2xl text-[20px] font-[600] font-[Inter] bg-white m-5 py-2 pl-5">
-          Tasks
-          <div></div>
-        </div>
-        
-
-      </div>
-    </>
-  );
+/**
+ * Utility function to convert a color name to a Tailwind class.
+ * This avoids issues with dynamic class strings in Tailwind.
+ */
+const getColorClass = (color) => {
+  switch (color) {
+    case "School":
+      return "bg-red-500";
+    case "Work":
+      return "bg-yellow-500";
+    case "Chores":
+      return "bg-green-500";
+    case "Exercise":
+      return "bg-blue-500";
+    // Add more colors as needed
+    default:
+      return "bg-gray-500";
+  }
 };
 
+export const TaskList = () => {
+  // Example tasks array
+  const tasks = [
+    {
+      id: 1,
+      title: "Do Homework for an hour",
+      startTime: "7:00 AM",
+      endTime: "7:30 AM",
+      color: "School",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Work For 6 hours",
+      startTime: "10:00 AM",
+      endTime: "4:00 PM",
+      color: "Work",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "Do the Dishes",
+      startTime: "1:00 PM",
+      endTime: "2:45 PM",
+      color: "Chores",
+      completed: false,
+    },
+    {
+      id: 4,
+      title: "Go to the Gym",
+      startTime: "5:00 PM",
+      endTime: "6:00 PM",
+      color: "Exercise",
+      completed: false,
+    },
+    // Add more tasks here as needed
+  ];
+
+  return (
+    <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-[950px] ">
+      {/* Header */}
+      <div className="flex items-center justify-between rounded-2xl text-[20px] font-semibold bg-white m-5 px-5 py-3">
+        <span>Tasks</span>
+        <span className="text-sm font-normal">{tasks.length}</span>
+      </div>
+
+      {/* Task items container */}
+      <div className="mx-5 mb-5 space-y-4">
+        {tasks.map((task) => (
+          <div key={task.id} className="bg-white p-4 rounded-2xl flex items-center shadow">
+            {/* Colored circle */}
+            <div className={`w-5 h-5 rounded-full ${getColorClass(task.color)} mr-3`}/>
+            {/* Task text */}
+            <div className="flex-1 text-base font-medium">{task.title}</div>
+            {/* Times */}
+            <div className="text-sm mr-4">Start: {task.startTime}</div>
+            <div className="text-sm mr-4">End: {task.endTime}</div>
+            {/* Pencil icon (you could replace with an actual icon component) */}
+            <button className="mr-4">✏️</button>
+            {/* Checkbox */}
+            <input
+              type="checkbox"
+              className="form-checkbox h-5 w-5"
+              checked={task.completed}
+              readOnly
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 
 
