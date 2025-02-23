@@ -6,8 +6,6 @@
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
-import styles from "./taskma.module.css";
-import axios from "axios";
 
 
 export const TasksManagement = () => {

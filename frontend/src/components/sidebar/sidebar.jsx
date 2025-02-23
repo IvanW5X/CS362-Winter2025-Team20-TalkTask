@@ -7,11 +7,11 @@
 
 import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
-
+import { menuState } from "../topbar/topbar";
 
 export const Sidebar = () => {
-  const [showTasks, setShowTasks] = useState(true); // shows all taskGroups
   const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
+  const [menu_open, set_menu_state] = menuState();
 
   const addCategory = () => {
     const newTask = prompt("Enter a new task:"); // Allows the user to input text
@@ -20,17 +20,19 @@ export const Sidebar = () => {
     }
   };
 
+  
+
+
   return (
     <>
-      <nav className="absolute flex font-[Inter] flex-col bg-white h-screen w-[200px] shadow-xl">
-        <ul className="mt-[95px]">
+     {menu_open && (<nav className="z-[999] flex font-[Inter] flex-col bg-white h-screen w-[200px] shadow-xl">
+        <ul className="">
 
           {/* Task title and + icon */}
           <li
-            className="flex cursor-pointer p-[10px] text-[14px] font-[700] 
-                        items-center justify-between bg-[#E5E5E5]"
-            onClick={() => setShowTasks(!showTasks)}
-          >
+            className={`flex cursor-pointer p-[10px] text-[14px] font-[700] items-center justify-between bg-[#E5E5E5]
+                       `
+            }>
             Tasks
             <GoPlus className="cursor-pointer text-[25px] stroke-[.5]"
             onClick={addCategory}/>
@@ -38,8 +40,7 @@ export const Sidebar = () => {
           
 
           {/* categories */}
-          <ul className={`${showTasks ? "block" : "hidden"}
-          `}>
+          <ul className={``}>
             {tasks.map((task, index) => (
               <li key={index} 
                   className="flex cursor-pointer p-[10px] text-[14px] pl-[20px]
@@ -50,7 +51,7 @@ export const Sidebar = () => {
           </ul>
   
         </ul>
-      </nav>
+      </nav>)}
     </>
   );
 };

@@ -11,7 +11,6 @@ import { TasksManagement } from "../../components/taskma/taskma";
 
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
-import { Navbar } from "../../components/navbar/navbar";
 import { TopBar } from "../../components/topbar/topbar"
 //import { Link } from "react-router-dom";
 
@@ -28,9 +27,9 @@ export const Home = () => {
             <Sidebar/>
 
             {/* redo calendar later */}
-            <Calendar />
+            {/* <Calendar /> */}
 
-            <TaskList />
+            {/* <TaskList /> */}
             {/* <TasksManagement/> */}
         </div>
     );
