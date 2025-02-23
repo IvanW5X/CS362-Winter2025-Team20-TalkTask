@@ -297,6 +297,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Figma will be used by our UI/UX designer to design our web pages. The mockups will be used for our frontend developers to reference what we will be creating.
 * Auth0 API
   * The Auth0 API will allow users to create and login to their accounts safely and securely across multiple devices to access their data. The Auth0 API gives us developers to seamlessly authenticate and authorize users to provide them with corresponding data and permissions.
+* TailwindCSS
+  * TailwindCSS is a CSS framework that helps simplify the development process by providing pre-designed utility classes. It allows custom designs without writing your own custom CSS and simplifies the development of responsive designs.
 
 ### Team Member Schedules
 
@@ -1261,7 +1263,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       * Holds our frontend components, pages, assets, and frontend related service files.
       * **Tests**
         * Holds test JSON files and other test related files for frontend components
-    * Backend:
+    * **Backend**:
       * Holds our backend sources files
       * **Tests**
         * Holds test JSON files and other test related files for backend logic and components
@@ -1285,7 +1287,17 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
       1. Open Terminal
       2. Type 'git checkout main'
   * How to test:
+    * Jest will be used to test both our frontend and backend.
+    * We will create a directory named "test" in the frontend and backend which will hold all of our tests.
+    * Inside each test directory we will have JavaScript files that name ____.test.js based on which part we are testing.
+    * Navigate to either the frontend or backend and have the Jest package installed.
+    * Run the command ```npm run test```.
+    * Results will be displayed into the terminal.
+    * You can also run ```npm run test --coverage``` to see a detailed report on the coverage of the test. Showing which lines were and were not covered by the test.
   * How to add a test:
+    * Inside the folder we will create a file and write a test using Jest's API.
+    * Save the file.
+    * Run ```npm run test```
   * How to build a specific release:
     * For specific releases navigate to the branch you are interested in using.  Then, clone it with the link provided by GitHub.  Then, follow the next steps depending on which part of the application you want to run.
     * Prerequisites: Node.js, MongoDB, Google Gemini 2.0 API
@@ -1296,3 +1308,41 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Frontend:
       1. From root directory, type 'cd frontend' into the terminal and hit enter
       2. Type 'npm run dev' + enter to run the client in developer mode
+
+### Testing and Continious Integration
+
+* **Infrastructure**
+  * ESLint: Automated Static Checker
+    * ESLint will be used for static code analysis to ensure consistency among developers and identifying/reporting problematic patterns in our JS code. The linting process will be used to catch mistakes relating to code quality and syntax errors.
+    * A simple script has been created for both our front and backend services, so that that when ```npm run lint``` is executed, the ESLint will run and check our JS/JSX files.
+  * Jest: Automated Testing
+    * Jest is a JavaScript testing framework that to ensure correctness with JavaScript code bases, so since we are creating a JS based application, we can easily adopt Jest into our toolset to add unit and module tests.
+    * Jest can be installed via NPM into our front and backend directories as a dev dependency and using a tests directory, we can store our unit and module tests then run ```npm run test``` to run our tests, so Jest will let us know which tests pass or fail.
+  * GitHub Actions: Continious Integration
+    * GitHub Actions has been selected as our CI service. This tool has been selected because it was the easiest to integrate with our current project (since we can add a .yaml file to GitHub repo directly) and it has lots of documentation we can use to learn how to use it effectively. It will also allow us to run our tests automatically via steps in the .yaml files.
+  
+  | Label | GitHub Actions | CircleCI | TravisCI |
+  |-------|----------------|----------|----------|
+  | Pros  | Built in Git Integration | Simple YAML Configs | Easy to configure and operate |
+  |       | Free for our public repo | Fast and reliable | Deep GitHub integration |
+  |       | Lots of prebuilt actions, especially for Node.js apps | Allows concurrent testing, speeding up build and testing processes | Large community, so lots of documentation and tutorials available |
+  | Cons  | Can become complex for large projects | Steep learning curve for complex features | Less flexible than competitors |
+  |       | Relies on GitHub, if it's down, cannot test or integrate properly | Can become pricey as project grows, we want to avoid paying for services | Restricted build environments, lack complete access to virtual machine |
+
+* **Executed Tests**
+  * Adding a task to the database - task added with appropiate information.
+  * Removing a task from the database - existing task removed from database.
+  * Marking task as complete - existing task displays as completed for the user and no reminders given to user about said task.
+  * Filter tasks - only display/ fetch tasks that have a specific attribute.
+  * Sort tasks - display tasks following a pattern with a specific attribute.
+  * Parse voice commands - Tokenize a string into commands and task attributes.
+  * Suggest a task - provide a logically related task with a short description given a list of tasks names.
+  * Create a user - create a new user when given new login credentials.
+  * Render speech recognition component - ensures WebSpeech API is listening when speech button is pressed/activated.
+  * Validate task input - adds task if and only if data provided is valid, rejects otherwise.
+  * Frontend form validation - sends task data to server if and only if task form is valid and non-empty, rejects otherwise.
+  * Task creation and retrieval - Creates a task, sends to database, task is then retrieved to from database using a GET method.
+  * Speech input validation - takes in a string, tokenizes to get task attributes, creates a task, sends to server, server processes data and adds to database, frontend retrieves task with a GET method.
+
+* **Trigger CI Build**
+  * Our CI build will be triggered whenever a push or pull requests is committed to the main branch. That being said, we will then create a dev branch to ensure that when we are incrementally implementing code that passes these tests, we are able to push it the to the dev branch, so that the main branch will remain stable at all times.
