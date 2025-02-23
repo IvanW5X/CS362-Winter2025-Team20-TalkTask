@@ -6,13 +6,14 @@
  ********************************************************************/
 
 import React, { useState } from "react";
-import styles from "./sidebar.module.css";
+import { GoPlus } from "react-icons/go";
+
 
 export const Sidebar = () => {
   const [showTasks, setShowTasks] = useState(true); // shows all taskGroups
   const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
 
-  const addTask = () => {
+  const addCategory = () => {
     const newTask = prompt("Enter a new task:"); // Allows the user to input text
     if (newTask) {
       setTasks([...tasks, newTask]); // Add new task grouping to the list
@@ -20,31 +21,36 @@ export const Sidebar = () => {
   };
 
   return (
-    <nav className={styles.sidebar}>
-      <div className={styles.menuIcon}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <>
+      <nav className="absolute flex font-[Inter] flex-col bg-white h-screen w-[200px] shadow-xl">
+        <ul className="mt-[95px]">
 
-      <ul className={styles.sidebarList}>
-        <li
-          className={styles.sidebarItem}
-          onClick={() => setShowTasks(!showTasks)}
-        >
-          Tasks <span className={styles.plusIcon} onClick={addTask}>+</span>
-        </li>
+          {/* Task title and + icon */}
+          <li
+            className="flex cursor-pointer p-[10px] text-[14px] font-[700] 
+                        items-center justify-between bg-[#E5E5E5]"
+            onClick={() => setShowTasks(!showTasks)}
+          >
+            Tasks
+            <GoPlus className="cursor-pointer text-[25px] stroke-[.5]"
+            onClick={addCategory}/>
+          </li>
+          
 
-        <ul className={`${styles.subMenu} ${showTasks ? styles.show : ""}`}>
-          {tasks.map((task, index) => (
-            <li key={index} className={styles.sidebarItem}>
-              {task}
-            </li>
-          ))}
+          {/* categories */}
+          <ul className={`${showTasks ? "block" : "hidden"}
+          `}>
+            {tasks.map((task, index) => (
+              <li key={index} 
+                  className="flex cursor-pointer p-[10px] text-[14px] pl-[20px]
+                            items-center bg-[#E5E5E5] hover:bg-black/20 odd:bg-white">
+                {task}
+              </li>
+            ))}
+          </ul>
+  
         </ul>
-
-        <li className={styles.sidebarItem}>About</li>
-      </ul>
-    </nav>
+      </nav>
+    </>
   );
 };

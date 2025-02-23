@@ -1,42 +1,49 @@
 /********************************************************************
- * File Name: task.jsx
+ * File Name: tasks.jsx
  * Date: 1/26/2025
  * Description: JSX file for tasks UI component
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
-import styles from "./tasks.module.css";
+import { FaUserCircle } from "react-icons/fa";
+
+import { Navbar } from "../navbar/navbar";
 import axios from "axios";
 
 
 
-export const Tasks = () => {
-    return (
-        <div className={styles.tasksquare}>
-            <div className={styles.tasklabel}>
-                <h2>Tasks</h2>
-            </div>
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
+export const TopBar = () => {
 
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
 
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-        </div>
-    );
+  
+  return (
+    <>
+      <div className="absolute z-[1000] w-full h-[95px] bg-[#37E03A] flex items-center select-none">
+       <Navbar/>
+
+        {/* 
+          need to make responsive later. vw and vh is okay for now with desktop.
+          need to us stuff like md: and sm: later
+        */}
+
+        <img className="w-[150px] ml-[14vw] relative" 
+              src="../assets/TalkTaskLogo1.png" 
+              alt="TalkTask Logo"
+        />
+
+        {/* 
+          add settings/profile settings?
+          add clickable image?
+          add customizable image?
+        */}
+
+        <FaUserCircle className="text-white text-[70px] absolute ml-[94vw] cursor-pointer" />
+      </div>
+    </>
+  );
 }
+
 
 
 

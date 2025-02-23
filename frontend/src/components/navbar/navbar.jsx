@@ -5,34 +5,41 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
-import styles from "./navbar.module.css";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom"; // For navigation
 
-export const Navbar = () => {
-  const [apiLinks, setApiLinks] = useState([]);
+import { IoMdMenu } from "react-icons/io";
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts") //change to correct api, just basic stuff rn
-      .then((response) => response.json())
-      .then((data) => setApiLinks(data.map((item) => ({ id: item.id, name: item.title })))) //store
-      .catch((error) => console.error("Error fetching navigation links:", error)); //error handling
-  }, []);
+
+export const Navbar = () => {
+  const [showItems, setShowItems] = useState(false); // state to toggle visibility of items
+
+  const toggleItems = () => {
+    setShowItems(!showItems); // Toggle visibility of items
+  };
 
   return (
-    <nav className={styles.navbar}>
-      <h2>Navbar</h2>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
+    <>
+      <nav className="absolute flex items-center">
+        <IoMdMenu className="text-white text-[50px] cursor-pointer ml-[25px]" 
+                  onClick={toggleItems}/>
+        
+        {/* 
+          implement collapse sidebar when using navbar.
+          improve navbar look but function is fine for now.
+        */}
 
-        {/* Navigation for API */}
-        {apiLinks.map((link) => (
-          <li key={link.id}>
-            <Link to={`/dynamic/${link.id}`}>{link.name}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+        
+        <ul className="relative">
+          <ul className={`${showItems ? "block" : "hidden"}
+              absolute w-[200px] z-[1000] mt-[13px] ml-[10px] cursor-pointer bg-[#e0e0e0]
+          `}>
+            <li className="p-[10px]">Profile</li>
+            <li className="p-[10px]">About</li>
+            <li className="p-[10px]">Settings</li>
+          </ul>
+        </ul>
+      </nav>
+    </>
   );
 };

@@ -5,62 +5,33 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState } from "react";
-import styles from "./home.module.css";
-import { Tasks } from "../../components/tasks/tasks";
-import { Link } from "react-router-dom";
+import React from "react";
+import { TaskList } from "../../components/tasklist/tasklist";
+import { TasksManagement } from "../../components/taskma/taskma";
 
-/*
-function MyTask () {
-    return (
-        <div className={styles.tasksquare}>
-            <div className={styles.tasklabel}>
-                <h2>Tasks</h2>
-            </div>
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-
-            <div className={styles.tasklist}>
-                <p>
-                    ataeijt
-                </p>
-            </div>
-        </div>
-    );
-}
-*/
+import { Sidebar } from "../../components/sidebar/sidebar";
+import { Calendar } from "../../components/calendar/calendar";
+import { Navbar } from "../../components/navbar/navbar";
+import { TopBar } from "../../components/topbar/topbar"
+//import { Link } from "react-router-dom";
 
 
 /* add <Sidebar /> curved squares class to see the sidebar */
+/* Make sure to add in this order for proper spacing:
+<Navbar />
+<Sidebar />
+*/
 export const Home = () => {
-    const [isListening, setIsListening] = useState(false);
-  
-    const toggleMic = () => {
-      if (isListening) {
-        recognition.stop();
-        console.log("Microphone stopped");
-      } else {
-        recognition.start();
-        console.log("Microphone started");
-      }
-      setIsListening(!isListening);
-    };
-  
     return (
-        <div className={styles.curvedsquares}>
-            
-            <Tasks />
+        <div>
+            <TopBar/>
+            <Sidebar/>
 
+            {/* redo calendar later */}
+            <Calendar />
 
+            <TaskList />
+            {/* <TasksManagement/> */}
         </div>
     );
-  };
+};
