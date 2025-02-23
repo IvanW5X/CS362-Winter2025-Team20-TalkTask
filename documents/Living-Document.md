@@ -1296,3 +1296,15 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Frontend:
       1. From root directory, type 'cd frontend' into the terminal and hit enter
       2. Type 'npm run dev' + enter to run the client in developer mode
+
+### Testing and Continious Integration
+
+* **Infrastructure**
+  * ESLint: Automated Static Checker
+    * ESLint will be used for static code analysis to ensure consistency among developers and identifying/reporting problematic patterns in our JS code. The linting process will be used to catch mistakes relating to code quality and syntax errors.
+    * A simple script has been created for both our front and backend services, so that that when ```npm run lint``` is executed, the ESLint will run and check our JS/JSX files.
+  * Jest: Automated Testing
+    * Jest is a JavaScript testing framework that to ensure correctness with JavaScript code bases, so since we are creating a JS based application, we can easily adopt Jest into our toolset to add unit and module tests.
+    * Jest can be installed via NPM into our front and backend directories as a dev dependency and using a tests directory, we can store our unit and module tests then run ```npm run test``` to run our tests, so Jest will let us know which tests pass or fail.
+  * GitHub Actions: Continious Integration
+    * GitHub Actions has been selected as our CI service. This tool has been selected because it was the easiest to integrate with our current project (since we can add a .yaml file to GitHub repo directly) and it has lots of documentation we can use to learn how to use it effectively. It will also allow us to run our tests automatically via steps in the .yaml files.
