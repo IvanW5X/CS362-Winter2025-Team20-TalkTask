@@ -7,8 +7,10 @@
 
 import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
+import { RxHamburgerMenu } from "react-icons/rx";
 
-export const Sidebar = ({ menu_open }) => {
+
+export const Sidebar = () => {
 
   const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
 
@@ -19,14 +21,21 @@ export const Sidebar = ({ menu_open }) => {
     }
   };
 
-
+  const [menu_open, set_menu_state] = useState(true); 
 
   return (
     <>
-     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 
-                      ${menu_open ? "block" : "hidden"}`}>
-        <ul className="">
 
+    <RxHamburgerMenu className="absolute -mt-[80px] ml-[20px] text-[65px] cursor-pointer text-white "
+                      onClick={() => {
+                        set_menu_state(!menu_open);
+                      }}
+    />
+
+     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 
+                      ${menu_open ? "translate-x-0" : "-translate-x-full"}`}>
+
+        <ul className="">
           {/* Task title and + icon */}
           <li
             className={`flex cursor-pointer p-[10px] text-[14px] font-[700] 
@@ -37,7 +46,6 @@ export const Sidebar = ({ menu_open }) => {
             onClick={addCategory}/>
           </li>
           
-
           {/* categories */}
           <ul className={``}>
             {tasks.map((task, index) => (
@@ -47,8 +55,8 @@ export const Sidebar = ({ menu_open }) => {
                 {task}
               </li>
             ))}
+            
           </ul>
-  
         </ul>
       </nav>
     </>

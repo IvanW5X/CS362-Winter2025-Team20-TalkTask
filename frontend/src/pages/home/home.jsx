@@ -14,26 +14,17 @@ import { Calendar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar/topbar"
 //import { Link } from "react-router-dom";
 
-
-/* add <Sidebar /> curved squares class to see the sidebar */
-/* Make sure to add in this order for proper spacing:
-<Navbar />
-<Sidebar />
-*/
-
-
-
 export const Home = () => {
-    const [menu_open, set_menu_state] = useState(true); 
+
     return (
         <div>
-            <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
-            <Sidebar menu_open={menu_open}/>
+            <TopBar />
+            <Sidebar/>
 
             {/* redo calendar later */}
-            {/* <Calendar /> */}
+            <Calendar />
 
-            {/* <TaskList /> */}
+            <TaskList />
             {/* <TasksManagement/> */}
         </div>
     );

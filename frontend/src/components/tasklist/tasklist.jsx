@@ -5,7 +5,9 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+
 
 /**
  * Utility function to convert a color name to a Tailwind class.
@@ -19,7 +21,6 @@ const getPriority = (priority) => {
       return "bg-yellow-500";
     case 3:
       return "bg-green-500";
-    // Add more colors as needed
     default:
       return "bg-gray-500";
   }
@@ -27,7 +28,7 @@ const getPriority = (priority) => {
 
 export const TaskList = () => {
   // Example tasks array
-  const tasks = [
+  const [tasks,setTasks] = useState([
     {
       taskID: 1,
       title: "Work",
@@ -39,12 +40,36 @@ export const TaskList = () => {
       status: "in-progress",
       userId: 9,
     },
+    {
+      taskID: 3,
+      title: "type shi",
+      description: "do stuff",
+      dateCreated: "2015-03-25T11:00:00Z",
+      dateCompleted: "2015-03-25T12:20:00Z",
+      recurringDate: null,
+      priority: 3, // Priority scale 1-3
+      status: "in-progress",
+      userId: 9,
+    },
     // Add more tasks here as needed
-  ];
+  ]);
+
+  
+  //task labeled "completed" or "in-progress"
+  const toggleTaskStatus = (taskID) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.taskID === taskID ? 
+              { ...task, status: task.status === "completed" ? "in-progress" : "completed" } : task
+      )
+    );
+  };
+
 
   return (
-    <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[300px] w-auto">
-      {/* title */}
+    <div className="bg-[#E5E5E5] mt-[50px] rounded-3xl absolute h-auto ml-[300px]">
+
+      {/* title container */}
       <div className="flex items-center justify-between rounded-2xl text-[20px] font-semibold bg-white m-5 px-5 py-3">
         Tasks
         {/* number of tasks */}
@@ -60,24 +85,28 @@ export const TaskList = () => {
             <div className={`w-5 h-5 rounded-full ${getPriority(task.priority)} mr-3`}/>
 
             {/* Task text */}
-            <div className="flex-1 text-base font-medium">{task.title}</div>
-
+            <div className="w-[26vw] flex-1 break-words font-medium">{task.title}</div>
 
             {/* Times */}
+            <div className="text-sm ml-[50px] mr-5 hidden md:block">
+              Start:
+              {`${new Date(task.dateCreated).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCreated).getUTCMinutes().toString().padStart(2, '0')}`}
+            </div>
             <div className="text-sm mr-4 hidden md:block">
-              Start:{`${new Date(task.dateCreated).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCreated).getUTCMinutes().toString().padStart(2, '0')}`}</div>
-            <div className="text-sm mr-4 hidden md:block">
-              End: {`${new Date(task.dateCompleted).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCompleted).getUTCMinutes().toString().padStart(2, '0')}`}</div>
+              End: 
+              {`${new Date(task.dateCompleted).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCompleted).getUTCMinutes().toString().padStart(2, '0')}`}
+            </div>
             
+
             {/* Pencil icon (you could replace with an actual icon component) */}
-            <button className="mr-4 hidden md:block">✏️</button>
+            <MdOutlineModeEditOutline className="mr-4 text-[25px] cursor-pointer hidden md:block"/>
 
             {/* Checkbox */}
             <input
               type="checkbox"
-              className="form-checkbox h-5 w-5 hidden md:block"
-              checked={task.status}
-              readOnly
+              className="form-checkbox h-5 w-5 cursor-pointer"
+              checked={task.status ==="completed"}
+              onChange={() => toggleTaskStatus(task.taskID)}
             />
           </div>
         ))}
