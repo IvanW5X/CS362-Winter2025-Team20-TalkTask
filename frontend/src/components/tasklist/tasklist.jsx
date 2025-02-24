@@ -26,7 +26,7 @@ const getPriority = (priority) => {
   }
 };
 
-export const TaskList = () => {
+export const TaskList = ({menu_open}) => {
   // Example tasks array
   const [tasks,setTasks] = useState([
     {
@@ -51,10 +51,10 @@ export const TaskList = () => {
       status: "in-progress",
       userId: 9,
     },
+    
     // Add more tasks here as needed
   ]);
 
-  
   //task labeled "completed" or "in-progress"
   const toggleTaskStatus = (taskID) => {
     setTasks((prevTasks) =>
@@ -66,8 +66,11 @@ export const TaskList = () => {
   };
 
 
+  // set minimum left and right margin for mobile later
+
   return (
-    <div className="bg-[#E5E5E5] mt-[50px] rounded-3xl absolute h-auto ml-[300px]">
+    <div className={`bg-[#E5E5E5] mt-[40px] absolute rounded-3xl h-auto ml-[calc(15%-40px)] w-[45vw]
+                      ${menu_open ? "translate-x-0" : "-translate-x-[200px]"}`}>
 
       {/* title container */}
       <div className="flex items-center justify-between rounded-2xl text-[20px] font-semibold bg-white m-5 px-5 py-3">
@@ -85,7 +88,7 @@ export const TaskList = () => {
             <div className={`w-5 h-5 rounded-full ${getPriority(task.priority)} mr-3`}/>
 
             {/* Task text */}
-            <div className="w-[26vw] flex-1 break-words font-medium">{task.title}</div>
+            <div className="flex-1 break-words font-medium">{task.title}</div>
 
             {/* Times */}
             <div className="text-sm ml-[50px] mr-5 hidden md:block">
@@ -99,7 +102,7 @@ export const TaskList = () => {
             
 
             {/* Pencil icon (you could replace with an actual icon component) */}
-            <MdOutlineModeEditOutline className="mr-4 text-[25px] cursor-pointer hidden md:block"/>
+            <MdOutlineModeEditOutline className={`mr-4 text-[25px] cursor-pointer hidden md:block`}/>
 
             {/* Checkbox */}
             <input

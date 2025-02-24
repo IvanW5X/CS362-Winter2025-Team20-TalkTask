@@ -16,16 +16,19 @@ import { TopBar } from "../../components/topbar/topbar"
 
 export const Home = () => {
 
+    // sidebar
+    const [menu_open, set_menu_state] = useState(true); 
+
     return (
         <div>
-            <TopBar />
-            <Sidebar/>
+            <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
+            <Sidebar menu_open={menu_open}/>
 
             {/* redo calendar later */}
             <Calendar />
 
-            <TaskList />
-            {/* <TasksManagement/> */}
+            <TaskList menu_open={menu_open}/>
+            <TasksManagement  menu_open={menu_open}/>
         </div>
     );
 };

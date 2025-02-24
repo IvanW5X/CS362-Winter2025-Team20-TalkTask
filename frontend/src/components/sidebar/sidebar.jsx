@@ -7,10 +7,8 @@
 
 import React, { useState } from "react";
 import { GoPlus } from "react-icons/go";
-import { RxHamburgerMenu } from "react-icons/rx";
 
-
-export const Sidebar = () => {
+export const Sidebar = ({ menu_open }) => {
 
   const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
 
@@ -21,17 +19,10 @@ export const Sidebar = () => {
     }
   };
 
-  const [menu_open, set_menu_state] = useState(true); 
+
 
   return (
     <>
-
-    <RxHamburgerMenu className="absolute -mt-[80px] ml-[20px] text-[65px] cursor-pointer text-white "
-                      onClick={() => {
-                        set_menu_state(!menu_open);
-                      }}
-    />
-
      <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 
                       ${menu_open ? "translate-x-0" : "-translate-x-full"}`}>
 
