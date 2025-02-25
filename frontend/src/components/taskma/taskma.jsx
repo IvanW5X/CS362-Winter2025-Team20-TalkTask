@@ -7,6 +7,16 @@
 
 import React, { useEffect, useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
+import { CiCirclePlus } from "react-icons/ci";
+import { FaCheck } from "react-icons/fa";
+import { MdOutlineSort } from "react-icons/md";
+import { MdOutlineIntegrationInstructions } from "react-icons/md";
+import { IoStar } from "react-icons/io5";
+
+
+
+
+
 
 
 
@@ -25,28 +35,34 @@ export const TasksManagement = ({menu_open}) => {
       
       
           {/* add task */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
-            Add Task
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative`}>
+            Add Task 
+            <CiCirclePlus className="absolute right-3 "/>
           </div>
 
           {/* clear completed task */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative`}>
             Clear Completed Tasks
+            <FaCheck className="absolute right-3 "/>
+
           </div>
 
           {/* filter/sort */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative`}>
               Sort By
+              <MdOutlineSort className="absolute right-3 "/>
           </div>
 
           {/* voice commands */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative`}>
             Voice Commands
+            <MdOutlineIntegrationInstructions className="absolute right-3"/>
           </div>
 
           {/* suggest a task */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative`}>
             Suggest a Task
+            <IoStar className="absolute right-3"/>
           </div>
 
           {/* mic button */}
