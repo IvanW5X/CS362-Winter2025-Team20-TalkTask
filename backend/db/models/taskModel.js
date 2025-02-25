@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 
 const taskSchema = new mongoose.Schema({
     taskID: { type: Number, unique: true, required: true },
+    title: { type: String, required: true },
     description: { type: String, required: true },
     dateCreated: { type: Date, default: Date.now },
     dateCompleted: { type: Date },

@@ -5,33 +5,30 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+import React , { useState }from "react";
 import { TaskList } from "../../components/tasklist/tasklist";
 import { TasksManagement } from "../../components/taskma/taskma";
 
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
-import { Navbar } from "../../components/navbar/navbar";
 import { TopBar } from "../../components/topbar/topbar"
 //import { Link } from "react-router-dom";
 
-
-/* add <Sidebar /> curved squares class to see the sidebar */
-/* Make sure to add in this order for proper spacing:
-<Navbar />
-<Sidebar />
-*/
 export const Home = () => {
+
+    // sidebar
+    const [menu_open, set_menu_state] = useState(true); 
+
     return (
         <div>
-            <TopBar/>
-            <Sidebar/>
+            <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
+            <Sidebar menu_open={menu_open}/>
 
             {/* redo calendar later */}
             <Calendar />
 
-            <TaskList />
-            {/* <TasksManagement/> */}
+            <TaskList menu_open={menu_open}/>
+            <TasksManagement  menu_open={menu_open}/>
         </div>
     );
 };

@@ -6,21 +6,52 @@
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
-import styles from "./taskma.module.css";
-import axios from "axios";
 
 
-export const TasksManagement = () => {
+export const TasksManagement = ({menu_open}) => {
 
   return (
-    <div classname = {styles.outter}>
-      {/* task management section */}
-      <div>
-        <p className = {styles.title}> Task Management </p>
+    <>
+      <div className={`bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
+                      ${menu_open ? "translate-x-0" : "-translate-x-[200px]"}`}>
+          
 
+          {/* title */}
+          <div className={``}>
+            Task Management
+          </div>
+
+          {/* add task */}
+          <div className={``}>
+
+          </div>
+
+          {/* clear completed task */}
+          <div className={``}>
+
+          </div>
+
+          {/* filter/sort */}
+          <div className={``}>
+
+          </div>
+
+          {/* voice commands */}
+          <div className={``}>
+
+          </div>
+
+          {/* suggest a task */}
+          <div className={``}>
+
+          </div>
+
+          {/* mic button */}
+          <div className={``}>
+
+          </div>
       </div>
-      
-    </div>
+    </>
   );
 };
 

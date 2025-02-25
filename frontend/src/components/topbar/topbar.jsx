@@ -7,27 +7,28 @@
 
 import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-
-import { Navbar } from "../navbar/navbar";
-import axios from "axios";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 
 
-export const TopBar = () => {
 
+export const TopBar = ({menu_open, set_menu_state}) => {
 
-  
   return (
     <>
-      <div className="absolute z-[1000] w-full h-[95px] bg-[#37E03A] flex items-center select-none">
-       <Navbar/>
+      <div className="w-full h-[95px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
 
         {/* 
           need to make responsive later. vw and vh is okay for now with desktop.
           need to us stuff like md: and sm: later
         */}
+        <RxHamburgerMenu className="ml-[20px] text-[65px] cursor-pointer text-white "
+                          onClick={() => {
+                            set_menu_state(!menu_open);
+                          }}
+        />
 
-        <img className="w-[150px] ml-[14vw] relative" 
+        <img className="w-[150px] -ml-[50%] " 
               src="../assets/TalkTaskLogo1.png" 
               alt="TalkTask Logo"
         />
@@ -38,7 +39,7 @@ export const TopBar = () => {
           add customizable image?
         */}
 
-        <FaUserCircle className="text-white text-[70px] absolute ml-[94vw] cursor-pointer" />
+        <FaUserCircle className="text-white text-[70px] mr-[20px] cursor-pointer " />
       </div>
     </>
   );

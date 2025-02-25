@@ -36,7 +36,7 @@ process.on("SIGINT", async () => {
         await client.close();
         console.log("MongoDB connection closed.");
     } catch (error) {
-        console.log("MongoDB already closed...")
+        console.log("MongoDB already closed: ", error)
     }
     process.exit(0);
 });
