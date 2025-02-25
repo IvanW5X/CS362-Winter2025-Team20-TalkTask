@@ -10,29 +10,23 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Task } from '../../db/models/taskModel.js';
 
 let mongoServer;
-
 describe('Task Model - Unit Tests', () => {
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create(); // Start an in-memory MongoDB
-    const mongoUri = mongoServer.getUri();
-    await mongoose.connect(mongoUri, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
   });
 
   afterAll(async () => {
-    await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await mongoServer.stop();
   });
 
   it('should create a new task successfully', async () => {
     const task = new Task({
       taskID: 1,
-      title: "test title",
       userId: new mongoose.Types.ObjectId(),
-      description: 'Test task description',
+      description: 'Unit test task',
       status: 'pending'
     });
 
@@ -43,17 +37,16 @@ describe('Task Model - Unit Tests', () => {
     expect(foundTask.status).toBe('pending');
   });
 
-  it('should mark a task as complete', async () => {
+  it('should update task status', async () => {
     const task = new Task({
       taskID: 2,
-      title: "test title 2",
       userId: new mongoose.Types.ObjectId(),
-      description: 'Another test task',
+      description: 'Test task for update',
       status: 'in-progress'
     });
 
     await task.save();
-    
+
     task.status = 'completed';
     await task.save();
 
