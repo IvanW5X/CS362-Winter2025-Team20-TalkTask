@@ -29,14 +29,17 @@ const getColorClass = (color) => {
   }
 };
 
+
+
 export const TaskList = () => {
+
   // Example tasks array
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       title: "Do Homework for an hour",
-      startTime: "7:00 AM",
-      endTime: "7:30 AM",
+      startTime: "6:00 PM",
+      endTime: "7:00 PM",
       color: "School",
       completed: false,
     },
@@ -51,21 +54,31 @@ export const TaskList = () => {
     {
       id: 3,
       title: "Do the Dishes",
-      startTime: "1:00 PM",
-      endTime: "2:45 PM",
+      startTime: "4:30 PM",
+      endTime: "5:00 PM",
       color: "Chores",
       completed: false,
     },
     {
       id: 4,
       title: "Go to the Gym",
-      startTime: "5:00 PM",
-      endTime: "6:00 PM",
+      startTime: "7:30 AM",
+      endTime: "9:00 AM",
       color: "Exercise",
       completed: false,
     },
     // Add more tasks here as needed
-  ];
+  ]);
+
+  const toggleCompleted = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
+  };
 
   return (
     <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-auto">
@@ -87,15 +100,19 @@ export const TaskList = () => {
             <div className="text-sm mr-4 hidden md:block">
               <p></p>
             </div>
-            <div className="text-sm mr-4 hidden md:block">Start: {task.startTime}</div>
-            <div className="text-sm mr-4 hidden md:block">End: {task.endTime}</div>
-            {/* Pencil icon (you could replace with an actual icon component) */}
-            <button className="mr-4 hidden md:block">✏️</button>
+
+            <div className="text-sm mr-4 hidden md:block">
+              Start: {task.startTime}
+            </div>
+            <div className="text-sm mr-4 hidden md:block">
+              End: {task.endTime}
+            </div>            
             {/* Checkbox */}
             <input
               type="checkbox"
               className="form-checkbox h-5 w-5 hidden md:block"
               checked={task.completed}
+              onChange={() => toggleCompleted(task.id)}
               readOnly
             />
           </div>
