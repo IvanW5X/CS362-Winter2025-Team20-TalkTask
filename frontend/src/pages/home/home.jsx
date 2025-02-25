@@ -11,7 +11,8 @@ import { TasksManagement } from "../../components/taskma/taskma";
 
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
-import { TopBar } from "../../components/topbar/topbar"
+import { TopBar } from "../../components/topbar/topbar";
+import { PopUp } from "../../components/popup/popup";
 //import { Link } from "react-router-dom";
 
 export const Home = () => {
@@ -21,6 +22,7 @@ export const Home = () => {
 
     return (
         <div>
+            <PopUp/>
             <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
             <Sidebar menu_open={menu_open}/>
 
