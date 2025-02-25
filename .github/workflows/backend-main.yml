@@ -52,3 +52,6 @@ jobs:
       # Check for syntax errors and problems
       - name: Run linter
         run: npm run lint
+
+      - name: Run tests
+        run: npm run test
