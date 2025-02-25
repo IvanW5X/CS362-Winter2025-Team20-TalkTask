@@ -6,51 +6,54 @@
  ********************************************************************/
 
 import React, { useEffect, useState } from "react";
+import { FaMicrophone } from "react-icons/fa";
+
 
 
 export const TasksManagement = ({menu_open}) => {
 
   return (
     <>
-      <div className={`bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
+      <div className={`flex flex-col bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
                       ${menu_open ? "translate-x-0" : "-translate-x-[200px]"}`}>
           
 
           {/* title */}
-          <div className={``}>
+          <button className={`flex m-5 h-fit bg-white rounded-2xl text-[30px] font-semibold justify-center`}>
             Task Management
-          </div>
-
+          </button>
+      
+      
           {/* add task */}
-          <div className={``}>
-
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+            Add Task
           </div>
 
           {/* clear completed task */}
-          <div className={``}>
-
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+            Clear Completed Tasks
           </div>
 
           {/* filter/sort */}
-          <div className={``}>
-
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+              Sort By
           </div>
 
           {/* voice commands */}
-          <div className={``}>
-
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+            Voice Commands
           </div>
 
           {/* suggest a task */}
-          <div className={``}>
-
+          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center`}>
+            Suggest a Task
           </div>
 
           {/* mic button */}
-          <div className={``}>
-
+          <div className="flex mx-5 my-5 py-3 bg-[#37E03A] rounded-2xl text-[30px] font-medium justify-center">
+            <FaMicrophone className="text-[30px] text-white" />
           </div>
-      </div>
+        </div>
     </>
   );
 };
