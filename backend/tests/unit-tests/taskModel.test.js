@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name:
+ * Date:
+ * Description:
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Task } from '../../db/models/taskModel.js';
@@ -23,6 +30,7 @@ describe('Task Model - Unit Tests', () => {
   it('should create a new task successfully', async () => {
     const task = new Task({
       taskID: 1,
+      title: "test title",
       userId: new mongoose.Types.ObjectId(),
       description: 'Test task description',
       status: 'pending'
@@ -38,6 +46,7 @@ describe('Task Model - Unit Tests', () => {
   it('should mark a task as complete', async () => {
     const task = new Task({
       taskID: 2,
+      title: "test title 2",
       userId: new mongoose.Types.ObjectId(),
       description: 'Another test task',
       status: 'in-progress'

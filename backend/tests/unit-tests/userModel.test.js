@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name:
+ * Date:
+ * Description:
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { User } from "../../db/models/userModel.js";

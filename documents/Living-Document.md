@@ -828,52 +828,70 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Database Management - MongoDB
     * Overview: Our system stores and manages user data, tasks, reminders, and speech  commands using a MongoDB database. The database follows a document-based schema using Mongoose, which defines structured models for each entity.
     * High level Database Schema:
-    * Users → Stores user information
-    * Tasks → Stores task details
-    * Reminders → Stores scheduled reminders for tasks
-    * Speech Commands → Stores voice-based commands
+     * Users → Stores user information
+     * Tasks → Stores task details
+     * Reminders → Stores scheduled reminders for tasks
+     * Speech Commands → Stores voice-based commands
     * User Schema
-
-    | Field       | Type            | Description                     |
-    |-------------|-----------------|---------------------------------|
-    | CustomerID  | Number (Unique) | Unique identifier for each user |
-    | email       | String (Unique) | User email (used for login)     |
-    | password    | String          |                                 |
-    | dob         | Date            | User’s date of birth            |
-    | Fname       | String          | First name                      |
-    | Mname       | String          | Middle name (optional)          |
-    | Lname       | String          | Last name                       |
-    | createdAt   | Date            | Timestamp of user registration  |
-
+      |-------------|-----------------|---------------------------------|
+      |Field	      |Type	            |Description                      |
+      |-------------|-----------------|---------------------------------|
+      |CustomerID	  |Number (Unique)	|Unique identifier for each user  |
+      |-------------|-----------------|---------------------------------|
+      |email	      |String (Unique)	|User email (used for login)      |
+      |-------------|-----------------|---------------------------------|
+      |password	    |String	          |                                 |
+      |-------------|-----------------|---------------------------------|
+      |dob	        |Date	            |User’s date of birth             |
+      |-------------|-----------------|---------------------------------|
+      |Fname	      |String	          |First name                       |
+      |-------------|-----------------|---------------------------------|
+      |Mname	      |String	          |Middle name (optional)           |
+      |-------------|-----------------|---------------------------------|
+      |Lname	      |String	          |Last name                        |
+      |-------------|-----------------|---------------------------------|
+      |createdAt	  |Date	            |Timestamp of user registration   |
+      |-------------|-----------------|---------------------------------|
     * Task Schema
-
-    |Field          |Type                   |Description                                        |
-    |---------------|-----------------------|---------------------------------------------------|
-    |taskID         |Number (Unique)        |Unique identifier for each task                    |
-    |description    |String                 |Task description                                   |
-    |dateCreated    |Date                   |Timestamp when task was created                    |
-    |dateCompleted  |Date                   |Timestamp when task was completed                  |
-    |recurringDate  |Date                   |If the task repeats, its recurrence date           |
-    |priority       |Number                 |Priority level (1-5)                               |
-    |status         |String                 |Task status (pending, in-progress, completed)      |
-    |userId         |ObjectId (Ref: users)  |Links the task to a specific user                  |
-
+      |---------------|-----------------------|---------------------------------------------------|
+      |Field	        |Type                   |	Description                                       |
+      |---------------|-----------------------|---------------------------------------------------|
+      |taskID	        |Number (Unique)	      |Unique identifier for each task                    |
+      |---------------|-----------------------|---------------------------------------------------|
+      |description	  |String	                |Task description                                   |
+      |---------------|-----------------------|---------------------------------------------------|
+      |dateCreated	  |Date	                  |Timestamp when task was created                    |
+      |---------------|-----------------------|---------------------------------------------------|
+      |dateCompleted  |Date	                  |Timestamp when task was completed                  |
+      |---------------|-----------------------|---------------------------------------------------|
+      |recurringDate  |Date	                  |If the task repeats, its recurrence date           |
+      |---------------|-----------------------|---------------------------------------------------|
+      |priority	      |Number	                |Priority level (1-5)                               |
+      |---------------|-----------------------|---------------------------------------------------|
+      |status         |String	                |Task status (pending, in-progress, completed)      |
+      |---------------|-----------------------|---------------------------------------------------|
+      |userId	        |ObjectId (Ref: users)  |Links the task to a specific user                  |
+      |---------------|-----------------------|---------------------------------------------------|
     * Reminder Schema
-
-    |Field         |Type                    |Description                              |
-    |--------------|------------------------|-----------------------------------------|
-    |reminderID    |Number (Unique)         |Unique identifier for the reminder       |
-    |taskID        |ObjectId (Ref: tasks)   |Links to the task this reminder is for   |
-    |reminderDate  |Date                    |When the reminder should trigger         |
-
+      |---------------|-------------------------|-----------------------------------------|
+      |Field	        |Type	                    |Description                              |
+      |---------------|-------------------------|-----------------------------------------|
+      |reminderID	    |Number (Unique)	        |Unique identifier for the reminder       |
+      |---------------|-------------------------|-----------------------------------------|
+      |taskID	        |ObjectId (Ref: tasks)	  |Links to the task this reminder is for   |
+      |---------------|-------------------------|-----------------------------------------|
+      |reminderDate	  |Date	                    |When the reminder should trigger         |
+      |---------------|-------------------------|-----------------------------------------|
     * Speech Command Schema
-
-    |Field        |Type                   |Description                           |
-    |-------------|-----------------------|--------------------------------------|
-    |commandID    |Number (Unique)        |Unique identifier for each command    |
-    |commandText  |String                 |The spoken command text               |
-    |CustomerID   |ObjectId (Ref: users)  |Links command to a specific user      |
-
+      |-------------|-----------------------|--------------------------------------|
+      |Field	      |Type	                  |Description                           |
+      |-------------|-----------------------|--------------------------------------|
+      |commandID	  |Number (Unique)	      |Unique identifier for each command    |
+      |-------------|-----------------------|--------------------------------------|
+      |commandText	|String	                |The spoken command text               |
+      |-------------|-----------------------|--------------------------------------|
+      |CustomerID	  |ObjectId (Ref: users)	|Links command to a specific user      |
+      |-------------|-----------------------|--------------------------------------|
     * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
   * AI Model - Hugging Face
     * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
@@ -882,30 +900,10 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
     * Additionally, since our web application is meant to provide ease of access for users, they shall be able to login via their Google or GitHub account, so that users are able to start managing their to-do lists right away. Auth0 is the technology our team will be using, so security measures can be implemented seamlessly within our app.
   * Frontend Deployment - Netlify & Vite
     * To allow users to actually use our web application, we will need to build our source files into strictly HTML, CSS, and JavaScript, so that web browsers are able to render our UI correctly. Once our frontend source files are built, we will need to use a web service hosting platform to allow users to use our application.
-    * Frontend deployment will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
+    * Frontend deployement will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
   * Backend Deployment - Render
     * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
     * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
-
-* Software decsions and alternatives
-  * Client Server Architecture: Monolithic Architecture
-    * **Pros:**
-      * Easier to implement, good option if the project is not being planned to be scalable or development process is limited on a time constraint.
-    * **Cons:**
-      * Increasing coupling between front and backend logic.
-      * Harder to debug when issues arise because components are so connected.
-      * More resources are need to deploy the web application because front and backend components are implemented into one server. Not ideal for free web hosting services where resource usage is limited.
-
-  * Database: Local storage via local JSON files
-    * **Pros:**
-    * Simple to implement, as there is no database to set up and configure.
-    * Files can be backed up easily on the client side via copying or syncing files.
-    * Extremely lightweight, as it does not consume as many developer and sever resources
-
-    * **Cons:**
-    * Not Scalable: storing files locally becomes difficult to sustain on larger scales
-    * Cocurrency Issues: file corruption if multiple users write simultaneously
-    * No built in querying: Difficult to filter, search, and sort efficiently.
 
 <br>
 
@@ -936,19 +934,19 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **Interfaces**
   * Frontend (React) and Backend (Node.js)
-    * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
+     * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
   * Backend (Node.js) and Database (MongoDB)
-    * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
+     * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
   * Frontend (React) and Speech Recognition (Web Speech API)
-    * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
+     * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
   * AI Model (Hugging Face) and Backend (Node.js)
-    * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
+     * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
   * Authentication (Auth0) and Frontend (React) and Backend (Node.js)
-    * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
+     * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
   * Frontend Deployment (Netlify & Vite) and Users
-    * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
+     * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
   * Backend Deployment (Render) and Frontend & Database
-    * Render will host backend logic for the frontend and database to interact with.
+     * Render will host backend logic for the frontend and database to interact with.
   
 <br>
 
@@ -1009,28 +1007,6 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 ### Coding Guideline
 
- * **JavaScript (React/Node.js)**
-   - **Guideline**: [JavaScript Style Guide](https://github.com/airbnb/javascript)
-   - **Reason**: Airbnb's style guide is widely adopted in the industry, comprehensive, and covers both JavaScript and React best practices. It promotes clean, readable, and maintainable code.
-   - **Enforcement**: Use ESLint with the Airbnb configuration (`eslint-config-airbnb`) to automatically enforce the rules during development.
-
-* **HTML**
-   - **Guideline**: [HTML Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
-   - **Reason**: Google's style guide is simple, well-structured, and focuses on best practices for writing clean and semantic HTML.
-   - **Enforcement**: Use an HTML linter like `htmlhint` with a configuration aligned with the Google style guide.
-
-* **CSS**
-   - **Guideline**: [CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
-   - **Reason**: The same guide covers CSS, ensuring consistency in styling practices and maintainability.
-   - **Enforcement**: Use a CSS linter like `stylelint` with a configuration aligned with the Google style guide.
-
-* **MongoDB**
-   - **Guideline**: [MongoDB Best Practices/Style Guide](https://www.mongodb.com/docs/meta/style-guide/)
-   - **Reason**: MongoDB's official documentation provides clear and practical guidelines for database design, indexing, and query optimization.
-   - **Enforcement**: Code reviews and manual checks during development to ensure adherence to best practices.
-
----
-
 <br>
 
 ### Process Description
@@ -1038,68 +1014,66 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * Risk Assessment
 
 ### 1️ Risk: Speech Recognition Accuracy Issues
+- **Likelihood:** **High**
+- **Impact:** **High**
+- **Evidence:**
+  - Speech recognition models struggle with different accents, background noise, and ambiguous commands.
+  - WebSpeech API has limitations, such as requiring internet access and limited offline support.
+  - User testing in different environments exposes inconsistent recognition rates.
+- **Mitigation Steps:**
+  - Conduct **usability testing** with diverse users.
+  - Implement **error handling & retry mechanisms** for unclear commands.
+  - Allow **manual task editing** in case of recognition failure.
+  - Use **AI-powered NLP** to interpret voice commands more flexibly.
+- **Detection Plan:**  
+  - Implement **logging for failed speech-to-text conversions**.
+  - Track **user feedback** for misrecognized commands.
+- **Mitigation Plan (If it Occurs):**  
+  - Implement **fallback manual input methods**.
+  - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
+- **Changes Since Requirements Document:**  
+  - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
 
-* **Likelihood:** **High**
-* **Impact:** **High**
-* **Evidence:**
-  * Speech recognition models struggle with different accents, background noise, and ambiguous commands.
-  * WebSpeech API has limitations, such as requiring internet access and limited offline support.
-  * User testing in different environments exposes inconsistent recognition rates.
-* **Mitigation Steps:**
-  * Conduct **usability testing** with diverse users.
-  * Implement **error handling & retry mechanisms** for unclear commands.
-  * Allow **manual task editing** in case of recognition failure.
-  * Use **AI*powered NLP** to interpret voice commands more flexibly.
-* **Detection Plan:**  
-  * Implement **logging for failed speech-to-text conversions**.
-  * Track **user feedback** for misrecognized commands.
-* **Mitigation Plan (If it Occurs):**  
-  * Implement **fallback manual input methods**.
-  * Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
-* **Changes Since Requirements Document:**  
-  * Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
+  ### 2️ Risk: Backend & Database Integration Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - The backend must support **real-time task updates** across devices.
+  - MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
+  - API failures could lead to **data inconsistencies** (e.g., task duplication).
+- **Mitigation Steps:**
+  - Define **clear API endpoints** and test early.
+  - Implement **database indexing** for performance optimization.
+  - Use **MongoDB transactions** to prevent inconsistent task states.
+- **Detection Plan:**  
+  - Write **unit tests** for database operations.
+  - Use **Postman & Jest** for API testing.
+- **Mitigation Plan (If it Occurs):**  
+  - Implement **logging and error recovery** (e.g., retry failed database operations).
+  - **Backup task data** to prevent loss.
+- **Changes Since Requirements Document:**  
+  - More emphasis on **testing and database integrity checks**.
 
-### 2️ Risk: Backend & Database Integration Issues
+  ### 3️ Risk: User Adoption & Accessibility Issues
+- **Likelihood:** **Medium**
+- **Impact:** **High**
+- **Evidence:**
+  - Users may struggle with **speech-based navigation**.
+  - Accessibility concerns for **speech-impaired users**.
+  - Some users may prefer **keyboard/mouse over voice input**.
+- **Mitigation Steps:**
+  - Design **multi-modal interaction** (support both speech and manual inputs).
+  - Ensure compliance with **WCAG 2.1 accessibility guidelines**.
+  - Gather **early user feedback** via surveys and beta testing.
+- **Detection Plan:**  
+  - **Track feature usage** (e.g., how often users switch to manual input).
+  - **Monitor support requests** related to accessibility.
+- **Mitigation Plan (If it Occurs):**  
+  - Offer **customizable input options**.
+  - Introduce **keyboard shortcuts** for key functionalities.
+- **Changes Since Requirements Document:**  
+  - Added **manual fallback options** and ensured **accessibility compliance**.
 
-* **Likelihood:** **Medium**
-* **Impact:** **High**
-* **Evidence:**
-  * The backend must support **real-time task updates** across devices.
-  * MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
-  * API failures could lead to **data inconsistencies** (e.g., task duplication).
-* **Mitigation Steps:**
-  * Define **clear API endpoints** and test early.
-  * Implement **database indexing** for performance optimization.
-  * Use **MongoDB transactions** to prevent inconsistent task states.
-* **Detection Plan:**  
-  * Write **unit tests** for database operations.
-  * Use **Postman & Jest** for API testing.
-* **Mitigation Plan (If it Occurs):**  
-  * Implement **logging and error recovery** (e.g., retry failed database operations).
-  * **Backup task data** to prevent loss.
-* **Changes Since Requirements Document:**  
-  * More emphasis on **testing and database integrity checks**.
-
-### 3️ Risk: User Adoption & Accessibility Issues
-
-* **Likelihood:** **Medium**
-* **Impact:** **High**
-* **Evidence:**
-  * Users may struggle with **speech-based navigation**.
-  * Accessibility concerns for **speech-impaired users**.
-  * Some users may prefer **keyboard/mouse over voice input**.
-* **Mitigation Steps:**
-  * Design **multi-modal interaction** (support both speech and manual inputs).
-  * Ensure compliance with **WCAG 2.1 accessibility guidelines**.
-  * Gather **early user feedback** via surveys and beta testing.
-* **Detection Plan:**  
-  * **Track feature usage** (e.g., how often users switch to manual input).
-  * **Monitor support requests** related to accessibility.
-* **Mitigation Plan (If it Occurs):**  
-  * Offer **customizable input options**.
-  * Introduce **keyboard shortcuts** for key functionalities.
-* **Changes Since Requirements Document:**  
-  * Added **manual fallback options** and ensured **accessibility compliance**.
 
 ### 4️ Risk: AI Task Recommendation Limitations
 
@@ -1152,9 +1126,9 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Before implementing the database: Backend to make sure data is being stored correctly.
   * Before testing frontend/backend: Frontend-backend interaction must be functional.
   * Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
-
+ 
   * 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
-
+ 
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           | Design Navigation (1)|Start front-end implementation (2) |Test and connect front-end calls to back-end(2)|Implement API to front-end calls(1)|Develop user feedback features(1)|Implement other features (such as notifications)(2)|Finalizing and testing(1)|Deploy and finish documentation(1)|
@@ -1163,12 +1137,16 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 | Database            |Design database schema (1)|Set up MongoDB (1)|Configure database for tasks(2)|Implement save, update, and delete functionality (2)|Integrate AI and WebSpeech API with database (2)|Ensure data is correct between backend and database(2) |Testing and ensuring database integrity (2)|Final database testing and deployment (1)|
 | Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.(1)|Files organized in a modularized manner to allow for easier implementation and OO practices.(1)|Database implementation inputs correctly formatted data.(1)|AI and WebSpeech APIs configured and ready for developers.(1)|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.(3)|Continue developing complex features, such as AI and speech recognition implementations.(2)|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.(1)|Run and test finalized product for any underlying bugs or errors.(1)|
 
-### Team Structure
+<br>
+
+* Team Structure
+
+<br>
 
 * Test Plan and Bugs
   * Notable Tests By Week
     * Database:
-      * Week 4: Can preform simple CRUD operations on non-recurring task related tables through the command line.
+      * Week 4: Can preform simple SQL operations on non-recurring task related tables through the command line.
       * Week 5: Full suite of test cases for CRUD operations on the non-recurring task related tables.
       * Week 6: Full suite of test cases for OAuth functionality
       * Week 7: Full suite of test cases for recurring test cases
@@ -1192,25 +1170,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
         * This is dependant on Database team and Back-End Team to create dependant features.
       * Week 9: User accessability tests pass
       * Week 10: Full functionality tests.
-    * Software Configuration Management Coordinator (Will be updated to Full Stack Developer by next week):
-      * Week 5: Front and backend communication established by sending test requests and responses with expected outcome.
-      * Week 6: Basic to-do list functionality (includes creating, removing, and updating) properly updates database and responses accurately represent user-modified tasks.
-      * Week 7: Speech recognition commands fully integrated and tested for creating, updating, and deleting tasks.
-        * Ensure commands trigger corresponding backend functions and update the database accurately.
-        * Validate error handling for speech recognition failures and incomplete commands.
-      * Week 8: AI-based task suggestions integrated and tested in combination with speech recognition.
-        * Test AI output consistency for varied user inputs.
-        * Verify the correct insertion of suggested tasks into the database.
-        * Recurring event detection works reliably and displays properly on the frontend.
-      * Week 9: Performance optimization and accessibility testing completed.
-        * Measure response time for speech commands, AI suggestions, and database operations to meet minimum speed requirements.
-        * Run accessibility tests for speech input, keyboard navigation, and screen reader compatibility.
-      * Week 10: Full functionality tests and final integration in deployment.
-        * End-to-end tests for complete user flows (speech command → AI suggestion → task creation/update).
-        * Security tests for speech input validation, database integrity, and role-based access control.
-        * Final performance review and bug fixes for production readiness.
 
-### Documentation Plan
 
 * **User Guides (TalkTask)**
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
