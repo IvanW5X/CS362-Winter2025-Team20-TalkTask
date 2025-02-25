@@ -5,98 +5,111 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
-import styles from "./tasklist.module.css";
-import axios from "axios";
+import React, { useState } from "react";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+
 
 /**
  * Utility function to convert a color name to a Tailwind class.
  * This avoids issues with dynamic class strings in Tailwind.
  */
-const getColorClass = (color) => {
-  switch (color) {
-    case "School":
+const getPriority = (priority) => {
+  switch (priority) {
+    case 1:
       return "bg-red-500";
-    case "Work":
+    case 2:
       return "bg-yellow-500";
-    case "Chores":
+    case 3:
       return "bg-green-500";
-    case "Exercise":
-      return "bg-blue-500";
-    // Add more colors as needed
     default:
       return "bg-gray-500";
   }
 };
 
-export const TaskList = () => {
+export const TaskList = ({menu_open}) => {
   // Example tasks array
-  const tasks = [
+  const [tasks,setTasks] = useState([
     {
-      id: 1,
-      title: "Do Homework for an hour",
-      startTime: "7:00 AM",
-      endTime: "7:30 AM",
-      color: "School",
-      completed: false,
+      taskID: 1,
+      title: "Work",
+      description: "do stuff",
+      dateCreated: "2015-03-25T12:00:00Z",
+      dateCompleted: "2015-03-25T12:50:00Z",
+      recurringDate: null,
+      priority: 1, // Priority scale 1-3
+      status: "in-progress",
+      userId: 9,
     },
     {
-      id: 2,
-      title: "Work For 6 hours",
-      startTime: "10:00 AM",
-      endTime: "4:00 PM",
-      color: "Work",
-      completed: false,
+      taskID: 3,
+      title: "type shi",
+      description: "do stuff",
+      dateCreated: "2015-03-25T11:00:00Z",
+      dateCompleted: "2015-03-25T12:20:00Z",
+      recurringDate: null,
+      priority: 3, // Priority scale 1-3
+      status: "in-progress",
+      userId: 9,
     },
-    {
-      id: 3,
-      title: "Do the Dishes",
-      startTime: "1:00 PM",
-      endTime: "2:45 PM",
-      color: "Chores",
-      completed: false,
-    },
-    {
-      id: 4,
-      title: "Go to the Gym",
-      startTime: "5:00 PM",
-      endTime: "6:00 PM",
-      color: "Exercise",
-      completed: false,
-    },
+    
     // Add more tasks here as needed
-  ];
+  ]);
+
+  //task labeled "completed" or "in-progress"
+  const toggleTaskStatus = (taskID) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.taskID === taskID ? 
+              { ...task, status: task.status === "completed" ? "in-progress" : "completed" } : task
+      )
+    );
+  };
+
+
+  // set minimum left and right margin for mobile later
 
   return (
-    <div className="bg-[#E5E5E5] rounded-3xl absolute mt-[300px] ml-[250px] w-auto">
-      {/* Header */}
+    <div className={`bg-[#E5E5E5] mt-[40px] absolute rounded-3xl h-auto ml-[calc(15%-40px)] w-[45vw]
+                      ${menu_open ? "translate-x-0" : "-translate-x-[200px]"}`}>
+
+      {/* title container */}
       <div className="flex items-center justify-between rounded-2xl text-[20px] font-semibold bg-white m-5 px-5 py-3">
-        <span>Tasks</span>
-        <span className="text-sm font-normal">{tasks.length}</span>
+        Tasks
+        {/* number of tasks */}
+        <span className="text-[25px] font-normal">{tasks.length}</span>
       </div>
 
       {/* Task items container */}
       <div className="mx-5 mb-5 space-y-4">
         {tasks.map((task) => (
-          <div key={task.id} className="bg-white p-4 rounded-2xl flex items-center shadow">
+          <div key={task.taskID} className="bg-white p-4 rounded-2xl flex items-center shadow">
+
             {/* Colored circle */}
-            <div className={`w-5 h-5 rounded-full ${getColorClass(task.color)} mr-3`}/>
+            <div className={`w-5 h-5 rounded-full ${getPriority(task.priority)} mr-3`}/>
+
             {/* Task text */}
-            <div className="flex-1 text-base font-medium">{task.title}</div>
+            <div className="flex-1 break-words font-medium">{task.title}</div>
+
             {/* Times */}
-            <div className="text-sm mr-4 hidden md:block">
-              <p></p>
+            <div className="text-sm ml-[50px] mr-5 hidden md:block">
+              Start:
+              {`${new Date(task.dateCreated).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCreated).getUTCMinutes().toString().padStart(2, '0')}`}
             </div>
-            <div className="text-sm mr-4 hidden md:block">Start: {task.startTime}</div>
-            <div className="text-sm mr-4 hidden md:block">End: {task.endTime}</div>
+            <div className="text-sm mr-4 hidden md:block">
+              End: 
+              {`${new Date(task.dateCompleted).getUTCHours().toString().padStart(2, '0')}:${new Date(task.dateCompleted).getUTCMinutes().toString().padStart(2, '0')}`}
+            </div>
+            
+
             {/* Pencil icon (you could replace with an actual icon component) */}
-            <button className="mr-4 hidden md:block">✏️</button>
+            <MdOutlineModeEditOutline className={`mr-4 text-[25px] cursor-pointer hidden md:block`}/>
+
             {/* Checkbox */}
             <input
               type="checkbox"
-              className="form-checkbox h-5 w-5 hidden md:block"
-              checked={task.completed}
-              readOnly
+              className="form-checkbox h-5 w-5 cursor-pointer"
+              checked={task.status ==="completed"}
+              onChange={() => toggleTaskStatus(task.taskID)}
             />
           </div>
         ))}
