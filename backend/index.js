@@ -11,7 +11,7 @@ import { SERVER_PORT } from "./utils/variables.js";
 
 async function Initialize() {
   // Connect to database first
-  await connectTTDB();
+  // await connectTTDB();
 
   // Start server
   app.listen(SERVER_PORT, () => {

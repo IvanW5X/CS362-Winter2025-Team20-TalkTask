@@ -1,5 +1,5 @@
 /********************************************************************
- * File Name: main.jsx (Completed)
+ * File Name: main.jsx
  * Date: 1/13/2025
  * Description: Main JSX file to be display
  * Author(s): CS 362-Team 20
