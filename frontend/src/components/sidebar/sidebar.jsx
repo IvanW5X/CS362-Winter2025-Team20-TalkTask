@@ -5,94 +5,52 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState, useEffect } from "react";
-import styles from "./sidebar.module.css";
+import React, { useState } from "react";
+import { GoPlus } from "react-icons/go";
+
 
 export const Sidebar = () => {
-  const [showTasks, setShowTasks] = useState(true);
-  const [tasks, setTasks] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([]);
-  const [taskGroups, setTaskGroups] = useState(["All"]); // Store user-created groups
-  const [selectedGroup, setSelectedGroup] = useState("All");
-  const [taskGroupMap, setTaskGroupMap] = useState({}); // Maps tasks to groups
+  const [showTasks, setShowTasks] = useState(true); // shows all taskGroups
+  const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
 
-  // Fetch tasks from MongoDB
-  useEffect(() => {
-    fetch("http://localhost:51710/api/tasks")
-      .then((response) => response.json())
-      .then((data) => {
-        setTasks(data);
-        setFilteredTasks(data);
-      })
-      .catch((error) => console.error("Error fetching tasks:", error));
-  }, []);
-
-  // Filter tasks
-  useEffect(() => {
-    if (selectedGroup === "All") {
-      setFilteredTasks(tasks);
-    } else {
-      setFilteredTasks(tasks.filter((task) => taskGroupMap[task.taskID] === selectedGroup));
-    }
-  }, [selectedGroup, tasks, taskGroupMap]);
-
-  // Create a new task group
-  const addTaskGroup = () => {
-    const newGroup = prompt("Enter a new task group:");
-    if (newGroup && !taskGroups.includes(newGroup)) {
-      setTaskGroups([...taskGroups, newGroup]);
-    }
-  };
-
-  // Assign a task to a group
-  const assignTaskToGroup = (taskID) => {
-    const group = prompt("Assign to which group?");
-    if (group && taskGroups.includes(group)) {
-      setTaskGroupMap({ ...taskGroupMap, [taskID]: group });
+  const addCategory = () => {
+    const newTask = prompt("Enter a new task:"); // Allows the user to input text
+    if (newTask) {
+      setTasks([...tasks, newTask]); // Add new task grouping to the list
     }
   };
 
   return (
-    <nav className={styles.sidebar}>
-      <div className={styles.sidebarBlock}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <>
+      <nav className="absolute flex font-[Inter] flex-col bg-white h-screen w-[200px] shadow-xl">
+        <ul className="mt-[95px]">
 
-      <ul className={styles.sidebarList}>
-        <li className={styles.sidebarItem} onClick={() => setShowTasks(!showTasks)}>
-          Tasks <span className={styles.plusIcon} onClick={addTaskGroup}>+</span>
-        </li>
-
-        {/* Display Task Groups */}
-        <ul className={`${styles.subMenu} ${showTasks ? styles.show : ""}`}>
-          {taskGroups.map((group, index) => (
-            <li
-              key={index}
-              className={`${styles.sidebarItem} ${selectedGroup === group ? styles.active : ""}`}
-              onClick={() => setSelectedGroup(group)}
-            >
-              {group}
-            </li>
-          ))}
-        </ul>
-
-        {/* Display Filtered Tasks */}
-        <ul>
-          {filteredTasks.map((task) => (
-            <li key={task.taskID} className={styles.sidebarItem}>
-            <div>{task.description} - <em>{task.status}</em></div>
-            <button className={styles.assignButton} onClick={() => assignTaskToGroup(task.taskID)}>
-              Assign Group
-            </button>
+          {/* Task title and + icon */}
+          <li
+            className="flex cursor-pointer p-[10px] text-[14px] font-[700] 
+                        items-center justify-between bg-[#E5E5E5]"
+            onClick={() => setShowTasks(!showTasks)}
+          >
+            Tasks
+            <GoPlus className="cursor-pointer text-[25px] stroke-[.5]"
+            onClick={addCategory}/>
           </li>
           
-          ))}
-        </ul>
 
-        <li className={styles.sidebarItem}>About</li>
-      </ul>
-    </nav>
+          {/* categories */}
+          <ul className={`${showTasks ? "block" : "hidden"}
+          `}>
+            {tasks.map((task, index) => (
+              <li key={index} 
+                  className="flex cursor-pointer p-[10px] text-[14px] pl-[20px]
+                            items-center bg-[#E5E5E5] hover:bg-black/20 odd:bg-white">
+                {task}
+              </li>
+            ))}
+          </ul>
+  
+        </ul>
+      </nav>
+    </>
   );
 };
