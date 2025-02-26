@@ -6,11 +6,13 @@
  ********************************************************************/
 
 import { TopBar } from "../../components/topbar-about-page/topbar";
+import { AboutBody } from "../../components/about-body/about-body";
 
 export const About = () => {
   return (
     <div>
       <TopBar />
+      <AboutBody />
     </div>
   );
 };
