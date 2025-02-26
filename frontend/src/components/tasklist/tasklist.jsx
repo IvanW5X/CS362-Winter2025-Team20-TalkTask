@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -35,28 +35,33 @@ const getTasks = async () => {
 };
 
 export const TaskList = ({ menu_open }) => {
+  const [tasks, setTasks] = useState([]);
+
   // Get tasks using react query
-  const {
-    data: tasks,
-    isLoading,
-    error,
-  } = useQuery("tasks", getTasks);
+  const { isLoading, error } = useQuery("tasks", getTasks, {
+    onSuccess: (data) => setTasks(data),
+  });
+
+  const toggleTaskStatus = (taskID) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.taskID === taskID
+          ? {
+              ...task,
+              status: task.status === "completed" ? "in-progress" : "completed",
+            }
+          : task
+      )
+    );
+  };
 
   // Currently fetching tasks
   if (isLoading) {
-    return (
-      <div>
-        Fetching tasks...
-      </div>
-    );
+    return <div>Fetching tasks...</div>;
   }
   // Couldn't fetch tasks
   if (error) {
-    return (
-      <div>
-        An error occurred: {error.message}
-      </div>
-    );
+    return <div>An error occurred: {error.message}</div>;
   }
 
   return (

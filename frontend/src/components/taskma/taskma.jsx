@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheck } from "react-icons/fa";
@@ -13,15 +13,7 @@ import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 
-
-
-
-
-
-
-
 export const TasksManagement = ({menu_open}) => {
-
   return (
     <>
       <div className={`flex flex-col bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
