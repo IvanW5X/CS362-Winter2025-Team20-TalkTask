@@ -6,7 +6,8 @@
  ********************************************************************/
 
 // import React from "react";
-import { Home } from "./pages/home/home";
+// import { Home } from "./pages/home/home";
+import { About } from "./pages/about/about";
 
 // Implement funcitonality for displaying about page or user home page; based on if user logged in
   // Use local storage/cookies and Routes for this
@@ -15,7 +16,7 @@ function App() {
   return (
     <>
       <div className=" bg-[#cdcdcd] h-screen w-full">
-          <Home />
+          <About />
       </div>
     </>
   );
