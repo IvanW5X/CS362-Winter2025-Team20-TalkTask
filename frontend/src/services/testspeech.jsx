@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { recognition, parseCommand, execCommand } from "./webSpeech.js";
 
 

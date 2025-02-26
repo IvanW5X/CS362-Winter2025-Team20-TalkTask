@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 
 export const Sidebar = ({ menu_open }) => {
@@ -18,9 +18,6 @@ export const Sidebar = ({ menu_open }) => {
       setTasks([...tasks, newTask]); // Add new task grouping to the list
     }
   };
-
-
-
   return (
     <>
      <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 

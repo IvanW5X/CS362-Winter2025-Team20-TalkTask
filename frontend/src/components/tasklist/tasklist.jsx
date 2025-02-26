@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { useQuery } from "react-query";
 import axios from "axios";

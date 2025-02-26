@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
+// import React from "react";
 import { Home } from "./pages/home/home";
 
 // Implement funcitonality for displaying about page or user home page; based on if user logged in

@@ -5,8 +5,6 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
-
 export const About = () => {
   return (
     <div>

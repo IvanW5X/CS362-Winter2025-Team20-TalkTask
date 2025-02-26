@@ -5,7 +5,6 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheck } from "react-icons/fa";
