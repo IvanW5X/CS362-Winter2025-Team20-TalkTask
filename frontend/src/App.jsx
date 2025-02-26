@@ -12,7 +12,7 @@ import { About } from "./pages/about/about";
 function App() {
   return (
     <>
-      <div className=" bg-[#cdcdcd] h-screen w-full">
+      <div className=" bg-[#cdcdcd] min-h-screen w-full">
           <About />
       </div>
     </>
