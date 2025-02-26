@@ -7,13 +7,13 @@
 
 // import React from "react";
 import { Home } from "./pages/home/home";
-import { About } from "./pages/about/about";
+// import { About } from "./pages/about/about";
 
 function App() {
   return (
     <>
       <div className=" bg-[#cdcdcd] min-h-screen w-full">
-          <About />
+          <Home />
       </div>
     </>
   );
