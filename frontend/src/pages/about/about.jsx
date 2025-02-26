@@ -5,10 +5,12 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
+import { TopBar } from "../../components/topbar-about-page/topbar";
+
 export const About = () => {
   return (
     <div>
-      <h1>About</h1>
+      <TopBar />
     </div>
   );
 };
