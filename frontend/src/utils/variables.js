@@ -1,8 +1,8 @@
 /********************************************************************
- * File Name: about.module.css
- * Date: 1/26/2025
- * Description: Module CSS file for about component
+ * File Name: variables.js
+ * Date: 2/25/2025
+ * Description: JS file for storing common variables
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-@import "../../variables.css";
+export const VITE_BACKEND_URL = process.env.VITE_BACKEND_URL;

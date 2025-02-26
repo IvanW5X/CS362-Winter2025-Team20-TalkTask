@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { recognition, parseCommand, execCommand } from "../../services/webSpeech.js";
+import { useState } from "react";
+import { recognition, parseCommand, execCommand } from "./webSpeech.js";
 
 
 //button example for later implementation

@@ -5,9 +5,6 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
-import styles from "./about.module.css";
-
 export const About = () => {
   return (
     <div>

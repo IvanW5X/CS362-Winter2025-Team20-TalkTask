@@ -5,32 +5,28 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-
-
-
-export const TopBar = ({menu_open, set_menu_state}) => {
-
+export const TopBar = ({ menu_open, set_menu_state }) => {
   return (
     <>
       <div className="w-full h-[95px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
-
         {/* 
           need to make responsive later. vw and vh is okay for now with desktop.
           need to us stuff like md: and sm: later
         */}
-        <RxHamburgerMenu className="ml-[20px] text-[65px] cursor-pointer text-white "
-                          onClick={() => {
-                            set_menu_state(!menu_open);
-                          }}
+        <RxHamburgerMenu
+          className="ml-[20px] text-[65px] cursor-pointer text-white "
+          onClick={() => {
+            set_menu_state(!menu_open);
+          }}
         />
 
-        <img className="w-[150px] -ml-[50%] " 
-              src="../assets/TalkTaskLogo1.png" 
-              alt="TalkTask Logo"
+        <img
+          className="w-[150px] -ml-[50%] "
+          src="../assets/TalkTaskLogo1.png"
+          alt="TalkTask Logo"
         />
 
         {/* 
@@ -43,21 +39,7 @@ export const TopBar = ({menu_open, set_menu_state}) => {
       </div>
     </>
   );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 /*
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
