@@ -5,13 +5,14 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React from "react";
-import styles from "./about.module.css";
+import { TopBar } from "../../components/topbar-about-page/topbar";
+import { AboutBody } from "../../components/about-body/about-body";
 
 export const About = () => {
   return (
     <div>
-      <h1>About</h1>
+      <TopBar />
+      <AboutBody />
     </div>
   );
 };

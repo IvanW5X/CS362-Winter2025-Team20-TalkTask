@@ -5,15 +5,13 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React , { useState }from "react";
+import { useState }from "react";
 import { TaskList } from "../../components/tasklist/tasklist";
 import { TasksManagement } from "../../components/taskma/taskma";
-
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
-import { TopBar } from "../../components/topbar/topbar";
+import { TopBar } from "../../components/topbar-user-page/topbar";
 import { PopUp } from "../../components/popup/popup";
-//import { Link } from "react-router-dom";
 
 export const Home = () => {
 

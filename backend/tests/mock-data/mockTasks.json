@@ -1,0 +1,57 @@
+[
+  {
+    "taskID": 1,
+    "title": "Work",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T12:00:00Z",
+    "dateCompleted": "2015-03-25T12:50:00Z",
+    "recurringDate": null,
+    "priority": 1,
+    "status": "in-progress",
+    "userId": 9
+  },
+  {
+    "taskID": 2,
+    "title": "task 2",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T11:00:00Z",
+    "dateCompleted": "2015-03-25T12:20:00Z",
+    "recurringDate": null,
+    "priority": 3,
+    "status": "in-progress",
+    "userId": 9
+  },
+  {
+    "taskID": 3,
+    "title": "type shi",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T11:00:00Z",
+    "dateCompleted": "2015-03-25T12:20:00Z",
+    "recurringDate": null,
+    "priority": 3,
+    "status": "in-progress",
+    "userId": 9
+  },
+  {
+    "taskID": 4,
+    "title": "task 3",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T11:00:00Z",
+    "dateCompleted": "2015-03-25T12:20:00Z",
+    "recurringDate": null,
+    "priority": 3,
+    "status": "in-progress",
+    "userId": 9
+  },
+  {
+    "taskID": 5,
+    "title": "task 4",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T11:00:00Z",
+    "dateCompleted": "2015-03-25T12:20:00Z",
+    "recurringDate": null,
+    "priority": 3,
+    "status": "in-progress",
+    "userId": 9
+  }
+]
