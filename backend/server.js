@@ -16,6 +16,9 @@ const corsOptions = {
   origin: FRONTEND_URL,
 };
 
+// Parse incoming req into json formats
+app.use(express.json());
+
 // Enable cross origin resource sharing
 app.use(cors(corsOptions));
 

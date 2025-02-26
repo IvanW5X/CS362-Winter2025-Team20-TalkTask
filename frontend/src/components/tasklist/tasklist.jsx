@@ -5,8 +5,11 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../utils/variables.js";
 
 /**
  * Utility function to convert a color name to a Tailwind class.
@@ -25,50 +28,36 @@ const getPriority = (priority) => {
   }
 };
 
+// Get example tasks from backend
+const getTasks = async () => {
+  const res = await axios.get(`${VITE_BACKEND_URL}/tasks/testing`);
+  return res.data;
+};
+
 export const TaskList = ({ menu_open }) => {
-  // Example tasks array
-  const [tasks, setTasks] = useState([
-    {
-      taskID: 1,
-      title: "Work",
-      description: "do stuff",
-      dateCreated: "2015-03-25T12:00:00Z",
-      dateCompleted: "2015-03-25T12:50:00Z",
-      recurringDate: null,
-      priority: 1, // Priority scale 1-3
-      status: "in-progress",
-      userId: 9,
-    },
-    {
-      taskID: 3,
-      title: "type shi",
-      description: "do stuff",
-      dateCreated: "2015-03-25T11:00:00Z",
-      dateCompleted: "2015-03-25T12:20:00Z",
-      recurringDate: null,
-      priority: 3, // Priority scale 1-3
-      status: "in-progress",
-      userId: 9,
-    },
+  // Get tasks using react query
+  const {
+    data: tasks,
+    isLoading,
+    error,
+  } = useQuery("tasks", getTasks);
 
-    // Add more tasks here as needed
-  ]);
-
-  //task labeled "completed" or "in-progress"
-  const toggleTaskStatus = (taskID) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.taskID === taskID
-          ? {
-              ...task,
-              status: task.status === "completed" ? "in-progress" : "completed",
-            }
-          : task
-      )
+  // Currently fetching tasks
+  if (isLoading) {
+    return (
+      <div>
+        Fetching tasks...
+      </div>
     );
-  };
-
-  // set minimum left and right margin for mobile later
+  }
+  // Couldn't fetch tasks
+  if (error) {
+    return (
+      <div>
+        An error occurred: {error.message}
+      </div>
+    );
+  }
 
   return (
     <div
