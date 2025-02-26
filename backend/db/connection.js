@@ -6,7 +6,7 @@
  ********************************************************************/
 
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { MONGO_URI } from "../variables.js"
+import { MONGO_URI } from "../utils/variables.js"
 
 // Create MongoDB client
 export const client = new MongoClient(MONGO_URI, {

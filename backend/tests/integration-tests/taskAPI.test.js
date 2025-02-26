@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name:
+ * Date:
+ * Description:
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import mongoose from 'mongoose';
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
@@ -28,7 +35,7 @@ describe('Task API - Integration Tests', () => {
   });
 
   test('should create a new task via API', async () => {
-    const res = await request(app).post('/api/tasks').send({
+    const res = await request(app).post('/tasks/create-task').send({
       taskID: 5,
       title: 'API Test Task',
       userId: userId, //  Use generated userId
@@ -46,7 +53,7 @@ describe('Task API - Integration Tests', () => {
   test('should retrieve the created task via API', async () => {
     await new Promise(resolve => setTimeout(resolve, 500)); //  Allow DB update delay
 
-    const res = await request(app).get(`/api/tasks/${userId}`); //  Adjusted route
+    const res = await request(app).get(`/tasks/get-task/${userId}`); //  Adjusted route
     
     expect(res.status).toBe(200);
     expect(res.body).toBeInstanceOf(Array);
@@ -55,7 +62,7 @@ describe('Task API - Integration Tests', () => {
   }, 20000); //  Set timeout for this test
 
   test('should update task status via API', async () => {
-    const res = await request(app).patch(`/api/tasks/${taskId}`).send({ //  Adjusted route
+    const res = await request(app).patch(`/tasks/update-task/${taskId}`).send({ //  Adjusted route
       status: 'completed'
     });
 
@@ -64,7 +71,7 @@ describe('Task API - Integration Tests', () => {
   }, 20000); //  Set timeout for this test
 
   test('should delete a task via API', async () => {
-    const res = await request(app).delete(`/api/tasks/${taskId}`); //  Adjusted route
+    const res = await request(app).delete(`tasks/delete-task/${taskId}`); //  Adjusted route
     expect(res.status).toBe(200);
 
     const deletedTask = await Task.findById(taskId);
