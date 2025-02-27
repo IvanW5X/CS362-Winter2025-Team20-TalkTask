@@ -47,14 +47,10 @@ app.use("*", (req, res, next) => {
   next();
 });
 
-app.use('*', checkJwt, (req, res, next) => {
-  console.log("Authenticated request received at: ", new Date());
-  console.log("Token:", req.auth);
-  next();
-});
 
-app.use("/users", checkJwt, userRoutes);
-app.use("/tasks", checkJwt, taskRoutes);
+
+app.use("/users", userRoutes);
+app.use("/tasks", taskRoutes);
 app.use("/api/external", checkJwt, (req, res) => {
   res.send({
     msg: "Your Access Token was successfully validated!",
