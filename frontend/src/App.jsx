@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div className=" bg-[#cdcdcd] min-h-screen w-full">
-          <About />
+          <Home />
       </div>
     </>
   );
