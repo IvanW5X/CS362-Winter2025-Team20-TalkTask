@@ -7,6 +7,7 @@
 
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { getImageUrl } from "../../../utils/utils";
 
 export const TopBar = ({ menu_open, set_menu_state }) => {
   return (
@@ -24,8 +25,8 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         />
         <img
           className="w-[150px] -ml-[50%] "
-          src="../../assets/TalkTaskLogo1.png"
-          alt="TalkTask Logo"
+          src={getImageUrl("TalkTaskLogo1.png")}
+          alt="TalkTask Logo 1, with text"
         />
 
         {/* 

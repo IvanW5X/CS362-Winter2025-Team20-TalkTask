@@ -8,7 +8,7 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../utils/variables.js";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
 
 // Get example tasks from backend
