@@ -25,18 +25,18 @@ export const TaskList = () => {
     onSuccess: (data) => setTasks(data),
   });
 
-    const toggleTaskStatus = (taskID) => {
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.taskID === taskID
-            ? {
-                ...task,
-                status: task.status === "completed" ? "in-progress" : "completed",
-              }
-            : task
-        )
-      );
-    };
+  const toggleTaskStatus = (taskID) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.taskID === taskID
+          ? {
+              ...task,
+              status: task.status === "completed" ? "in-progress" : "completed",
+            }
+          : task
+      )
+    );
+  };
   if (isLoading) {
     return <div className="ml-[5%]">Getting tasks...</div>;
   }
@@ -54,7 +54,13 @@ export const TaskList = () => {
       {/* Tasks */}
       <div className="mx-5 mb-5 space-y-4">
         {tasks.map((task, taskID) => {
-          return <TaskCard key={taskID} task={task} toggleTaskStatus={toggleTaskStatus}/>
+          return (
+            <TaskCard
+              key={taskID}
+              task={task}
+              toggleTaskStatus={toggleTaskStatus}
+            />
+          );
         })}
       </div>
     </div>

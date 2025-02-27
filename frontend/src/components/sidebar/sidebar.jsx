@@ -26,7 +26,10 @@ export const Sidebar = ({ menu_open }) => {
       {/* Header Section */}
       <div className="flex items-center justify-between p-3 bg-gray-300 font-bold text-[18px]">
         Tasks
-        <GoPlus className="cursor-pointer text-[24px] stroke-[.5]" onClick={addCategory} />
+        <GoPlus
+          className="cursor-pointer text-[24px] stroke-[.5]"
+          onClick={addCategory}
+        />
       </div>
 
       {/* Categories List */}
