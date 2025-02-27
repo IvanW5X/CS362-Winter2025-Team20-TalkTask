@@ -24,7 +24,7 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { title, priority, dateCreated, dateCompleted, status, category },
+  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
   toggleTaskStatus,
 }) => {
 
@@ -82,7 +82,7 @@ export const TaskCard = ({
         type="checkbox"
         className="form-checkbox h-5 w-5 cursor-pointer"
         checked={status === "completed"}
-        onChange={() => toggleTaskStatus(id)}
+        onChange={() => toggleTaskStatus(taskID)}
       />
     </div>
   );
