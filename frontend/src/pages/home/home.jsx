@@ -11,7 +11,7 @@ import { TasksManagement } from "../../components/taskma/taskma";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";
-import { PopUp } from "../../components/popup/popup";
+import { AddPopUp } from "../../components/addpopup/addpopup";
 
 export const Home = () => {
 
@@ -20,7 +20,7 @@ export const Home = () => {
 
     return (
         <div>
-            <PopUp/>
+            <AddPopUp/>
             <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
             <Sidebar menu_open={menu_open}/>
 
