@@ -6,6 +6,9 @@
  ********************************************************************/
 
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { EditPopUp } from "../editpopup/editpopup";
+import { useState } from "react";
+
 
 const getPriority = (priority) => {
   switch (priority) {
@@ -24,8 +27,13 @@ export const TaskCard = ({
   task: { title, priority, dateCreated, dateCompleted, status },
   toggleTaskStatus,
 }) => {
+
+  const [editMenu, setEditMenu] = useState(false);
+
   return (
     <div className="bg-white p-4 rounded-[10px] flex items-center shadow">
+      {editMenu && <EditPopUp onClose={() => setEditMenu(false)} />}
+
       {/* Priority */}
       <div
         className={`w-5 h-5 rounded-full mr-3 border-1 border-black ${getPriority(
@@ -41,6 +49,8 @@ export const TaskCard = ({
       {/* Pencil icon (you could replace with an actual icon component) */}
       <MdOutlineModeEditOutline
         className={`text-[25px] cursor-pointer flex text-right`}
+          onClick={()=>setEditMenu(!editMenu)}
+        
       />
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">

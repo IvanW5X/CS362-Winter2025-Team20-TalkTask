@@ -32,10 +32,10 @@ export const Home = () => {
           <Calendar />
 
           {/* Display tasks stuff as a row */}
-          <div className="flex flex-row justify-">
+          <div className="flex flex-row mt-[40px]">
             <TaskList />
             {/* <TasksManagement /> */}
-            <div className="mt-[40px]">akjshd</div>
+            <div className="">akjshd</div>
           </div>
         </div>
       </div>

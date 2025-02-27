@@ -45,7 +45,7 @@ export const TaskList = () => {
   }
   return (
     // Task list component
-    <div className="bg-[#E5E5E5] mt-[40px] w-[474px] rounded-[10px]">
+    <div className="bg-[#E5E5E5] w-[474px] rounded-[10px]">
       {/* Title and count*/}
       <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px] shadow">
         <h2>Tasks</h2>
