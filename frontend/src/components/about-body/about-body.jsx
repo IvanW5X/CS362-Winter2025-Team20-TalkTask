@@ -14,7 +14,7 @@ export const AboutBody = () => {
       {/* Logo */}
       <img
         className="w-[400px] mt-[50px] ml-[5%] md:flex hidden"
-        src="../assets/TalkTaskLogo2.png"
+        src="../../assets/TalkTaskLogo2.png"
         alt="TalkTask logo 2, no text"
       />
       
