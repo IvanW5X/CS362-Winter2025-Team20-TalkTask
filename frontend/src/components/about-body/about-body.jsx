@@ -13,7 +13,7 @@ export const AboutBody = () => {
       
       {/* Logo */}
       <img
-        className="w-[400px] mt-[50px] ml-[5%] md:flex hidden"
+        className=" w-[400px] h-[400px] mt-[50px] ml-[5%] md:flex hidden"
         src="../../assets/TalkTaskLogo2.png"
         alt="TalkTask logo 2, no text"
       />
@@ -52,10 +52,10 @@ export const AboutBody = () => {
           
           {/* Buttons */}
           <div className="flex flex-col text-[28px] text-white md:justify-evenly md:ml-[40px]">
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black">
+            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
               Sign Up
             </button>
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black">
+            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
               Log In
             </button>
           </div>
