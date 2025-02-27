@@ -4,19 +4,27 @@
  * Description: JSX file for tasks UI component
  * Author(s): CS 362-Team 20
  ********************************************************************/
-
+import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
+import { AddPopUp } from "../addpopup/addpopup";
+// import { EditPopUp } from "../editpopup/editpopup";
 
 export const TasksManagement = ({menu_open}) => {
+
+  const[addMenuV, setAddMenuV] = useState(false);
+
+
   return (
     <>
+    {/* <EditPopUp/> */}
+      {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       <div className={`flex flex-col bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
-                      ${menu_open ? "translate-x-0" : "-translate-x-[200px]"}`}>
+                      ${menu_open ? "block" : "hidden"}`}>
           
           {/* title */}
           <button className={`flex m-5 h-fit bg-white rounded-2xl text-[30px] font-semibold justify-center`}>
@@ -25,7 +33,8 @@ export const TasksManagement = ({menu_open}) => {
       
       
           {/* add task */}
-          <div className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}>
+          <div className={`flex cursor-pointer mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
+                onClick={()=>setAddMenuV(!addMenuV)}>
             Add Task 
             <CiCirclePlus className="absolute right-3 "/>
           </div>
