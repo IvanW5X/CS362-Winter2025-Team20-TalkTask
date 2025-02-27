@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5"; // Import close icon
 
-export const AddPopUp = ({ onClose }) => {
+export const EditPopUp = ({ onClose }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [timeStart, setTimeStart] = useState('');
