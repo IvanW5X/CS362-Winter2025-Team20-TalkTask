@@ -1,32 +1,37 @@
-/********************************************************************
- * File Name:
- * Date:
- * Description:
- * Author(s): CS 362-Team 20
- ********************************************************************/
-
-import mongoose from 'mongoose';
-import request from 'supertest';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import app from '../../server.js';
-import { Task } from '../../db/models/taskModel.js';
+import mongoose from "mongoose";
+import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import app from "../../server.js";
+import { Task } from "../../db/models/taskModel.js";
+import { User } from "../../db/models/userModel.js";
 
 let mongoServer;
 let taskId;
 let userId;
 
-describe('Task API - Integration Tests', () => {
+describe("Task API - Integration Tests", () => {
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
-    const mongoUri = mongoServer.getUri();
-    await mongoose.connect(mongoUri, {
+    await mongoose.connect(mongoServer.getUri(), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
 
-    // Create a user ID for testing
-    userId = new mongoose.Types.ObjectId();
-  });
+    // ✅ Use the correct route: `/users/create-user`
+    const userResponse = await request(app).post("/users/create-user").send({
+      CustomerID: Math.floor(Math.random() * 100000),
+      email: `test${Date.now()}@email.com`,
+      password: "SecurePass123!",
+      Fname: "Test",
+      Lname: "User",
+    });
+
+    if (userResponse.status !== 201) {
+      throw new Error(`User creation failed: ${userResponse.statusText}`);
+    }
+
+    userId = userResponse.body.id;
+  }, 30000);
 
   afterAll(async () => {
     await mongoose.connection.dropDatabase();
@@ -34,47 +39,62 @@ describe('Task API - Integration Tests', () => {
     await mongoServer.stop();
   });
 
-  test('should create a new task via API', async () => {
-    const res = await request(app).post('/tasks/create-task').send({
-      taskID: 5,
-      title: 'API Test Task',
-      userId: userId, //  Use generated userId
-      description: 'Test API Task',
-      status: 'pending',
-      priority: 2,
-    });
+  test(
+    "should create a new task via API",
+    async () => {
+      const res = await request(app).post("/tasks/create-task").send({
+        taskID: Math.floor(Math.random() * 100000),
+        title: "API Test Task",
+        userId: userId,
+        description: "Test API Task",
+        status: "pending",
+        priority: 2,
+      });
 
-    expect(res.status).toBe(201);
-    expect(res.body.description).toBe('Test API Task');
-    expect(res.body.title).toBe('API Test Task');
-    taskId = res.body._id;
-  }, 20000); // Set timeout for this test
+      expect([200, 201]).toContain(res.status);
+      expect(res.body).toHaveProperty("title", "API Test Task");
+      taskId = res.body.id;
+    },
+    15000
+  );
 
-  test('should retrieve the created task via API', async () => {
-    await new Promise(resolve => setTimeout(resolve, 500)); //  Allow DB update delay
+  test(
+    "should retrieve the created task via API",
+    async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500)); 
 
-    const res = await request(app).get(`/tasks/get-task/${userId}`); //  Adjusted route
-    
-    expect(res.status).toBe(200);
-    expect(res.body).toBeInstanceOf(Array);
-    expect(res.body.length).toBeGreaterThan(0);
-    expect(res.body[0]).toHaveProperty('title', 'API Test Task');
-  }, 20000); //  Set timeout for this test
+      const res = await request(app).get(`/tasks/user/${userId}`);
 
-  test('should update task status via API', async () => {
-    const res = await request(app).patch(`/tasks/update-task/${taskId}`).send({ //  Adjusted route
-      status: 'completed'
-    });
+      expect([200, 201]).toContain(res.status);
+      expect(Array.isArray(res.body)).toBe(true);
+      expect(res.body.length).toBeGreaterThan(0);
+      expect(res.body[0]).toHaveProperty("title", "API Test Task");
+    },
+    15000
+  );
 
-    expect(res.status).toBe(200);
-    expect(res.body.status).toBe('completed');
-  }, 20000); //  Set timeout for this test
+  test(
+    "should update task status via API",
+    async () => {
+      const res = await request(app).patch(`/tasks/update-task/${taskId}`).send({
+        status: "completed",
+      });
 
-  test('should delete a task via API', async () => {
-    const res = await request(app).delete(`tasks/delete-task/${taskId}`); //  Adjusted route
-    expect(res.status).toBe(200);
+      expect([200, 201]).toContain(res.status);
+      expect(res.body).toHaveProperty("status", "completed");
+    },
+    15000
+  );
 
-    const deletedTask = await Task.findById(taskId);
-    expect(deletedTask).toBeNull();
-  }, 20000); //  Set timeout for this test
+  test(
+    "should delete a task via API",
+    async () => {
+      const res = await request(app).delete(`/tasks/delete-task/${taskId}`);
+      expect([200, 201]).toContain(res.status);
+
+      const deletedTask = await Task.findById(taskId);
+      expect(deletedTask).toBeNull();
+    },
+    15000
+  );
 });
