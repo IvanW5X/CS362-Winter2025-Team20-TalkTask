@@ -34,8 +34,8 @@ function App() {
     <Router history={history}>
       <div className=" bg-[#cdcdcd] h-screen w-full">
         <Routes>
-          <Route path="/" element={<ExternalAPI />} />
-          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Route path="/" element={<ExternalAPI />} /> */}
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
