@@ -24,7 +24,7 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { title, priority, dateCreated, dateCompleted, status },
+  task: { title, priority, dateCreated, dateCompleted, status, category },
   toggleTaskStatus,
 }) => {
 

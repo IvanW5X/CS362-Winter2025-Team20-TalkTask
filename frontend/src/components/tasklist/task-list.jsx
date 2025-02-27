@@ -8,54 +8,69 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../utils/variables.js";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
 
-// Get example tasks from backend
+// Function to fetch tasks from the backend
 const getTasks = async () => {
   const res = await axios.get(`${VITE_BACKEND_URL}/tasks/testing`);
   return res.data;
 };
 
-export const TaskList = () => {
+export const TaskList = ({ selectedCategory }) => {
   const [tasks, setTasks] = useState([]);
-
-  // Get tasks using react query
+  
+  // Fetch tasks using react-query
   const { isLoading, error } = useQuery("tasks", getTasks, {
     onSuccess: (data) => setTasks(data),
   });
 
-    const toggleTaskStatus = (taskID) => {
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.taskID === taskID
-            ? {
-                ...task,
-                status: task.status === "completed" ? "in-progress" : "completed",
-              }
-            : task
-        )
-      );
-    };
+  const toggleTaskStatus = (taskID) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.taskID === taskID
+          ? {
+              ...task,
+              status: task.status === "completed" ? "in-progress" : "completed",
+            }
+          : task
+      )
+    );
+  };
+
+  // Filter tasks based on selected category
+  const filteredTasks = selectedCategory
+    ? tasks.filter((task) => task.category === selectedCategory)
+    : tasks;
+
   if (isLoading) {
-    return <div className="ml-[5%]">Getting tasks...</div>;
+    return <div className="ml-[5%]">Loading tasks...</div>;
   }
   if (error) {
-    return <div className="ml-[5%]">An error occurred fecthing tasks.</div>;
+    return <div className="ml-[5%]">An error occurred while fetching tasks.</div>;
   }
+
   return (
-    // Task list component
-    <div className="bg-[#E5E5E5] w-[474px] rounded-[10px]">
-      {/* Title and count*/}
+    <div className="bg-[#E5E5E5] mt-[40px] w-[474px] rounded-[10px]">
+      {/* Task Header */}
       <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px] shadow">
-        <h2>Tasks</h2>
-        <span className="text-[22px]">{tasks.length}</span>
+        <h2>{selectedCategory || "All Tasks"}</h2>
+        <span className="text-[22px]">{filteredTasks.length}</span>
       </div>
-      {/* Tasks */}
+
+      {/* Task List */}
       <div className="mx-5 mb-5 space-y-4">
-        {tasks.map((task, taskID) => {
-          return <TaskCard key={taskID} task={task} toggleTaskStatus={toggleTaskStatus}/>
-        })}
+        {filteredTasks.length === 0 ? (
+          <div>No tasks found in this category.</div>
+        ) : (
+          filteredTasks.map((task) => (
+            <TaskCard
+              key={task.taskID}
+              task={task}
+              toggleTaskStatus={toggleTaskStatus}
+            />
+          ))
+        )}
       </div>
     </div>
   );

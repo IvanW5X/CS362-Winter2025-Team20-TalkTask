@@ -7,6 +7,10 @@
  
 @import "tailwindcss";
 
+@theme {
+    --breakpoint-md: 900px;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
