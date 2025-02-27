@@ -10,18 +10,18 @@ import { GoPlus } from "react-icons/go";
 
 export const Sidebar = ({ menu_open }) => {
   // Example task groups
-  const [tasks, setTasks] = useState(["School", "Work", "Chores"]);
+  const [categories, setTasks] = useState(["School", "Work", "Chores"]);
 
   const addCategory = () => {
-    const newTask = prompt("Enter a new category:");
-    if (newTask) setTasks([...tasks, newTask]);
+    const newCategory = prompt("Enter a new category:");
+    if (newCategory) setTasks([...categories, newCategory]);
   };
 
   return (
     <aside
       className={`z-[999] flex flex-col bg-white shadow-xl w-[200px] 
-                  h-[calc(100vh-95px)] transition-transform duration-200
-                  ${menu_open ? "translate-x-0" : "-translate-x-full"}`}
+                  h-[calc(100vh-95px)]
+                  ${menu_open ? "flex-visible" : "flex hidden"}`}
     >
       {/* Header Section */}
       <div className="flex items-center justify-between p-3 bg-gray-300 font-bold text-[18px]">
@@ -30,8 +30,8 @@ export const Sidebar = ({ menu_open }) => {
       </div>
 
       {/* Categories List */}
-      <ul className="flex-1 bg-gray-200">
-        {tasks.map((task, index) => (
+      <ul className="flex-1 bg-gray-200 font-semibold">
+        {categories.map((task, index) => (
           <li
             key={index}
             className="p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px]"
