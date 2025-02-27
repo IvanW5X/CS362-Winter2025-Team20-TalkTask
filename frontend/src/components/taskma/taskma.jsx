@@ -12,7 +12,7 @@ import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-import { EditPopUp } from "../editpopup/editpopup";
+// import { EditPopUp } from "../editpopup/editpopup";
 
 export const TasksManagement = ({menu_open}) => {
 
@@ -21,7 +21,7 @@ export const TasksManagement = ({menu_open}) => {
 
   return (
     <>
-
+    {/* <EditPopUp/> */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       <div className={`flex flex-col bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
                       ${menu_open ? "block" : "hidden"}`}>

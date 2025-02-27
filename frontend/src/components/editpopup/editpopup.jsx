@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5"; // Import close icon
 
-export const EditPopUp = ({ onClose }) => {
+export const EditPopUp = ({ onClose, task }) => {
+    // const [title, setTitle] = useState(task.title);
+    // const [description, setDescription] = useState(task.description);
+    // const [timeStart, setTimeStart] = useState(task.timeStart);
+    // const [timeEnd, setTimeEnd] = useState(task.timeEnd);
+    // const [priority, setPriority] = useState(task.priority);
+
+
+    //delete later
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
     const [priority, setPriority] = useState('');
 
-    const addTask = async () => {
+    const editTask = async () => {
         // Task submission logic
     };
 
@@ -29,7 +37,7 @@ export const EditPopUp = ({ onClose }) => {
 
                     {/* Title */}
                     <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
-                        Add Task
+                        Edit Task
                     </div>
 
                     <div className="flex flex-col items-start mt-4 w-full">
@@ -94,8 +102,8 @@ export const EditPopUp = ({ onClose }) => {
                             <button className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                                 type="submit"
                                 id="submit"
-                                onClick={addTask}
-                            > Add Task</button>
+                                onClick={editTask}
+                            > Edit Task</button>
                         </p>
                     </div>
                 </form>
