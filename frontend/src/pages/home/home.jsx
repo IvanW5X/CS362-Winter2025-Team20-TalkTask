@@ -14,16 +14,21 @@ import { TopBar } from "../../components/topbar-user-page/topbar";
 
 export const Home = () => {
   const [menu_open, set_menu_state] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState(null); // Category state
 
   return (
     <div className="flex-col">
       <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
-      <div className="flex ">
-        <Sidebar menu_open={menu_open} />
+      <div className="flex">
+        <Sidebar 
+          menu_open={menu_open} 
+          selectedCategory={selectedCategory} 
+          setSelectedCategory={setSelectedCategory} 
+        />
         <div className="flex flex-col items-center w-full bg-white h-[calc(100vh-95px)]">
           <Calendar />
-          <div className="flex flex-row justify-">
-            <TaskList />
+          <div className="flex flex-row justify-start">
+            <TaskList selectedCategory={selectedCategory} />
             <div className="mt-[40px]">akjshd</div>
           </div>
         </div>
