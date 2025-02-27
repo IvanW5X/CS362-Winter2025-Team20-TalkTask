@@ -22,10 +22,9 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
             set_menu_state(!menu_open);
           }}
         />
-
         <img
           className="w-[150px] -ml-[50%] "
-          src="../assets/TalkTaskLogo1.png"
+          src="../../assets/TalkTaskLogo1.png"
           alt="TalkTask Logo"
         />
 
