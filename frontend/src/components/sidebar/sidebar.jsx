@@ -4,11 +4,11 @@
  * Description: Sidebar on Main Page
  * Author(s): CS 362-Team 20
  ********************************************************************/
-
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";
+import { TaskList } from "../../components/tasklist/task-list";
 
-export const Sidebar = ({ menu_open }) => {
+export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) => {
   // Example task groups
   const [categories, setTasks] = useState(["School", "Work", "Chores"]);
 
@@ -34,12 +34,23 @@ export const Sidebar = ({ menu_open }) => {
 
       {/* Categories List */}
       <ul className="flex-1 bg-gray-200 font-semibold">
-        {categories.map((task, index) => (
+        {/* All Tasks Button */}
+        <li
+          className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
+                     ${selectedCategory === null ? "font-bold underline" : ""}`}
+          onClick={() => setSelectedCategory(null)}
+        >
+          All
+        </li>
+
+        {categories.map((category, index) => (
           <li
             key={index}
-            className="p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px]"
+            className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
+                       ${selectedCategory === category ? "font-bold underline" : ""}`}
+            onClick={() => setSelectedCategory(category)}
           >
-            {task}
+            {category}
           </li>
         ))}
       </ul>
