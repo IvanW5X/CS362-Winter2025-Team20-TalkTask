@@ -39,7 +39,7 @@ export const AddPopUp = ({ onClose }) => {
           {/* Input Container */}
           <div className="flex flex-col mt-6 w-full">
             {/* Input Title */}
-            <p className="flex">
+            <p className="flex my-2">
               <label
                 htmlFor="title"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -57,7 +57,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Input Description */}
-            <p className="flex">
+            <p className="flex my-2">
               <label
                 htmlFor="description"
                 className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl w-[150px]"
@@ -74,7 +74,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Category */}
-            <p className="flex">
+            <p className="flex my-2">
               <label
                 htmlFor="category"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -92,7 +92,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Time Start */}
-            <p className="flex">
+            <p className="flex my-2">
               <label
                 htmlFor="timeStart"
                 className="flex items-center justify-center  bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -108,7 +108,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Completed By */}
-            <p className="flex">
+            <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -124,7 +124,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Priority */}
-            <p className="flex">
+            <p className="flex mt-2">
               <label
                 htmlFor="priority"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"

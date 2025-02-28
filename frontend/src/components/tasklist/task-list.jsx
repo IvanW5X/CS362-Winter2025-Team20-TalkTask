@@ -50,6 +50,9 @@ export const TaskList = ({ selectedCategory }) => {
     return <div className="ml-[5%]">An error occurred while fetching tasks.</div>;
   }
 
+
+  const sortedTasks = [...filteredTasks].sort((a, b) => a.priority - b.priority);
+
   return (
     <div className="bg-[#E5E5E5] w-[474px] rounded-[10px]">
       {/* Task Header */}
@@ -63,7 +66,7 @@ export const TaskList = ({ selectedCategory }) => {
         {filteredTasks.length === 0 ? (
           <div>No tasks found in this category.</div>
         ) : (
-          filteredTasks.map((task) => (
+          sortedTasks.map((task) => (
             <TaskCard
               key={task.taskID}
               task={task}

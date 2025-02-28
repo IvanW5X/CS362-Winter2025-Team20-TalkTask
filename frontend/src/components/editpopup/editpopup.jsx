@@ -21,30 +21,31 @@ export const EditPopUp = ({ onClose, task }) => {
 
   return (
     <>
-      <div className="z-[10001] absolute inset-0 flex items-center justify-center bg-black/40">
+      <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] max-w-full max-h-full bg-gray-200 rounded-3xl items-center shrink overflow-auto"
+          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-auto"
           onSubmit={(t) => {
             t.preventDefault();
           }}
         >
           {/* Close Button */}
           <button
-            className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-3xl"
+            className="absolute top-4 right-10 text-gray-600 hover:text-gray-800 text-3xl"
             onClick={onClose}
             type="button"
           >
-            <IoClose className="cursor-pointer" />
+            <IoClose className="fixed cursor-pointer" />
           </button>
 
-          {/* Title */}
+          {/* label */}
           <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
             Edit Task
           </div>
 
-          <div className="flex flex-col items-start mt-4 w-full">
+          {/* Input Container */}
+          <div className="flex flex-col mt-6 w-full">
             {/* Input Title */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="title"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -62,10 +63,10 @@ export const EditPopUp = ({ onClose, task }) => {
             </p>
 
             {/* Input Description */}
-            <p className="flex flex-row items-center mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="description"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl w-[150px]"
               >
                 Description
               </label>
@@ -78,11 +79,29 @@ export const EditPopUp = ({ onClose, task }) => {
               />
             </p>
 
+            {/* Category */}
+            <p className="flex my-2">
+              <label
+                htmlFor="category"
+                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+              >
+                Category
+              </label>
+              <input
+                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                type="text"
+                placeholder="Name of a existing or new category"
+                maxLength="100"
+                id="category"
+                onChange={(t) => setCategroy(t.target.value)}
+              />
+            </p>
+
             {/* Time Start */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeStart"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center  bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time Start
               </label>
@@ -95,7 +114,7 @@ export const EditPopUp = ({ onClose, task }) => {
             </p>
 
             {/* Completed By */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -111,7 +130,7 @@ export const EditPopUp = ({ onClose, task }) => {
             </p>
 
             {/* Priority */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex mt-2">
               <label
                 htmlFor="priority"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -130,7 +149,7 @@ export const EditPopUp = ({ onClose, task }) => {
             </p>
 
             {/* Add Task Button */}
-            <p className="flex flex-row w-full text-white justify-center">
+            <p className="flex w-full text-white justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"
