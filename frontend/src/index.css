@@ -4,12 +4,12 @@
  * Description: CSS file for main website display
  * Author(s): CS 362-Team 20
  ********************************************************************/
- @import "tailwindcss";
+ 
+@import "tailwindcss";
 
-
- @theme{
-    
- }
+@theme {
+    --breakpoint-md: 900px;
+}
 
 * {
     box-sizing: border-box;

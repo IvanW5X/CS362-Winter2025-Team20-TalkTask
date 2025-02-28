@@ -11,11 +11,12 @@ const taskSchema = new mongoose.Schema({
     taskID: { type: Number, unique: true, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    dateCreated: { type: Date, default: Date.now },
+    dateStart: { type: Date, default: Date.now },
     dateCompleted: { type: Date },
     recurringDate: { type: Date },
     priority: { type: Number, min: 1, max: 3, default: 1 }, // Priority scale 1-3
     status: { type: String, enum: ['pending', 'in-progress', 'completed'], default: 'pending' },
+    category: { type: String, required: true, default: 'none' },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 

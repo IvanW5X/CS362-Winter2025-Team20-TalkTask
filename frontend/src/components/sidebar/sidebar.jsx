@@ -4,52 +4,56 @@
  * Description: Sidebar on Main Page
  * Author(s): CS 362-Team 20
  ********************************************************************/
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { GoPlus } from "react-icons/go";
+import { TaskList } from "../../components/tasklist/task-list";
 
-export const Sidebar = ({ menu_open }) => {
-
-  const [tasks, setTasks] = useState(["School", "Work", "Chores"]); // test tasksGroups
+export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) => {
+  // Example task groups
+  const [categories, setTasks] = useState(["School", "Work", "Chores"]);
 
   const addCategory = () => {
-    const newTask = prompt("Enter a new task:"); // Allows the user to input text
-    if (newTask) {
-      setTasks([...tasks, newTask]); // Add new task grouping to the list
-    }
+    const newCategory = prompt("Enter a new category:");
+    if (newCategory) setTasks([...categories, newCategory]);
   };
 
-
-
   return (
-    <>
-     <nav className={`z-[999] flex font-[Inter] flex-col bg-white h-[calc(100vh-95px)] w-[200px] shadow-xl 
-                      ${menu_open ? "translate-x-0" : "-translate-x-full"}`}>
+    <aside
+      className={`z-[999] flex flex-col bg-white shadow-xl w-[200px] 
+                  h-[calc(100vh-95px)]
+                  ${menu_open ? "flex-visible" : "flex hidden"}`}
+    >
+      {/* Header Section */}
+      <div className="flex items-center justify-between p-3 bg-gray-300 font-bold text-[18px]">
+        Tasks
+        <GoPlus
+          className="cursor-pointer text-[24px] stroke-[.5]"
+          onClick={addCategory}
+        />
+      </div>
 
-        <ul className="">
-          {/* Task title and + icon */}
+      {/* Categories List */}
+      <ul className="flex-1 bg-gray-200 font-semibold">
+        {/* All Tasks Button */}
+        <li
+          className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
+                     ${selectedCategory === null ? "font-bold underline" : ""}`}
+          onClick={() => setSelectedCategory(null)}
+        >
+          All
+        </li>
+
+        {categories.map((category, index) => (
           <li
-            className={`flex cursor-pointer p-[10px] text-[14px] font-[700] 
-                        items-center justify-between bg-[#E5E5E5]`
-            }>
-            Tasks
-            <GoPlus className="cursor-pointer text-[25px] stroke-[.5]"
-            onClick={addCategory}/>
+            key={index}
+            className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
+                       ${selectedCategory === category ? "font-bold underline" : ""}`}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category}
           </li>
-          
-          {/* categories */}
-          <ul className={``}>
-            {tasks.map((task, index) => (
-              <li key={index} 
-                  className="flex cursor-pointer p-[10px] text-[14px] pl-[20px]
-                            items-center bg-[#E5E5E5] hover:bg-black/20 odd:bg-white">
-                {task}
-              </li>
-            ))}
-            
-          </ul>
-        </ul>
-      </nav>
-    </>
+        ))}
+      </ul>
+    </aside>
   );
 };

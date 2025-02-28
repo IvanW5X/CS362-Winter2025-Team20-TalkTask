@@ -16,9 +16,9 @@ import {
 const router = express.Router();
 
 // Setup routes
-router.post("/", createUser);
-router.post("/:userId", getUser);
-router.patch("/:userId", updateUser);
-router.delete("/:userId", deleteUser);
+router.post("/create-user", createUser);
+router.post("/read-user/:userId", getUser);
+router.patch("/update-user/:userId", updateUser);
+router.delete("/delete-user/:userId", deleteUser);
 
 export default router;
