@@ -16,45 +16,45 @@ export const AddPopUp = ({ onClose }) => {
   return (
     <>
       <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
-  <form
-    className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-auto"
-    onSubmit={(t) => {
-      t.preventDefault();
-    }}
-  >
-    {/* Close Button */}
-    <button
-      className="absolute top-4 right-10 text-gray-600 hover:text-gray-800 text-3xl"
-      onClick={onClose}
-      type="button"
-    >
-      <IoClose className="fixed cursor-pointer" />
-    </button>
-
-    {/* label */}
-    <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
-      Add Task
-    </div>
-
-    {/* Input Container */}
-    <div className="flex-col items-start mt-6 bg-red-200">
-      {/* Input Title */}
-      <p className="flex">
-        <label
-          htmlFor="title"
-          className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+        <form
+          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-auto"
+          onSubmit={(t) => {
+            t.preventDefault();
+          }}
         >
-          Title
-        </label>
-        <input
-          className="border-[2px] bg-white w-[600px] m-2 p-2"
-          type="text"
-          placeholder="Name of the task"
-          maxLength="100"
-          id="title"
-          onChange={(t) => setTitle(t.target.value)}
-        />
-      </p>
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-10 text-gray-600 hover:text-gray-800 text-3xl"
+            onClick={onClose}
+            type="button"
+          >
+            <IoClose className="fixed cursor-pointer" />
+          </button>
+
+          {/* label */}
+          <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
+            Add Task
+          </div>
+
+          {/* Input Container */}
+          <div className="flex flex-col mt-6 w-full">
+            {/* Input Title */}
+            <p className="flex">
+              <label
+                htmlFor="title"
+                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+              >
+                Title
+              </label>
+              <input
+                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                type="text"
+                placeholder="Name of the task"
+                maxLength="100"
+                id="title"
+                onChange={(t) => setTitle(t.target.value)}
+              />
+            </p>
 
             {/* Input Description */}
             <p className="flex">
