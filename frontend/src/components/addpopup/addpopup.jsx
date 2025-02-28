@@ -15,9 +15,9 @@ export const AddPopUp = ({ onClose }) => {
 
   return (
     <>
-      <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
+      <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-auto"
+          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={(t) => {
             t.preventDefault();
           }}
@@ -37,7 +37,7 @@ export const AddPopUp = ({ onClose }) => {
           </div>
 
           {/* Input Container */}
-          <div className="flex flex-col mt-6 w-full">
+          <div className="flex flex-col mt-4 w-[90%] max-w-[800px] mx-auto">
             {/* Input Title */}
             <p className="flex my-2">
               <label
@@ -47,7 +47,7 @@ export const AddPopUp = ({ onClose }) => {
                 Title
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of the task"
                 maxLength="100"
@@ -65,7 +65,7 @@ export const AddPopUp = ({ onClose }) => {
                 Description
               </label>
               <textarea
-                className="border-[2px] bg-white w-[600px] m-2 p-2 resize-none"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
@@ -82,7 +82,7 @@ export const AddPopUp = ({ onClose }) => {
                 Category
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of a existing or new category"
                 maxLength="100"
@@ -143,7 +143,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Add Task Button */}
-            <p className="flex w-full text-white justify-center">
+            <p className="flex -mt-1 w-full text-white justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"

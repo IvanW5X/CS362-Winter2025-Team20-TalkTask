@@ -23,7 +23,7 @@ export const TasksManagement = () =>{
 
 
           {/* actions */}
-          <div className="mx-7 mb-5 space-y-12 text-[20px] font-medium relative ">
+          <div className="flex flex-col mx-7 mb-5 space-y-12 text-[20px] font-medium relative ">
 
             {/* add task */}
             <div className={`flex mt-12 cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}
