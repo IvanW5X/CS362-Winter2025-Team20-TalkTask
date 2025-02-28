@@ -1,9 +1,3 @@
-/********************************************************************
- * File Name: tasks.jsx
- * Date: 1/26/2025
- * Description: JSX file for tasks UI component
- * Author(s): CS 362-Team 20
- ********************************************************************/
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
@@ -12,72 +6,55 @@ import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-// import { EditPopUp } from "../editpopup/editpopup";
 
-export const TasksManagement = ({ menu_open }) => {
-  const [addMenuV, setAddMenuV] = useState(false);
+export const TasksManagement = () =>{
 
-  return (
-    <div>
-      {/* <EditPopUp/> */}
-      {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
-      <div
-        className={`flex flex-col bg-[#E5E5E5] rounded-3xl w-[30%] h-[600px] ml-[calc(15%+40vw+80px)] mt-[40px]
-                      ${menu_open ? "block" : "hidden"}`}
-      >
-        {/* title */}
-        <button
-          className={`flex m-5 h-fit bg-white rounded-2xl text-[30px] font-semibold justify-center`}
-        >
-          Task Management
-        </button>
+  const[addMenuV, setAddMenuV] = useState(false);
 
-        {/* add task */}
-        <div
-          className={`flex cursor-pointer mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
-          onClick={() => setAddMenuV(!addMenuV)}
-        >
-          Add Task
-          <CiCirclePlus className="absolute right-3 " />
-        </div>
+    return(
+     <div className="bg-[#E5E5E5] w-[350px] ml-[30px] rounded-[10px]">
+        {/* add menu */}
+        {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
 
-        {/* clear completed task */}
-        <div
-          className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
-        >
-          Clear Completed Tasks
-          <FaCheck className="absolute right-3 " />
-        </div>
+          {/* Title */}
+          <div className="flex text-center m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px]">
+            <h2 className="w-full text-center">Task Managment</h2>
+          </div>
 
-        {/* filter/sort */}
-        <div
-          className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
-        >
-          Sort By
-          <MdOutlineSort className="absolute right-3 " />
-        </div>
 
-        {/* voice commands */}
-        <div
-          className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
-        >
-          Voice Commands
-          <MdOutlineIntegrationInstructions className="absolute right-3" />
-        </div>
+          {/* actions */}
+          <div className="flex flex-col mx-7 mb-5 space-y-12 text-[20px] font-medium relative ">
 
-        {/* suggest a task */}
-        <div
-          className={`flex mx-5 my-5 h-fit bg-white rounded-2xl text-[30px] font-medium justify-center items-center relative cursor-pointer`}
-        >
-          Suggest a Task
-          <IoStar className="absolute right-3" />
-        </div>
+            {/* add task */}
+            <div className={`flex mt-12 cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}
+                  onClick={()=>setAddMenuV(!addMenuV)}>
+              Add Task 
+              <CiCirclePlus className="absolute right-3 text-[25px]"/>
+            </div>
 
-        {/* mic button */}
-        <div className="flex mx-5 my-5 py-3 bg-[#37E03A] rounded-2xl text-[30px] font-medium justify-center">
-          <FaMicrophone className="text-[30px] text-white" />
-        </div>
+            {/* clear completed tasks */}
+            <div className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}>
+              Clear Completed Tasks
+              <FaCheck className="absolute right-3 "/>
+            </div>
+
+            {/* voice commands */}
+            <div className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}>
+            Voice Commands
+              <MdOutlineIntegrationInstructions className="absolute right-3"/>
+            </div>
+
+            <div className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}>
+              Suggest a Task
+              <IoStar className="absolute right-3"/>
+            </div>
+
+            {/* mic button */}
+            <div className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow`}>
+              <FaMicrophone className="text-[30px] text-white" />
+            </div>
+
+          </div>
       </div>
-    </div>
-  );
+    )
 };

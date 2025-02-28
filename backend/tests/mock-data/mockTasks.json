@@ -18,7 +18,7 @@
     "dateCreated": "2015-03-25T11:00:00Z",
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
-    "priority": 3,
+    "priority": 2,
     "status": "in-progress",
     "category": "School",
     "userId": 9
@@ -37,14 +37,14 @@
   },
   {
     "taskID": 4,
-    "title": "task 3",
+    "title": "task 1",
     "description": "do stuff",
     "dateCreated": "2015-03-25T11:00:00Z",
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
-    "priority": 3,
+    "priority": 1,
     "status": "in-progress",
-    "category": "none",
+    "category": "School",
     "userId": 9
   },
   {
@@ -54,9 +54,21 @@
     "dateCreated": "2015-03-25T11:00:00Z",
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
-    "priority": 3,
+    "priority": 1,
     "status": "in-progress",
-    "category": "none",
+    "category": "Chores",
+    "userId": 9
+  },
+  {
+    "taskID": 6,
+    "title": "task 3",
+    "description": "do stuff",
+    "dateCreated": "2015-03-25T11:00:00Z",
+    "dateCompleted": "2015-03-25T12:20:00Z",
+    "recurringDate": null,
+    "priority": 2,
+    "status": "in-progress",
+    "category": "Work",
     "userId": 9
   }
 ]

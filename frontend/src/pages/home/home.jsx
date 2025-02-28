@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { TaskList } from "../../components/tasklist/task-list";
-// import { TasksManagement } from "../../components/taskma/taskma";
+import { TasksManagement } from "../../components/taskma/taskma";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";
@@ -27,9 +27,9 @@ export const Home = () => {
         />
         <div className="flex flex-col items-center w-full bg-white h-[calc(100vh-95px)]">
           <Calendar />
-          <div className="flex flex-row justify-start">
+          <div className="flex flex-row mt-[40px]">
             <TaskList selectedCategory={selectedCategory} />
-            <div className="mt-[40px]">akjshd</div>
+            <TasksManagement/>
           </div>
         </div>
       </div>
