@@ -14,8 +14,6 @@ const authOptions = {
     algorithms: ["RS256"],
 };
 
-console.log()
-
 const checkJwt = auth(authOptions);
 
 export default checkJwt;
