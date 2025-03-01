@@ -7,11 +7,29 @@
 
 import { Home } from "./pages/home/home";
 import { About } from "./pages/about/about";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoadingSpinner } from "./components/loading-spinner/loading-spinner";
+import externalApi from "./components/externalApi/externalApi";
 
 function App() {
+  const {isLoading, error} = useAuth0();
+
+  if (error) {
+    return <div>Something went wrong: {error.message}</div>
+  }
+  if (isLoading) {
+    return <div><LoadingSpinner /></div>
+  }
   return (
-    <div className=" bg-[#cdcdcd] min-h-screen w-full">
-      <Home />
+    <div>
+      <Router history={history}>
+        <div className="bg-[#cdcdcd] h-screen w-full">
+          <Routes>
+            <Route path="/" element={<Home />}/>
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

@@ -19,7 +19,7 @@ const corsOptions = {
   origin: FRONTEND_URL,
 };
 
-// Automatic security measures
+// Security measures
 app.use(helmet());
 
 // Parse incoming req into json formats
@@ -27,11 +27,6 @@ app.use(express.json());
 
 // Enable cross origin resource sharing
 app.use(cors(corsOptions));
-
-app.use("*", (req, res, next) => {
-  console.log("Request recieved at: ", new Date());
-  next();
-});
 
 // Use routes
 app.use("/users", userRoutes);

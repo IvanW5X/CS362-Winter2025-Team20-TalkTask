@@ -7,8 +7,11 @@
 
 import { FaCheckSquare } from "react-icons/fa";
 import { getImageUrl } from "../../../utils/utils";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AboutBody = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <div className="flex flex-row ">
       {/* Logo */}
@@ -51,10 +54,14 @@ export const AboutBody = () => {
 
           {/* Buttons */}
           <div className="flex flex-col text-[28px] text-white md:justify-evenly md:ml-[40px]">
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
+            <button
+              className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg"
+              onClick={() => loginWithRedirect({ screen_hint: "signup" })}>
               Sign Up
             </button>
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
+            <button
+              className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg"
+              onClick={() => loginWithRedirect()}>
               Log In
             </button>
           </div>
