@@ -17,15 +17,15 @@ export const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null); // Category state
 
   return (
-    <div className="flex-col">
+    <div className="flex-col min-h-screen w-[100%]">
       <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
-      <div className="flex">
+      <div className="flex min-h-[calc(100vh-80px)]">
         <Sidebar 
           menu_open={menu_open} 
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
         />
-        <div className="flex flex-col items-center w-full bg-white h-[calc(100vh-95px)]">
+        <div className="flex flex-col items-center w-full">
           <Calendar />
           <div className="flex flex-row mt-[40px]">
             <TaskList selectedCategory={selectedCategory} />

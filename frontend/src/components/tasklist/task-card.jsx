@@ -9,7 +9,6 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { EditPopUp } from "../editpopup/editpopup";
 import { useState } from "react";
 
-
 const getPriority = (priority) => {
   switch (priority) {
     case 1:
@@ -24,14 +23,21 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
+  task: {
+    taskID,
+    title,
+    priority,
+    dateCreated,
+    dateCompleted,
+    status,
+    category,
+  },
   toggleTaskStatus,
 }) => {
-
   const [editMenu, setEditMenu] = useState(false);
 
   return (
-    <div className="bg-white p-4 rounded-[10px] flex items-center shadow">
+    <div className="bg-white p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
       {editMenu && <EditPopUp onClose={() => setEditMenu(false)} />}
 
       {/* Priority */}
@@ -47,11 +53,12 @@ export const TaskCard = ({
       </div>
 
       {/* Pencil icon (you could replace with an actual icon component) */}
-      <MdOutlineModeEditOutline
-        className={`text-[25px] cursor-pointer flex text-right`}
-          onClick={()=>setEditMenu(!editMenu)}
-        
-      />
+      <div className="bg-[#cdcdcd] w-9 h-9 rounded-full shadow-black shadow-sm flex items-center justify-center">
+        <MdOutlineModeEditOutline
+          className="text-[25px] cursor-pointer flex text-right"
+          onClick={() => setEditMenu(!editMenu)}
+        />
+      </div>
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
@@ -80,7 +87,7 @@ export const TaskCard = ({
       {/* Checkbox */}
       <input
         type="checkbox"
-        className="form-checkbox h-5 w-5 cursor-pointer"
+        className="form-checkbox w-5 h-5 cursor-pointer accent-black"
         checked={status === "completed"}
         onChange={() => toggleTaskStatus(taskID)}
       />

@@ -19,7 +19,7 @@ const getTasks = async () => {
 
 export const TaskList = ({ selectedCategory }) => {
   const [tasks, setTasks] = useState([]);
-  
+
   // Fetch tasks using react-query
   const { isLoading, error } = useQuery("tasks", getTasks, {
     onSuccess: (data) => setTasks(data),
@@ -47,22 +47,27 @@ export const TaskList = ({ selectedCategory }) => {
     return <div className="ml-[5%]">Loading tasks...</div>;
   }
   if (error) {
-    return <div className="ml-[5%]">An error occurred while fetching tasks.</div>;
+    return (
+      <div className="ml-[5%]">
+        An error occurred while fetching tasks. {error.message}
+      </div>
+    );
   }
 
-
-  const sortedTasks = [...filteredTasks].sort((a, b) => a.priority - b.priority);
+  const sortedTasks = [...filteredTasks].sort(
+    (a, b) => a.priority - b.priority
+  );
 
   return (
-    <div className="bg-[#E5E5E5] w-[474px] rounded-[10px]">
+    <div className="bg-[#cdcdcd] w-[474px] rounded-[10px]">
       {/* Task Header */}
-      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px] shadow">
+      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2>{selectedCategory || "All Tasks"}</h2>
         <span className="text-[22px]">{filteredTasks.length}</span>
       </div>
 
       {/* Task List */}
-      <div className="mx-5 mb-5 space-y-4">
+      <div className="mx-5 mb-5 space-y-[10px]">
         {filteredTasks.length === 0 ? (
           <div>No tasks found in this category.</div>
         ) : (
