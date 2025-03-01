@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { useQuery } from "react-query";
+import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 
@@ -12,45 +12,51 @@ export const AddPopUp = ({ onClose }) => {
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState("");
+  const [status, setStatus] = useState("pending");
 
-  const addTask = async () => {
-    try {
-      const taskData = {
-        taskID: Date.now(), //temp task id
+
+  const createTaskMutation = useMutation(
+    (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
+    {
+        onSuccess: () => {
+            console.log('Task created successfully');
+            queryClient.invalidateQueries('tasks');
+            setTitle("");
+            setDescription("");
+            setCategory("");
+            setTimeStart("");
+            setTimeEnd("");
+            setPriority("");
+            setStatus("pending");
+            window.location.href = "/";
+        },
+        onError: (error) => {
+            console.error('An error occurred while creating the task:', error.response?.data || error.message);
+        },
+    }
+  );
+  const handleSubmit = (t) => { 
+    t.preventDefault();
+    const newTask = {
+        taskID: Date.now(),
         title,
         description,
-        status: "pending", 
-        userId: "1",
         category,
-        timeStart,
-        timeEnd,
-        priority: parseInt(priority),
-      };
-
-      // Send a POST request to the backend
-      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/testadd`, taskData);
-
-      if (response.status === 201) {
-        alert("Task added successfully!");
-        onClose(); // Close the popup after successful addition
-      } else {
-        alert("Failed to add task.");
-      }
-    } catch (error) {
-      console.error("Error adding task:", error);
-      alert("An error occurred while adding the task.");
-    }
+        priority,
+        status,
+        userId: '64c0f3abf8d12c0004c4a1f2',
+    };
+    console.log('Creating task:', newTask);
+    createTaskMutation.mutate(newTask);
   };
+
 
   return (
     <>
       <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
           className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
-          onSubmit={(t) => {
-            t.preventDefault();
-            addTask();
-          }}
+          onSubmit={handleSubmit}
         >
           {/* Close Button */}
           <button
@@ -167,14 +173,13 @@ export const AddPopUp = ({ onClose }) => {
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
                 onChange={(t) => {
-                  console.log("Selected Priority:", t.target.value); // Debugging
-                  setPriority(t.target.value);
+                  setPriority(Number(t.target.value));
                 }}
                 
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
               </select>
             </p>
 
@@ -185,7 +190,7 @@ export const AddPopUp = ({ onClose }) => {
                 type="submit"
                 id="submit"
               >
-                {" "}
+        
                 Add Task
               </button>
             </p>
