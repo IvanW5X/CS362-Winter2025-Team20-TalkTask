@@ -12,6 +12,7 @@ import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Auth0Provider } from "@auth0/auth0-react";
 import authConfig from "../utils/auth-config.js";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Auth0Provider {...authConfig}>
       <QueryClientProvider client={queryClient}>
+      <Router history={history}>
         <App />
+      </Router>
       </QueryClientProvider>
     </Auth0Provider>
   </StrictMode>

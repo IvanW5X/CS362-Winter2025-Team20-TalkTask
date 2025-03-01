@@ -7,29 +7,43 @@
 
 import { Home } from "./pages/home/home";
 import { About } from "./pages/about/about";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoadingSpinner } from "./components/loading-spinner/loading-spinner";
-import externalApi from "./components/externalApi/externalApi";
+import { useEffect } from "react";
 
 function App() {
-  const {isLoading, error} = useAuth0();
+  const { isLoading, error, isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
 
   if (error) {
-    return <div>Something went wrong: {error.message}</div>
+    return <div>Something went wrong: {error.message}</div>;
   }
   if (isLoading) {
-    return <div><LoadingSpinner /></div>
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
   return (
     <div>
-      <Router history={history}>
         <div className="bg-[#dedede] w-[100vw]">
           <Routes>
-            <Route path="/" element={<About />}/>
+            <Route path="/" element={<About />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </div>
-      </Router>
     </div>
   );
 }
