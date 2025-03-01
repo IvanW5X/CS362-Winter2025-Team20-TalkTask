@@ -20,15 +20,22 @@ function App() {
   const { isLoading, error, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
 
+  // Go to home page after being authenticated
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/home");
     }
   }, [isAuthenticated, navigate]);
 
+  // Something went wrong, return generic error UI
   if (error) {
-    return <div>Something went wrong: {error.message}</div>;
+    return (
+      <div className="bg-white text-red-500 text-lg">
+        Something went wrong: {error.message}
+      </div>
+    );
   }
+  // Loading, return some UI component to let user know
   if (isLoading) {
     return (
       <div>
@@ -38,7 +45,7 @@ function App() {
   }
   return (
     <div>
-        <div className="bg-[#dedede] w-[100vw]">
+        <div className="bg-[#dedede]">
           <Routes>
             <Route path="/" element={<About />} />
             <Route path="/home" element={<Home />} />
