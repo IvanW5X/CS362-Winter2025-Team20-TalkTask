@@ -13,7 +13,15 @@ import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables";
 
 
-
+const formatTime = (date) => {
+  let hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  const strTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+  return strTime;
+};
 
 
 
@@ -81,23 +89,12 @@ export const TaskCard = ({
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
           <p className="mr-1">Start:</p>
-          {`${new Date(dateCreated)
-            .getUTCHours()
-            .toString()
-            .padStart(2, "0")}:${new Date(dateCreated)
-              .getUTCMinutes()
-              .toString()
-              .padStart(2, "0")}`}
+          {formatTime(new Date(dateCreated))}
         </div>
         <div className="flex flex-row">
           <p className="mr-2">End: </p>
-          {`${new Date(dateCompleted)
-            .getUTCHours()
-            .toString()
-            .padStart(2, "0")}:${new Date(dateCompleted)
-              .getUTCMinutes()
-              .toString()
-              .padStart(2, "0")}`}
+          {formatTime(new Date(dateCompleted))}
+
         </div>
       </div>
       <div className="text-sm mr-3"></div>

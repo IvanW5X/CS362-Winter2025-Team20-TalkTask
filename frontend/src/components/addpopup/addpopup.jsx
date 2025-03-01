@@ -43,7 +43,7 @@ export const AddPopUp = ({ onClose }) => {
             setTimeEnd("");
             setPriority("");
             setStatus("pending");
-            window.location.href = "/home";
+            onClose();
         },
         onError: (error) => {
             console.error('An error occurred while creating the task:', error.response?.data || error.message);
@@ -52,6 +52,16 @@ export const AddPopUp = ({ onClose }) => {
   );
   const handleSubmit = (t) => { 
     t.preventDefault();
+
+    const today = new Date().toISOString().split("T")[0];
+
+    // Ensure timeStart is in the correct format (HH:MM)
+    const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
+    const formattedTimeEnd = timeEnd ? timeEnd : null;
+
+    const dateStart = new Date(`${today}T${formattedTimeStart}:00Z`);
+    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00Z`) : null;
+
     const newTask = {
         taskID: Date.now(),
         title,
@@ -59,6 +69,8 @@ export const AddPopUp = ({ onClose }) => {
         category,
         priority,
         status,
+        dateStart,
+        dateCompleted,
         userId: '64c0f3abf8d12c0004c4a1f2',
     };
     console.log('Creating task:', newTask);
@@ -148,7 +160,7 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="timeStart"
-                className="flex items-center justify-center  bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time Start
               </label>
@@ -156,6 +168,7 @@ export const AddPopUp = ({ onClose }) => {
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeStart"
+                value={timeStart}
                 onChange={(t) => setTimeStart(t.target.value)}
               />
             </p>
@@ -172,6 +185,7 @@ export const AddPopUp = ({ onClose }) => {
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeEnd"
+                value={timeEnd}
                 onChange={(t) => setTimeEnd(t.target.value)}
               />
             </p>
