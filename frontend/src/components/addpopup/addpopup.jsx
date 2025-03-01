@@ -1,16 +1,45 @@
 import React, { useState } from "react";
-import { IoClose } from "react-icons/io5"; // Import close icon
+import { IoClose } from "react-icons/io5";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+
 
 export const AddPopUp = ({ onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [categroy, setCategroy] = useState("");
+  const [category, setCategory] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState("");
 
   const addTask = async () => {
-    // Task submission logic
+    try {
+      const taskData = {
+        taskID: Date.now(), //temp task id
+        title,
+        description,
+        status: "pending", 
+        userId: "1",
+        category,
+        timeStart,
+        timeEnd,
+        priority: parseInt(priority),
+      };
+
+      // Send a POST request to the backend
+      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/testadd`, taskData);
+
+      if (response.status === 201) {
+        alert("Task added successfully!");
+        onClose(); // Close the popup after successful addition
+      } else {
+        alert("Failed to add task.");
+      }
+    } catch (error) {
+      console.error("Error adding task:", error);
+      alert("An error occurred while adding the task.");
+    }
   };
 
   return (
@@ -20,6 +49,7 @@ export const AddPopUp = ({ onClose }) => {
           className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={(t) => {
             t.preventDefault();
+            addTask();
           }}
         >
           {/* Close Button */}
@@ -52,6 +82,7 @@ export const AddPopUp = ({ onClose }) => {
                 placeholder="Name of the task"
                 maxLength="100"
                 id="title"
+                required
                 onChange={(t) => setTitle(t.target.value)}
               />
             </p>
@@ -87,7 +118,8 @@ export const AddPopUp = ({ onClose }) => {
                 placeholder="Name of a existing or new category"
                 maxLength="100"
                 id="category"
-                onChange={(t) => setCategroy(t.target.value)}
+                required
+                onChange={(t) => setCategory(t.target.value)}
               />
             </p>
 
@@ -134,7 +166,11 @@ export const AddPopUp = ({ onClose }) => {
               <select
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
-                onChange={(t) => setPriority(t.target.value)}
+                onChange={(t) => {
+                  console.log("Selected Priority:", t.target.value); // Debugging
+                  setPriority(t.target.value);
+                }}
+                
               >
                 <option>1</option>
                 <option>2</option>
@@ -148,7 +184,6 @@ export const AddPopUp = ({ onClose }) => {
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"
                 id="submit"
-                onClick={addTask}
               >
                 {" "}
                 Add Task
