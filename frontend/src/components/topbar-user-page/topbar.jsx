@@ -8,8 +8,11 @@
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { getImageUrl } from "../../../utils/utils";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TopBar = ({ menu_open, set_menu_state }) => {
+  const { logout, isAuthenticated } = useAuth0();
+
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
       {/* 
@@ -28,12 +31,18 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         alt="TalkTask Logo 1, with text"
       />
 
-      {/* 
-          add settings/profile settings?
-          add clickable image?
-          add customizable image?
-        */}
-
+      {/* Logout button */}
+      <button 
+        className="bg-white p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
+        onClick={() => {
+          if (isAuthenticated)
+            logout()
+          else
+            console.log("Error, not authenticated")
+        }}>
+        Logout
+      </button>
+      
       <FaUserCircle className="text-white text-[50px] mr-[20px] cursor-pointer"/>
     </div>
   );
