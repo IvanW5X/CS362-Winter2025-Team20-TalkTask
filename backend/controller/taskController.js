@@ -21,19 +21,6 @@ export const createTask = async (request, reponse) => {
   }
 };
 
-/*
-export const createTask = async (taskData) => {
-  try {
-    const newTask = new Task(taskData);
-    await newTask.save();
-    return newTask;
-  } catch (error) {
-    logger.error(`createTask - UserID: ${taskData.userId} - Error: ${error.message}`);
-    return null;
-  }
-};
-*/
-
 //  READ All Tasks (for a specific user)
 export const getTasksByUser = async (userId) => {
   try {
@@ -45,12 +32,18 @@ export const getTasksByUser = async (userId) => {
 };
 
 //  UPDATE Task Status
-export const updateTaskStatus = async (taskId, status) => {
+export const updateTaskStatus = async (req, res) => {
+  const taskID = Number(req.params.taskId);
+  const { status } = req.body;
   try {
-    return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+    const updatedTask = await Task.findOneAndUpdate({ taskID: taskID }, { status }, { new: true });
+    if (!updatedTask) {
+      return res.status(404).json("Task not found");
+    }
+    res.status(200).send(updatedTask);
   } catch (error) {
-    logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
-    return null;
+    logger.error(`updateTaskStatus - TaskID: ${taskID} - Error: ${error.message}`);
+    res.status(500).json({ error: error.message });
   }
 };
 

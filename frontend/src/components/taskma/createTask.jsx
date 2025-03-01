@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { VITE_BACKEND_URL } from '../../../utils/variables';
 
 export const CreateTask = () => { 
@@ -22,6 +22,7 @@ export const CreateTask = () => {
                 setCategory("work");
                 setPriority(1);
                 setStatus("pending");
+                window.location.href = "/";
             },
             onError: (error) => {
                 console.error('An error occurred while creating the task:', error.response?.data || error.message);
@@ -38,7 +39,7 @@ export const CreateTask = () => {
             category,
             priority,
             status,
-            userId: '1',
+            userId: '64c0f3abf8d12c0004c4a1f2',
         };
         console.log('Creating task:', newTask);
         createTaskMutation.mutate(newTask);
@@ -54,6 +55,15 @@ export const CreateTask = () => {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        className="w-full border p-2"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Description:</label>
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         className="w-full border p-2"
                         required
                     />

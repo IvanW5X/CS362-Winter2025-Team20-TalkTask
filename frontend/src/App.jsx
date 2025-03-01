@@ -7,7 +7,7 @@
 
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Home } from "./pages/home/home";
-import { CreateTask } from "./components/tasklist/createTask";
+import { CreateTask } from "./components/taskma/createTask";
 import { About } from "./pages/about/about";
 
 function App() {

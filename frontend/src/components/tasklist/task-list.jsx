@@ -5,7 +5,6 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
@@ -23,29 +22,6 @@ export const TaskList = ({ selectedCategory }) => {
   // Fetch tasks using react-query
   const queryClient = useQueryClient();
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
-
-  const updateStatusMutation = useMutation(
-    (taskID) => {
-      const task = tasks.find((t) => t.taskID === taskID);
-      const newStatus = task.status === "completed" ? "pending" : "completed";
-      return axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {status: newStatus});
-    },
-    {
-      onSuccess: (_, taskID) => {
-        queryClient.setQueryData("tasks", (oldTasks) => 
-          oldTasks.map((task) => 
-            task.taskID === taskID
-              ? { ...task, status: task.status === "completed" ? "in-progress" : "completed" }
-              : task
-          )
-        )
-      }
-    }
-  )
-
-  const toggleTaskStatus = (taskID) => {
-    updateStatusMutation.mutate(taskID);
-  };
 
   // Filter tasks based on selected category
   const filteredTasks = selectedCategory
@@ -67,6 +43,15 @@ export const TaskList = ({ selectedCategory }) => {
         <span className="text-[22px]">{filteredTasks?.length}</span>
       </div>
 
+      <div>
+            <Link
+              to="/create-task"
+              className="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded cursor-pointer"
+              >
+                Add Task
+            </Link>
+          </div>
+
       {/* Task List */}
       <div className="mx-5 mb-5 space-y-4">
         {filteredTasks?.length === 0 ? (
@@ -84,17 +69,8 @@ export const TaskList = ({ selectedCategory }) => {
             <TaskCard
               key={task.taskID}
               task={task}
-              toggleTaskStatus={toggleTaskStatus}
             />
-          )),
-        <div className="mt-4">
-          <Link
-            to="/create-task"
-            className="bg-blue-500 text-white font-semibold py-2 px-4 rounded cursor-pointer"
-          >
-            Create New Task
-          </Link>
-        </div>
+          ))
         )}
       </div>
     </div>

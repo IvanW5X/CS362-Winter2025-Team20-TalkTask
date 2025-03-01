@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables";
 
@@ -36,6 +36,7 @@ export const TaskCard = ({
     {
       onSuccess: () => {
         queryClient.invalidateQueries("tasks");
+        console.log(`Task ${taskID} updated to ${status}`);
       },
     }
   );
