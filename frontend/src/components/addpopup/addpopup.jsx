@@ -1,3 +1,10 @@
+/********************************************************************
+ * File Name: addpopup.jsx
+ * Date: 2/26/2025
+ * Description: React file for adding task
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
@@ -30,6 +37,15 @@ export const AddPopUp = ({ onClose }) => {
     };
   }, []);
 
+  const today = new Date().toISOString().split("T")[0];
+
+  // Ensure timeStart is in the correct format (HH:MM)
+  const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
+  const formattedTimeEnd = timeEnd ? timeEnd : null;
+
+  const dateStart = new Date(`${today}T${formattedTimeStart}:00Z`);
+  const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00Z`) : null;
+
   const createTaskMutation = useMutation(
     (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
     {
@@ -59,8 +75,9 @@ export const AddPopUp = ({ onClose }) => {
     const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
     const formattedTimeEnd = timeEnd ? timeEnd : null;
 
-    const dateStart = new Date(`${today}T${formattedTimeStart}:00Z`);
-    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00Z`) : null;
+    // Remove the 'Z' to treat the time as local time
+    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
+    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00`) : null;
 
     const newTask = {
         taskID: Date.now(),
@@ -177,9 +194,9 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
-                Completed By
+                Time End
               </label>
               <input
                 className="border-[2px] bg-white w-[130px] m-2 p-2"

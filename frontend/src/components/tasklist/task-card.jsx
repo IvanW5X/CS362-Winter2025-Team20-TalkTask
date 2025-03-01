@@ -14,8 +14,14 @@ import { VITE_BACKEND_URL } from "../../../utils/variables";
 
 
 const formatTime = (date) => {
-  let hours = date.getUTCHours();
-  const minutes = date.getUTCMinutes();
+  
+  // Check if the date is valid
+  if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+    return 'N/A'; // Handle invalid or missing dates
+  }
+  // Use getHours() and getMinutes() for local time
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
   const ampm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
@@ -39,9 +45,8 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
+  task: { taskID, title, priority, dateStart, dateCompleted, status, category },
 }) => {
-
   const queryClient = useQueryClient();
 
   const updateTaskMutation = useMutation(
@@ -59,7 +64,7 @@ export const TaskCard = ({
     console.log(`Toggling task ${taskID} to ${newStatus}`);
     updateTaskMutation.mutate(newStatus);
   }
-
+  
   const [editMenu, setEditMenu] = useState(false);
 
   return (
@@ -85,11 +90,13 @@ export const TaskCard = ({
           onClick={() => setEditMenu(!editMenu)}
         />
       </div>
+      
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
           <p className="mr-1">Start:</p>
-          {formatTime(new Date(dateCreated))}
+          
+          {formatTime(new Date(dateStart))}
         </div>
         <div className="flex flex-row">
           <p className="mr-2">End: </p>
