@@ -25,7 +25,7 @@ export const Home = () => {
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
         />
-        <div className="flex flex-col items-center w-full bg-white h-[calc(100vh-95px)]">
+        <div className="flex flex-col items-center w-full">
           <Calendar />
           <div className="flex flex-row mt-[40px]">
             <TaskList selectedCategory={selectedCategory} />

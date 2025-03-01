@@ -19,8 +19,8 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
 
   return (
     <aside
-      className={`z-[999] flex flex-col bg-white shadow-xl w-[200px] 
-                  h-[calc(100vh-95px)]
+      className={`flex flex-col bg-white shadow-xl w-[200px] 
+                  mb-[0%] pb-[0%]
                   ${menu_open ? "flex-visible" : "flex hidden"}`}
     >
       {/* Header Section */}

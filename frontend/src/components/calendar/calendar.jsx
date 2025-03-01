@@ -5,7 +5,6 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-// import React from "react";
 
 export const Calendar = () => {
   return <div className="bg-red-400 h-[130px] md:w-[873px]">Calendar</div>;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoClose } from "react-icons/io5"; // Import close icon
 
 export const AddPopUp = ({ onClose }) => {

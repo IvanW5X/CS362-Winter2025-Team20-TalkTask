@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <Router history={history}>
-        <div className="bg-[#cdcdcd] h-screen w-full">
+        <div className="bg-[#cdcdcd]">
           <Routes>
             <Route path="/" element={<Home />}/>
           </Routes>
