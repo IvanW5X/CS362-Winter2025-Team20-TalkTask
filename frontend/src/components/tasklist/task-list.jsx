@@ -79,12 +79,7 @@ export const TaskList = ({ selectedCategory }) => {
         {filteredTasks?.length === 0 ? (
             <div className="flex flex-col items-center">
               <p>No tasks found in this category.</p>
-              <Link
-                to="/create-task"
-                className="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded cursor-pointer"
-                >
-                  Add Task
-              </Link>
+             
             </div>
         ) : (
           sortedTasks.map((task) => (
