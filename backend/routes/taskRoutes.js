@@ -30,4 +30,23 @@ router.get("/testing", (req, res) => {
     res.status(200).send(mockTasks);
 });
 
+
+router.post("/test-add-task", (req, res) => {
+  try {
+    const { id, title, description, status, userId } = req.body;
+
+    if (!id || !title || !description || !status || !userId) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const newTask = { id, title, description, status, userId };
+    mockTasks.push(newTask);
+
+    res.status(201).json({ message: "Task added successfully", task: newTask });
+  } catch (error) {
+    console.error("Error adding mock task:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 export default router;

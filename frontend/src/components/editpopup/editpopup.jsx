@@ -58,6 +58,7 @@ export const EditPopUp = ({ onClose, task }) => {
                     placeholder="Name of the task"
                     maxLength="100"
                     id="title"
+                    required
                     onChange={(t) => setTitle(t.target.value)}
                   />
                 </p>
@@ -93,6 +94,7 @@ export const EditPopUp = ({ onClose, task }) => {
                     placeholder="Name of a existing or new category"
                     maxLength="100"
                     id="category"
+                    required
                     onChange={(t) => setCategroy(t.target.value)}
                   />
                 </p>
