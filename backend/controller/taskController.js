@@ -10,6 +10,18 @@ import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 
 // CREATE a Task
+export const createTask = async (request, reponse) => {
+  try {
+    const newTask = new Task(request.body);
+    await newTask.save();
+    reponse.status(201).json(newTask);
+  } catch (error) {
+    logger.error(`createTask - UserID: ${request.body.userId} - Error: ${error.message}`);
+    reponse.status(500).json({ error: error.message });
+  }
+};
+
+/*
 export const createTask = async (taskData) => {
   try {
     const newTask = new Task(taskData);
@@ -20,6 +32,7 @@ export const createTask = async (taskData) => {
     return null;
   }
 };
+*/
 
 //  READ All Tasks (for a specific user)
 export const getTasksByUser = async (userId) => {

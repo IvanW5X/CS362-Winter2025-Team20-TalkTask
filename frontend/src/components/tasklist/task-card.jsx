@@ -5,7 +5,11 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { MdOutlineModeEditOutline } from "react-icons/md";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables";
+
+
 
 const getPriority = (priority) => {
   switch (priority) {
@@ -21,16 +25,32 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { title, priority, dateCreated, dateCompleted, status, category },
-  toggleTaskStatus,
+  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
 }) => {
+
+  const queryClient = useQueryClient();
+
+  const updateTaskMutation = useMutation(
+    (newStatus) =>
+      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {status: newStatus}),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("tasks");
+      },
+    }
+  );
+
+  const handleToggle = () => {
+    const newStatus = status === "completed" ? "pending" : "completed";
+    console.log(`Toggling task ${taskID} to ${newStatus}`);
+    updateTaskMutation.mutate(newStatus);
+  }
+
   return (
     <div className="bg-white p-4 rounded-[10px] flex items-center shadow">
       {/* Priority */}
       <div
-        className={`w-5 h-5 rounded-full mr-3 border-1 border-black ${getPriority(
-          priority
-        )}`}
+        className={`w-5 h-5 rounded-full mr-3 border-1 border-black ${getPriority(priority)}`}
       ></div>
 
       {/* Task text */}
@@ -38,10 +58,7 @@ export const TaskCard = ({
         {title}
       </div>
 
-      {/* Pencil icon (you could replace with an actual icon component) */}
-      <MdOutlineModeEditOutline
-        className={`text-[25px] cursor-pointer flex text-right`}
-      />
+
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
@@ -72,7 +89,7 @@ export const TaskCard = ({
         type="checkbox"
         className="form-checkbox h-5 w-5 cursor-pointer"
         checked={status === "completed"}
-        onChange={() => toggleTaskStatus(id)}
+        onChange={handleToggle}
       />
     </div>
   );
