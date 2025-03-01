@@ -9,10 +9,13 @@ import app from "./server.js";
 import { connectTTDB } from "./db/connection.js";
 import { SERVER_PORT } from "./utils/variables.js";
 
+
+
 async function Initialize() {
   // Connect to database first
   await connectTTDB();
 
+  
   // Start server
   app.listen(SERVER_PORT, () => {
     console.log(`Server is listening on port ${SERVER_PORT}`);
