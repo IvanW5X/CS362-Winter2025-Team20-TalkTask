@@ -11,10 +11,12 @@ import {
   Route,
   Routes,
   useNavigate,
+  BrowserRouter,
 } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoadingSpinner } from "./components/loading-spinner/loading-spinner";
 import { useEffect } from "react";
+
 
 function App() {
   const { isLoading, error, isAuthenticated } = useAuth0();
@@ -37,14 +39,12 @@ function App() {
     );
   }
   return (
-    <div>
         <div className="bg-[#dedede] w-[100vw]">
           <Routes>
             <Route path="/" element={<About />} />
             <Route path="/home" element={<Home />} />
           </Routes>
         </div>
-    </div>
   );
 }
 

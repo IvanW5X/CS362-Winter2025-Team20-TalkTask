@@ -8,9 +8,17 @@
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { EditPopUp } from "../editpopup/editpopup";
 import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables";
+
+
+
+
+
 
 const getPriority = (priority) => {
-  switch (priority) {
+  switch (Number(priority)) {
     case 1:
       return "bg-red-500";
     case 2:
@@ -23,17 +31,27 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: {
-    taskID,
-    title,
-    priority,
-    dateCreated,
-    dateCompleted,
-    status,
-    category,
-  },
-  toggleTaskStatus,
+  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
 }) => {
+
+  const queryClient = useQueryClient();
+
+  const updateTaskMutation = useMutation(
+    (newStatus) =>
+      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {status: newStatus}),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("tasks");
+      },
+    }
+  );
+
+  const handleToggle = () => {
+    const newStatus = status === "completed" ? "pending" : "completed";
+    console.log(`Toggling task ${taskID} to ${newStatus}`);
+    updateTaskMutation.mutate(newStatus);
+  }
+
   const [editMenu, setEditMenu] = useState(false);
 
   return (
@@ -52,7 +70,7 @@ export const TaskCard = ({
         {title}
       </div>
 
-      {/* Pencil icon (you could replace with an actual icon component) */}
+      {/* Pencil icon */}
       <div className="bg-[#cdcdcd] w-9 h-9 rounded-full shadow-black shadow-sm flex items-center justify-center">
         <MdOutlineModeEditOutline
           className="text-[25px] cursor-pointer flex text-right"
@@ -67,9 +85,9 @@ export const TaskCard = ({
             .getUTCHours()
             .toString()
             .padStart(2, "0")}:${new Date(dateCreated)
-            .getUTCMinutes()
-            .toString()
-            .padStart(2, "0")}`}
+              .getUTCMinutes()
+              .toString()
+              .padStart(2, "0")}`}
         </div>
         <div className="flex flex-row">
           <p className="mr-2">End: </p>
@@ -77,9 +95,9 @@ export const TaskCard = ({
             .getUTCHours()
             .toString()
             .padStart(2, "0")}:${new Date(dateCompleted)
-            .getUTCMinutes()
-            .toString()
-            .padStart(2, "0")}`}
+              .getUTCMinutes()
+              .toString()
+              .padStart(2, "0")}`}
         </div>
       </div>
       <div className="text-sm mr-3"></div>
@@ -89,7 +107,7 @@ export const TaskCard = ({
         type="checkbox"
         className="form-checkbox w-5 h-5 cursor-pointer accent-black"
         checked={status === "completed"}
-        onChange={() => toggleTaskStatus(taskID)}
+        onChange={handleToggle}
       />
     </div>
   );

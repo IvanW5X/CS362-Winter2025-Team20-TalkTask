@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
@@ -6,14 +6,29 @@ import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 
 
 export const AddPopUp = ({ onClose }) => {
+  const queryClient = useQueryClient();
+  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState(3);
   const [status, setStatus] = useState("pending");
 
+
+  //stop scrolling when pop up
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  }, []);
 
   const createTaskMutation = useMutation(
     (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
@@ -28,7 +43,7 @@ export const AddPopUp = ({ onClose }) => {
             setTimeEnd("");
             setPriority("");
             setStatus("pending");
-            window.location.href = "/";
+            window.location.href = "/home";
         },
         onError: (error) => {
             console.error('An error occurred while creating the task:', error.response?.data || error.message);
@@ -53,18 +68,18 @@ export const AddPopUp = ({ onClose }) => {
 
   return (
     <>
-      <div className="z-[10001] absolute top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
+      <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
           className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
         >
           {/* Close Button */}
           <button
-            className="absolute top-4 right-10 text-gray-600 hover:text-gray-800 text-3xl"
+            className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-3xl"
             onClick={onClose}
             type="button"
           >
-            <IoClose className="fixed cursor-pointer" />
+            <IoClose className="cursor-pointer" />
           </button>
 
           {/* label */}
@@ -172,6 +187,7 @@ export const AddPopUp = ({ onClose }) => {
               <select
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
+                value={priority}
                 onChange={(t) => {
                   setPriority(Number(t.target.value));
                 }}
