@@ -59,7 +59,7 @@ export const TaskList = ({ selectedCategory }) => {
   );
 
   return (
-    <div className="bg-[#E5E5E5] w-[474px] rounded-[10px]">
+    <div className="bg-[#cdcdcd] w-[474px] rounded-[10px]">
       {/* Task Header */}
       <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2>{selectedCategory || "All Tasks"}</h2>

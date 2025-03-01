@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <Router history={history}>
-        <div className="bg-[#cdcdcd]">
+        <div className="bg-[#dedede] w-[100vw]">
           <Routes>
             <Route path="/" element={<Home />}/>
           </Routes>

@@ -11,7 +11,7 @@ export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
 
   return (
-    <div className="bg-[#E5E5E5] w-[350px] ml-[30px] rounded-[10px]">
+    <div className="bg-[#cdcdcd] w-[350px] ml-[30px] rounded-[10px]">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
 
