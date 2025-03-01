@@ -10,13 +10,17 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Auth0Provider } from "@auth0/auth0-react";
+import authConfig from "../utils/auth-config.js";
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <Auth0Provider {...authConfig}>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </Auth0Provider>
   </StrictMode>
 );

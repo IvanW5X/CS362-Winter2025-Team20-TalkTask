@@ -47,7 +47,7 @@ export const TaskList = ({ selectedCategory }) => {
     return <div className="ml-[5%]">Loading tasks...</div>;
   }
   if (error) {
-    return <div className="ml-[5%]">An error occurred while fetching tasks.</div>;
+    return <div className="ml-[5%]">An error occurred while fetching tasks. {error.message}</div>;
   }
 
 

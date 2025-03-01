@@ -10,11 +10,9 @@ import { About } from "./pages/about/about";
 
 function App() {
   return (
-    <>
-      <div className=" bg-[#cdcdcd] min-h-screen w-full">
-          <Home />
-      </div>
-    </>
+    <div className=" bg-[#cdcdcd] min-h-screen w-full">
+      <Home />
+    </div>
   );
 }
 
