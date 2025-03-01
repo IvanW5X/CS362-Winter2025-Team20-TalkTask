@@ -26,7 +26,7 @@ function App() {
       <Router history={history}>
         <div className="bg-[#dedede] w-[100vw]">
           <Routes>
-            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<About />}/>
           </Routes>
         </div>
       </Router>

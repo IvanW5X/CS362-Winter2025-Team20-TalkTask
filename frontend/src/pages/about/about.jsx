@@ -10,7 +10,7 @@ import { AboutBody } from "../../components/about-body/about-body";
 
 export const About = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <TopBar />
       <AboutBody />
     </div>
