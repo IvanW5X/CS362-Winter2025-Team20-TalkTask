@@ -8,7 +8,6 @@
 import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { LoadingSpinner } from "../loading-spinner/loading-spinner";
 
 export const ExternalApiComponent = () => {
   const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
@@ -204,5 +203,5 @@ export const ExternalApiComponent = () => {
 };
 
 export default withAuthenticationRequired(ExternalApiComponent, {
-  onRedirecting: () => <LoadingSpinner />,
+  onRedirecting: () => <div>Loading...</div>,
 });

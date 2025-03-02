@@ -5,30 +5,58 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
-
-// Function to fetch tasks from the backend
-const getTasks = async () => {
-  const res = await axios.get(`${VITE_BACKEND_URL}/tasks/test-read-db`);
-  return res.data;
-};
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TaskList = ({ selectedCategory }) => {
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
+  // Function to fetch tasks from the backend
+  const getTasks = async () => {
+    if (isAuthenticated) {
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+
+      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/read-task/${user.sub}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return res.data;
+    }
+  };
   const queryClient = useQueryClient();
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
   const updateStatusMutation = useMutation(
-    ({ taskID, newStatus }) =>
-      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, { status: newStatus }),
+    async ({ taskID, newStatus }) => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.patch(
+        `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
+        {
+          status: newStatus,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      return response.data;
+    },
     {
       onSuccess: (_, { taskID, newStatus }) => {
-        // Update the local state optimistically
+        // Optimistically update the local state
         queryClient.setQueryData("tasks", (oldTasks) =>
           oldTasks.map((task) =>
             task.taskID === taskID ? { ...task, status: newStatus } : task
@@ -37,10 +65,11 @@ export const TaskList = ({ selectedCategory }) => {
       },
       onError: (error) => {
         console.error("Error updating task status:", error);
+        alert("Failed to update task status.");
       },
     }
   );
-  
+
   const toggleTaskStatus = (taskID) => {
     const task = tasks.find((t) => t.taskID === taskID);
     const newStatus = task.status === "completed" ? "pending" : "completed";

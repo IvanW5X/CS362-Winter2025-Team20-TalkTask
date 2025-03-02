@@ -8,10 +8,6 @@
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { EditPopUp } from "../editpopup/editpopup";
 import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables";
-
 
 const formatTime = (date) => {
   

@@ -8,7 +8,7 @@
 
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
-
+import { parseCommand } from "../services/parseTranscripts.js";
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -17,11 +17,26 @@ export const createTask = async (req, res) => {
     await newTask.save();
     res.status(201).json(newTask);
   } catch (error) {
-    logger.error(`createTask - UserID: ${req.body.userId} - Error: ${error.message}`);
+    logger.error(`createTask - Error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
 };
 
+//speech input
+export const handleCommand = async (req, res) => {
+  console.log("Received request body:", req.body);
+
+  const { transcript } = req.body;
+  if (!transcript) {
+    console.error("Transcript is missing in the request body");
+    return res.status(400).json({ error: "Transcript is required" });
+  }
+
+  // Respond with success
+  return res.status(200).json({ message: "Transcript received successfully", transcript });
+
+  //send to parsetranscript.js
+};
 
 
 // READ All Tasks (for a specific user)
@@ -99,3 +114,4 @@ export const deleteTask = async (req, res) => {
 };
 
 // // Test Route: Fetch All Tasks from DB
+

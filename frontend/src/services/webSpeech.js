@@ -5,122 +5,68 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-//setup
+// Setup
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
 let recognition;
 
-//check browser
-if(!SpeechRecognition){
-    //add error notificiation
-} else{
+// Check browser support
+if (!SpeechRecognition) {
+  console.error("Web Speech API is not supported in this browser.");
+} else {
   recognition = new SpeechRecognition();
   const speechGrammarList = new SpeechGrammarList();
 
-
-
-  //structure commands
+  // Define grammar for commands
   const grammar = `
     #JSGF V1.0;
     grammar commands;
     public <command> = add | remove | mark;
     public <task> = [a-zA-Z0-9 ]+;
-    public <phrase> = <command> <task>| <command> <task> as complete;
+    public <phrase> = <command> <task> | <command> <task> as complete;
   `;
   speechGrammarList.addFromString(grammar, 1);
-  recognition.grammars = speechGrammarList; //add to grammar
+  recognition.grammars = speechGrammarList;
 
-
-  recognition.continuous = false; //stop listening after command
+  // Configure recognition settings
+  recognition.continuous = false; // Stop after one command
   recognition.lang = 'en-US';
   recognition.interimResults = false;
-  recognition.maxAlternatives = 1; //for accepting different # of comamnds, can chain if increased i think
+  recognition.maxAlternatives = 1;
+}
 
+// Function to start listening
+export const startListening = (onResult, onError, onEnd) => {
+  if (!recognition) {
+    console.error("Speech recognition is not initialized.");
+    return;
+  }
 
-  //recognition.start();
-
-  //valid speech event
+  // Set up event listeners
   recognition.onresult = (event) => {
-    //store voice input
     const transcript = event.results[0][0].transcript.toLowerCase();
-    //console.log('voice input:', transcript);
-
-    //parse voice input
-    const command = parseCommand(transcript);
-    if (command) {
-      execCommand(command); //exec function based on command
-    }
+    console.log("Voice input:", transcript);
+    onResult(transcript);
   };
 
-  //speech error event
   recognition.onerror = (event) => {
-    console.error('Speech recognition error:', event.error);
+    console.error("Speech recognition error:", event.error);
+    onError(event.error);
   };
 
-  //speech end event
   recognition.onend = () => {
-    console.log('Speech recognition ended.');
-    recognition.start(); //restart
+    console.log("Speech recognition ended.");
+    onEnd();
   };
 
-}  
+  // Start listening
+  recognition.start();
+};
 
-//replace with db comamnds when fully implemented
-function execCommand(command) {
-  switch (command.type) { //switch case for all possible commands, add more to this later
-    case 'add':
-      addTask(command.task);
-      break;
-    case 'remove':
-      removeTask(command.task);
-      break;
-    case 'mark':
-      markTask(command.task);
-      break;
-    default:
-      console.warn('Unknown command type:', command.type);
+// Function to stop listening
+export const stopListening = () => {
+  if (recognition) {
+    recognition.stop();
   }
-}
+};
 
-
-function parseCommand(transcript) {
-  //use regular expressions to parse voice input (had no idea you can do this)
-  const addRegex = /add\s+(.+)\s/i;
-  const removeRegex = /remove\s+(.+)\s/i;
-  const markRegex = /mark\s+(.+)\s+as complete/i;
-
-  if (addRegex.test(transcript)) {
-    const task = transcript.match(addRegex)[1].trim();
-    return { type: 'add', task };
-  }
-  else if (removeRegex.test(transcript)) {
-    const task = transcript.match(removeRegex)[1].trim();
-    return { type: 'remove', task };
-  }
-  else if (markRegex.test(transcript)) {
-    const task = transcript.match(markRegex)[1].trim();
-    return { type: 'mark', task };
-  }
-  else {
-    console.warn('no command:', transcript);
-    return null;
-  }
-}
-
-
-//replace with db comamnds when fully implemented
-function addTask(task) {
-  console.log('Added:', task);
-}
-
-// Example function to remove a task
-function removeTask(task) {
-  console.log('Removed:', task);
-}
-
-// Example function to mark a task as complete
-function markTask(task) {
-  console.log('Marked:', task);
-}
-
-export { recognition, parseCommand, execCommand};

@@ -13,28 +13,20 @@ import {
   deleteAllTask,
   deleteTask,
   testReadDB,
+  handleCommand
 } from "../controller/taskController.js";
-import mockTasks from "../tests/mock-data/mockTasks.json" with { type: "json" };
-import { Task } from "../db/models/taskModel.js";
-
-
-
-import fs from "fs";
-import path from "path";
 
 const router = express.Router();
 
 // Setup routes
 router.post("/create-task", createTask); // Create a new task
-// router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
+router.post("/voice-command", handleCommand);
+
+router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
 router.patch("/update-task/:taskID", updateTask); // Update a task
 router.delete("/delete", deleteAllTask); // Delete all completed tasks
 
-
 router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task
 router.get("/test-read-db", testReadDB); // Test route to fetch all tasks
-
-
-
 
 export default router;

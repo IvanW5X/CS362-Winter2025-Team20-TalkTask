@@ -1,8 +1,14 @@
+/********************************************************************
+ * File Name: tasksma.jsx
+ * Date: 3/1/2025
+ * Description: JSX file for tasks management component
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheck } from "react-icons/fa";
-import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
@@ -11,17 +17,35 @@ import { CommandsPopUp } from "../voicepopup/commandsPopUp.jsx";
 
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { startListening, stopListening} from "../../services/webSpeech.js";
+
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [voiceMenuV, setVoiceMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
 
+
   const queryClient = useQueryClient();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const deleteCompletedTasksMutation = useMutation(
-    () => axios.delete(`${VITE_BACKEND_URL}/tasks/delete`),
+    async () => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.delete(`${VITE_BACKEND_URL}/tasks/delete`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      return response.data;
+    },
     {
       onSuccess: () => {
         queryClient.invalidateQueries("tasks");
@@ -34,13 +58,66 @@ export const TasksManagement = () => {
   );
 
   const handleDeleteTasks = () => {
-    if (window.confirm("Are you sure you want to delete all completed tasks?")) {
+    if (
+      window.confirm("Are you sure you want to delete all completed tasks?")
+    ) {
       deleteCompletedTasksMutation.mutate();
     }
   };
 
+
+  const [isListening, setIsListening] = useState(false);
+
+  const handleMicClick = () => {
+    if (isListening) {
+      stopListening();
+      setIsListening(false);
+    } else {
+      startListening(
+        (transcript) => {
+          sendBackend(transcript);
+        },
+        (error) => {
+          console.error("Error:", error);
+          setIsListening(false);
+        },
+        () => {
+          setIsListening(false);
+        }
+      );  
+      setIsListening(true);
+    }
+  };
+
+
+  const sendBackend = async (transcript) => {
+    try {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command`,
+        { 
+          transcript 
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      console.log("Backend response:", response.data);
+    } catch (error) {
+      console.error("Error sending transcript to backend:", error);
+    }
+  };
+
+
   return (
-    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] shadow-[0_0px_20px_rgba(0,0,0,0.25)] font-semibold">
+    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
