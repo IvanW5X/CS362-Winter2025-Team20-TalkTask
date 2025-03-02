@@ -35,7 +35,7 @@ export const TaskList = ({ selectedCategory }) => {
   const updateStatusMutation = useMutation(
     async ({ taskID, newStatus }) => {
       if (!isAuthenticated) {
-        console.log("User not authenticated, action denied");
+        console.error("User not authenticated, action denied");
         return;
       }
       const accessToken = await getAccessTokenSilently({

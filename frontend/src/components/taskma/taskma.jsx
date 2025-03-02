@@ -1,23 +1,41 @@
+/********************************************************************
+ * File Name: tasksma.jsx
+ * Date: 3/1/2025
+ * Description: JSX file for tasks management component
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheck } from "react-icons/fa";
-import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
-
   const queryClient = useQueryClient();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const deleteCompletedTasksMutation = useMutation(
-    () => axios.delete(`${VITE_BACKEND_URL}/tasks/delete`),
+    async () => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.delete(`${VITE_BACKEND_URL}/tasks/delete`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      return response.data;
+    },
     {
       onSuccess: () => {
         queryClient.invalidateQueries("tasks");
@@ -30,7 +48,9 @@ export const TasksManagement = () => {
   );
 
   const handleDeleteTasks = () => {
-    if (window.confirm("Are you sure you want to delete all completed tasks?")) {
+    if (
+      window.confirm("Are you sure you want to delete all completed tasks?")
+    ) {
       deleteCompletedTasksMutation.mutate();
     }
   };
