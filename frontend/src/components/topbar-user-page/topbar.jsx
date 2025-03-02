@@ -11,7 +11,7 @@ import { getImageUrl } from "../../../utils/utils";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const TopBar = ({ menu_open, set_menu_state }) => {
-  const { logout, isAuthenticated } = useAuth0();
+  const { logout, user, isAuthenticated } = useAuth0();
 
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
@@ -26,7 +26,6 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         src={getImageUrl("TalkTaskLogo1.png")}
         alt="TalkTask Logo 1, with text"
       />
-
       {/* Logout button */}
       <button 
         className="bg-white p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
