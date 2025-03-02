@@ -26,6 +26,7 @@ const router = express.Router();
 router.post("/create-task", createTask);
 router.get("/read-task/:userId", getTasksByUser);
 
+//update status so far, edit for edit task
 router.patch("/update-task/:taskID", async (req, res) => {
   const { taskID } = req.params;
   const { status } = req.body;
@@ -43,7 +44,27 @@ router.patch("/update-task/:taskID", async (req, res) => {
   }
 });
 
-router.delete("/delete-task/:taskID", deleteTask);
+
+
+//delete all completed tasks
+router.delete("/delete", async (req, res) => {
+  try {
+    const result = await Task.deleteMany({ status: "completed" }); //delete task marked compelted
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
+    } else {
+      res.status(404).json({ message: "No completed tasks found" });
+    }
+  } catch (error) {
+    console.error("Error deleting completed tasks:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
+
+
+
+// router.delete("/delete-task/:taskID", deleteTask);
 
 
 router.get("/test-read-db", async (req, res) => {

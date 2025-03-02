@@ -7,8 +7,33 @@ import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
 
+import { useMutation, useQueryClient } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
+
+  const queryClient = useQueryClient();
+
+  const deleteCompletedTasksMutation = useMutation(
+    () => axios.delete(`${VITE_BACKEND_URL}/tasks/delete`),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("tasks");
+      },
+      onError: (error) => {
+        console.error("Error deleting completed tasks:", error);
+        alert("Failed to delete completed tasks.");
+      },
+    }
+  );
+
+  const handleDeleteTasks = () => {
+    if (window.confirm("Are you sure you want to delete all completed tasks?")) {
+      deleteCompletedTasksMutation.mutate();
+    }
+  };
 
   return (
     <div className="bg-[#cdcdcd] w-[350px] ml-[30px] rounded-[10px]">
@@ -34,6 +59,7 @@ export const TasksManagement = () => {
         {/* clear completed tasks */}
         <div
           className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow`}
+          onClick={handleDeleteTasks}
         >
           Clear Completed Tasks
           <FaCheck className="absolute right-3 " />
