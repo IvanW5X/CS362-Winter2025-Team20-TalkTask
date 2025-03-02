@@ -5,27 +5,38 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
-
-// Function to fetch tasks from the backend
-const getTasks = async () => {
-  const res = await axios.get(`${VITE_BACKEND_URL}/tasks/test-read-db`);
-  return res.data;
-};
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TaskList = ({ selectedCategory }) => {
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
+  // Function to fetch tasks from the backend
+  const getTasks = async () => {
+    if (isAuthenticated) {
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+
+      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/test-read-db`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return res.data;
+    }
+  };
   const queryClient = useQueryClient();
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
   const updateStatusMutation = useMutation(
     ({ taskID, newStatus }) =>
-      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, { status: newStatus }),
+      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {
+        status: newStatus,
+      }),
     {
       onSuccess: (_, { taskID, newStatus }) => {
         // Update the local state optimistically
@@ -40,7 +51,7 @@ export const TaskList = ({ selectedCategory }) => {
       },
     }
   );
-  
+
   const toggleTaskStatus = (taskID) => {
     const task = tasks.find((t) => t.taskID === taskID);
     const newStatus = task.status === "completed" ? "pending" : "completed";
@@ -79,10 +90,9 @@ export const TaskList = ({ selectedCategory }) => {
       {/* Task List */}
       <div className="mx-5 mb-5 space-y-[10px]">
         {filteredTasks?.length === 0 ? (
-            <div className="flex flex-col items-center">
-              <p>No tasks found in this category.</p>
-             
-            </div>
+          <div className="flex flex-col items-center">
+            <p>No tasks found in this category.</p>
+          </div>
         ) : (
           sortedTasks.map((task) => (
             <TaskCard
@@ -90,6 +100,7 @@ export const TaskList = ({ selectedCategory }) => {
               task={task}
               toggleTaskStatus={toggleTaskStatus}
             />
+            
           ))
         )}
       </div>
