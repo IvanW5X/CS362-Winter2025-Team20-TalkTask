@@ -11,10 +11,20 @@ import { TasksManagement } from "../../components/taskma/taskma";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { Calendar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Home = () => {
+  const { isAuthenticated } = useAuth0();
   const [menu_open, set_menu_state] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null); // Category state
+
+  if (!isAuthenticated) {
+    return ( 
+      <div className="bg-white text-red-500 text-lg">
+        Access denied: You are not authorized to access this page.
+      </div>
+    );
+  }
 
   return (
     <div className="flex-col min-h-screen w-[100%]">

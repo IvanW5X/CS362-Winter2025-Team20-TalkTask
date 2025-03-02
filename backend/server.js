@@ -7,7 +7,6 @@
 
 import express from "express";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import { FRONTEND_URL } from "./utils/variables.js";
 import checkJwt from "./middleware/auth-middleware.js";
@@ -28,9 +27,8 @@ app.use(express.json());
 // Enable cross origin resource sharing
 app.use(cors(corsOptions));
 
-// Use routes
-app.use("/users", userRoutes);
-app.use("/tasks", taskRoutes);
+// Protected routes
+app.use("/tasks", checkJwt, taskRoutes);
 app.use("api/external", checkJwt, (req, res) => {
   res.send({ message: "Token validated" });
 });
