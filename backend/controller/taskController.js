@@ -35,7 +35,7 @@ export const handleCommand = async (req, res) => {
   // Respond with success
   return res.status(200).json({ message: "Transcript received successfully", transcript });
 
-  //send to parsetrnascript.js
+  //send to parsetranscript.js
 };
 
 
