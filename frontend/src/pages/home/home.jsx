@@ -35,9 +35,11 @@ export const Home = () => {
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
         />
-        <div className="flex flex-col items-center w-full">
-          <Calendar />
-          <div className="flex flex-row mt-[40px]">
+        <div className="flex flex-col w-full">
+          <div className="self-center">
+            <Calendar />
+          </div>
+          <div className={`flex flex-row mt-[40px] ${ menu_open ? 'ml-[5%]' : 'self-center' } w-[70%]`}>
             <TaskList selectedCategory={selectedCategory} />
             <TasksManagement/>
           </div>
