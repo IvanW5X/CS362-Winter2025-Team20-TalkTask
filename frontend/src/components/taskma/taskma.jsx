@@ -7,6 +7,7 @@ import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
 import { VoicePopUp } from "../voicepopup/voicepopup";
+import { CommandsPopUp } from "../voicepopup/commandsPopUp.jsx";
 
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
@@ -15,6 +16,7 @@ import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [voiceMenuV, setVoiceMenuV] = useState(false);
+  const [commandsMenuV, setCommandsMenuV] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -42,6 +44,8 @@ export const TasksManagement = () => {
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
+      {commandsMenuV && <CommandsPopUp onClose={() => setCommandsMenuV(false)} />}
+      
 
       {/* Title */}
       <div className="flex text-center m-5 text-[20px] bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
@@ -71,6 +75,7 @@ export const TasksManagement = () => {
         {/* voice commands */}
         <div
           className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
           <MdOutlineIntegrationInstructions className="absolute right-3" />
