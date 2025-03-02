@@ -33,13 +33,29 @@ export const TaskList = ({ selectedCategory }) => {
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
   const updateStatusMutation = useMutation(
-    ({ taskID, newStatus }) =>
-      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {
-        status: newStatus,
-      }),
+    async ({ taskID, newStatus }) => {
+      if (!isAuthenticated) {
+        throw new Error("User is not authenticated.");
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.patch(
+        `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
+        {
+          status: newStatus,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      return response.data;
+    },
     {
       onSuccess: (_, { taskID, newStatus }) => {
-        // Update the local state optimistically
+        // Optimistically update the local state
         queryClient.setQueryData("tasks", (oldTasks) =>
           oldTasks.map((task) =>
             task.taskID === taskID ? { ...task, status: newStatus } : task
@@ -48,6 +64,7 @@ export const TaskList = ({ selectedCategory }) => {
       },
       onError: (error) => {
         console.error("Error updating task status:", error);
+        alert("Failed to update task status.");
       },
     }
   );
@@ -100,7 +117,6 @@ export const TaskList = ({ selectedCategory }) => {
               task={task}
               toggleTaskStatus={toggleTaskStatus}
             />
-            
           ))
         )}
       </div>
