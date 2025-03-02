@@ -8,6 +8,7 @@
 
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
+import { parseCommand } from "../services/parseTranscripts.js";
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -21,30 +22,22 @@ export const createTask = async (req, res) => {
   }
 };
 
-// Function to parse the transcript (optional, can be moved to backend)
-export const parseCommand = (transcript) => {
-  const addRegex = /add\s+(.+)\s/i;
-  const removeRegex = /remove\s+(.+)\s/i;
-  const markRegex = /mark\s+(.+)\s+as complete/i;
+//speech input
+export const handleCommand = async (req, res) => {
+  console.log("Received request body:", req.body);
 
-  if (addRegex.test(transcript)) {
-    const task = transcript.match(addRegex)[1].trim();
-    return { type: 'add', task };
-  } else if (removeRegex.test(transcript)) {
-    const task = transcript.match(removeRegex)[1].trim();
-    return { type: 'remove', task };
-  } else if (markRegex.test(transcript)) {
-    const task = transcript.match(markRegex)[1].trim();
-    return { type: 'mark', task };
-  } else {
-    console.warn('No command detected:', transcript);
-    return null;
+  const { transcript } = req.body;
+  if (!transcript) {
+    console.error("Transcript is missing in the request body");
+    return res.status(400).json({ error: "Transcript is required" });
   }
+
+  // Respond with success
+  return res.status(200).json({ message: "Transcript received successfully", transcript });
+
+  //send to parsetrnascript.js
 };
 
-export const handleCommand = async(req,res)=>{
-
-};
 
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {

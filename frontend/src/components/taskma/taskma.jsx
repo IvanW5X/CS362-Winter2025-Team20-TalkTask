@@ -82,11 +82,26 @@ export const TasksManagement = () => {
     }
   };
 
+
   const sendBackend = async (transcript) => {
     try {
-      const response = await axios.post(`${VITE_BACKEND_URL}/voice-command`, {
-        transcript,
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
       });
+      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command`,
+        { 
+          transcript 
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       console.log("Backend response:", response.data);
     } catch (error) {
       console.error("Error sending transcript to backend:", error);
