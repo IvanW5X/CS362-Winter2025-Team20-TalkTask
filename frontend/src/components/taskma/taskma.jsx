@@ -11,6 +11,9 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 
+import { startListening, stopListening} from "../../services/webSpeech.js";
+
+
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
 
@@ -34,6 +37,42 @@ export const TasksManagement = () => {
       deleteCompletedTasksMutation.mutate();
     }
   };
+
+
+  const [isListening, setIsListening] = useState(false);
+
+  const handleMicClick = () => {
+    if (isListening) {
+      stopListening();
+      setIsListening(false);
+    } else {
+      startListening(
+        (transcript) => {
+          sendBackend(transcript);
+        },
+        (error) => {
+          console.error("Error:", error);
+          setIsListening(false);
+        },
+        () => {
+          setIsListening(false);
+        }
+      );  
+      setIsListening(true);
+    }
+  };
+
+  const sendBackend = async (transcript) => {
+    try {
+      const response = await axios.post(`${VITE_BACKEND_URL}/voice-command`, {
+        transcript,
+      });
+      console.log("Backend response:", response.data);
+    } catch (error) {
+      console.error("Error sending transcript to backend:", error);
+    }
+  };
+
 
   return (
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] shadow-[0_0px_20px_rgba(0,0,0,0.25)] font-semibold">
@@ -82,7 +121,10 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <div
-          className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] ${
+            isListening ? "bg-red-500" : "bg-[#37E03A]"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-white" />
         </div>
