@@ -6,6 +6,7 @@ import { MdOutlineSort } from "react-icons/md";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
+import { VoicePopUp } from "../voicepopup/voicepopup";
 
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
@@ -13,6 +14,7 @@ import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
+  const [voiceMenuV, setVoiceMenuV] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -39,6 +41,7 @@ export const TasksManagement = () => {
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] shadow-[0_0px_20px_rgba(0,0,0,0.25)] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
+      {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
 
       {/* Title */}
       <div className="flex text-center m-5 text-[20px] bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
@@ -83,6 +86,7 @@ export const TasksManagement = () => {
         {/* mic button */}
         <div
           className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={() => setVoiceMenuV(!voiceMenuV)}
         >
           <FaMicrophone className="text-[30px] text-white" />
         </div>
