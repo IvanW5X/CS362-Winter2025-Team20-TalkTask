@@ -36,17 +36,17 @@ export const TasksManagement = () => {
   };
 
   return (
-    <div className="bg-[#cdcdcd] ml-[15px] rounded-[10px] min-h-[435px] min-w-[350px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] min-h-[435px] min-w-[290px] w-[30%] shadow-[0_0px_20px_rgba(0,0,0,0.25)] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
 
       {/* Title */}
-      <div className="flex text-center m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      <div className="flex text-center m-5 text-[20px] bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2 className="w-full text-center">Task Managment</h2>
       </div>
 
       {/* actions */}
-      <div className="flex flex-col mx-7 space-y-[29px] text-[20px] font-medium relative">
+      <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         {/* add task */}
         <div
           className={`flex mt-[0] cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
