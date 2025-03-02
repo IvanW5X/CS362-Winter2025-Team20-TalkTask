@@ -38,7 +38,6 @@ export const handleCommand = async (req, res) => {
   //send to parsetranscript.js
 };
 
-
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
   const { userId } = req.params;
@@ -72,7 +71,6 @@ export const updateTask = async (req, res) => {
   }
 };
 
-
 // DELETE All Completed Tasks
 export const deleteAllTask = async (req, res) => {
   try {
@@ -85,15 +83,6 @@ export const deleteAllTask = async (req, res) => {
   } catch (error) {
     console.error("Error deleting completed tasks:", error);
     res.status(500).json({ message: "Internal Server Error", error: error.message });
-  }
-};
-
-export const testReadDB = async (req, res) => {
-  try {
-    const tasks = await Task.find();
-    res.status(200).send(tasks);
-  } catch (err) {
-    res.status(500).send({ message: err.message });
   }
 };
 
@@ -112,6 +101,4 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
-
-// // Test Route: Fetch All Tasks from DB
 

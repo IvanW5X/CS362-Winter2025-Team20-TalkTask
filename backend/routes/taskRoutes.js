@@ -12,21 +12,17 @@ import {
   updateTask,
   deleteAllTask,
   deleteTask,
-  testReadDB,
   handleCommand
 } from "../controller/taskController.js";
 
 const router = express.Router();
 
 // Setup routes
-router.post("/create-task", createTask); // Create a new task
-router.post("/voice-command", handleCommand);
-
-router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
-router.patch("/update-task/:taskID", updateTask); // Update a task
-router.delete("/delete", deleteAllTask); // Delete all completed tasks
-
-router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task
-router.get("/test-read-db", testReadDB); // Test route to fetch all tasks
+router.post("/create-task", createTask);              // Create a new task
+router.post("/voice-command", handleCommand);         // 
+router.get("/read-task/:userId", getTasksByUser);     // Get tasks for a specific user
+router.patch("/update-task/:taskID", updateTask);     // Update a task
+router.delete("/delete", deleteAllTask);              // Delete all completed tasks
+router.delete("/delete-task/:taskID", deleteTask);    // Delete a specific task
 
 export default router;
