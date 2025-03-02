@@ -11,18 +11,16 @@ import {
   getTasksByUser,
   updateTask,
   deleteAllTask,
-  deleteTask,
-  handleCommand
+  getCategories
 } from "../controller/taskController.js";
 
 const router = express.Router();
 
 // Setup routes
-router.post("/create-task", createTask);              // Create a new task
-router.post("/voice-command", handleCommand);         // 
-router.get("/read-task/:userId", getTasksByUser);     // Get tasks for a specific user
-router.patch("/update-task/:taskID", updateTask);     // Update a task
-router.delete("/delete", deleteAllTask);              // Delete all completed tasks
-router.delete("/delete-task/:taskID", deleteTask);    // Delete a specific task
+router.post("/create-task", createTask);                  // Create a new task
+router.get("/read-task/:userId", getTasksByUser);         // Get tasks for a specific user
+router.patch("/update-task/:taskID", updateTask);         // Update a task
+router.delete("/delete", deleteAllTask);                     // Delete all completed tasks
+router.get("/read-categories/:userId", getCategories);    // Get categories from user tasks
 
 export default router;

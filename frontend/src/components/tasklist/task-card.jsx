@@ -25,8 +25,6 @@ const formatTime = (date) => {
   return strTime;
 };
 
-
-
 const getPriority = (priority) => {
   switch (Number(priority)) {
     case 1:
@@ -49,8 +47,6 @@ export const TaskCard = ({
   const handleToggle = () => {
     toggleTaskStatus(taskID);
   };
-
-
   return (
     
     <div className="bg-[#F4F3F2] p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">

@@ -19,9 +19,7 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { useAuth0 } from "@auth0/auth0-react";
-
 import { startListening, stopListening} from "../../services/webSpeech.js";
-
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);

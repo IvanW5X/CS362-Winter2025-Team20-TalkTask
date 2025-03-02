@@ -22,22 +22,6 @@ export const createTask = async (req, res) => {
   }
 };
 
-//speech input
-export const handleCommand = async (req, res) => {
-  console.log("Received request body:", req.body);
-
-  const { transcript } = req.body;
-  if (!transcript) {
-    console.error("Transcript is missing in the request body");
-    return res.status(400).json({ error: "Transcript is required" });
-  }
-
-  // Respond with success
-  return res.status(200).json({ message: "Transcript received successfully", transcript });
-
-  //send to parsetranscript.js
-};
-
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
   const { userId } = req.params;
@@ -45,7 +29,7 @@ export const getTasksByUser = async (req, res) => {
     const tasks = await Task.find({ userId });
     res.status(200).json(tasks);
   } catch (error) {
-    logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
+    logger.error(`getTasksByUser - Error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
 };
@@ -82,22 +66,6 @@ export const deleteAllTask = async (req, res) => {
     }
   } catch (error) {
     console.error("Error deleting completed tasks:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
-  }
-};
-
-// // DELETE a Specific Task
-export const deleteTask = async (req, res) => {
-  const { taskID } = req.params;
-  try {
-    const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
-    if (deletedTask) {
-      res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
-    } else {
-      res.status(404).json({ message: "Task not found" });
-    }
-  } catch (error) {
-    console.error("Error deleting task:", error);
     res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
