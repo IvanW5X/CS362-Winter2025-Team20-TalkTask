@@ -28,7 +28,8 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 // Protected routes
-app.use("/tasks", checkJwt, taskRoutes);
+// , checkJwt
+app.use("/tasks", taskRoutes);
 app.use("api/external", checkJwt, (req, res) => {
   res.send({ message: "Token validated" });
 });
