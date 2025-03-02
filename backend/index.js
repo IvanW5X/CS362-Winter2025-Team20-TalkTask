@@ -6,12 +6,12 @@
  ********************************************************************/
 
 import app from "./server.js";
-import { connectTTDB } from "./db/connection.js";
+import { connectDB } from "./db/connection.js";
 import { SERVER_PORT } from "./utils/variables.js";
 
 async function Initialize() {
   // Connect to database first
-  await connectTTDB();
+  await connectDB();
 
   // Start server
   app.listen(SERVER_PORT, () => {

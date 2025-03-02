@@ -5,38 +5,17 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { MongoClient, ServerApiVersion } from "mongodb";
+import mongoose from "mongoose";
+//import { MongoClient, ServerApiVersion } from "mongodb";
 import { MONGO_URI } from "../utils/variables.js"
 
-// Create MongoDB client
-export const client = new MongoClient(MONGO_URI, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
 
-// Function to connect to MongoDB
-export const connectTTDB = async () => {
+
+export const connectDB = async () => {
     try {
-        await client.connect();
-        console.log("Successfully connected to MongoDB!");
+        await mongoose.connect(MONGO_URI);
+        console.log("Connected to MongoDB via Mongoose!");
     } catch (error) {
-        console.error("Error connecting to MongoDB:", error);
-    } finally {
-        await client.close();
+        console.error("MongoDB connection error:", error);
     }
 };
-
-// Handle graceful shutdown
-process.on("SIGINT", async () => {
-    try {
-        console.log("\nClosing MongoDB connection...");
-        await client.close();
-        console.log("MongoDB connection closed.");
-    } catch (error) {
-        console.log("MongoDB already closed: ", error)
-    }
-    process.exit(0);
-});
