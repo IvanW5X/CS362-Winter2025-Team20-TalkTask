@@ -25,7 +25,7 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { taskID, title, priority, dateCreated, dateCompleted, status, category },
+  task: { taskID, title, priority, dateStart, dateCompleted, status, category },
 }) => {
 
   const queryClient = useQueryClient();
@@ -64,10 +64,10 @@ export const TaskCard = ({
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
           <p className="mr-1">Start:</p>
-          {`${new Date(dateCreated)
+          {`${new Date(dateStart)
             .getUTCHours()
             .toString()
-            .padStart(2, "0")}:${new Date(dateCreated)
+            .padStart(2, "0")}:${new Date(dateStart)
             .getUTCMinutes()
             .toString()
             .padStart(2, "0")}`}
