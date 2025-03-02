@@ -63,11 +63,26 @@ export const updateTaskStatus = async (taskID, status) => {
 
 
 //  DELETE a Task
-export const deleteTask = async (taskId) => {
+// export const deleteTask = async (taskId) => {
+//   try {
+//     return await Task.findByIdAndDelete(taskId);
+//   } catch (error) {
+//     logger.error(`deleteTask - TaskID: ${taskId} - Error: ${error.message}`);
+//     return null;
+//   }
+// };
+
+
+export const deleteTask = async (req, res) => {
   try {
-    return await Task.findByIdAndDelete(taskId);
+    const result = await Task.deleteMany({ status: "completed" });
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
+    } else {
+      res.status(404).json({ message: "No completed tasks found" });
+    }
   } catch (error) {
-    logger.error(`deleteTask - TaskID: ${taskId} - Error: ${error.message}`);
-    return null;
+    console.error("Error deleting completed tasks:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };

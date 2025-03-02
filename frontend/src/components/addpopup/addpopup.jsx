@@ -37,15 +37,6 @@ export const AddPopUp = ({ onClose }) => {
     };
   }, []);
 
-  const today = new Date().toISOString().split("T")[0];
-
-  // Ensure timeStart is in the correct format (HH:MM)
-  const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
-  const formattedTimeEnd = timeEnd ? timeEnd : null;
-
-  const dateStart = new Date(`${today}T${formattedTimeStart}:00Z`);
-  const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00Z`) : null;
-
   const createTaskMutation = useMutation(
     (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
     {
