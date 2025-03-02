@@ -9,8 +9,9 @@ import express from "express";
 import {
   createTask,
   getTasksByUser,
-  updateTaskStatus,
+  updateTask,
   deleteTask,
+  testReadDB,
 } from "../controller/taskController.js";
 import mockTasks from "../tests/mock-data/mockTasks.json" with { type: "json" };
 import { Task } from "../db/models/taskModel.js";
@@ -23,50 +24,47 @@ import path from "path";
 const router = express.Router();
 
 // Setup routes
-router.post("/create-task", createTask);
-router.get("/read-task/:userId", getTasksByUser);
+router.post("/create-task", createTask); // Create a new task
+// router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
+router.patch("/update-task/:taskID", updateTask); // Update a task
+router.delete("/delete", deleteTask); // Delete all completed tasks
 
-//update status so far, edit for edit task
-router.patch("/update-task/:taskID", async (req, res) => {
-  const { taskID } = req.params;
-  const { status } = req.body;
-  console.log(`Received request to update task ${taskID} with status: ${status}`);
-  try {
-    const updatedTask = await updateTaskStatus(taskID, status);
-    if (updatedTask) {
-      res.status(200).json(updatedTask);
-    } else {
-      res.status(404).json({ message: "Task not found" });
-    }
-  } catch (error) {
-    console.error("Error in PATCH /update-task:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
-  }
-});
+
+router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task
+router.get("/test-read-db", testReadDB); // Test route to fetch all tasks
 
 
 
-//delete all completed tasks
-router.delete("/delete", async (req, res) => {
-  try {
-    const result = await Task.deleteMany({ status: "completed" }); //delete task marked compelted
-    if (result.deletedCount > 0) {
-      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
-    } else {
-      res.status(404).json({ message: "No completed tasks found" });
-    }
-  } catch (error) {
-    console.error("Error deleting completed tasks:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
-  }
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 // router.delete("/delete-task/:taskID", deleteTask);
-
-
 router.get("/test-read-db", async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -75,8 +73,6 @@ router.get("/test-read-db", async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 });
-
-
 
 
 // test route

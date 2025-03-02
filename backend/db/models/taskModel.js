@@ -12,7 +12,7 @@ const taskSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     dateStart: { type: Date, default: Date.now },
-    dateCompleted: { type: Date,},
+    dateCompleted: { type: Date},
     recurringDate: { type: Date },
     priority: { type: Number, min: 1, max: 3, default: 1 }, // Priority scale 1-3
     status: { type: String, enum: ["pending", "completed"], default: "pending" },
