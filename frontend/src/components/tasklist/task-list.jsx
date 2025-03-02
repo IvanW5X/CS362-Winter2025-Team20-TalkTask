@@ -12,7 +12,7 @@ import { TaskCard } from "./task-card.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const TaskList = ({ selectedCategory }) => {
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   // Function to fetch tasks from the backend
   const getTasks = async () => {
@@ -21,7 +21,7 @@ export const TaskList = ({ selectedCategory }) => {
         audience: AUTH0_AUDIENCE,
       });
 
-      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/test-read-db`, {
+      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/read-task/${user.sub}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

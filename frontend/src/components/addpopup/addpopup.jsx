@@ -49,7 +49,7 @@ export const AddPopUp = ({ onClose }) => {
       const response = await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
-        {headers: {Authorization: `Bearer ${accessToken}`}},
+        { headers: {Authorization: `Bearer ${accessToken}`}},
       );
       return response.data;
     },
