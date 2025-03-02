@@ -10,6 +10,7 @@ import {
   createTask,
   getTasksByUser,
   updateTask,
+  deleteAllTask,
   deleteTask,
   testReadDB,
 } from "../controller/taskController.js";
@@ -27,7 +28,7 @@ const router = express.Router();
 router.post("/create-task", createTask); // Create a new task
 // router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
 router.patch("/update-task/:taskID", updateTask); // Update a task
-router.delete("/delete", deleteTask); // Delete all completed tasks
+router.delete("/delete", deleteAllTask); // Delete all completed tasks
 
 
 router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task

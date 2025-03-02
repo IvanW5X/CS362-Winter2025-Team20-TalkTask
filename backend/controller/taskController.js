@@ -59,7 +59,7 @@ export const updateTask = async (req, res) => {
 
 
 // DELETE All Completed Tasks
-export const deleteTask = async (req, res) => {
+export const deleteAllTask = async (req, res) => {
   try {
     const result = await Task.deleteMany({ status: "completed" });
     if (result.deletedCount > 0) {
@@ -83,19 +83,19 @@ export const testReadDB = async (req, res) => {
 };
 
 // // DELETE a Specific Task
-// export const deleteTask = async (req, res) => {
-//   const { taskID } = req.params;
-//   try {
-//     const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
-//     if (deletedTask) {
-//       res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
-//     } else {
-//       res.status(404).json({ message: "Task not found" });
-//     }
-//   } catch (error) {
-//     console.error("Error deleting task:", error);
-//     res.status(500).json({ message: "Internal Server Error", error: error.message });
-//   }
-// };
+export const deleteTask = async (req, res) => {
+  const { taskID } = req.params;
+  try {
+    const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
+    if (deletedTask) {
+      res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
+    } else {
+      res.status(404).json({ message: "Task not found" });
+    }
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};
 
 // // Test Route: Fetch All Tasks from DB
