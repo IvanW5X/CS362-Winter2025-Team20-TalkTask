@@ -9,7 +9,6 @@
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 
-
 // CREATE a Task
 export const createTask = async (req, res) => {
   try {
@@ -17,7 +16,7 @@ export const createTask = async (req, res) => {
     await newTask.save();
     res.status(201).json(newTask);
   } catch (error) {
-    logger.error(`createTask - UserID: ${req.body.userId} - Error: ${error.message}`);
+    logger.error(`createTask - Error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
 };
@@ -104,21 +103,3 @@ export const testReadDB = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
-
-// // DELETE a Specific Task
-// export const deleteTask = async (req, res) => {
-//   const { taskID } = req.params;
-//   try {
-//     const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
-//     if (deletedTask) {
-//       res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
-//     } else {
-//       res.status(404).json({ message: "Task not found" });
-//     }
-//   } catch (error) {
-//     console.error("Error deleting task:", error);
-//     res.status(500).json({ message: "Internal Server Error", error: error.message });
-//   }
-// };
-
-// // Test Route: Fetch All Tasks from DB

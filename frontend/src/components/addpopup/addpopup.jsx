@@ -9,12 +9,13 @@ import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
-
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddPopUp = ({ onClose }) => {
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
   const queryClient = useQueryClient();
-  
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -22,7 +23,6 @@ export const AddPopUp = ({ onClose }) => {
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState(3);
   const [status, setStatus] = useState("pending");
-
 
   //stop scrolling when pop up
   useEffect(() => {
@@ -38,53 +38,73 @@ export const AddPopUp = ({ onClose }) => {
   }, []);
 
   const createTaskMutation = useMutation(
-    (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
+    async (newTask) => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.post(
+        `${VITE_BACKEND_URL}/tasks/create-task`,
+        newTask,
+        {headers: {Authorization: `Bearer ${accessToken}`}},
+      );
+      return response.data;
+    },
     {
-        onSuccess: () => {
-          console.log('Task created successfully');
-          queryClient.invalidateQueries('tasks');
-          setTitle("");
-          setDescription("");
-          setCategory("");
-          setTimeStart("");
-          setTimeEnd("");
-          setPriority("");
-          setStatus("pending");
-          onClose();
-        },
-        onError: (error) => {
-            console.error('An error occurred while creating the task:', error.response?.data || error.message);
-        },
+      onSuccess: () => {
+        console.log("Task created successfully");
+        queryClient.invalidateQueries("tasks");
+        setTitle("");
+        setDescription("");
+        setCategory("");
+        setTimeStart("");
+        setTimeEnd("");
+        setPriority("");
+        setStatus("pending");
+        onClose();
+      },
+      onError: (error) => {
+        console.error(
+          "An error occurred while creating the task:",
+          error.response?.data || error.message
+        );
+      },
     }
   );
-  const handleSubmit = (t) => { 
+  const handleSubmit = (t) => {
     t.preventDefault();
 
     const today = new Date().toISOString().split("T")[0];
 
     // Ensure timeStart is in the correct format (HH:MM)
-    const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
+    const formattedTimeStart = timeStart
+      ? timeStart
+      : new Date().toTimeString().slice(0, 5);
     const formattedTimeEnd = timeEnd ? timeEnd : null;
 
     // Remove the 'Z' to treat the time as local time
     const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00`) : null;
+    const dateCompleted = formattedTimeEnd
+      ? new Date(`${today}T${formattedTimeEnd}:00`)
+      : null;
 
     const newTask = {
-        taskID: Date.now(),
-        title,
-        description,
-        category,
-        priority,
-        status,
-        dateStart,
-        dateCompleted,
-        userId: '64c0f3abf8d12c0004c4a1f2',
+      taskID: Date.now(),
+      title,
+      description,
+      category,
+      priority,
+      status,
+      dateStart,
+      dateCompleted,
+      userId: user.sub,     // Use Auth0 user ID
     };
-    console.log('Creating task:', newTask);
+    console.log("Creating task:", newTask);
     createTaskMutation.mutate(newTask);
   };
-
 
   return (
     <>
@@ -213,7 +233,6 @@ export const AddPopUp = ({ onClose }) => {
                 onChange={(t) => {
                   setPriority(Number(t.target.value));
                 }}
-                
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -228,7 +247,6 @@ export const AddPopUp = ({ onClose }) => {
                 type="submit"
                 id="submit"
               >
-        
                 Add Task
               </button>
             </p>
