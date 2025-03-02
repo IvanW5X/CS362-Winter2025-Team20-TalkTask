@@ -39,7 +39,7 @@ export const Home = () => {
           <div className="self-center">
             <Calendar />
           </div>
-          <div className={`flex flex-row mt-[40px] ${ menu_open ? 'ml-[5%]' : 'self-center' } w-[70%]`}>
+          <div className={`flex flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[70%]`}>
             <TaskList selectedCategory={selectedCategory} />
             <TasksManagement/>
           </div>

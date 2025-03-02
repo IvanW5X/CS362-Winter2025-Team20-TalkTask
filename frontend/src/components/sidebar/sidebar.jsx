@@ -19,7 +19,7 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
 
   return (
     <aside
-      className={`flex flex-col bg-white shadow-xl w-[300px] min-w-[200px]
+      className={`flex flex-col bg-white shadow-xl w-[200px] min-w-[150px]
                   mb-[0%] pb-[0%] z-[2]
                   ${menu_open ? "flex-visible" : "flex hidden"}`}
     >
