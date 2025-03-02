@@ -10,43 +10,96 @@ import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 
 // CREATE a Task
-export const createTask = async (taskData) => {
+export const createTask = async (req, res) => {
   try {
-    const newTask = new Task(taskData);
+    const newTask = new Task(req.body);
     await newTask.save();
-    return newTask;
+    res.status(201).json(newTask);
   } catch (error) {
-    logger.error(`createTask - UserID: ${taskData.userId} - Error: ${error.message}`);
+    logger.error(`createTask - Error: ${error.message}`);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Function to parse the transcript (optional, can be moved to backend)
+export const parseCommand = (transcript) => {
+  const addRegex = /add\s+(.+)\s/i;
+  const removeRegex = /remove\s+(.+)\s/i;
+  const markRegex = /mark\s+(.+)\s+as complete/i;
+
+  if (addRegex.test(transcript)) {
+    const task = transcript.match(addRegex)[1].trim();
+    return { type: 'add', task };
+  } else if (removeRegex.test(transcript)) {
+    const task = transcript.match(removeRegex)[1].trim();
+    return { type: 'remove', task };
+  } else if (markRegex.test(transcript)) {
+    const task = transcript.match(markRegex)[1].trim();
+    return { type: 'mark', task };
+  } else {
+    console.warn('No command detected:', transcript);
     return null;
   }
 };
 
-//  READ All Tasks (for a specific user)
-export const getTasksByUser = async (userId) => {
+export const handleCommand = async(req,res)=>{
+
+};
+
+// READ All Tasks (for a specific user)
+export const getTasksByUser = async (req, res) => {
+  const { userId } = req.params;
   try {
-    return await Task.find({ userId });
+    const tasks = await Task.find({ userId });
+    res.status(200).json(tasks);
   } catch (error) {
     logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
-    return [];
+    res.status(500).json({ error: error.message });
   }
 };
 
-//  UPDATE Task Status
-export const updateTaskStatus = async (taskId, status) => {
+// UPDATE Task
+export const updateTask = async (req, res) => {
+  const { taskID } = req.params;
+  const { title, description, category, priority, status, dateStart, dateCompleted } = req.body;
   try {
-    return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+    const updatedTask = await Task.findOneAndUpdate(
+      { taskID: taskID },
+      { title, description, category, priority, status, dateStart, dateCompleted },
+      { new: true }
+    );
+    if (updatedTask) {
+      res.status(200).json(updatedTask);
+    } else {
+      res.status(404).json({ message: "Task not found" });
+    }
   } catch (error) {
-    logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
-    return null;
+    console.error("Error updating task:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
 
-//  DELETE a Task
-export const deleteTask = async (taskId) => {
+
+// DELETE All Completed Tasks
+export const deleteTask = async (req, res) => {
   try {
-    return await Task.findByIdAndDelete(taskId);
+    const result = await Task.deleteMany({ status: "completed" });
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
+    } else {
+      res.status(404).json({ message: "No completed tasks found" });
+    }
   } catch (error) {
-    logger.error(`deleteTask - TaskID: ${taskId} - Error: ${error.message}`);
-    return null;
+    console.error("Error deleting completed tasks:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};
+
+export const testReadDB = async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.status(200).send(tasks);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
 };

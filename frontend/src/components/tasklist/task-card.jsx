@@ -6,9 +6,33 @@
  ********************************************************************/
 
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { EditPopUp } from "../editpopup/editpopup";
+import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables";
+
+
+const formatTime = (date) => {
+  
+  // Check if the date is valid
+  if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+    return 'N/A'; // Handle invalid or missing dates
+  }
+  // Use getHours() and getMinutes() for local time
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  const strTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+  return strTime;
+};
+
+
 
 const getPriority = (priority) => {
-  switch (priority) {
+  switch (Number(priority)) {
     case 1:
       return "bg-red-500";
     case 2:
@@ -21,11 +45,26 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { title, priority, dateCreated, dateCompleted, status },
+  task: { taskID, title, description, priority, dateStart, dateCompleted, status, category },
   toggleTaskStatus,
 }) => {
+  const [editMenu, setEditMenu] = useState(false);
+
+  const handleToggle = () => {
+    toggleTaskStatus(taskID);
+  };
+
+
   return (
-    <div className="bg-white p-4 rounded-[10px] flex items-center shadow">
+    
+    <div className="bg-white p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      {editMenu && (
+        <EditPopUp
+          onClose={() => setEditMenu(false)}
+          task={{ taskID, title, priority, description, dateStart, dateCompleted, status, category }}
+        />
+      )}
+
       {/* Priority */}
       <div
         className={`w-5 h-5 rounded-full mr-3 border-1 border-black ${getPriority(
@@ -38,31 +77,25 @@ export const TaskCard = ({
         {title}
       </div>
 
-      {/* Pencil icon (you could replace with an actual icon component) */}
-      <MdOutlineModeEditOutline
-        className={`text-[25px] cursor-pointer flex text-right`}
-      />
+      {/* Pencil icon */}
+      <div className="bg-[#cdcdcd] w-9 h-9 rounded-full shadow-black shadow-sm flex items-center justify-center">
+        <MdOutlineModeEditOutline
+          className="text-[25px] cursor-pointer flex text-right"
+          onClick={() => setEditMenu(!editMenu)}
+        />
+      </div>
+      
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
           <p className="mr-1">Start:</p>
-          {`${new Date(dateCreated)
-            .getUTCHours()
-            .toString()
-            .padStart(2, "0")}:${new Date(dateCreated)
-            .getUTCMinutes()
-            .toString()
-            .padStart(2, "0")}`}
+          
+          {formatTime(new Date(dateStart))}
         </div>
         <div className="flex flex-row">
           <p className="mr-2">End: </p>
-          {`${new Date(dateCompleted)
-            .getUTCHours()
-            .toString()
-            .padStart(2, "0")}:${new Date(dateCompleted)
-            .getUTCMinutes()
-            .toString()
-            .padStart(2, "0")}`}
+          {formatTime(new Date(dateCompleted))}
+
         </div>
       </div>
       <div className="text-sm mr-3"></div>
@@ -70,9 +103,10 @@ export const TaskCard = ({
       {/* Checkbox */}
       <input
         type="checkbox"
-        className="form-checkbox h-5 w-5 cursor-pointer"
+        className="form-checkbox w-5 h-5 cursor-pointer accent-black"
         checked={status === "completed"}
-        onChange={() => toggleTaskStatus(id)}
+        onChange={handleToggle}
+        
       />
     </div>
   );

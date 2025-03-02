@@ -8,33 +8,35 @@
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { getImageUrl } from "../../../utils/utils";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TopBar = ({ menu_open, set_menu_state }) => {
+  const { logout, user, isAuthenticated } = useAuth0();
+
   return (
-    <div className="w-full h-[95px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
-      {/* 
-          need to make responsive later. vw and vh is okay for now with desktop.
-          need to us stuff like md: and sm: later
-        */}
+    <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
       <RxHamburgerMenu
-        className="ml-[20px] text-[65px] cursor-pointer text-white "
+        className="ml-[20px] text-[50px] cursor-pointer text-white"
         onClick={() => {
           set_menu_state(!menu_open);
         }}
       />
       <img
-        className="w-[150px] -ml-[50%] "
+        className="w-[125px] mr-[50%]"
         src={getImageUrl("TalkTaskLogo1.png")}
         alt="TalkTask Logo 1, with text"
       />
-
-      {/* 
-          add settings/profile settings?
-          add clickable image?
-          add customizable image?
-        */}
-
-      <FaUserCircle className="text-white text-[70px] mr-[20px] cursor-pointer " />
+      {/* Logout button */}
+      <button 
+        className="bg-white p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
+        onClick={() => {
+          if (isAuthenticated)
+            logout();
+        }}>
+        Logout
+      </button>
+      
+      <FaUserCircle className="text-white text-[50px] mr-[20px] cursor-pointer"/>
     </div>
   );
 };

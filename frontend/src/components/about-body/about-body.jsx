@@ -7,13 +7,16 @@
 
 import { FaCheckSquare } from "react-icons/fa";
 import { getImageUrl } from "../../../utils/utils";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AboutBody = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <div className="flex flex-row ">
       {/* Logo */}
       <img
-        className=" w-[400px] h-[400px] mt-[50px] ml-[5%] md:flex hidden"
+        className=" w-[30%] h-[30%] mt-[50px] ml-[5%] md:flex hidden"
         src={getImageUrl("TalkTaskLogo2.png")}
         alt="TalkTask logo 2, no text"
       />
@@ -28,7 +31,7 @@ export const AboutBody = () => {
         </p>
 
         {/* List and buttons */}
-        <div className="flex text-[18px] font-bold md:flex-row md:h-[300px] md:justify-normal md:mt-[0px] flex-col h-[300px]">
+        <div className="flex text-[18px] font-bold md:flex-row md:h-[300px] md:justify-between md:mt-[0px] flex-col h-[300px]">
           {/* Benifits list */}
           <ul className="flex flex-col md:justify-evenly md:h-auto h-[400px] justify-evenly">
             <li className="flex flex-row">
@@ -50,11 +53,17 @@ export const AboutBody = () => {
           </ul>
 
           {/* Buttons */}
-          <div className="flex flex-col text-[28px] text-white md:justify-evenly md:ml-[40px]">
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
+          <div className="flex flex-col text-[28px] text-white md:justify-evenly md:ml-[40px] items-center mr-[0px] md:mr-[100px]">
+            <button
+              className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-black drop-shadow-lg md:mb-[0px] mb-[40px]"
+              onClick={() => loginWithRedirect({ authorizationParams: {screen_hint: "signup"} })}
+            >
               Sign Up
             </button>
-            <button className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg">
+            <button
+              className="w-[125px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg"
+              onClick={() => loginWithRedirect()}
+            >
               Log In
             </button>
           </div>

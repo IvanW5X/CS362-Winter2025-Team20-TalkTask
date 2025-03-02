@@ -1,32 +1,97 @@
-import React, { useState } from "react";
-import { IoClose } from "react-icons/io5"; // Import close icon
+/********************************************************************
+ * File Name: editpopup.jsx
+ * Date: 2/26/2025
+ * Description: React file for editting task
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+import React, { useState, useEffect } from "react";
+import { IoClose } from "react-icons/io5";
+import { useQueryClient, useMutation } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 
 export const EditPopUp = ({ onClose, task }) => {
-  // const [title, setTitle] = useState(task.title);
-  // const [description, setDescription] = useState(task.description);
-  // const [timeStart, setTimeStart] = useState(task.timeStart);
-  // const [timeEnd, setTimeEnd] = useState(task.timeEnd);
-  // const [priority, setPriority] = useState(task.priority);
+  const queryClient = useQueryClient();
 
-  //delete later
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [timeStart, setTimeStart] = useState("");
-  const [timeEnd, setTimeEnd] = useState("");
-  const [priority, setPriority] = useState("");
+  const [title, setTitle] = useState(task?.title || "");
+  const [description, setDescription] = useState(task?.description || "");
+  const [category, setCategory] = useState(task?.category || "");
+  const [timeStart, setTimeStart] = useState(task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : "");
+  const [timeEnd, setTimeEnd] = useState(task?.dateCompleted ? new Date(task.dateCompleted).toTimeString().slice(0, 5) : "");
+  const [priority, setPriority] = useState(task?.priority || 1);
+  const [status, setStatus] = useState(task?.status || "pending");
 
-  const editTask = async () => {
-    // Task submission logic
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  }, []);
+
+  const updateTaskMutation = useMutation(
+    (updatedTask) =>
+      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`, updatedTask),
+    {
+      onSuccess: () => {
+        console.log("Task updated successfully");
+        queryClient.invalidateQueries("tasks");
+        setTitle("");
+        setDescription("");
+        setCategory("");
+        setTimeStart("");
+        setTimeEnd("");
+        setPriority("");
+        setStatus("pending");
+        onClose();
+      },
+      onError: (error) => {
+        console.error("An error occurred while updating the task:", error.response?.data || error.message);
+      },
+    }
+  );
+
+  const handleSubmit = (t) => {
+    t.preventDefault();
+
+    const today = new Date().toISOString().split("T")[0];
+
+    // Format timeStart and timeEnd
+    const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
+    const formattedTimeEnd = timeEnd ? timeEnd : null;
+
+    // Create date objects for start and end times
+    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
+    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00`) : null;
+
+    // Prepare the updated task object
+    const updatedTask = {
+      title,
+      description,
+      category,
+      priority,
+      status,
+      dateStart,
+      dateCompleted,
+    };
+
+    console.log("Updating task:", updatedTask);
+    updateTaskMutation.mutate(updatedTask);
   };
+
 
   return (
     <>
-      <div className="z-[10001] absolute inset-0 flex items-center justify-center bg-black/40">
+      <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] max-w-full max-h-full bg-gray-200 rounded-3xl items-center shrink overflow-auto"
-          onSubmit={(t) => {
-            t.preventDefault();
-          }}
+          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          onSubmit={handleSubmit}
         >
           {/* Close Button */}
           <button
@@ -37,14 +102,15 @@ export const EditPopUp = ({ onClose, task }) => {
             <IoClose className="cursor-pointer" />
           </button>
 
-          {/* Title */}
+          {/* Label */}
           <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
             Edit Task
           </div>
 
-          <div className="flex flex-col items-start mt-4 w-full">
+          {/* Input Container */}
+          <div className="flex flex-col mt-4 w-[90%] max-w-[800px] mx-auto">
             {/* Input Title */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="title"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -52,37 +118,60 @@ export const EditPopUp = ({ onClose, task }) => {
                 Title
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of the task"
                 maxLength="100"
                 id="title"
+                required
+                value={title}
                 onChange={(t) => setTitle(t.target.value)}
               />
             </p>
 
             {/* Input Description */}
-            <p className="flex flex-row items-center mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="description"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl w-[150px]"
               >
                 Description
               </label>
               <textarea
-                className="border-[2px] bg-white w-[600px] m-2 p-2 resize-none"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
+                value={description}
                 onChange={(t) => setDescription(t.target.value)}
               />
             </p>
 
+            {/* Category */}
+            <p className="flex my-2">
+              <label
+                htmlFor="category"
+                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+              >
+                Category
+              </label>
+              <input
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
+                type="text"
+                placeholder="Name of a existing or new category"
+                maxLength="100"
+                id="category"
+                required
+                value={category}
+                onChange={(t) => setCategory(t.target.value)}
+              />
+            </p>
+
             {/* Time Start */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeStart"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time Start
               </label>
@@ -90,28 +179,30 @@ export const EditPopUp = ({ onClose, task }) => {
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeStart"
+                value={timeStart}
                 onChange={(t) => setTimeStart(t.target.value)}
               />
             </p>
 
             {/* Completed By */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
-                Completed By
+                Time End
               </label>
               <input
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeEnd"
+                value={timeEnd}
                 onChange={(t) => setTimeEnd(t.target.value)}
               />
             </p>
 
             {/* Priority */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex mt-2">
               <label
                 htmlFor="priority"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -121,23 +212,22 @@ export const EditPopUp = ({ onClose, task }) => {
               <select
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
-                onChange={(t) => setPriority(t.target.value)}
+                value={priority}
+                onChange={(t) => setPriority(Number(t.target.value))}
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
               </select>
             </p>
 
-            {/* Add Task Button */}
-            <p className="flex flex-row w-full text-white justify-center">
+            {/* Edit Task Button */}
+            <p className="flex -mt-1 w-full text-white justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"
                 id="submit"
-                onClick={editTask}
               >
-                {" "}
                 Edit Task
               </button>
             </p>

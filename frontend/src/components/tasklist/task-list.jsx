@@ -5,63 +5,121 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
+import { useAuth0 } from "@auth0/auth0-react";
 
-// Get example tasks from backend
-const getTasks = async () => {
-  const res = await axios.get(`${VITE_BACKEND_URL}/tasks/testing`);
-  return res.data;
-};
+export const TaskList = ({ selectedCategory }) => {
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
-export const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
+  // Function to fetch tasks from the backend
+  const getTasks = async () => {
+    if (isAuthenticated) {
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
 
-  // Get tasks using react query
-  const { isLoading, error } = useQuery("tasks", getTasks, {
-    onSuccess: (data) => setTasks(data),
-  });
+      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/read-task/${user.sub}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return res.data;
+    }
+  };
+  const queryClient = useQueryClient();
+  const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
+
+  const updateStatusMutation = useMutation(
+    async ({ taskID, newStatus }) => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.patch(
+        `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
+        {
+          status: newStatus,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      return response.data;
+    },
+    {
+      onSuccess: (_, { taskID, newStatus }) => {
+        // Optimistically update the local state
+        queryClient.setQueryData("tasks", (oldTasks) =>
+          oldTasks.map((task) =>
+            task.taskID === taskID ? { ...task, status: newStatus } : task
+          )
+        );
+      },
+      onError: (error) => {
+        console.error("Error updating task status:", error);
+        alert("Failed to update task status.");
+      },
+    }
+  );
 
   const toggleTaskStatus = (taskID) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.taskID === taskID
-          ? {
-              ...task,
-              status: task.status === "completed" ? "in-progress" : "completed",
-            }
-          : task
-      )
-    );
+    const task = tasks.find((t) => t.taskID === taskID);
+    const newStatus = task.status === "completed" ? "pending" : "completed";
+    console.log(`Toggling task ${taskID} from ${task.status} to ${newStatus}`);
+    updateStatusMutation.mutate({ taskID, newStatus });
   };
+
+  // Filter tasks based on selected category
+  const filteredTasks = selectedCategory
+    ? tasks.filter((task) => task.category === selectedCategory)
+    : tasks;
+
   if (isLoading) {
-    return <div className="ml-[5%]">Getting tasks...</div>;
+    return <div className="ml-[5%]">Loading tasks...</div>;
   }
   if (error) {
-    return <div className="ml-[5%]">An error occurred fecthing tasks.</div>;
-  }
-  return (
-    // Task list component
-    <div className="bg-[#E5E5E5] mt-[40px] w-[474px] rounded-[10px]">
-      {/* Title and count*/}
-      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-5 py-3 rounded-[10px] shadow">
-        <h2>Tasks</h2>
-        <span className="text-[22px]">{tasks.length}</span>
+    return (
+      <div className="ml-[5%]">
+        An error occurred while fetching tasks. {error.message}
       </div>
-      {/* Tasks */}
-      <div className="mx-5 mb-5 space-y-4">
-        {tasks.map((task, taskID) => {
-          return (
+    );
+  }
+
+  const sortedTasks = [...filteredTasks].sort(
+    (a, b) => a.priority - b.priority
+  );
+
+  return (
+    <div className="bg-[#cdcdcd] w-[70%] rounded-[10px] h-min min-w-[400px]">
+      {/* Task Header */}
+      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+        <h2>{selectedCategory || "All Tasks"}</h2>
+        <span className="text-[22px]">{filteredTasks?.length}</span>
+      </div>
+
+      {/* Task List */}
+      <div className="mx-5 mb-5 space-y-[10px]">
+        {filteredTasks?.length === 0 ? (
+          <div className="flex flex-col items-center">
+            <p>No tasks found in this category.</p>
+          </div>
+        ) : (
+          sortedTasks.map((task) => (
             <TaskCard
-              key={taskID}
+              key={task.taskID}
               task={task}
               toggleTaskStatus={toggleTaskStatus}
             />
-          );
-        })}
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,25 +1,117 @@
-import React, { useState } from "react";
-import { IoClose } from "react-icons/io5"; // Import close icon
+/********************************************************************
+ * File Name: addpopup.jsx
+ * Date: 2/26/2025
+ * Description: React file for adding task
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+import React, { useState, useEffect } from "react";
+import { IoClose } from "react-icons/io5";
+import { useQueryClient, useMutation } from "react-query";
+import axios from "axios";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const AddPopUp = ({ onClose }) => {
+  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const queryClient = useQueryClient();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState(3);
+  const [status, setStatus] = useState("pending");
 
-  const addTask = async () => {
-    // Task submission logic
+  //stop scrolling when pop up
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  }, []);
+
+  const createTaskMutation = useMutation(
+    async (newTask) => {
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const accessToken = await getAccessTokenSilently({
+        audience: AUTH0_AUDIENCE,
+      });
+      const response = await axios.post(
+        `${VITE_BACKEND_URL}/tasks/create-task`,
+        newTask,
+        { headers: {Authorization: `Bearer ${accessToken}`}},
+      );
+      return response.data;
+    },
+    {
+      onSuccess: () => {
+        console.log("Task created successfully");
+        queryClient.invalidateQueries("tasks");
+        setTitle("");
+        setDescription("");
+        setCategory("");
+        setTimeStart("");
+        setTimeEnd("");
+        setPriority("");
+        setStatus("pending");
+        onClose();
+      },
+      onError: (error) => {
+        console.error(
+          "An error occurred while creating the task:",
+          error.response?.data || error.message
+        );
+      },
+    }
+  );
+  const handleSubmit = (t) => {
+    t.preventDefault();
+
+    const today = new Date().toISOString().split("T")[0];
+
+    // Ensure timeStart is in the correct format (HH:MM)
+    const formattedTimeStart = timeStart
+      ? timeStart
+      : new Date().toTimeString().slice(0, 5);
+    const formattedTimeEnd = timeEnd ? timeEnd : null;
+
+    // Remove the 'Z' to treat the time as local time
+    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
+    const dateCompleted = formattedTimeEnd
+      ? new Date(`${today}T${formattedTimeEnd}:00`)
+      : null;
+
+    const newTask = {
+      taskID: Date.now(),
+      title,
+      description,
+      category,
+      priority,
+      status,
+      dateStart,
+      dateCompleted,
+      userId: user.sub,     // Use Auth0 user ID
+    };
+    console.log("Creating task:", newTask);
+    createTaskMutation.mutate(newTask);
   };
 
   return (
     <>
-      <div className="z-[10001] absolute inset-0 flex items-center justify-center bg-black/40">
+      <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] max-w-full max-h-full bg-gray-200 rounded-3xl items-center shrink overflow-auto"
-          onSubmit={(t) => {
-            t.preventDefault();
-          }}
+          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          onSubmit={handleSubmit}
         >
           {/* Close Button */}
           <button
@@ -30,14 +122,15 @@ export const AddPopUp = ({ onClose }) => {
             <IoClose className="cursor-pointer" />
           </button>
 
-          {/* Title */}
+          {/* label */}
           <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
             Add Task
           </div>
 
-          <div className="flex flex-col items-start mt-4 w-full">
+          {/* Input Container */}
+          <div className="flex flex-col mt-4 w-[90%] max-w-[800px] mx-auto">
             {/* Input Title */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="title"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -45,25 +138,26 @@ export const AddPopUp = ({ onClose }) => {
                 Title
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] m-2 p-2"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of the task"
                 maxLength="100"
                 id="title"
+                required
                 onChange={(t) => setTitle(t.target.value)}
               />
             </p>
 
             {/* Input Description */}
-            <p className="flex flex-row items-center mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="description"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl w-[150px]"
               >
                 Description
               </label>
               <textarea
-                className="border-[2px] bg-white w-[600px] m-2 p-2 resize-none"
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
@@ -71,11 +165,30 @@ export const AddPopUp = ({ onClose }) => {
               />
             </p>
 
+            {/* Category */}
+            <p className="flex my-2">
+              <label
+                htmlFor="category"
+                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+              >
+                Category
+              </label>
+              <input
+                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
+                type="text"
+                placeholder="Name of a existing or new category"
+                maxLength="100"
+                id="category"
+                required
+                onChange={(t) => setCategory(t.target.value)}
+              />
+            </p>
+
             {/* Time Start */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeStart"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time Start
               </label>
@@ -83,28 +196,30 @@ export const AddPopUp = ({ onClose }) => {
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeStart"
+                value={timeStart}
                 onChange={(t) => setTimeStart(t.target.value)}
               />
             </p>
 
             {/* Completed By */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
               >
-                Completed By
+                Time End
               </label>
               <input
                 className="border-[2px] bg-white w-[130px] m-2 p-2"
                 type="time"
                 id="timeEnd"
+                value={timeEnd}
                 onChange={(t) => setTimeEnd(t.target.value)}
               />
             </p>
 
             {/* Priority */}
-            <p className="flex flex-row mx-12 my-4">
+            <p className="flex mt-2">
               <label
                 htmlFor="priority"
                 className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
@@ -114,23 +229,24 @@ export const AddPopUp = ({ onClose }) => {
               <select
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
-                onChange={(t) => setPriority(t.target.value)}
+                value={priority}
+                onChange={(t) => {
+                  setPriority(Number(t.target.value));
+                }}
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
               </select>
             </p>
 
             {/* Add Task Button */}
-            <p className="flex flex-row w-full text-white justify-center">
+            <p className="flex -mt-1 w-full text-white justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"
                 id="submit"
-                onClick={addTask}
               >
-                {" "}
                 Add Task
               </button>
             </p>

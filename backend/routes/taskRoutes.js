@@ -9,25 +9,23 @@ import express from "express";
 import {
   createTask,
   getTasksByUser,
-  updateTaskStatus,
+  updateTask,
   deleteTask,
+  testReadDB,
+  handleCommand
 } from "../controller/taskController.js";
-import mockTasks from "../tests/mock-data/mockTasks.json" with { type: "json" };
 
 const router = express.Router();
 
 // Setup routes
-router.post("/create-task", createTask);
-router.get("/read-task/:userId", getTasksByUser);
-router.patch("/update-task/:taskId", updateTaskStatus);
-router.delete("/delete-task/:taskId", deleteTask);
+router.post("/create-task", createTask); // Create a new task
+router.post("/voice-command", handleCommand);
 
-// test route
-router.get("/testing", (req, res) => {
-  if (!mockTasks)
-    res.status(500).send({message: "Couldn't send mock tasks"});
-  else
-    res.status(200).send(mockTasks);
-});
+router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
+router.patch("/update-task/:taskID", updateTask); // Update a task
+router.delete("/delete", deleteTask); // Delete all completed tasks
+
+router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task
+router.get("/test-read-db", testReadDB); // Test route to fetch all tasks
 
 export default router;
