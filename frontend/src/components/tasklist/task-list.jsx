@@ -100,7 +100,7 @@ export const TaskList = ({ selectedCategory }) => {
   return (
     <div className="bg-[#cdcdcd] w-[70%] rounded-[10px] h-min min-w-[400px]">
       {/* Task Header */}
-      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-[#F4F3F2] px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2>{selectedCategory || "All Tasks"}</h2>
         <span className="text-[22px]">{filteredTasks?.length}</span>
       </div>
@@ -108,9 +108,9 @@ export const TaskList = ({ selectedCategory }) => {
       {/* Task List */}
       <div className="mx-5 mb-5 space-y-[10px]">
         {filteredTasks?.length === 0 ? (
-          <div className="flex flex-col items-center">
-            <p>No tasks found in this category.</p>
-          </div>
+            <div className="flex flex-col items-center">
+              <p>No tasks found in this category.</p>
+            </div>
         ) : (
           sortedTasks.map((task) => (
             <TaskCard

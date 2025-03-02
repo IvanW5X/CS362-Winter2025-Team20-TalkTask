@@ -16,7 +16,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
       <RxHamburgerMenu
-        className="ml-[20px] text-[50px] cursor-pointer text-white"
+        className="ml-[20px] text-[50px] cursor-pointer text-[#F4F3F2]"
         onClick={() => {
           set_menu_state(!menu_open);
         }}
@@ -28,7 +28,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
       />
       {/* Logout button */}
       <button 
-        className="bg-white p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
+        className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
         onClick={() => {
           if (isAuthenticated)
             logout();
@@ -36,7 +36,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         Logout
       </button>
       
-      <FaUserCircle className="text-white text-[50px] mr-[20px] cursor-pointer"/>
+      <FaUserCircle className="text-[#F4F3F2] text-[50px] mr-[20px] cursor-pointer"/>
     </div>
   );
 };

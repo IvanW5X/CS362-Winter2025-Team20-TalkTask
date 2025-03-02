@@ -10,6 +10,7 @@ import {
   createTask,
   getTasksByUser,
   updateTask,
+  deleteAllTask,
   deleteTask,
   testReadDB,
   handleCommand
@@ -23,7 +24,7 @@ router.post("/voice-command", handleCommand);
 
 router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
 router.patch("/update-task/:taskID", updateTask); // Update a task
-router.delete("/delete", deleteTask); // Delete all completed tasks
+router.delete("/delete", deleteAllTask); // Delete all completed tasks
 
 router.delete("/delete-task/:taskID", deleteTask); // Delete a specific task
 router.get("/test-read-db", testReadDB); // Test route to fetch all tasks
