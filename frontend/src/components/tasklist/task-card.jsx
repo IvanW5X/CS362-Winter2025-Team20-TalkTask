@@ -45,7 +45,7 @@ const getPriority = (priority) => {
 };
 
 export const TaskCard = ({
-  task: { taskID, title, priority, dateStart, dateCompleted, status, category },
+  task: { taskID, title, description, priority, dateStart, dateCompleted, status, category },
   toggleTaskStatus,
 }) => {
   const [editMenu, setEditMenu] = useState(false);
@@ -58,7 +58,12 @@ export const TaskCard = ({
   return (
     
     <div className="bg-white p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
-      {editMenu && <EditPopUp onClose={() => setEditMenu(false)} />}
+      {editMenu && (
+        <EditPopUp
+          onClose={() => setEditMenu(false)}
+          task={{ taskID, title, priority, description, dateStart, dateCompleted, status, category }}
+        />
+      )}
 
       {/* Priority */}
       <div

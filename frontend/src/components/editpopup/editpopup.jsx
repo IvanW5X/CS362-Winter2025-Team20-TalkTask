@@ -14,13 +14,13 @@ import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
 
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
-  const [category, setCategory] = useState(task.category);
-  const [timeStart, setTimeStart] = useState(task.timeStart);
-  const [timeEnd, setTimeEnd] = useState(task.timeEnd);
-  const [priority, setPriority] = useState(task.priority);
-  const [status, setStatus] = useState(task.status);
+  const [title, setTitle] = useState(task?.title || "");
+  const [description, setDescription] = useState(task?.description || "");
+  const [category, setCategory] = useState(task?.category || "");
+  const [timeStart, setTimeStart] = useState(task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : "");
+  const [timeEnd, setTimeEnd] = useState(task?.dateCompleted ? new Date(task.dateCompleted).toTimeString().slice(0, 5) : "");
+  const [priority, setPriority] = useState(task?.priority || 1);
+  const [status, setStatus] = useState(task?.status || "pending");
 
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export const EditPopUp = ({ onClose, task }) => {
             <IoClose className="cursor-pointer" />
           </button>
 
-          {/* label */}
+          {/* Label */}
           <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
             Edit Task
           </div>
@@ -124,6 +124,7 @@ export const EditPopUp = ({ onClose, task }) => {
                 maxLength="100"
                 id="title"
                 required
+                value={title}
                 onChange={(t) => setTitle(t.target.value)}
               />
             </p>
@@ -141,6 +142,7 @@ export const EditPopUp = ({ onClose, task }) => {
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
+                value={description}
                 onChange={(t) => setDescription(t.target.value)}
               />
             </p>
@@ -160,6 +162,7 @@ export const EditPopUp = ({ onClose, task }) => {
                 maxLength="100"
                 id="category"
                 required
+                value={category}
                 onChange={(t) => setCategory(t.target.value)}
               />
             </p>
@@ -210,10 +213,7 @@ export const EditPopUp = ({ onClose, task }) => {
                 id="priority"
                 className="border-[2px] bg-white w-[50px] m-2 p-2"
                 value={priority}
-                onChange={(t) => {
-                  setPriority(Number(t.target.value));
-                }}
-                
+                onChange={(t) => setPriority(Number(t.target.value))}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -228,7 +228,6 @@ export const EditPopUp = ({ onClose, task }) => {
                 type="submit"
                 id="submit"
               >
-        
                 Edit Task
               </button>
             </p>
