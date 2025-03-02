@@ -123,7 +123,7 @@ export const AddPopUp = ({ onClose }) => {
           </button>
 
           {/* label */}
-          <div className="bg-white mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
+          <div className="bg-[#F4F3F2] mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
             Add Task
           </div>
 
@@ -133,12 +133,12 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="title"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Title
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
+                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of the task"
                 maxLength="100"
@@ -152,12 +152,12 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="description"
-                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl w-[150px]"
+                className="flex items-center justify-center bg-[#F4F3F2] m-3 p-2 rounded-2xl w-[150px]"
               >
                 Description
               </label>
               <textarea
-                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2 resize-none"
+                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
@@ -169,12 +169,12 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="category"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Category
               </label>
               <input
-                className="border-[2px] bg-white w-[600px] min-w-[200px] m-2 p-2"
+                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2"
                 type="text"
                 placeholder="Name of a existing or new category"
                 maxLength="100"
@@ -188,12 +188,12 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="timeStart"
-                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time Start
               </label>
               <input
-                className="border-[2px] bg-white w-[130px] m-2 p-2"
+                className="border-[2px] bg-[#F4F3F2] w-[130px] m-2 p-2"
                 type="time"
                 id="timeStart"
                 value={timeStart}
@@ -205,12 +205,12 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex my-2">
               <label
                 htmlFor="timeEnd"
-                className="flex items-center justify-center bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="flex items-center justify-center bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Time End
               </label>
               <input
-                className="border-[2px] bg-white w-[130px] m-2 p-2"
+                className="border-[2px] bg-[#F4F3F2] w-[130px] m-2 p-2"
                 type="time"
                 id="timeEnd"
                 value={timeEnd}
@@ -222,13 +222,13 @@ export const AddPopUp = ({ onClose }) => {
             <p className="flex mt-2">
               <label
                 htmlFor="priority"
-                className="bg-white m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
               >
                 Priority
               </label>
               <select
                 id="priority"
-                className="border-[2px] bg-white w-[50px] m-2 p-2"
+                className="border-[2px] bg-[#F4F3F2] w-[50px] m-2 p-2"
                 value={priority}
                 onChange={(t) => {
                   setPriority(Number(t.target.value));
@@ -241,7 +241,7 @@ export const AddPopUp = ({ onClose }) => {
             </p>
 
             {/* Add Task Button */}
-            <p className="flex -mt-1 w-full text-white justify-center">
+            <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"

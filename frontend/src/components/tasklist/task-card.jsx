@@ -8,10 +8,6 @@
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { EditPopUp } from "../editpopup/editpopup";
 import { useState } from "react";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables";
-
 
 const formatTime = (date) => {
   
@@ -57,7 +53,7 @@ export const TaskCard = ({
 
   return (
     
-    <div className="bg-white p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+    <div className="bg-[#F4F3F2] p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
       {editMenu && (
         <EditPopUp
           onClose={() => setEditMenu(false)}
@@ -103,7 +99,7 @@ export const TaskCard = ({
       {/* Checkbox */}
       <input
         type="checkbox"
-        className="form-checkbox w-5 h-5 cursor-pointer accent-black"
+        className="form-checkbox color-[#F4F3F2] w-5 h-5 cursor-pointer accent-black"
         checked={status === "completed"}
         onChange={handleToggle}
         

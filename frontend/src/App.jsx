@@ -25,7 +25,7 @@ function App() {
   // Something went wrong, return generic error UI
   if (error) {
     return (
-      <div className="bg-white text-red-500 text-lg">
+      <div className="bg-[[#F4F3F2] text-red-500 text-lg">
         Something went wrong: {error.message}
       </div>
     );
