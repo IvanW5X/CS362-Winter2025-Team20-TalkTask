@@ -15,10 +15,6 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
 
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
-      {/* 
-          need to make responsive later. vw and vh is okay for now with desktop.
-          need to us stuff like md: and sm: later
-        */}
       <RxHamburgerMenu
         className="ml-[20px] text-[50px] cursor-pointer text-white"
         onClick={() => {
@@ -36,9 +32,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         className="bg-white p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
         onClick={() => {
           if (isAuthenticated)
-            logout()
-          else
-            console.log("Error, not authenticated")
+            logout();
         }}>
         Logout
       </button>
