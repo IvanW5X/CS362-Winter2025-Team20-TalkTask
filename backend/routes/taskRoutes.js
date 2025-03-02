@@ -25,8 +25,25 @@ const router = express.Router();
 // Setup routes
 router.post("/create-task", createTask);
 router.get("/read-task/:userId", getTasksByUser);
-router.patch("/update-task/:taskId", updateTaskStatus);
-router.delete("/delete-task/:taskId", deleteTask);
+
+router.patch("/update-task/:taskID", async (req, res) => {
+  const { taskID } = req.params;
+  const { status } = req.body;
+  console.log(`Received request to update task ${taskID} with status: ${status}`);
+  try {
+    const updatedTask = await updateTaskStatus(taskID, status);
+    if (updatedTask) {
+      res.status(200).json(updatedTask);
+    } else {
+      res.status(404).json({ message: "Task not found" });
+    }
+  } catch (error) {
+    console.error("Error in PATCH /update-task:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
+router.delete("/delete-task/:taskID", deleteTask);
 
 
 router.get("/test-read-db", async (req, res) => {

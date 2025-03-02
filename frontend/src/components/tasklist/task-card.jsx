@@ -46,28 +46,17 @@ const getPriority = (priority) => {
 
 export const TaskCard = ({
   task: { taskID, title, priority, dateStart, dateCompleted, status, category },
+  toggleTaskStatus,
 }) => {
-  const queryClient = useQueryClient();
-
-  const updateTaskMutation = useMutation(
-    (newStatus) =>
-      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {status: newStatus}),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("tasks");
-      },
-    }
-  );
-
-  const handleToggle = () => {
-    const newStatus = status === "completed" ? "pending" : "completed";
-    console.log(`Toggling task ${taskID} to ${newStatus}`);
-    updateTaskMutation.mutate(newStatus);
-  }
-  
   const [editMenu, setEditMenu] = useState(false);
 
+  const handleToggle = () => {
+    toggleTaskStatus(taskID);
+  };
+
+
   return (
+    
     <div className="bg-white p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
       {editMenu && <EditPopUp onClose={() => setEditMenu(false)} />}
 
@@ -112,6 +101,7 @@ export const TaskCard = ({
         className="form-checkbox w-5 h-5 cursor-pointer accent-black"
         checked={status === "completed"}
         onChange={handleToggle}
+        
       />
     </div>
   );

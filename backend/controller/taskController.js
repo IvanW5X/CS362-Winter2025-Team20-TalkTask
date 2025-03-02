@@ -32,14 +32,35 @@ export const getTasksByUser = async (userId) => {
 };
 
 //  UPDATE Task Status
-export const updateTaskStatus = async (taskId, status) => {
+// export const updateTaskStatus = async (taskId, status) => {
+//   try {
+//     return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+//   } catch (error) {
+//     logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
+//     return null;
+//   }
+// };
+
+export const updateTaskStatus = async (taskID, status) => {
   try {
-    return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
+    console.log(`Updating task ${taskID} to status: ${status}`);
+    const updatedTask = await Task.findOneAndUpdate(
+      { taskID: taskID },
+      { status },
+      { new: true }
+    );
+    if (!updatedTask) {
+      console.error(`Task with ID ${taskID} not found`);
+      return null;
+    }
+    console.log("Updated task:", updatedTask);
+    return updatedTask;
   } catch (error) {
-    logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
-    return null;
+    console.error(`Error updating task status: ${error.message}`);
+    throw error;
   }
 };
+
 
 //  DELETE a Task
 export const deleteTask = async (taskId) => {

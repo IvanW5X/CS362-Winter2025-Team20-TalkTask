@@ -24,26 +24,28 @@ export const TaskList = ({ selectedCategory }) => {
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
   const updateStatusMutation = useMutation(
-    (taskID) => {
-      const task = tasks.find((t) => t.taskID === taskID);
-      const newStatus = task.status === "completed" ? "pending" : "completed";
-      return axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, {status: newStatus});
-    },
+    ({ taskID, newStatus }) =>
+      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${taskID}`, { status: newStatus }),
     {
-      onSuccess: (_, taskID) => {
-        queryClient.setQueryData("tasks", (oldTasks) => 
-          oldTasks.map((task) => 
-            task.taskID === taskID
-              ? { ...task, status: task.status === "completed" ? "in-progress" : "completed" }
-              : task
+      onSuccess: (_, { taskID, newStatus }) => {
+        // Update the local state optimistically
+        queryClient.setQueryData("tasks", (oldTasks) =>
+          oldTasks.map((task) =>
+            task.taskID === taskID ? { ...task, status: newStatus } : task
           )
-        )
-      }
+        );
+      },
+      onError: (error) => {
+        console.error("Error updating task status:", error);
+      },
     }
-  )
+  );
   
   const toggleTaskStatus = (taskID) => {
-    updateStatusMutation.mutate(taskID);
+    const task = tasks.find((t) => t.taskID === taskID);
+    const newStatus = task.status === "completed" ? "pending" : "completed";
+    console.log(`Toggling task ${taskID} from ${task.status} to ${newStatus}`);
+    updateStatusMutation.mutate({ taskID, newStatus });
   };
 
   // Filter tasks based on selected category
