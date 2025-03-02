@@ -9,70 +9,56 @@
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 
+
 // CREATE a Task
-export const createTask = async (request, reponse) => {
+export const createTask = async (req, res) => {
   try {
-    const newTask = new Task(request.body);
+    const newTask = new Task(req.body);
     await newTask.save();
-    reponse.status(201).json(newTask);
+    res.status(201).json(newTask);
   } catch (error) {
-    logger.error(`createTask - UserID: ${request.body.userId} - Error: ${error.message}`);
-    reponse.status(500).json({ error: error.message });
+    logger.error(`createTask - UserID: ${req.body.userId} - Error: ${error.message}`);
+    res.status(500).json({ error: error.message });
   }
 };
 
-//  READ All Tasks (for a specific user)
-export const getTasksByUser = async (userId) => {
+
+
+// READ All Tasks (for a specific user)
+export const getTasksByUser = async (req, res) => {
+  const { userId } = req.params;
   try {
-    return await Task.find({ userId });
+    const tasks = await Task.find({ userId });
+    res.status(200).json(tasks);
   } catch (error) {
     logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
-    return [];
+    res.status(500).json({ error: error.message });
   }
 };
 
-//  UPDATE Task Status
-// export const updateTaskStatus = async (taskId, status) => {
-//   try {
-//     return await Task.findByIdAndUpdate(taskId, { status }, { new: true });
-//   } catch (error) {
-//     logger.error(`updateTaskStatus - TaskID: ${taskId} - Error: ${error.message}`);
-//     return null;
-//   }
-// };
-
-export const updateTaskStatus = async (taskID, status) => {
+// UPDATE Task
+export const updateTask = async (req, res) => {
+  const { taskID } = req.params;
+  const { title, description, category, priority, status, dateStart, dateCompleted } = req.body;
   try {
-    console.log(`Updating task ${taskID} to status: ${status}`);
     const updatedTask = await Task.findOneAndUpdate(
       { taskID: taskID },
-      { status },
+      { title, description, category, priority, status, dateStart, dateCompleted },
       { new: true }
     );
-    if (!updatedTask) {
-      console.error(`Task with ID ${taskID} not found`);
-      return null;
+    if (updatedTask) {
+      res.status(200).json(updatedTask);
+    } else {
+      res.status(404).json({ message: "Task not found" });
     }
-    console.log("Updated task:", updatedTask);
-    return updatedTask;
   } catch (error) {
-    console.error(`Error updating task status: ${error.message}`);
-    throw error;
+    console.error("Error updating task:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
 
 
-//  DELETE a Task
-// export const deleteTask = async (taskId) => {
-//   try {
-//     return await Task.findByIdAndDelete(taskId);
-//   } catch (error) {
-//     logger.error(`deleteTask - TaskID: ${taskId} - Error: ${error.message}`);
-//     return null;
-//   }
-// };
-
-
+// DELETE All Completed Tasks
 export const deleteTask = async (req, res) => {
   try {
     const result = await Task.deleteMany({ status: "completed" });
@@ -86,3 +72,30 @@ export const deleteTask = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
+
+export const testReadDB = async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.status(200).send(tasks);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+// // DELETE a Specific Task
+// export const deleteTask = async (req, res) => {
+//   const { taskID } = req.params;
+//   try {
+//     const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
+//     if (deletedTask) {
+//       res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
+//     } else {
+//       res.status(404).json({ message: "Task not found" });
+//     }
+//   } catch (error) {
+//     console.error("Error deleting task:", error);
+//     res.status(500).json({ message: "Internal Server Error", error: error.message });
+//   }
+// };
+
+// // Test Route: Fetch All Tasks from DB

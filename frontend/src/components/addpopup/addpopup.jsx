@@ -41,16 +41,16 @@ export const AddPopUp = ({ onClose }) => {
     (newTask) => axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask),
     {
         onSuccess: () => {
-            console.log('Task created successfully');
-            queryClient.invalidateQueries('tasks');
-            setTitle("");
-            setDescription("");
-            setCategory("");
-            setTimeStart("");
-            setTimeEnd("");
-            setPriority("");
-            setStatus("pending");
-            onClose();
+          console.log('Task created successfully');
+          queryClient.invalidateQueries('tasks');
+          setTitle("");
+          setDescription("");
+          setCategory("");
+          setTimeStart("");
+          setTimeEnd("");
+          setPriority("");
+          setStatus("pending");
+          onClose();
         },
         onError: (error) => {
             console.error('An error occurred while creating the task:', error.response?.data || error.message);
