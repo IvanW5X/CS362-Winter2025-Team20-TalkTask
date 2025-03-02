@@ -13,7 +13,6 @@ import {
   deleteTask,
   testReadDB,
 } from "../controller/taskController.js";
-import { Task } from "../db/models/taskModel.js";
 
 const router = express.Router();
 
