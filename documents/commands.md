@@ -1,5 +1,7 @@
 # Voice Commands
 
+---
+
 ## Basic Task Management
 
 - **"Add [task name] to my list"**  
@@ -70,6 +72,7 @@
   *Provides a count of incomplete tasks.*
 
 - **"Undo my last action"**
+  
   *Reverses the most recent action (e.g., deleting a task).*
 
 ---

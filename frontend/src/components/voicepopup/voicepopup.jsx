@@ -198,7 +198,7 @@ export const VoicePopUp = ({ onClose }) => {
                 </button>
 
                 {/* Popup Title */}
-                <div className="bg-white mt-4 p-4 w-[80%] text-[28px] font-bold text-center rounded-2xl">
+                <div className="bg-[#F4F3F2] mt-4 p-4 w-[80%] text-[28px] font-bold text-center rounded-2xl">
                     Add Task via Voice
                 </div>
 
@@ -207,7 +207,7 @@ export const VoicePopUp = ({ onClose }) => {
                     <button
                         type="button"
                         onClick={startVoiceRecognition}
-                        className="w-[200px] h-[50px] bg-[#37E03A] text-white rounded-[10px] mb-4"
+                        className="w-[200px] h-[50px] bg-[#37E03A] text-[#F4F3F2] rounded-[10px] mb-4"
                     >
                         {listening ? "Listening..." : "Start Voice Command"}
                     </button>
@@ -221,7 +221,7 @@ export const VoicePopUp = ({ onClose }) => {
                 {/* Create Task Button */}
                 <button
                 type="submit"
-                className="w-[150px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg mt-4 text-white font-bold"
+                className="w-[150px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-lg mt-4 text-[#F4F3F2] font-bold"
                 >
                     Process Command
                 </button>

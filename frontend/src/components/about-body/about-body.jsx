@@ -53,7 +53,7 @@ export const AboutBody = () => {
           </ul>
 
           {/* Buttons */}
-          <div className="flex flex-col text-[28px] text-white md:justify-evenly md:ml-[40px] items-center mr-[0px] md:mr-[100px]">
+          <div className="flex flex-col text-[28px] text-[#F4F3F2] md:justify-evenly md:ml-[40px] items-center mr-[0px] md:mr-[100px]">
             <button
               className="w-[161px] h-[47px] bg-[#37E03A] rounded-[10px] cursor-pointer border-[2px] border-black drop-shadow-black drop-shadow-lg md:mb-[0px] mb-[40px]"
               onClick={() => loginWithRedirect({ authorizationParams: {screen_hint: "signup"} })}

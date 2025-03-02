@@ -19,7 +19,7 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
 
   return (
     <aside
-      className={`flex flex-col bg-white shadow-xl w-[200px] min-w-[150px]
+      className={`flex flex-col bg-[#F4F3F2] shadow-xl w-[200px] min-w-[150px]
                   mb-[0%] pb-[0%] z-[2]
                   ${menu_open ? "flex-visible" : "flex hidden"}`}
     >
@@ -36,8 +36,8 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
       <ul className="flex-1 bg-gray-200 font-semibold">
         {/* All Tasks Button */}
         <li
-          className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
-                     ${selectedCategory === null ? "font-bold underline" : ""}`}
+          className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-[#F4F3F2] text-[16px] 
+                      ${selectedCategory === null ? "font-bold underline" : ""}`}
           onClick={() => setSelectedCategory(null)}
         >
           All
@@ -46,9 +46,9 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-white text-[16px]
-                        accent-black
-                       ${selectedCategory === category ? "font-bold underline" : ""}`}
+            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-[#F4F3F2] text-[16px]
+              accent-black
+              ${selectedCategory === category ? "font-bold underline" : ""}`}
             onClick={() => setSelectedCategory(category)}
           >
             {category}

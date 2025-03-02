@@ -48,7 +48,7 @@ export const TasksManagement = () => {
       
 
       {/* Title */}
-      <div className="flex text-center m-5 text-[20px] bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      <div className="flex text-center m-5 text-[20px] bg-[#F4F3F2] px-5 py-3 rounded-2xl shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2 className="w-full text-center">Task Managment</h2>
       </div>
 
@@ -56,7 +56,7 @@ export const TasksManagement = () => {
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         {/* add task */}
         <div
-          className={`flex mt-[0] cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
@@ -65,7 +65,7 @@ export const TasksManagement = () => {
 
         {/* clear completed tasks */}
         <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleDeleteTasks}
         >
           Clear Completed Tasks
@@ -74,7 +74,7 @@ export const TasksManagement = () => {
 
         {/* voice commands */}
         <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
@@ -82,7 +82,7 @@ export const TasksManagement = () => {
         </div>
 
         <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
         >
           Suggest a Task
           <IoStar className="absolute right-3" />
@@ -93,7 +93,7 @@ export const TasksManagement = () => {
           className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={() => setVoiceMenuV(!voiceMenuV)}
         >
-          <FaMicrophone className="text-[30px] text-white" />
+          <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
         </div>
       </div>
     </div>

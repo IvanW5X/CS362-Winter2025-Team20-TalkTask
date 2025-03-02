@@ -4,7 +4,7 @@
  * Description: CSS file for main website display
  * Author(s): CS 362-Team 20
  ********************************************************************/
- 
+
 @import "tailwindcss";
 
 @theme {
@@ -18,4 +18,13 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }
