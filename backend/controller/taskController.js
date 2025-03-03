@@ -26,7 +26,7 @@ export const createTask = async (req, res) => {
 export const getTasksByUser = async (req, res) => {
   const { userId } = req.params;
   try {
-    const tasks = await Task.find({ userId });
+    const tasks = await Task.find();
     res.status(200).json(tasks);
   } catch (error) {
     logger.error(`getTasksByUser - Error: ${error.message}`);
@@ -37,11 +37,27 @@ export const getTasksByUser = async (req, res) => {
 // UPDATE Task
 export const updateTask = async (req, res) => {
   const { taskID } = req.params;
-  const { title, description, category, priority, status, dateStart, dateCompleted } = req.body;
+  const {
+    title,
+    description,
+    category,
+    priority,
+    status,
+    dateStart,
+    dateCompleted,
+  } = req.body;
   try {
     const updatedTask = await Task.findOneAndUpdate(
       { taskID: taskID },
-      { title, description, category, priority, status, dateStart, dateCompleted },
+      {
+        title,
+        description,
+        category,
+        priority,
+        status,
+        dateStart,
+        dateCompleted,
+      },
       { new: true }
     );
     if (updatedTask) {
@@ -51,7 +67,9 @@ export const updateTask = async (req, res) => {
     }
   } catch (error) {
     console.error("Error updating task:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
 
@@ -60,13 +78,16 @@ export const deleteAllTask = async (req, res) => {
   try {
     const result = await Task.deleteMany({ status: "completed" });
     if (result.deletedCount > 0) {
-      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
+      res
+        .status(200)
+        .json({ message: `${result.deletedCount} completed tasks deleted` });
     } else {
       res.status(404).json({ message: "No completed tasks found" });
     }
   } catch (error) {
     console.error("Error deleting completed tasks:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
-
