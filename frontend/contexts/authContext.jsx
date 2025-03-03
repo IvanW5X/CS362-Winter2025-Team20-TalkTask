@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
           setAuthInfo({
             isAuthenticated: false,
             user: null,
-            accessToken: accessToken,
+            accessToken: null,
           });
         }
       } else {
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         setAuthInfo({
           isAuthenticated: false,
           user: null,
-          accessToken: accessToken,
+          accessToken: null,
         });
       }
     };
