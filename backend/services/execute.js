@@ -7,18 +7,30 @@
 import { Task } from "../db/models/taskModel.js";
 
 
-export const execCommand = async (command) => {
+export const execCommand = async (command, userId) => {
     if (!command) {
       throw new Error("No command provided.");
     }
-  
     try {
       switch (command.type) {
         //add task
         case "add":
+        const newTask = new Task({
+            taskID: Date.now(), // Generate a unique taskID
+            title: command.task,
+            description: command.description || "", // Optional description
+            category: command.category || "general", // Default category
+            startTime: command.startTime || null, // Optional start time
+            endTime: command.endTime || null, // Optional end time
+            priority: command.priority || 1, // Default priority (1-3)
+            status: "pending", // Default status
+            userId: userId, // Add the userId from the authenticated user
+        });
+        await newTask.save();
+        return { success: true, message: "Task added successfully", task: newTask };
         
-        break;
-        
+
+
         //remove task
         case "removeAll":
         const result = await Task.deleteMany({ status: "completed" });
@@ -40,7 +52,7 @@ export const execCommand = async (command) => {
             throw new Error("Task not found.");
           }
           return { success: true, message: "execute.js marked function", task: markedTask };
-          break;
+
         default:
           throw new Error("Unknown command type.");
       }

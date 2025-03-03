@@ -20,6 +20,7 @@ import axios from "axios";
 import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 import { startListening, stopListening} from "../../services/webSpeech.js";
 
 
@@ -29,7 +30,7 @@ export const TasksManagement = () => {
 
 
   const queryClient = useQueryClient();
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const {user, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const deleteCompletedTasksMutation = useMutation(
     async () => {
@@ -89,6 +90,7 @@ export const TasksManagement = () => {
   };
 
 
+
   const sendBackend = async (transcript) => {
     try {
       if (!isAuthenticated) {
@@ -98,7 +100,7 @@ export const TasksManagement = () => {
       const accessToken = await getAccessTokenSilently({
         audience: AUTH0_AUDIENCE,
       });
-      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command`,
+      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command/${user.sub}`,
         { 
           transcript //send to backend
         },
