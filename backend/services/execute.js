@@ -7,6 +7,6 @@
 import { Task } from "../db/models/taskModel.js";
 
 
-export const execCommand = ()=>{
+export const execCommand = async(command)=>{
 
 }

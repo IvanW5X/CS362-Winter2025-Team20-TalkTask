@@ -34,18 +34,18 @@ export const handleCommand = async (req, res) => {
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  const command = parseCommand(transcript); //Parse the transcript into a command
-  if (!command) {
-    return res.status(400).json({ error: "Invalid command" });
-  }
+  // const command = parseCommand(transcript); //Parse the transcript into a command
+  // if (!command) {
+  //   return res.status(400).json({ error: "Invalid command" });
+  // }
 
-  try {
-    const result = await execCommand(command); //execute the command
-    return res.status(200).json(result);
-  } catch (error) {
-    console.error("Error processing command:", error);
-    return res.status(500).json({ error: error.message });
-  }
+  // try {
+  //   const result = await execCommand(command); //execute the command
+  //   return res.status(200).json(result);
+  // } catch (error) {
+  //   console.error("Error processing command:", error);
+  //   return res.status(500).json({ error: error.message });
+  // }
 };
 
 

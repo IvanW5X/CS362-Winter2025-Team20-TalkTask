@@ -25,7 +25,6 @@ import { startListening, stopListening} from "../../services/webSpeech.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
-  const [voiceMenuV, setVoiceMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
 
 
