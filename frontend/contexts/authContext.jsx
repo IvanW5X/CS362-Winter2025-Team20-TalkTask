@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   });
   useEffect(() => {
     const fetchAccessToken = async () => {
-      if (isAuthenticated) {
+      if (isAuthenticated && user) {
         try {
           const accessToken = await getAccessTokenSilently();
           
