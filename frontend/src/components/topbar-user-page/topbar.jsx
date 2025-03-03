@@ -8,10 +8,9 @@
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { getImageUrl } from "../../../utils/utils";
-import { useAuth0 } from "@auth0/auth0-react";
-
+import { useAuth } from "../../../contexts/authContext";
 export const TopBar = ({ menu_open, set_menu_state }) => {
-  const { logout, user, isAuthenticated } = useAuth0();
+  const { logout, isAuthenticated } = useAuth();
 
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">

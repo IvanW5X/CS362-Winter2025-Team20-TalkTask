@@ -13,14 +13,16 @@ import { useAuth } from "../../../contexts/authContext.jsx";
 
 export const TaskList = ({ selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
+  const queryClient = useQueryClient();
 
   if (!user) {
     console.log("User not found, action denied")
     return;
   }
+
   // Function to fetch tasks from the backend
   const getTasks = async () => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || !user) {
       console.log("User not authenticated, action denied");
       return;
     }
@@ -34,7 +36,6 @@ export const TaskList = ({ selectedCategory }) => {
     );
     return res.data;
   };
-  const queryClient = useQueryClient();
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
   const updateStatusMutation = useMutation(
