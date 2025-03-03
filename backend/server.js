@@ -8,6 +8,7 @@
 import express from "express";
 import cors from "cors";
 import taskRoutes from "./routes/taskRoutes.js";
+import categoryRoutes from "./routes/catagoryRoutes.js";
 import { FRONTEND_URL } from "./utils/variables.js";
 import checkJwt from "./middleware/auth-middleware.js";
 import helmet from "helmet";
@@ -29,6 +30,7 @@ app.use(cors(corsOptions));
 
 // Protected routes
 app.use("/tasks", checkJwt, taskRoutes);
+app.use("/categories", checkJwt, categoryRoutes);
 app.use("api/external", checkJwt, (req, res) => {
   res.send({ message: "Token validated" });
 });

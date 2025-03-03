@@ -8,8 +8,9 @@
 import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema({
-    name: { type: String, unique: true, required: True},
-    userId: { type: String, unique: True, required: True},
+    name: { type: String, unique: true, required: true},
+    userId: { type: String, unique: true, required: true},
+    count: { type: Number, required: true, default: 0},
 });
 
-export const catagory = mongoose.model('Catagory', categorySchema);
+export const Category = mongoose.model("Category", categorySchema);

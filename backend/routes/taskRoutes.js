@@ -11,7 +11,6 @@ import {
   getTasksByUser,
   updateTask,
   deleteAllTask,
-  getCategories
 } from "../controller/taskController.js";
 
 const router = express.Router();
@@ -20,7 +19,6 @@ const router = express.Router();
 router.post("/create-task", createTask);                  // Create a new task
 router.get("/read-task/:userId", getTasksByUser);         // Get tasks for a specific user
 router.patch("/update-task/:taskID", updateTask);         // Update a task
-router.delete("/delete", deleteAllTask);                     // Delete all completed tasks
-router.get("/read-categories/:userId", getCategories);    // Get categories from user tasks
+router.delete("/delete", deleteAllTask);                  // Delete all completed tasks
 
 export default router;
