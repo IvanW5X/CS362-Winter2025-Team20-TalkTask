@@ -28,24 +28,32 @@ export const createTask = async (req, res) => {
 export const handleCommand = async (req, res) => {
   console.log("Received request body:", req.body);
 
-  const { transcript } = req.body; //Get transcript
+  const { transcript } = req.body; // Get transcript
   if (!transcript) {
     console.error("Transcript is missing in the request body");
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  // const command = parseCommand(transcript); //Parse the transcript into a command
-  // if (!command) {
-  //   return res.status(400).json({ error: "Invalid command" });
-  // }
+  console.log("Parsing transcript:", transcript);
 
-  // try {
-  //   const result = await execCommand(command); //execute the command
-  //   return res.status(200).json(result);
-  // } catch (error) {
-  //   console.error("Error processing command:", error);
-  //   return res.status(500).json({ error: error.message });
-  // }
+  // Parse the transcript into a command
+  const command = parseCommand(transcript);
+  if (!command) {
+    console.error("Failed to parse command from transcript:", transcript);
+    return res.status(400).json({ error: "Invalid command" });
+  }
+
+  console.log("Parsed command:", command);
+
+  try {
+    // Execute the command
+    const result = await execCommand(command);
+    console.log("Command executed successfully:", result);
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error("Error processing command:", error);
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 

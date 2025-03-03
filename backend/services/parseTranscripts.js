@@ -23,23 +23,59 @@ export const parseCommand = (transcript) => {
     // add variants
     const add = /add\s+(.+)\s/i; 
 
+
+
     //remove/delete variants
-    const remove = /remove\s+(.+)\s/i;
+    const removeVariants = [
+      //variants
+      /remove\s+completed\s+task/i, 
+      /delete\s+completed\s+task/i, 
+      /erase\s+completed\s+task/i, 
+      /clear\s+completed\s+task/i,
+
+      /remove\s+complete\s+task/i, 
+      /delete\s+complete\s+task/i, 
+      /erase\s+complete\s+task/i, 
+      /clear\s+complete\s+task/i,
+      
+      /remove\s+completed\s+task/i, 
+      /delete\s+completed\s+task/i,
+      /erase\s+completed\s+task/i, 
+      /clear\s+completed\s+task/i,
+
+      /remove\s+completed\s+tasks/i, 
+      /delete\s+completed\s+tasks/i,
+      /erase\s+completed\s+tasks/i, 
+      /clear\s+completed\s+tasks/i,
+    ];
+      
 
     //mark as complete variants
-    const mark = /mark\s+(.+)\s+as complete/i;
-  
-    if (add.test(transcript)) {
-      const task = transcript.match(add)[1].trim();
-      return { type: 'add', task };
-    } else if (remove.test(transcript)) {
-      const task = transcript.match(remove)[1].trim();
-      return { type: 'remove', task };
-    } else if (mark.test(transcript)) {
-      const task = transcript.match(mark)[1].trim();
-      return { type: 'mark', task };
-    } else {
-      console.warn('No command detected:', transcript);
-      return null;
+    const markVariants = [
+        /mark\s+(.+)\s+as complete/i,
+        /complete\s+(.+)\s/i,
+        /finish\s+(.+)\s/i,
+        /done\s+(.+)\s/i,
+    ];
+
+
+
+  //handle remove
+  for (const regex of removeVariants) {
+    if (regex.test(transcript)) {
+      return { type: 'removeAll' }; // No need to extract a task name
     }
+  }
+
+  //handle marking
+  for (const regex of markVariants) {
+    if (regex.test(transcript)) {
+      const task = transcript.match(regex)[1].trim();
+      return { type: 'mark', task };
+    }
+  }
+
+
+  console.warn('No command detected:', transcript);
+  return null;
 };
