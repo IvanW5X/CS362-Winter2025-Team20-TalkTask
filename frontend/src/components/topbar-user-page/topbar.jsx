@@ -27,16 +27,17 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         alt="TalkTask Logo 1, with text"
       />
       {/* Logout button */}
-      <button 
+      <button
         className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
         onClick={() => {
           if (isAuthenticated)
-            logout();
-        }}>
+            logout({ logoutParams: { returnTo: window.location.origin } });
+        }}
+      >
         Logout
       </button>
-      
-      <FaUserCircle className="text-[#F4F3F2] text-[50px] mr-[20px] cursor-pointer"/>
+
+      <FaUserCircle className="text-[#F4F3F2] text-[50px] mr-[20px] cursor-pointer" />
     </div>
   );
 };
