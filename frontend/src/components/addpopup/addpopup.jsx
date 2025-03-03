@@ -13,7 +13,7 @@ import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 
 export const AddPopUp = ({ onClose }) => {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
 
   const [title, setTitle] = useState("");
