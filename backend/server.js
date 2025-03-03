@@ -31,8 +31,5 @@ app.use(cors(corsOptions));
 // Protected routes
 app.use("/tasks", checkJwt, taskRoutes);
 app.use("/categories", checkJwt, categoryRoutes);
-app.use("api/external", checkJwt, (req, res) => {
-  res.send({ message: "Token validated" });
-});
 
 export default app;
