@@ -8,14 +8,16 @@
 import express from "express";
 import cors from "cors";
 import taskRoutes from "./routes/taskRoutes.js";
-import { FRONTEND_URL } from "./utils/variables.js";
+import { FRONTEND_URL, VITE_BACKEND_URL } from "./utils/variables.js";
 import checkJwt from "./middleware/auth-middleware.js";
 import helmet from "helmet";
 
 const app = express();
 
 const corsOptions = {
-  origin: FRONTEND_URL,
+  origin: [FRONTEND_URL, VITE_BACKEND_URL],
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true,
 };
 
 // Security measures
