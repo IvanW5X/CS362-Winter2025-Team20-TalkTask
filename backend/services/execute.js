@@ -18,11 +18,11 @@ export const execCommand = async (command, userId) => {
         const newTask = new Task({
             taskID: Date.now(), // Generate a unique taskID
             title: command.task,
-            description: command.description || "", // Optional description
-            category: command.category || "general", // Default category
+            description: command.description || "default test",
+            category: command.category || "General",
             startTime: command.startTime || null, // Optional start time
             endTime: command.endTime || null, // Optional end time
-            priority: command.priority || 1, // Default priority (1-3)
+            priority: command.priority || 3,
             status: "pending", // Default status
             userId: userId, // Add the userId from the authenticated user
         });

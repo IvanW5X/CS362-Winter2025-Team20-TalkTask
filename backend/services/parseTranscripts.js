@@ -24,10 +24,10 @@ const wordToNum={
   three: 3,
 };
 
-function converWordToNum(word) {
+function convertWordToNum(word) {
   return wordToNum[word] || parseInt(word, 10) || null;
 }
-
+let priority = null;
 export const parseCommand = (transcript, userId) => {
   // add variants
    const addVariants = [ 
@@ -82,9 +82,11 @@ for (const regex of addVariants) {
       // const startTimeMatch = /start time\s+(.+?)\s/i.exec(transcript);
       // const endTimeMatch = /end time\s+(.+?)\s/i.exec(transcript);
       const priorityMatch = /priority\s+(\d+)/i.exec(transcript);
+      
       if(priorityMatch){
-        priority = converWordToNum(priorityMatch[1].trim());
+        priority = convertWordToNum(priorityMatch[1].trim());
       }
+      console.log("Priority: ",priority);
       return {
         type: 'add',
         task: task,

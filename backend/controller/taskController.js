@@ -41,7 +41,7 @@ export const handleCommand = async (req, res) => {
     return res.status(400).json({ error: "Invalid command" });
   }
 
-  const result = await execCommand(command); //execute the command
+  const result = await execCommand(command, userId); //execute the command
   return res.status(200).json(result);
 
 };
