@@ -9,11 +9,11 @@ import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
-import { useAuth0 } from "@auth0/auth0-react";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { useAuth } from "../../../contexts/authContext.jsx";
 
 export const AddPopUp = ({ onClose }) => {
-  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth();
   const queryClient = useQueryClient();
 
   const [title, setTitle] = useState("");
@@ -43,9 +43,6 @@ export const AddPopUp = ({ onClose }) => {
         console.error("User not authenticated, action denied");
         return;
       }
-      const accessToken = await getAccessTokenSilently({
-        audience: AUTH0_AUDIENCE,
-      });
       const response = await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
