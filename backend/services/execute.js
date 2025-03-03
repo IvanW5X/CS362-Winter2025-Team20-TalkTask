@@ -18,8 +18,8 @@ export const execCommand = async (command, userId) => {
         const newTask = new Task({
             taskID: Date.now(), // Generate a unique taskID
             title: command.task,
-            description: command.description || "default test",
-            category: command.category || "General",
+            description: command.description || "placeholder",
+            category: command.category || "placeholder",
             startTime: command.startTime || null, // Optional start time
             endTime: command.endTime || null, // Optional end time
             priority: command.priority || 3,
