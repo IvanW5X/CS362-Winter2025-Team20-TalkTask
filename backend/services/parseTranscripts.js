@@ -25,7 +25,7 @@ const wordToNum={
 };
 
 function converWordToNum(word) {
-  return numberWords[word] || parseInt(word, 10) || null;
+  return wordToNum[word] || parseInt(word, 10) || null;
 }
 
 export const parseCommand = (transcript, userId) => {
