@@ -16,7 +16,8 @@ export const execCommand = async (command) => {
       switch (command.type) {
         //add task
         case "add":
-          
+        
+        break;
         
         //remove task
         case "removeAll":
@@ -39,7 +40,7 @@ export const execCommand = async (command) => {
             throw new Error("Task not found.");
           }
           return { success: true, message: "execute.js marked function", task: markedTask };
-  
+          break;
         default:
           throw new Error("Unknown command type.");
       }

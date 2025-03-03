@@ -26,34 +26,25 @@ export const createTask = async (req, res) => {
 
 //speech input
 export const handleCommand = async (req, res) => {
-  console.log("Received request body:", req.body);
 
-  const { transcript } = req.body; // Get transcript
+  const { transcript } = req.body; //Get transcript
+  console.log("Transcript received:", transcript);
+
   if (!transcript) {
     console.error("Transcript is missing in the request body");
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  console.log("Parsing transcript:", transcript);
+  const command = parseCommand(transcript); //Parse the transcript into a command
+  console.log("Parsed command:", command);
 
-  // Parse the transcript into a command
-  const command = parseCommand(transcript);
   if (!command) {
-    console.error("Failed to parse command from transcript:", transcript);
     return res.status(400).json({ error: "Invalid command" });
   }
 
-  console.log("Parsed command:", command);
+  const result = await execCommand(command); //execute the command
+  return res.status(200).json(result);
 
-  try {
-    // Execute the command
-    const result = await execCommand(command);
-    console.log("Command executed successfully:", result);
-    return res.status(200).json(result);
-  } catch (error) {
-    console.error("Error processing command:", error);
-    return res.status(500).json({ error: error.message });
-  }
 };
 
 

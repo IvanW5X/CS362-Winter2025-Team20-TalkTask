@@ -53,9 +53,10 @@ export const parseCommand = (transcript) => {
     //mark as complete variants
     const markVariants = [
         /mark\s+(.+)\s+as complete/i,
-        /complete\s+(.+)\s/i,
-        /finish\s+(.+)\s/i,
-        /done\s+(.+)\s/i,
+        /complete\s+(.+)/i,
+        /finish\s+(.+)/i,
+        /done\s+(.+)/i,
+        /mark\s+(.+)/i,
     ];
 
 
@@ -69,11 +70,14 @@ export const parseCommand = (transcript) => {
 
   //handle marking
   for (const regex of markVariants) {
-    if (regex.test(transcript)) {
-      const task = transcript.match(regex)[1].trim();
-      return { type: 'mark', task };
+    const match = transcript.match(regex);
+    console.log("Testing regex:", regex, "against transcript:", transcript);
+    if (match && match[1]) {
+        const task = match[1].trim();
+        console.log("Matched command for marking:", task);
+        return { type: "mark", task };
     }
-  }
+}
 
 
   console.warn('No command detected:', transcript);
