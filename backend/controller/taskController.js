@@ -26,7 +26,7 @@ export const createTask = async (req, res) => {
 export const getTasksByUser = async (req, res) => {
   const { userId } = req.params;
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find({ userId });
     res.status(200).json(tasks);
   } catch (error) {
     logger.error(`getTasksByUser - Error: ${error.message}`);

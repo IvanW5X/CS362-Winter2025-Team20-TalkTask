@@ -12,7 +12,7 @@ import logger from "../utils/logger.js";
 
 export const createCategory = async (req, res) => {
   try {
-    const newCategory = new Category(req, body);
+    const newCategory = new Category(req.body);
     await newCategory.save();
     res.status(201).json(newCategory);
   } catch (error) {
