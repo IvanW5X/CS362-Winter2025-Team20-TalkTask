@@ -20,18 +20,23 @@
 
 
 export const parseCommand = (transcript) => {
-    const addRegex = /add\s+(.+)\s/i; 
-    const removeRegex = /remove\s+(.+)\s/i;
-    const markRegex = /mark\s+(.+)\s+as complete/i;
+    // add variants
+    const add = /add\s+(.+)\s/i; 
+
+    //remove/delete variants
+    const remove = /remove\s+(.+)\s/i;
+
+    //mark as complete variants
+    const mark = /mark\s+(.+)\s+as complete/i;
   
-    if (addRegex.test(transcript)) {
-      const task = transcript.match(addRegex)[1].trim();
+    if (add.test(transcript)) {
+      const task = transcript.match(add)[1].trim();
       return { type: 'add', task };
-    } else if (removeRegex.test(transcript)) {
-      const task = transcript.match(removeRegex)[1].trim();
+    } else if (remove.test(transcript)) {
+      const task = transcript.match(remove)[1].trim();
       return { type: 'remove', task };
-    } else if (markRegex.test(transcript)) {
-      const task = transcript.match(markRegex)[1].trim();
+    } else if (mark.test(transcript)) {
+      const task = transcript.match(mark)[1].trim();
       return { type: 'mark', task };
     } else {
       console.warn('No command detected:', transcript);

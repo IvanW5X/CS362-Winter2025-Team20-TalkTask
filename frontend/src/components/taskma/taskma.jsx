@@ -101,7 +101,7 @@ export const TasksManagement = () => {
       });
       const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command`,
         { 
-          transcript 
+          transcript //send to backend
         },
         {
           headers: {

@@ -4,8 +4,9 @@
  * Description: Executes the command of the parsed transcript
  * Author(s): CS 362-Team 20
  ********************************************************************/
+import { Task } from "../db/models/taskModel.js";
 
 
-export const executeTrans = ()=>{
+export const execCommand = ()=>{
 
 }

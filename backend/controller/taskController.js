@@ -9,6 +9,8 @@
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 import { parseCommand } from "../services/parseTranscripts.js";
+import { execCommand } from "../services/execute.js";
+
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -26,16 +28,24 @@ export const createTask = async (req, res) => {
 export const handleCommand = async (req, res) => {
   console.log("Received request body:", req.body);
 
-  const { transcript } = req.body;
+  const { transcript } = req.body; //Get transcript
   if (!transcript) {
     console.error("Transcript is missing in the request body");
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  // Respond with success
-  return res.status(200).json({ message: "Transcript received successfully", transcript });
+  const command = parseCommand(transcript); //Parse the transcript into a command
+  if (!command) {
+    return res.status(400).json({ error: "Invalid command" });
+  }
 
-  //send to parsetranscript.js
+  try {
+    const result = await execCommand(command); //execute the command
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error("Error processing command:", error);
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 
