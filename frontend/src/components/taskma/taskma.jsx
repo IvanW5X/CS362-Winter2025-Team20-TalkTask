@@ -12,7 +12,7 @@ import { FaCheck } from "react-icons/fa";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-import { VoicePopUp } from "../voicepopup/voicepopup";
+// import { VoicePopUp } from "../voicepopup/voicepopup";
 import { CommandsPopUp } from "../voicepopup/commandsPopUp.jsx";
 
 import { useMutation, useQueryClient } from "react-query";
@@ -120,7 +120,6 @@ export const TasksManagement = () => {
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
-      {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
       {commandsMenuV && <CommandsPopUp onClose={() => setCommandsMenuV(false)} />}
       
 
@@ -167,8 +166,9 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <div
-          className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
-          onClick={() => setVoiceMenuV(!voiceMenuV)}
+           className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]` }
+          onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
         </div>
