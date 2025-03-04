@@ -24,7 +24,7 @@ export const TasksManagement = () => {
   const [voiceMenuV, setVoiceMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
 
   const deleteCompletedTasksMutation = useMutation(
