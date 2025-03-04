@@ -12,18 +12,20 @@ import { FaCheck } from "react-icons/fa";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
+import { CommandsPopUp } from "../voicepopup/commandsPopUp";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
-import { useAuth0 } from "@auth0/auth0-react";
-
-import { startListening, stopListening} from "../../services/webSpeech.js";
-
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { useAuth } from "../../../contexts/authContext.jsx";
+import { startListening, stopListening } from "../../services/webSpeech.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
+  const [voiceMenuV, setVoiceMenuV] = useState(false);
+  const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth();
+  const [isListening, setIsListening] = useState(false);
 
   const deleteCompletedTasksMutation = useMutation(
     async () => {
@@ -31,9 +33,6 @@ export const TasksManagement = () => {
         console.error("User not authenticated, action denied");
         return;
       }
-      const accessToken = await getAccessTokenSilently({
-        audience: AUTH0_AUDIENCE,
-      });
       const response = await axios.delete(`${VITE_BACKEND_URL}/tasks/delete`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
@@ -49,7 +48,6 @@ export const TasksManagement = () => {
       },
     }
   );
-
   const handleDeleteTasks = () => {
     if (
       window.confirm("Are you sure you want to delete all completed tasks?")
@@ -57,10 +55,6 @@ export const TasksManagement = () => {
       deleteCompletedTasksMutation.mutate();
     }
   };
-
-
-  const [isListening, setIsListening] = useState(false);
-
   const handleMicClick = () => {
     if (isListening) {
       stopListening();
@@ -77,77 +71,91 @@ export const TasksManagement = () => {
         () => {
           setIsListening(false);
         }
-      );  
+      );
       setIsListening(true);
     }
   };
 
   const sendBackend = async (transcript) => {
     try {
-      const response = await axios.post(`${VITE_BACKEND_URL}/voice-command`, {
-        transcript,
-      });
+      if (!isAuthenticated) {
+        console.error("User not authenticated, action denied");
+        return;
+      }
+      const response = await axios.post(
+        `${VITE_BACKEND_URL}/tasks/voice-command/${user.sub}`,
+        {
+          transcript,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       console.log("Backend response:", response.data);
     } catch (error) {
       console.error("Error sending transcript to backend:", error);
     }
   };
 
-
   return (
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
+      {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
+      {commandsMenuV && (
+        <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
+      )}
 
       {/* Title */}
-      <div className="flex text-center m-5 text-[20px] bg-white px-5 py-3 rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      <div className="flex text-center m-5 text-[20px] bg-[#F4F3F2] px-5 py-3 rounded-2xl shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2 className="w-full text-center">Task Managment</h2>
       </div>
 
       {/* actions */}
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         {/* add task */}
-        <div
-          className={`flex mt-[0] cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+        <button
+          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
           <CiCirclePlus className="absolute right-3 text-[25px]" />
-        </div>
+        </button>
 
         {/* clear completed tasks */}
-        <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+        <button
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleDeleteTasks}
         >
           Clear Completed Tasks
           <FaCheck className="absolute right-3 " />
-        </div>
+        </button>
 
         {/* voice commands */}
-        <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+        <button
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
           <MdOutlineIntegrationInstructions className="absolute right-3" />
-        </div>
+        </button>
 
-        <div
-          className={`flex cursor-pointer h-[40px] bg-white rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+        <button
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
         >
           Suggest a Task
           <IoStar className="absolute right-3" />
-        </div>
+        </button>
 
         {/* mic button */}
-        <div
-          className={`flex cursor-pointer h-[40px] ${
-            isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
-          onClick={handleMicClick}
+        <button
+          className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={() => setVoiceMenuV(!voiceMenuV)}
         >
-          <FaMicrophone className="text-[30px] text-white" />
-        </div>
+          <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
+        </button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import { useState } from "react";
 import { TaskList } from "../../components/tasklist/task-list";
 import { TasksManagement } from "../../components/taskma/taskma";
 import { Sidebar } from "../../components/sidebar/sidebar";
-import { Calendar } from "../../components/calendar/calendar";
+import { CalendarBar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -37,7 +37,7 @@ export const Home = () => {
         />
         <div className="flex flex-col w-full">
           <div className="self-center">
-            <Calendar />
+            <CalendarBar />
           </div>
           <div className={`flex md:flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[70%]`}>
             <TaskList selectedCategory={selectedCategory} />

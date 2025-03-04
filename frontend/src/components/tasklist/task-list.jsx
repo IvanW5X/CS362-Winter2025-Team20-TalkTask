@@ -7,40 +7,45 @@
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { TaskCard } from "./task-card.jsx";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../../contexts/authContext.jsx";
 
 export const TaskList = ({ selectedCategory }) => {
-  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, accessToken } = useAuth();
+  const queryClient = useQueryClient();
+
+  if (!user) {
+    console.log("User not found, action denied")
+    return;
+  }
 
   // Function to fetch tasks from the backend
   const getTasks = async () => {
-    if (isAuthenticated) {
-      const accessToken = await getAccessTokenSilently({
-        audience: AUTH0_AUDIENCE,
-      });
-
-      const res = await axios.get(`${VITE_BACKEND_URL}/tasks/read-task/${user.sub}`, {
+    if (!isAuthenticated || !user) {
+      console.log("User not authenticated, action denied");
+      return;
+    }
+    const res = await axios.get(
+      `${VITE_BACKEND_URL}/tasks/read-task/${user.sub}`,
+      {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      });
-      return res.data;
-    }
+      }
+    );
+    return res.data;
   };
-  const queryClient = useQueryClient();
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
+
+  //edit and update tasks
   const updateStatusMutation = useMutation(
     async ({ taskID, newStatus }) => {
       if (!isAuthenticated) {
         console.error("User not authenticated, action denied");
         return;
       }
-      const accessToken = await getAccessTokenSilently({
-        audience: AUTH0_AUDIENCE,
-      });
       const response = await axios.patch(
         `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
         {
@@ -100,7 +105,7 @@ export const TaskList = ({ selectedCategory }) => {
   return (
     <div className="bg-[#cdcdcd] w-[70%] rounded-[10px] h-min min-w-[400px]">
       {/* Task Header */}
-      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-white px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+      <div className="flex items-center justify-between m-5 text-[20px] font-semibold bg-[#F4F3F2] px-[15px] py-[10px] rounded-[10px] shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2>{selectedCategory || "All Tasks"}</h2>
         <span className="text-[22px]">{filteredTasks?.length}</span>
       </div>

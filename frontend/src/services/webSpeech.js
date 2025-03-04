@@ -45,7 +45,7 @@ export const startListening = (onResult, onError, onEnd) => {
   // Set up event listeners
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript.toLowerCase();
-    // console.log("Voice input:", transcript);
+    console.log("Voice input:", transcript);
     onResult(transcript);
   };
 

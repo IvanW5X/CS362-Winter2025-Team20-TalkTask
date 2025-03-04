@@ -4,13 +4,15 @@
  * Description: Sidebar on Main Page
  * Author(s): CS 362-Team 20
  ********************************************************************/
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GoPlus } from "react-icons/go";
-import { TaskList } from "../../components/tasklist/task-list";
+import axios from "axios";
+import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) => {
-  // Example task groups
-  const [categories, setTasks] = useState(["School", "Work", "Chores"]);
+  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
+  const [categories, setTasks] = useState([]);
 
   const addCategory = () => {
     const newCategory = prompt("Enter a new category:");
@@ -19,7 +21,7 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
 
   return (
     <aside
-      className={`flex flex-col bg-white shadow-xl w-[200px] min-w-[150px]
+      className={`flex flex-col bg-[#F4F3F2] shadow-xl w-[200px] min-w-[150px]
                   mb-[0%] pb-[0%] z-[2]
                   ${menu_open ? "flex-visible" : "flex hidden"}`}
     >
@@ -34,21 +36,12 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
 
       {/* Categories List */}
       <ul className="flex-1 bg-gray-200 font-semibold">
-        {/* All Tasks Button */}
-        <li
-          className={`p-3 pl-5 cursor-pointer bg-gray-100 hover:bg-black/20 odd:bg-white text-[16px] 
-                     ${selectedCategory === null ? "font-bold underline" : ""}`}
-          onClick={() => setSelectedCategory(null)}
-        >
-          All
-        </li>
-
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-white text-[16px]
-                        accent-black
-                       ${selectedCategory === category ? "font-bold underline" : ""}`}
+            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-[#F4F3F2] text-[16px]
+              accent-black
+              ${selectedCategory === category ? "font-bold underline" : ""}`}
             onClick={() => setSelectedCategory(category)}
           >
             {category}

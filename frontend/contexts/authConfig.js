@@ -5,8 +5,8 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import history from "./history.js";
-import { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_AUDIENCE } from "./variables";
+import history from "../utils/history.js";
+import { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_AUDIENCE } from "../utils/variables.js";
 
 const onRedirectCallback = (appState) => {
   history.push(
