@@ -7,7 +7,7 @@
 
 import { Home } from "./pages/home/home";
 import { About } from "./pages/about/about";
-import { Route, Routes, useNavigate, BrowserRouter } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 
