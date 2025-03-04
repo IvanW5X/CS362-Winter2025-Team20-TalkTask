@@ -14,7 +14,7 @@ import {
 } from "date-fns";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-export function CalendarBar() {
+export const CalendarBar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const days = Array.from({ length: 7 }, (_, i) => addDays(startOfDay(selectedDate), i - 3));
@@ -81,4 +81,3 @@ export function CalendarBar() {
   );
 }
 
-export default CalendarBar;
