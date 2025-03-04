@@ -9,6 +9,8 @@
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 import { parseCommand } from "../services/parseTranscripts.js";
+import { execCommand } from "../services/execute.js";
+
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -24,24 +26,31 @@ export const createTask = async (req, res) => {
 
 //speech input
 export const handleCommand = async (req, res) => {
-  console.log("Received request body:", req.body);
+  const { userId } = req.params;
+  const { transcript } = req.body; //Get transcript
+  console.log("Transcript received:", transcript);
 
-  const { transcript } = req.body;
   if (!transcript) {
     console.error("Transcript is missing in the request body");
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  // Respond with success
-  return res.status(200).json({ message: "Transcript received successfully", transcript });
+  const command = parseCommand(transcript, userId); //Parse the transcript into a command
 
-  //send to parsetranscript.js
+  if (!command) {
+    return res.status(400).json({ error: "Invalid command" });
+  }
+
+  const result = await execCommand(command, userId); //execute the command
+  return res.status(200).json(result);
+
 };
 
 
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
   const { userId } = req.params;
+
   try {
     const tasks = await Task.find({ userId });
     res.status(200).json(tasks);
