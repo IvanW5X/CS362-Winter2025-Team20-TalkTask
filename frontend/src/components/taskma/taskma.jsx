@@ -12,11 +12,10 @@ import { FaCheck } from "react-icons/fa";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-import { VoicePopUp } from "../voicepopup/voicepopup";
-import { CommandsPopUp } from "../voicepopup/commandsPopUp.jsx";
+import { CommandsPopUp } from "../voicepopup/commandsPopUp";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
+import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
 
