@@ -18,7 +18,7 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
-import { startListening, stopListening} from "../../services/webSpeech.js";
+import { startListening, stopListening } from "../../services/webSpeech.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
@@ -72,19 +72,21 @@ export const TasksManagement = () => {
         () => {
           setIsListening(false);
         }
-      );  
+      );
       setIsListening(true);
     }
   };
+
   const sendBackend = async (transcript) => {
     try {
       if (!isAuthenticated) {
         console.error("User not authenticated, action denied");
         return;
       }
-      const response = await axios.post(`${VITE_BACKEND_URL}/tasks/voice-command`,
-        { 
-          transcript 
+      const response = await axios.post(
+        `${VITE_BACKEND_URL}/tasks/voice-command/${user.sub}`,
+        {
+          transcript,
         },
         {
           headers: {
@@ -98,14 +100,15 @@ export const TasksManagement = () => {
     }
   };
 
-
   return (
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
-      {commandsMenuV && <CommandsPopUp onClose={() => setCommandsMenuV(false)} />}
-      
+      {commandsMenuV && (
+        <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
+      )}
+
       {/* Title */}
       <div className="flex text-center m-5 text-[20px] bg-[#F4F3F2] px-5 py-3 rounded-2xl shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         <h2 className="w-full text-center">Task Managment</h2>

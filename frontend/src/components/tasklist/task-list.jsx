@@ -38,6 +38,8 @@ export const TaskList = ({ selectedCategory }) => {
   };
   const { data: tasks, isLoading, error } = useQuery("tasks", getTasks);
 
+
+  //edit and update tasks
   const updateStatusMutation = useMutation(
     async ({ taskID, newStatus }) => {
       if (!isAuthenticated) {
