@@ -8,11 +8,9 @@
 import { FaCheckSquare } from "react-icons/fa";
 import { getImageUrl } from "../../../utils/utils";
 import { useAuth0 } from "@auth0/auth0-react";
-import { AUTH0_AUDIENCE, AUTH0_DOMAIN, AUTH0_CLIENT_ID, VITE_BACKEND_URL } from "../../../utils/variables";
 
 export const AboutBody = () => {
   const { loginWithRedirect } = useAuth0();
-  console.log(AUTH0_AUDIENCE, AUTH0_CLIENT_ID, AUTH0_DOMAIN, VITE_BACKEND_URL);
 
   return (
     <div className="flex flex-row ">

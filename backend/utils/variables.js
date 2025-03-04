@@ -5,12 +5,10 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import path from "path";
 import dotenv from "dotenv";
 
 // Add .env path
-const envFilePath = path.resolve("../", "./.env");
-dotenv.config({ path: envFilePath });
+dotenv.config();
 
 export const FRONTEND_URL = process.env.FRONTEND_URL;
 export const SERVER_PORT = process.env.SERVER_PORT;
