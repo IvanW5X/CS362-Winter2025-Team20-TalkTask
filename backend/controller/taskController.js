@@ -9,6 +9,7 @@
 import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 import { parseCommand } from "../services/parseTranscripts.js";
+import { execCommand } from "../services/execute.js";
 
 // CREATE a Task
 export const createTask = async (req, res) => {

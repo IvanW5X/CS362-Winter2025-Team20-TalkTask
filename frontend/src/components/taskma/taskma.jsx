@@ -21,10 +21,9 @@ import { startListening, stopListening } from "../../services/webSpeech.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
-  const [voiceMenuV, setVoiceMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
-  const { isAuthenticated, accessToken } = useAuth();
+  const {user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
 
   const deleteCompletedTasksMutation = useMutation(
@@ -103,7 +102,6 @@ export const TasksManagement = () => {
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
-      {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
       {commandsMenuV && (
         <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
       )}
@@ -151,8 +149,9 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
-          onClick={() => setVoiceMenuV(!voiceMenuV)}
+          className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]` }
+          onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
         </button>
