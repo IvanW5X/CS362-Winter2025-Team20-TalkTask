@@ -32,7 +32,7 @@ export const CalendarBar = () => {
 
 
   return (
-    <div className="flex items-center justify-center space-x-4">
+    <div className="flex items-center justify-center space-x-4 mt-[20px]">
       {/* Left arrow button */}
       <button
         onClick={handlePrev}

@@ -27,7 +27,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="flex-col min-h-screen w-[100%]">
+    <div className="flex-col bg-[#dedede] min-h-full h-screen w-full">
       <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
       <div className="flex min-h-[calc(100vh-80px)]">
         <Sidebar 

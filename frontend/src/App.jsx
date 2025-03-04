@@ -39,7 +39,7 @@ function App() {
     );
   }
   return (
-    <div className="bg-[#dedede]">
+    <div>
       <Routes>
         <Route path="/" element={<About />} />
         <Route path="/home" element={<Home />} />
