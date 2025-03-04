@@ -12,9 +12,7 @@ import { FaCheck } from "react-icons/fa";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
-// import { VoicePopUp } from "../voicepopup/voicepopup";
 import { CommandsPopUp } from "../voicepopup/commandsPopUp.jsx";
-
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
@@ -167,7 +165,7 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <div
-           className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
+          className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
           } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]` }
           onClick={handleMicClick}
         >

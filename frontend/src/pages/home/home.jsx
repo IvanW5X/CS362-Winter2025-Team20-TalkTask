@@ -35,7 +35,8 @@ export const Home = () => {
           selectedCategory={selectedCategory} 
           setSelectedCategory={setSelectedCategory} 
         />
-        <div className="flex flex-col w-full">
+
+        <div className="flex flex-col w-full space-y-4 p-4 ">
           <div className="self-center">
             <CalendarBar />
           </div>

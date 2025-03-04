@@ -1,9 +1,10 @@
 /********************************************************************
  * File Name: calendar.jsx
- * Date: 2/12/2025
- * Description: JSX file for calendar UI component
+ * Date: 3/3/2025
+ * Description: React file for calendar UI component
  * Author(s): CS 362-Team 20
  ********************************************************************/
+
 import { useState } from "react";
 import {
   addDays,
@@ -13,14 +14,16 @@ import {
   format
 } from "date-fns";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { DayPopUp } from "./dayPopUp";
 
 export const CalendarBar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [dayPopUpV, setDayPopUpV] = useState(false);
 
   const days = Array.from({ length: 7 }, (_, i) => addDays(startOfDay(selectedDate), i - 3));
 
-  function handleSelect(day) {
-    setSelectedDate(day);
+  function handleSelect() {
+    setDayPopUpV(true);
   }
 
   function handlePrev() {
@@ -33,6 +36,7 @@ export const CalendarBar = () => {
 
   return (
     <div className="flex items-center justify-center space-x-4">
+      {dayPopUpV && <DayPopUp onClose={() => setDayPopUpV(false)} />}
       {/* Left arrow button */}
       <button
         onClick={handlePrev}
@@ -60,7 +64,7 @@ export const CalendarBar = () => {
             <div
               key={day.toISOString()}
               className={dayStyle}
-              onClick={() => handleSelect(day)}
+              onClick={() => handleSelect()}
             >
               <div className="text-s">{format(day, "MMM")}</div>
               <div className="font-bold text-3xl">{dayNumber}</div>

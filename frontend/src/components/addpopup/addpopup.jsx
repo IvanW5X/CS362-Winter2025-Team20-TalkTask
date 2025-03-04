@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";

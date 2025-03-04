@@ -1,4 +1,11 @@
-import React, { useState, useEffect } from "react";
+/********************************************************************
+ * File Name: commandsPopUp.jsx
+ * Date: 3/1/2025
+ * Description: React file for displaying commands pop up
+ * Author(s): CS 362-Team 20
+ ********************************************************************/
+
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { IoClose } from "react-icons/io5";
 import commands from "../../../../documents/commands.md?raw";
