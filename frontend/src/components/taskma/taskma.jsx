@@ -7,10 +7,10 @@
 
 import { useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
-import { CiCirclePlus } from "react-icons/ci";
+import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
-import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
+import { IoList } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
 import { CommandsPopUp } from "../voicepopup/commandsPopUp";
 import { useMutation, useQuery, useQueryClient } from "react-query";
@@ -115,7 +115,7 @@ export const TasksManagement = () => {
   };
 
   return (
-    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
+    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[495px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       {commandsMenuV && (
@@ -135,7 +135,15 @@ export const TasksManagement = () => {
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
-          <CiCirclePlus className="absolute right-3 text-[25px]" />
+          <IoMdAddCircleOutline className="absolute right-3 text-[25px]" />
+        </button>
+
+        {/* voice commands */}
+        <button
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+        >
+          Filter/Sort
+          <IoList className="absolute right-3 text-[25px]" />
         </button>
 
         {/* clear completed tasks */}
@@ -143,8 +151,8 @@ export const TasksManagement = () => {
           className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleDeleteTasks}
         >
-          Clear Completed Tasks
-          <FaCheck className="absolute right-3 " />
+          Clear Checked Tasks
+          <FaCheck className="absolute right-3 text-[20px]" />
         </button>
 
         {/* voice commands */}
@@ -153,7 +161,7 @@ export const TasksManagement = () => {
           onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
-          <MdOutlineIntegrationInstructions className="absolute right-3" />
+          <IoList className="absolute right-3 text-[25px]" />
         </button>
 
         <button
@@ -161,7 +169,7 @@ export const TasksManagement = () => {
           onClick={handleSuggestTask}
         >
           Suggest a Task
-          <IoStar className="absolute right-3" />
+          <IoStar className="absolute right-3 text-[20px]" />
         </button>
 
         {/* mic button */}
