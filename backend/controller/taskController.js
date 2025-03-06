@@ -43,7 +43,6 @@ export const handleCommand = async (req, res) => {
 
   const result = await execCommand(command, userId); //execute the command
   return res.status(200).json(result);
-
 };
 
 // READ All Tasks (for a specific user)
@@ -123,11 +122,13 @@ export const generateTask = async (req, res) => {
     const tasks = await Task.find({ userId });
 
     // Get tasks titles from user
-    const taskTitles = tasks.map(task => task.title);
+    const taskTitles = tasks.map((task) => task.title);
     const generatedTask = await suggestTask(taskTitles);
-    console.log(generatedTask);
 
-    // Send AI suggested task
+    // Suggested task service failed
+    if (generatedTask === null) {
+      res.status(500).json({ message: "Error with Gemini API" });
+    }
     res.status(200).json(generatedTask);
   } catch (error) {
     logger.error(`generateTask - Error: ${error.message}`);

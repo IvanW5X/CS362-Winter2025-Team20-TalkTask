@@ -15,11 +15,6 @@ export const TaskList = ({ selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
 
-  if (!user) {
-    console.log("User not found, action denied")
-    return;
-  }
-
   // Function to fetch tasks from the backend
   const getTasks = async () => {
     if (!isAuthenticated || !user) {

@@ -11,14 +11,14 @@ import { TasksManagement } from "../../components/taskma/taskma";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { CalendarBar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../../contexts/authContext";
 
 export const Home = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth();
   const [menu_open, set_menu_state] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null); // Category state
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user) {
     return ( 
       <div className="bg-white text-red-500 text-lg">
         Access denied: You are not authorized to access this page.

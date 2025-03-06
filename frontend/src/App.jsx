@@ -20,7 +20,7 @@ function App() {
     if (isAuthenticated) {
       navigate("/home");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate]);  
 
   // Something went wrong, return generic error UI
   if (error) {
