@@ -99,7 +99,7 @@ export const AddPopUp = ({ onClose }) => {
       dateCompleted,
       userId: user.sub,     // Use Auth0 user ID
     };
-    console.log("Creating task:", newTask);
+    console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
   };
 

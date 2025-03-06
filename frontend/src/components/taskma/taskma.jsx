@@ -13,7 +13,7 @@ import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
 import { CommandsPopUp } from "../voicepopup/commandsPopUp";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
@@ -21,10 +21,9 @@ import { startListening, stopListening } from "../../services/webSpeech.js";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
-  const [voiceMenuV, setVoiceMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
-  const { isAuthenticated } = useAuth();
+  const {user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
 
   const deleteCompletedTasksMutation = useMutation(
@@ -99,11 +98,26 @@ export const TasksManagement = () => {
     }
   };
 
+  const suggestTaskQuery = async () => {
+    if (!isAuthenticated) {
+      console.error("User not authenticated, action denied");
+      return;
+    }
+    const response = await axios.get(`${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,{
+      headers: { Authorization: `Bearer ${accessToken}`},
+    });
+    return response.data;
+  };
+  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery("suggestedTask", suggestTaskQuery, {enabled: false});
+  const handleSuggestTask = () => {
+    console.log(suggestedTask);
+    suggestTaskRefetch();
+  };
+
   return (
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
-      {voiceMenuV && <VoicePopUp onClose={() => setVoiceMenuV(false)} />}
       {commandsMenuV && (
         <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
       )}
@@ -144,6 +158,7 @@ export const TasksManagement = () => {
 
         <button
           className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={handleSuggestTask}
         >
           Suggest a Task
           <IoStar className="absolute right-3" />
@@ -151,8 +166,9 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#37E03A] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
-          onClick={() => setVoiceMenuV(!voiceMenuV)}
+          className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]` }
+          onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
         </button>

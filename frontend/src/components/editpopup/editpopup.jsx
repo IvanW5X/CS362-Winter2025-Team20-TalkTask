@@ -5,23 +5,30 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
+import { useAuth } from "../../../contexts/authContext.jsx";
 
 export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
+  const { isAuthenticated, accessToken } = useAuth();
 
   const [title, setTitle] = useState(task?.title || "");
   const [description, setDescription] = useState(task?.description || "");
   const [category, setCategory] = useState(task?.category || "");
-  const [timeStart, setTimeStart] = useState(task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : "");
-  const [timeEnd, setTimeEnd] = useState(task?.dateCompleted ? new Date(task.dateCompleted).toTimeString().slice(0, 5) : "");
+  const [timeStart, setTimeStart] = useState(
+    task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : ""
+  );
+  const [timeEnd, setTimeEnd] = useState(
+    task?.dateCompleted
+      ? new Date(task.dateCompleted).toTimeString().slice(0, 5)
+      : ""
+  );
   const [priority, setPriority] = useState(task?.priority || 1);
   const [status, setStatus] = useState(task?.status || "pending");
-
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -36,8 +43,18 @@ export const EditPopUp = ({ onClose, task }) => {
   }, []);
 
   const updateTaskMutation = useMutation(
-    (updatedTask) =>
-      axios.patch(`${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`, updatedTask),
+    (updatedTask) => {
+      if (!isAuthenticated) {
+        console.error("User is not authenticated, action denied");
+        return;
+      }
+      const response = axios.patch(
+        `${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`,
+        updatedTask,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      return response.data;
+    },
     {
       onSuccess: () => {
         console.log("Task updated successfully");
@@ -52,7 +69,10 @@ export const EditPopUp = ({ onClose, task }) => {
         onClose();
       },
       onError: (error) => {
-        console.error("An error occurred while updating the task:", error.response?.data || error.message);
+        console.error(
+          "An error occurred while updating the task:",
+          error.response?.data || error.message
+        );
       },
     }
   );
@@ -63,12 +83,16 @@ export const EditPopUp = ({ onClose, task }) => {
     const today = new Date().toISOString().split("T")[0];
 
     // Format timeStart and timeEnd
-    const formattedTimeStart = timeStart ? timeStart : new Date().toTimeString().slice(0, 5);
+    const formattedTimeStart = timeStart
+      ? timeStart
+      : new Date().toTimeString().slice(0, 5);
     const formattedTimeEnd = timeEnd ? timeEnd : null;
 
     // Create date objects for start and end times
     const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = formattedTimeEnd ? new Date(`${today}T${formattedTimeEnd}:00`) : null;
+    const dateCompleted = formattedTimeEnd
+      ? new Date(`${today}T${formattedTimeEnd}:00`)
+      : null;
 
     // Prepare the updated task object
     const updatedTask = {
@@ -84,7 +108,6 @@ export const EditPopUp = ({ onClose, task }) => {
     console.log("Updating task:", updatedTask);
     updateTaskMutation.mutate(updatedTask);
   };
-
 
   return (
     <>
