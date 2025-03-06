@@ -8,6 +8,7 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { AI_API_KEY } from "../utils/variables.js";
+import logger from "../utils/logger.js";
 
 const genAI = new GoogleGenerativeAI(AI_API_KEY);
 
@@ -32,6 +33,7 @@ export const suggestTask = async (taskList) => {
     });
     return result.response.text();
   } catch (error) {
-    console.log(`\nCouldn't generate response: ${error}`);
+    logger.error(`\nCouldn't generate response: ${error}`);
+    return null;
   }
 };

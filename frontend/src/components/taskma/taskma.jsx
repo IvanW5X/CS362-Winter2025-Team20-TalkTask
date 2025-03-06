@@ -23,7 +23,7 @@ export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
-  const {user, isAuthenticated, accessToken } = useAuth();
+  const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
 
   const deleteCompletedTasksMutation = useMutation(
@@ -103,15 +103,22 @@ export const TasksManagement = () => {
       console.error("User not authenticated, action denied");
       return;
     }
-    const response = await axios.get(`${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,{
-      headers: { Authorization: `Bearer ${accessToken}`},
-    });
+    const response = await axios.get(
+      `${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
     return response.data;
   };
-  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery("suggestedTask", suggestTaskQuery, {enabled: false});
-  const handleSuggestTask = () => {
+  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery(
+    "suggestedTask",
+    suggestTaskQuery,
+    { enabled: false }
+  );
+  const handleSuggestTask = async () => {
+    await suggestTaskRefetch();
     console.log(suggestedTask);
-    suggestTaskRefetch();
   };
 
   return (
@@ -174,8 +181,9 @@ export const TasksManagement = () => {
 
         {/* mic button */}
         <button
-          className={`flex cursor-pointer h-[40px] ${ isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]` }
+          className={`flex cursor-pointer h-[40px] ${
+            isListening ? "bg-red-500" : "bg-[#37E03A]"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
