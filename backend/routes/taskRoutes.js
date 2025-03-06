@@ -12,16 +12,17 @@ import {
   updateTask,
   deleteAllTask,
   handleCommand,
+  generateTask
 } from "../controller/taskController.js";
 
 const router = express.Router();
 
 // Setup routes
-router.post("/create-task", createTask); // Create a new task
+router.post("/create-task", createTask);
 router.post("/voice-command/:userId", handleCommand);
-
-router.get("/read-task/:userId", getTasksByUser); // Get tasks for a specific user
-router.patch("/update-task/:taskID", updateTask); // Update a task
-router.delete("/delete", deleteAllTask); // Delete all completed tasks
+router.get("/generate-task/:userId", generateTask);
+router.get("/read-task/:userId", getTasksByUser);
+router.patch("/update-task/:taskID", updateTask);
+router.delete("/delete", deleteAllTask);
 
 export default router;
