@@ -13,7 +13,7 @@ import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { AddPopUp } from "../addpopup/addpopup";
 import { CommandsPopUp } from "../voicepopup/commandsPopUp";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
@@ -98,6 +98,22 @@ export const TasksManagement = () => {
     }
   };
 
+  const suggestTaskQuery = async () => {
+    if (!isAuthenticated) {
+      console.error("User not authenticated, action denied");
+      return;
+    }
+    const response = await axios.get(`${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,{
+      headers: { Authorization: `Bearer ${accessToken}`},
+    });
+    return response.data;
+  };
+  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery("suggestedTask", suggestTaskQuery, {enabled: false});
+  const handleSuggestTask = () => {
+    console.log(suggestedTask);
+    suggestTaskRefetch();
+  };
+
   return (
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[435px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
@@ -142,6 +158,7 @@ export const TasksManagement = () => {
 
         <button
           className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          onClick={handleSuggestTask}
         >
           Suggest a Task
           <IoStar className="absolute right-3" />
