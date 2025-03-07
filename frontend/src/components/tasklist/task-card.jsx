@@ -6,7 +6,7 @@
  ********************************************************************/
 
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { EditPopUp } from "../editpopup/editpopup";
+import { EditPopUp } from "../task-management/editpopup/editpopup";
 import { useState } from "react";
 
 const formatTime = (date) => {

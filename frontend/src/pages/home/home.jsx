@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { TaskList } from "../../components/tasklist/task-list";
-import { TasksManagement } from "../../components/taskma/taskma";
+import { TasksManagement } from "../../components/task-management/task-management";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { CalendarBar } from "../../components/calendar/calendar";
 import { TopBar } from "../../components/topbar-user-page/topbar";

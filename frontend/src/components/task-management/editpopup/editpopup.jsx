@@ -9,8 +9,8 @@ import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
-import { useAuth } from "../../../contexts/authContext.jsx";
+import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
+import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
