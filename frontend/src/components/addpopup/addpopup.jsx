@@ -22,7 +22,7 @@ export const AddPopUp = ({ onClose }) => {
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState(3);
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState(false);
 
   //stop scrolling when pop up
   useEffect(() => {
@@ -60,7 +60,7 @@ export const AddPopUp = ({ onClose }) => {
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
-        setStatus("pending");
+        setStatus(false);
         onClose();
       },
       onError: (error) => {
@@ -97,7 +97,7 @@ export const AddPopUp = ({ onClose }) => {
       status,
       dateStart,
       dateCompleted,
-      userId: user.sub,     // Use Auth0 user ID
+      userID: user.sub,     // Use Auth0 user ID
     };
     console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);

@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema({
     name: { type: String, unique: true, required: true},
-    userId: { type: String, unique: true, required: true},
+    userID: { type: String, unique: true, required: true},
     count: { type: Number, required: true, default: 0},
 });
 

@@ -32,7 +32,7 @@ describe('Task Model - Unit Tests', () => {
       title: 'Test Task',  // ✅ Added required title
       description: 'Unit test task',
       status: 'pending',
-      userId: new mongoose.Types.ObjectId(), // ✅ Simulating user ID
+      userID: new mongoose.Types.ObjectId(), // ✅ Simulating user ID
     });
 
     await task.save();
@@ -49,7 +49,7 @@ describe('Task Model - Unit Tests', () => {
       title: 'Update Test Task',  // ✅ Added required title
       description: 'Test task for update',
       status: 'in-progress',
-      userId: new mongoose.Types.ObjectId(),
+      userID: new mongoose.Types.ObjectId(),
     });
 
     await task.save();

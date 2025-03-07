@@ -29,7 +29,7 @@ function convertWordToNum(word) {
   return wordToNum[word.toLowerCase()] || parseInt(word, 10) || null;
 }
 
-export const parseCommand = (transcript, userId) => {
+export const parseCommand = (transcript, userID) => {
   // add variants
   const addVariants = [
     /add\s+(.+?)\s+(?:with|and|priority)/i, //captures task title before certain words
@@ -102,7 +102,7 @@ export const parseCommand = (transcript, userId) => {
         // startTime: startTimeMatch ? startTimeMatch[1].trim() : null,
         // endTime: endTimeMatch ? endTimeMatch[1].trim() : null,
         priority: priority,
-        userId: userId,
+        userID: userID,
       };
     }
   }
