@@ -11,7 +11,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
 import { IoList } from "react-icons/io5";
-import { AddPopUp } from "../task-management/addpopup/addpopup.jsx";
+import { AddPopUp } from "./addpopup/addpopup.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
