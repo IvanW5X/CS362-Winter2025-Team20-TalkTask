@@ -92,6 +92,7 @@ export const TaskList = ({ selectedCategory }) => {
     );
   }
 
+  //get rid of later
   const sortedTasks = [...filteredTasks].sort(
     (a, b) => a.priority - b.priority
   );

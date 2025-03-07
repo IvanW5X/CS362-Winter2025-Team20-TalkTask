@@ -5,19 +5,26 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
+//icons
 import { FaMicrophone } from "react-icons/fa";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { IoStar } from "react-icons/io5";
 import { IoList } from "react-icons/io5";
-import { AddPopUp } from "./addpopup/addpopup.jsx";
-import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
+
+//react and backend
+import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
+
+//popups
+import { AddPopUp } from "./addpopup/addpopup.jsx";
+import { FilterSort } from "./filter-sort/filter-sort.jsx";
+import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
+
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);

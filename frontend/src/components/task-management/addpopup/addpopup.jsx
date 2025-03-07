@@ -5,8 +5,11 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState, useEffect } from "react";
+//icons
 import { IoClose } from "react-icons/io5";
+
+//backend
+import React, { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
@@ -156,6 +159,7 @@ export const AddPopUp = ({ onClose }) => {
               <textarea
                 className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
+                required
                 maxLength="100"
                 id="description"
                 onChange={(t) => setDescription(t.target.value)}
