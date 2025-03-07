@@ -15,8 +15,8 @@ function validateTask(task) {
         return { valid: false, error: 'Priority must be between 1 and 3' };
     if (typeof task.taskID !== 'number' || task.taskID <= 0) 
         return { valid: false, error: 'Invalid taskID' };
-    if (!task.userId || typeof task.userId !== 'string') 
-        return { valid: false, error: 'userId is required' };
+    if (!task.userID || typeof task.userID !== 'string') 
+        return { valid: false, error: 'userID is required' };
     return { valid: true };
 }
 
@@ -24,14 +24,14 @@ describe('Frontend Task Form Validation', () => {
 
   // Should accept a valid task
   it('should pass validation for a valid task', () => {
-    const task = { taskID: 1, title: "Test Task", status: "pending", priority: 3, userId: "507f191e810c19729de860ea" };
+    const task = { taskID: 1, title: "Test Task", status: "pending", priority: 3, userID: "507f191e810c19729de860ea" };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(true);
   });
 
   // Should reject an empty title
   it('should fail validation for an empty title', () => {
-    const task = { taskID: 1, title: "", status: "pending", priority: 3, userId: "507f191e810c19729de860ea" };
+    const task = { taskID: 1, title: "", status: "pending", priority: 3, userID: "507f191e810c19729de860ea" };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(false);
     expect(validationResult.error).toBe("Title is required");
@@ -39,7 +39,7 @@ describe('Frontend Task Form Validation', () => {
 
   // Should reject missing status
   it('should fail validation for missing status', () => {
-    const task = { taskID: 1, title: "Test Task", priority: 3, userId: "507f191e810c19729de860ea" };
+    const task = { taskID: 1, title: "Test Task", priority: 3, userID: "507f191e810c19729de860ea" };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(false);
     expect(validationResult.error).toBe("Invalid status");
@@ -47,7 +47,7 @@ describe('Frontend Task Form Validation', () => {
 
   // Should reject an invalid priority
   it('should fail validation for invalid priority', () => {
-    const task = { taskID: 1, title: "Test Task", status: "pending", priority: 10, userId: "507f191e810c19729de860ea" };
+    const task = { taskID: 1, title: "Test Task", status: "pending", priority: 10, userID: "507f191e810c19729de860ea" };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(false);
     expect(validationResult.error).toBe("Priority must be between 1 and 3");
@@ -55,18 +55,18 @@ describe('Frontend Task Form Validation', () => {
 
   // Should reject missing taskID
   it('should fail validation for missing taskID', () => {
-    const task = { title: "Test Task", status: "pending", priority: 3, userId: "507f191e810c19729de860ea" };
+    const task = { title: "Test Task", status: "pending", priority: 3, userID: "507f191e810c19729de860ea" };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(false);
     expect(validationResult.error).toBe("Invalid taskID");
   });
 
-  // Should reject missing userId
-  it('should fail validation for missing userId', () => {
+  // Should reject missing userID
+  it('should fail validation for missing userID', () => {
     const task = { taskID: 1, title: "Test Task", status: "pending", priority: 3 };
     const validationResult = validateTask(task);
     expect(validationResult.valid).toBe(false);
-    expect(validationResult.error).toBe("userId is required");
+    expect(validationResult.error).toBe("userID is required");
   });
 
   // Should reject an empty task

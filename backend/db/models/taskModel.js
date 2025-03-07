@@ -15,9 +15,9 @@ const taskSchema = new mongoose.Schema({
   dateCompleted: { type: Date },
   recurringDate: { type: Date },
   priority: { type: Number, min: 1, max: 3, default: 1 }, // Priority scale 1-3
-  status: { type: String, enum: ["pending", "completed"], default: "pending" },
+  status: { type: Boolean, default: false },
   category: { type: String, required: true, default: "none" },
-  userId: { type: String, required: true },
+  userID: { type: String, required: true },
 });
 
 export const Task = mongoose.model("Task", taskSchema);

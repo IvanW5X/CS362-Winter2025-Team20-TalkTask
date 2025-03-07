@@ -28,7 +28,7 @@ export const suggestTask = async (taskList) => {
     const result = await model.generateContent(prompt, {
       generationConfig: {
         maxOutputTokens: 35,
-        temperature: 0.6,
+        temperature: 0.5,
       },
     });
     return result.response.text();
