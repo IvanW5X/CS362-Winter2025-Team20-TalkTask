@@ -14,11 +14,14 @@ import { IoList } from "react-icons/io5";
 
 //react and backend
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
+
+import { useDeleteCompletedTasks } from "../../hooks/taskHooks.js";
+import { sendTranscript } from "../../services/taskServices.js";
 
 //popups
 import { AddPopUp } from "./addpopup/addpopup.jsx";
@@ -29,36 +32,15 @@ import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
-  const queryClient = useQueryClient();
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
-
-  const deleteCompletedTasksMutation = useMutation(
-    async () => {
-      if (!isAuthenticated) {
-        console.error("User not authenticated, action denied");
-        return;
-      }
-      const response = await axios.delete(`${VITE_BACKEND_URL}/tasks/delete`, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      return response.data;
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("tasks");
-      },
-      onError: (error) => {
-        console.error("Error deleting completed tasks:", error);
-        alert("Failed to delete completed tasks.");
-      },
-    }
-  );
+  const deleteCompletedTasksMutation = useDeleteCompletedTasks(user, isAuthenticated, accessToken);
+  
   const handleDeleteTasks = () => {
     if (
       window.confirm("Are you sure you want to delete all completed tasks?")
     ) {
-      deleteCompletedTasksMutation.mutate();
+      deleteCompletedTasksMutation.mutate("tasks");
     }
   };
   const handleMicClick = () => {
@@ -68,7 +50,8 @@ export const TasksManagement = () => {
     } else {
       startListening(
         (transcript) => {
-          sendBackend(transcript);
+          sendTranscript(user, isAuthenticated, accessToken, transcript);
+          console.log(transcript);
         },
         (error) => {
           console.error("Error:", error);
@@ -79,29 +62,6 @@ export const TasksManagement = () => {
         }
       );
       setIsListening(true);
-    }
-  };
-
-  const sendBackend = async (transcript) => {
-    try {
-      if (!isAuthenticated) {
-        console.error("User not authenticated, action denied");
-        return;
-      }
-      const response = await axios.post(
-        `${VITE_BACKEND_URL}/tasks/voice-command/${user.sub}`,
-        {
-          transcript,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      console.log("Backend response:", response.data);
-    } catch (error) {
-      console.error("Error sending transcript to backend:", error);
     }
   };
 

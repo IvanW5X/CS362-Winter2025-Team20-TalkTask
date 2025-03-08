@@ -11,14 +11,24 @@ import { useGetTasks, useUpdateTaskStatus } from "../../hooks/taskHooks.js";
 
 export const TaskList = ({ selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
-  const { data: tasks = [], isLoading, error } = useGetTasks(user, isAuthenticated, accessToken);
-  const updateTaskStatusMutation = useUpdateTaskStatus(user, isAuthenticated, accessToken);
+  const {
+    data: tasks = [],
+    isLoading,
+    error,
+  } = useGetTasks(user, isAuthenticated, accessToken);
+  const updateTaskStatusMutation = useUpdateTaskStatus(
+    user,
+    isAuthenticated,
+    accessToken
+  );
 
   const toggleTaskStatus = (taskID) => {
     const task = tasks.find((t) => t.taskID === taskID);
-    const newStatus = task.status = !task.status;
+    const newStatus = !task.status;
+    console.log(
+      `Toggling task ${task.title} from ${task.status} to ${newStatus}`
+    );
     updateTaskStatusMutation.mutate({ taskID, newStatus });
-    console.log(`Toggling task ${taskID} from ${task.status} to ${newStatus}`);
   };
 
   // Filter tasks based on selected category
@@ -58,7 +68,9 @@ export const TaskList = ({ selectedCategory }) => {
             <TaskCard
               key={task.taskID}
               task={task}
-              toggleTaskStatus={() => {toggleTaskStatus(task.taskID)}}
+              toggleTaskStatus={() => {
+                toggleTaskStatus(task.taskID);
+              }}
             />
           ))
         )}

@@ -6,32 +6,25 @@
  ********************************************************************/
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../utils/variables.js";
+import { apiRequest } from "../services/taskServices.js";
 
 export const useGetTasks = (user, isAuthenticated, accessToken) => {
   return useQuery("tasks", async () => {
-    if (!user || !isAuthenticated) return [];
-    const res = await axios.get(
-      `${VITE_BACKEND_URL}/tasks//read-task/${user.sub}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    return res.data;
+    const res = await apiRequest("GET", `/tasks/read-task/${user.sub}`, user, isAuthenticated, accessToken);
+
+    if (res === null) return [];
+    return res;
   });
 };
 
 export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
+
   return useMutation(
     async ({ taskID, newStatus }) => {
-      if (!user || !isAuthenticated) return null;
-      await axios.patch(
-        `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
-        { status: newStatus },
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
+      await apiRequest("PATCH", `/tasks/update-task/${taskID}`, user, isAuthenticated, accessToken, {
+        status: newStatus,
+      });
     },
     {
       onSuccess: () => {
@@ -40,3 +33,22 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
     }
   );
 };
+
+export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
+  const queryClient = useQueryClient();
+  
+  return useMutation( async () => {
+    await apiRequest("DELETE", `/tasks/delete`, user, isAuthenticated, accessToken);
+  },
+  {
+    onSuccess: () => {
+      queryClient.invalidateQueries("tasks");
+    },
+    onError: (error) => {
+      console.error("Failed to delete completed tasks", error);
+      alert("Failed to delete completed tasks.");
+    }
+  }
+  );
+}
+
