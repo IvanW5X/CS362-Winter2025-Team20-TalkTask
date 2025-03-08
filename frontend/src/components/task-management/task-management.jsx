@@ -26,15 +26,9 @@ import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 
 
-export const TasksManagement = () => {
+export const TasksManagement = ({ setFilters }) => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
-
-  const [filters, setFilters] = useState({
-    selectedPriorities: [],
-    sortOrder: "highToLow",
-  });
-
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
   const { user, isAuthenticated, accessToken } = useAuth();
@@ -152,7 +146,7 @@ export const TasksManagement = () => {
           onClose={() => setFilterMenu(false)}
           onApply={handleApplyFilters}
         />
-      )}      
+      )}    
       
       {/* commands pop up */}
       {commandsMenuV && (

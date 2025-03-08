@@ -18,6 +18,11 @@ export const Home = () => {
   const [menu_open, set_menu_state] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null); // Category state
 
+  const [filters, setFilters] = useState({
+    selectedPriorities: [],
+    sortOrder: "lowToHigh",
+  });
+
   if (!isAuthenticated || !user) {
     return ( 
       <div className="bg-white text-red-500 text-lg">
@@ -40,8 +45,11 @@ export const Home = () => {
             <CalendarBar />
           </div>
           <div className={`flex md:flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[70%]`}>
-            <TaskList selectedCategory={selectedCategory} />
-            <TasksManagement/>
+            <TaskList selectedCategory={selectedCategory}
+                      selectedPriorities={filters.selectedPriorities}
+                      sortOrder={filters.sortOrder} 
+            />
+            <TasksManagement setFilters={setFilters} />
           </div>
         </div>
       </div>

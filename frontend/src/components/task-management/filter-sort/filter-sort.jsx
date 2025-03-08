@@ -11,10 +11,10 @@ import { IoClose } from "react-icons/io5";
 //react and backend
 import React, { useState, useEffect } from "react";
 
-
-export const FilterSort = ({ onClose, onApply }) => {
-    const [selectedPriorities, setSelectedPriorities] = useState([]);
-    const [sortOrder, setSortOrder] = useState("highToLow");
+export const FilterSort = ({ onClose, onApply, initialSelectedPriorities, initialSortOrder }) => {
+    // Initialize state with props
+    const [selectedPriorities, setSelectedPriorities] = useState(initialSelectedPriorities || []);
+    const [sortOrder, setSortOrder] = useState(initialSortOrder || "lowToHigh");
   
     const handlePriorityChange = (priority) => {
       setSelectedPriorities((prev) =>
@@ -61,7 +61,7 @@ export const FilterSort = ({ onClose, onApply }) => {
             >
               <IoClose className="cursor-pointer" />
             </button>
-
+  
             {/* title */}
             <div className="bg-[#F4F3F2] mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
               Filter & Sort
@@ -93,8 +93,8 @@ export const FilterSort = ({ onClose, onApply }) => {
                 onChange={handleSortOrderChange}
                 className="border-[2px] bg-[#F4F3F2] w-[200px] p-2 rounded-2xl"
               >
-                <option value="highToLow">Highest to Lowest</option>
-                <option value="lowToHigh">Lowest to Highest</option>
+                <option value="lowToHigh">Highest to Lowest</option>
+                <option value="highToLow">Lowest to Highest</option>
               </select>
             </div>
   
@@ -102,7 +102,7 @@ export const FilterSort = ({ onClose, onApply }) => {
             <button
               type="button"
               onClick={handleApply}
-              className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] mt-6"
+              className="text-white font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] mt-6"
             >
               Apply
             </button>

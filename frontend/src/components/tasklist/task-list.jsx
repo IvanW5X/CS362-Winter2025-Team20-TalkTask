@@ -9,7 +9,7 @@ import { TaskCard } from "./task-card.jsx";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { useGetTasks, useUpdateTaskStatus } from "../../hooks/taskHooks.js";
 
-export const TaskList = ({ selectedCategory }) => {
+export const TaskList = ({ selectedCategory, selectedPriorities=[], sortOrder }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const { data: tasks = [], isLoading, error } = useGetTasks(user, isAuthenticated, accessToken);
   const updateTaskStatusMutation = useUpdateTaskStatus(user, isAuthenticated, accessToken);
@@ -22,9 +22,21 @@ export const TaskList = ({ selectedCategory }) => {
   };
 
   // Filter tasks based on selected category
-  const filteredTasks = selectedCategory
-    ? tasks.filter((task) => task.category === selectedCategory)
-    : tasks;
+  const filteredTasks = tasks.filter((task) => {
+    const matchesCategory = selectedCategory ? task.category === selectedCategory : true;
+    const matchesPriority = selectedPriorities.length > 0 ? selectedPriorities.includes(task.priority) : true;
+    return matchesCategory && matchesPriority;
+  });
+
+  
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
+      if (sortOrder === "highToLow") {
+        return b.priority - a.priority;
+      } else {
+        return a.priority - b.priority;
+      }
+    });
+
 
   if (isLoading) {
     return <div className="ml-[5%]">Loading tasks...</div>;
@@ -36,9 +48,7 @@ export const TaskList = ({ selectedCategory }) => {
       </div>
     );
   }
-  const sortedTasks = [...filteredTasks].sort(
-    (a, b) => a.priority - b.priority
-  );
+  
   return (
     <div className="bg-[#cdcdcd] w-[70%] rounded-[10px] h-min min-w-[400px]">
       {/* Task Header */}
