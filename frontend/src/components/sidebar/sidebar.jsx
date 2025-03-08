@@ -4,6 +4,7 @@
  * Description: Sidebar on Main Page
  * Author(s): CS 362-Team 20
  ********************************************************************/
+
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 
@@ -23,7 +24,7 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
     >
       {/* Header Section */}
       <div className="flex items-center justify-between p-3 bg-[#cdcdcd] font-bold text-[18px]">
-        Tasks
+        Categories
         <GoPlus
           className="cursor-pointer text-[28px] stroke-[.5] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200 rounded-full"
           onClick={addCategory}
