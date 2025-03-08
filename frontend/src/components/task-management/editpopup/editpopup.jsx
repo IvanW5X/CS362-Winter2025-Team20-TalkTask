@@ -28,7 +28,7 @@ export const EditPopUp = ({ onClose, task }) => {
       : ""
   );
   const [priority, setPriority] = useState(task?.priority || 1);
-  const [status, setStatus] = useState(task?.status || "pending");
+  const [status, setStatus] = useState(task?.status || false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -65,7 +65,7 @@ export const EditPopUp = ({ onClose, task }) => {
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
-        setStatus("pending");
+        setStatus(false);
         onClose();
       },
       onError: (error) => {
