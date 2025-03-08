@@ -45,11 +45,12 @@ export const Home = () => {
             <CalendarBar />
           </div>
           <div className={`flex md:flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[70%]`}>
-            <TaskList selectedCategory={selectedCategory}
-                      selectedPriorities={filters.selectedPriorities}
-                      sortOrder={filters.sortOrder} 
+          <TaskList
+              selectedCategory={selectedCategory}
+              selectedPriorities={filters.selectedPriorities}
+              sortOrder={filters.sortOrder}
             />
-            <TasksManagement setFilters={setFilters} />
+            <TasksManagement setFilters={setFilters} filters={filters} />
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 
 
-export const TasksManagement = ({ setFilters }) => {
+export const TasksManagement = ({ setFilters, filters }) => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
@@ -145,6 +145,8 @@ export const TasksManagement = ({ setFilters }) => {
         <FilterSort
           onClose={() => setFilterMenu(false)}
           onApply={handleApplyFilters}
+          initialSelectedPriorities={filters.selectedPriorities} 
+          initialSortOrder={filters.sortOrder}
         />
       )}    
       
