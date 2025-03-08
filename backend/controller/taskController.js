@@ -26,7 +26,7 @@ export const createTask = async (req, res) => {
 
 //speech input
 export const handleCommand = async (req, res) => {
-  const { userId } = req.params;
+  const { userID } = req.params;
   const { transcript } = req.body; //Get transcript
   console.log("Transcript received:", transcript);
 
@@ -35,22 +35,22 @@ export const handleCommand = async (req, res) => {
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  const command = parseCommand(transcript, userId); //Parse the transcript into a command
+  const command = parseCommand(transcript, userID); //Parse the transcript into a command
 
   if (!command) {
     return res.status(400).json({ error: "Invalid command" });
   }
 
-  const result = await execCommand(command, userId); //execute the command
+  const result = await execCommand(command, userID); //execute the command
   return res.status(200).json(result);
 };
 
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
-  const { userId } = req.params;
+  const { userID } = req.params;
 
   try {
-    const tasks = await Task.find({ userId });
+    const tasks = await Task.find({ userID });
     res.status(200).json(tasks);
   } catch (error) {
     logger.error(`getTasksByUser - Error: ${error.message}`);
@@ -100,7 +100,7 @@ export const updateTask = async (req, res) => {
 // DELETE All Completed Tasks
 export const deleteAllTask = async (req, res) => {
   try {
-    const result = await Task.deleteMany({ status: "completed" });
+    const result = await Task.deleteMany({ status: true });
     if (result.deletedCount > 0) {
       res
         .status(200)
@@ -118,12 +118,13 @@ export const deleteAllTask = async (req, res) => {
 
 export const generateTask = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const tasks = await Task.find({ userId });
+    const { userID } = req.params;
+    const tasks = await Task.find({ userID });
 
     // Get tasks titles from user
     const taskTitles = tasks.map((task) => task.title);
     const generatedTask = await suggestTask(taskTitles);
+    console.log(generatedTask);
 
     // Suggested task service failed
     if (generatedTask === null) {

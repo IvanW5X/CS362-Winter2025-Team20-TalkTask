@@ -7,7 +7,7 @@
 import { Task } from "../db/models/taskModel.js";
 
 
-export const execCommand = async (command, userId) => {
+export const execCommand = async (command, userID) => {
     if (!command) {
       throw new Error("No command provided.");
     }
@@ -24,7 +24,7 @@ export const execCommand = async (command, userId) => {
             endTime: command.endTime || null, // Optional end time
             priority: command.priority || 3,
             status: "pending", // Default status
-            userId: userId, // Add the userId from the authenticated user
+            userID: userID, // Add the userID from the authenticated user
         });
         await newTask.save();
         return { success: true, message: "Task added successfully", task: newTask };

@@ -23,8 +23,8 @@ export const createCategory = async (req, res) => {
 
 export const getCategories = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const categories = await Category.find({ userId });
+    const { userID } = req.params;
+    const categories = await Category.find({ userID });
     res.status(200).json(categories);
   } catch (error) {
     logger.error(`getCategories - Error: ${error.message}`);
@@ -37,15 +37,15 @@ export const getCategories = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   try {
-    const { name, userId, count } = req.params;
+    const { name, userID, count } = req.params;
     const deletedCategory = await Category.findOneAndDelete({
       name: name,
-      userId: userId,
+      userID: userID,
     });
 
     if (deletedCategory) {
       // Delete all tasks within category too
-      if (count > 0) await Task.deleteMany({ category: name, userId });
+      if (count > 0) await Task.deleteMany({ category: name, userID });
 
       res.status(200).json({
         message: "Category deleted successfully",

@@ -30,12 +30,12 @@ describe("Task Validation - Unit Tests", () => {
   it("should reject task creation with missing required fields", async () => {
     try {
       const task = new Task({
-        status: "pending", // ❌ Missing `taskID`, `userId`, `title`, `description`
+        status: "pending", // ❌ Missing `taskID`, `userID`, `title`, `description`
       });
       await task.save();
     } catch (error) {
       expect(error.errors.taskID).toBeDefined();
-      expect(error.errors.userId).toBeDefined();
+      expect(error.errors.userID).toBeDefined();
       expect(error.errors.title).toBeDefined();
       expect(error.errors.description).toBeDefined();
     }
@@ -46,7 +46,7 @@ describe("Task Validation - Unit Tests", () => {
       const task = new Task({
         taskID: 4,
         title: "Priority Test Task",
-        userId: new mongoose.Types.ObjectId(),
+        userID: new mongoose.Types.ObjectId(),
         description: "Invalid priority",
         priority: 5, // ❌ Only 1-3 allowed
       });
@@ -61,7 +61,7 @@ describe("Task Validation - Unit Tests", () => {
       const task = new Task({
         taskID: 5,
         title: "Invalid Status Task",
-        userId: new mongoose.Types.ObjectId(),
+        userID: new mongoose.Types.ObjectId(),
         description: "Testing status validation",
         status: "not-a-valid-status", // ❌ Should be 'pending' | 'in-progress' | 'completed'
       });
@@ -75,7 +75,7 @@ describe("Task Validation - Unit Tests", () => {
     const task = new Task({
       taskID: 6,
       title: "Valid Task",
-      userId: new mongoose.Types.ObjectId(),
+      userID: new mongoose.Types.ObjectId(),
       description: "This task should be valid",
       priority: 2, // ✅ Between 1-3
       status: "pending", // ✅ Valid status

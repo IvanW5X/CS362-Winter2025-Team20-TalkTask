@@ -23,7 +23,7 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
     <aside
       className={`flex flex-col bg-[#F4F3F2] shadow-xl w-[200px] min-w-[150px]
                   mb-[0%] pb-[0%] z-[2]
-                  ${menu_open ? "flex-visible" : "flex hidden"}`}
+                  ${menu_open ? "flex-visible" : "hidden"}`}
     >
       {/* Header Section */}
       <div className="flex items-center justify-between p-3 bg-[#cdcdcd] font-bold text-[18px]">
