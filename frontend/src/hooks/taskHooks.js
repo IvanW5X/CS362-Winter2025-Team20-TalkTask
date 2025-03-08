@@ -10,45 +10,109 @@ import { apiRequest } from "../services/taskServices.js";
 
 export const useGetTasks = (user, isAuthenticated, accessToken) => {
   return useQuery("tasks", async () => {
-    const res = await apiRequest("GET", `/tasks/read-task/${user.sub}`, user, isAuthenticated, accessToken);
+    try {
+      const res = await apiRequest(
+        "GET",
+        `/tasks/read-task/${user.sub}`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+      if (res === null || res === undefined)
+        throw new Error("Recieved null or undefined");
 
-    if (res === null) return [];
-    return res;
+      return res;
+    } catch (error) {
+      console.error(`Error fetching tasks: ${error}`);
+      return [];
+    }
   });
 };
 
 export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
 
-  return useMutation(
-    async ({ taskID, newStatus }) => {
-      await apiRequest("PATCH", `/tasks/update-task/${taskID}`, user, isAuthenticated, accessToken, {
-        status: newStatus,
-      });
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("tasks");
+  try {
+    return useMutation(
+      async ({ taskID, newStatus }) => {
+        await apiRequest(
+          "PATCH",
+          `/tasks/update-task/${taskID}`,
+          user,
+          isAuthenticated,
+          accessToken,
+          {
+            status: newStatus,
+          }
+        );
       },
-    }
-  );
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries("tasks");
+        },
+      }
+    );
+  } catch (error) {
+    console.error(`Could not fetch tasks`);
+    return;
+  }
 };
 
 export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
-  
-  return useMutation( async () => {
-    await apiRequest("DELETE", `/tasks/delete`, user, isAuthenticated, accessToken);
-  },
-  {
-    onSuccess: () => {
-      queryClient.invalidateQueries("tasks");
-    },
-    onError: (error) => {
-      console.error("Failed to delete completed tasks", error);
-      alert("Failed to delete completed tasks.");
-    }
-  }
-  );
-}
 
+  try {
+    return useMutation(
+      async () => {
+        await apiRequest(
+          "DELETE",
+          `/tasks/delete`,
+          user,
+          isAuthenticated,
+          accessToken
+        );
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries("tasks");
+        },
+        onError: (error) => {
+          console.error("Failed to delete completed tasks", error);
+          alert("Failed to delete completed tasks.");
+        },
+      }
+    );
+  } catch (error) {
+    console.error("Could not delete tasks: ", error);
+    return;
+  }
+};
+
+export const useSuggestTask = (user, isAuthenticated, accessToken) => {
+  const getSuggestedTask = async () => {
+    try {
+      const res = await apiRequest(
+        "GET",
+        `/tasks/generate-task/${user.sub}`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+      return res;
+    } catch (error) {
+      console.error("Could not generate task: ", error);
+      return null;
+    }
+  };
+  const {
+    data: suggestedTask,
+    refetch,
+    isLoading,
+    error,
+  } = useQuery("suggestedTask", getSuggestedTask,
+    {
+      enabled: false,
+      onSuccess: (suggestedTask) => console.log("Generated task: ", suggestedTask),
+    });
+    return { suggestedTask, refetch, isLoading, error };
+};

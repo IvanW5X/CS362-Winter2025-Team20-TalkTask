@@ -14,13 +14,10 @@ import { IoList } from "react-icons/io5";
 
 //react and backend
 import { useState } from "react";
-import { useQuery } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
 
-import { useDeleteCompletedTasks } from "../../hooks/taskHooks.js";
+import { useDeleteCompletedTasks, useSuggestTask } from "../../hooks/taskHooks.js";
 import { sendTranscript } from "../../services/taskServices.js";
 
 //popups
@@ -35,6 +32,7 @@ export const TasksManagement = () => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
   const deleteCompletedTasksMutation = useDeleteCompletedTasks(user, isAuthenticated, accessToken);
+  const { refetch: suggestTaskRefetch } = useSuggestTask(user, isAuthenticated, accessToken);
   
   const handleDeleteTasks = () => {
     if (
@@ -65,26 +63,8 @@ export const TasksManagement = () => {
     }
   };
 
-  const suggestTaskQuery = async () => {
-    if (!isAuthenticated) {
-      console.error("User not authenticated, action denied");
-      return;
-    }
-    const response = await axios.get(
-      `${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    return response.data;
-  };
-  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery(
-    "suggestedTask",
-    suggestTaskQuery,
-    { enabled: false }
-  );
-  const handleSuggestTask = async () => {
-    await suggestTaskRefetch();
+  const handleSuggestTask  = async () => {
+    const { data: suggestedTask} = await suggestTaskRefetch();
     console.log(suggestedTask);
   };
 
