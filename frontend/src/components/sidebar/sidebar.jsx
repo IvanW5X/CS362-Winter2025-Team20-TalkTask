@@ -35,8 +35,8 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-[#F4F3F2] text-[16px]
-              accent-black
+            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] odd:bg-[#F4F3F2] text-[16px]
+              accent-black hover:bg-black/20 transition-colors duration-200
               ${selectedCategory === category ? "font-bold underline" : ""}`}
             onClick={() => setSelectedCategory(category)}
           >

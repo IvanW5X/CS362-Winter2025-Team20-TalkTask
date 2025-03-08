@@ -26,7 +26,7 @@ export const CalendarBar = ({ selectedDate, setSelectedDate }) => {
       {/* Left arrow button */}
       <button
         onClick={handlePrev}
-        className="px-3 py-3 bg-[#F4F3F2] rounded-full shadow-md hover:bg-gray-300 hover:shadow-xl transition-colors duration-200"
+        className="px-3 py-3 bg-[#F4F3F2] rounded-full shadow-md hover:bg-gray-400 hover:shadow-xl transition-colors duration-200"
       >
         <FaAngleLeft />
       </button>
@@ -39,7 +39,7 @@ export const CalendarBar = ({ selectedDate, setSelectedDate }) => {
           const dayLabel = format(day, "EEE"); // e.g. "Fri"
 
           let dayStyle =
-            "flex flex-col items-center justify-center w-15 h-20 rounded-2xl bg-[#F4F3F2] text-black cursor-pointer transition-colors duration-200 shadow-md hover:bg-gray-300 hover:shadow-xl";
+            "flex flex-col items-center justify-center w-15 h-20 rounded-2xl bg-[#F4F3F2] text-black cursor-pointer transition-colors duration-200 shadow-md hover:bg-gray-400 hover:shadow-xl";
 
           if (isSelected) {
             dayStyle =
@@ -62,7 +62,7 @@ export const CalendarBar = ({ selectedDate, setSelectedDate }) => {
       {/* Right arrow button */}
       <button
         onClick={handleNext}
-        className="px-3 py-3 bg-[#F4F3F2] rounded-full shadow-md hover:bg-gray-300 hover:shadow-xl transition-colors duration-200"
+        className="px-3 py-3 bg-[#F4F3F2] rounded-full shadow-md hover:bg-gray-400 hover:shadow-xl transition-colors duration-200"
       >
         <FaAngleRight />
       </button>

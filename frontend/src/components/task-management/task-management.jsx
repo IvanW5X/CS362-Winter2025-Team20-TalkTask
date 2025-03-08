@@ -104,7 +104,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         
         <button
-          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
+          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
@@ -113,7 +113,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* filter/sort*/}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setFilterMenu(!filterMenu)}
         >
           Filter/Sort
@@ -122,7 +122,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* clear completed tasks */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={handleDeleteTasks}
         >
           Clear Checked Tasks
@@ -131,7 +131,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* voice commands */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
@@ -140,7 +140,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* Suggest task */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={handleSuggestTask}
         >
           Suggest a Task
@@ -151,7 +151,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
         <button
           className={`flex cursor-pointer h-[40px] ${
             isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-green-500 hover:shadow-xl transition-colors duration-200`}
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-green-600 hover:shadow-xl transition-colors duration-200`}
           onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
