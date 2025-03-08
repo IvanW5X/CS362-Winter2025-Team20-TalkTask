@@ -33,6 +33,7 @@ export const TaskList = ({ selectedCategory, selectedDate, selectedPriorities=[]
   };
   // Get tasks from selected category and selected day
   const currentTasks = tasks.filter( (task) => {
+    console.log(task);
     return task.category === selectedCategory && (format(task.dateStart, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd"));
   });
   // Filter current tasks based on priority

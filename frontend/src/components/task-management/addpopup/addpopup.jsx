@@ -14,14 +14,14 @@ import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
+import { Category } from "../../../../../backend/db/models/categoryModel.js";
 
-export const AddPopUp = ({ onClose }) => {
+export const AddPopUp = ({ onClose, selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState(3);
@@ -59,7 +59,6 @@ export const AddPopUp = ({ onClose }) => {
         queryClient.invalidateQueries("tasks");
         setTitle("");
         setDescription("");
-        setCategory("");
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
@@ -95,7 +94,7 @@ export const AddPopUp = ({ onClose }) => {
       taskID: Date.now(),
       title,
       description,
-      category,
+      category: selectedCategory,
       priority,
       status,
       dateStart,
@@ -105,12 +104,11 @@ export const AddPopUp = ({ onClose }) => {
     console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
   };
-
   return (
     <>
       <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          className="relative border-3 flex flex-col w-[900px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
         >
           {/* Close Button */}
@@ -166,7 +164,7 @@ export const AddPopUp = ({ onClose }) => {
               />
             </p>
 
-            {/* Category */}
+            {/* Category
             <p className="flex my-2">
               <label
                 htmlFor="category"
@@ -183,7 +181,7 @@ export const AddPopUp = ({ onClose }) => {
                 required
                 onChange={(t) => setCategory(t.target.value)}
               />
-            </p>
+            </p> */}
 
             {/* Time Start */}
             <p className="flex my-2">

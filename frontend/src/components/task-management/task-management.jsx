@@ -17,7 +17,10 @@ import { useState } from "react";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
 
-import { useDeleteCompletedTasks, useSuggestTask } from "../../hooks/taskHooks.js";
+import {
+  useDeleteCompletedTasks,
+  useSuggestTask,
+} from "../../hooks/taskHooks.js";
 import { sendTranscript } from "../../services/taskServices.js";
 
 //popups
@@ -25,16 +28,23 @@ import { AddPopUp } from "./addpopup/addpopup.jsx";
 import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 
-
-export const TasksManagement = ({ setFilters, filters }) => {
+export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
-  const deleteCompletedTasksMutation = useDeleteCompletedTasks(user, isAuthenticated, accessToken);
-  const { refetch: suggestTaskRefetch } = useSuggestTask(user, isAuthenticated, accessToken);
-  
+  const deleteCompletedTasksMutation = useDeleteCompletedTasks(
+    user,
+    isAuthenticated,
+    accessToken
+  );
+  const { refetch: suggestTaskRefetch } = useSuggestTask(
+    user,
+    isAuthenticated,
+    accessToken
+  );
+
   // Function to handle applying filters and sorting
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
@@ -68,9 +78,9 @@ export const TasksManagement = ({ setFilters, filters }) => {
       setIsListening(true);
     }
   };
-  const handleSuggestTask  = async () => {
-    const { data: suggestedTask} = await suggestTaskRefetch();
-    
+  const handleSuggestTask = async () => {
+    const { data: suggestedTask } = await suggestTaskRefetch();
+
     // Do something with this
     console.log(suggestedTask);
   };
@@ -78,18 +88,23 @@ export const TasksManagement = ({ setFilters, filters }) => {
     <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
       
       {/* add menu */}
-      {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
-      
+      {addMenuV && (
+        <AddPopUp
+          onClose={() => setAddMenuV(false)}
+          selectedCategory={selectedCategory}
+        />
+      )}
+
       {/* filter popup */}
       {filterMenu && (
         <FilterSort
           onClose={() => setFilterMenu(false)}
           onApply={handleApplyFilters}
-          initialSelectedPriorities={filters.selectedPriorities} 
+          initialSelectedPriorities={filters.selectedPriorities}
           initialSortOrder={filters.sortOrder}
         />
-      )}    
-      
+      )}
+
       {/* commands pop up */}
       {commandsMenuV && (
         <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
@@ -97,12 +112,11 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
       {/* Title */}
       <div className="flex text-center m-5 text-[20px] bg-[#F4F3F2] px-5 py-3 rounded-2xl shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
-        <h2 className="w-full text-center">Task Managment</h2>
+        <h2 className="w-full text-center">Task Management</h2>
       </div>
 
       {/* actions */}
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
-        
         <button
           className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setAddMenuV(!addMenuV)}

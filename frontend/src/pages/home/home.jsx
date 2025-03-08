@@ -46,14 +46,22 @@ export const Home = () => {
               setSelectedDate={setSelectedDate}
             />
           </div>
-          <div className={`flex md:flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[70%]`}>
-          <TaskList
+          <div
+            className={`flex md:flex-row mt-[40px] ${
+              menu_open ? "ml-[2%]" : "self-center"
+            } w-[70%]`}
+          >
+            <TaskList
               selectedCategory={selectedCategory}
               selectedPriorities={filters.selectedPriorities}
               sortOrder={filters.sortOrder}
               selectedDate={selectedDate}
             />
-            <TasksManagement setFilters={setFilters} filters={filters} />
+            <TasksManagement
+              setFilters={setFilters}
+              filters={filters}
+              selectedCategory={selectedCategory}
+            />
           </div>
         </div>
       </div>
