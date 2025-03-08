@@ -80,10 +80,13 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   };
   const handleSuggestTask = async () => {
     const { data: suggestedTask } = await suggestTaskRefetch();
-
     // Do something with this
-    console.log(suggestedTask);
   };
+  if (selectedCategory === null || selectedCategory === undefined) {
+    return (
+      <div></div>
+    );
+  }
   return (
     <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
       
