@@ -60,7 +60,6 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
 
 export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
-
   try {
     return useMutation(
       async () => {
@@ -109,10 +108,10 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
     refetch,
     isLoading,
     error,
-  } = useQuery("suggestedTask", getSuggestedTask,
-    {
-      enabled: false,
-      onSuccess: (suggestedTask) => console.log("Generated task: ", suggestedTask),
-    });
-    return { suggestedTask, refetch, isLoading, error };
+  } = useQuery("suggestedTask", getSuggestedTask, {
+    enabled: false,
+    onSuccess: (suggestedTask) =>
+      console.log("Generated task: ", suggestedTask),
+  });
+  return { suggestedTask, refetch, isLoading, error };
 };

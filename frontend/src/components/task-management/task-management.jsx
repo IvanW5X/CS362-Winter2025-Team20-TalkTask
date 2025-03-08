@@ -62,14 +62,14 @@ export const TasksManagement = () => {
       setIsListening(true);
     }
   };
-
   const handleSuggestTask  = async () => {
     const { data: suggestedTask} = await suggestTaskRefetch();
+    
+    // Do something with this
     console.log(suggestedTask);
   };
-
   return (
-    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[495px] min-w-[290px] w-[30%] font-semibold">
+    <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
       {commandsMenuV && (
@@ -85,7 +85,7 @@ export const TasksManagement = () => {
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         {/* add task */}
         <button
-          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
@@ -94,7 +94,7 @@ export const TasksManagement = () => {
 
         {/* voice commands */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
         >
           Filter/Sort
           <IoList className="absolute right-3 text-[25px]" />
@@ -102,7 +102,7 @@ export const TasksManagement = () => {
 
         {/* clear completed tasks */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={handleDeleteTasks}
         >
           Clear Checked Tasks
@@ -111,15 +111,16 @@ export const TasksManagement = () => {
 
         {/* voice commands */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
           <IoList className="absolute right-3 text-[25px]" />
         </button>
 
+        {/* Suggest task */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={handleSuggestTask}
         >
           Suggest a Task
@@ -130,7 +131,7 @@ export const TasksManagement = () => {
         <button
           className={`flex cursor-pointer h-[40px] ${
             isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-green-500 hover:shadow-xl transition-colors duration-200`}
           onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
