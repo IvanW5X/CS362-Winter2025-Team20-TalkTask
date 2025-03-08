@@ -108,7 +108,7 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
     <>
       <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          className="relative border-3 flex flex-col w-[650px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
         >
           {/* Close Button */}
