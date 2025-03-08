@@ -22,6 +22,7 @@ export const TaskList = ({ selectedCategory, selectedDate, selectedPriorities=[]
     isAuthenticated,
     accessToken
   );
+  // Toggle check box functionality
   const toggleTaskStatus = (taskID) => {
     const task = tasks.find((t) => t.taskID === taskID);
     const newStatus = !task.status;
@@ -34,10 +35,11 @@ export const TaskList = ({ selectedCategory, selectedDate, selectedPriorities=[]
   const currentTasks = tasks.filter( (task) => {
     return task.category === selectedCategory && (format(task.dateStart, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd"));
   });
-  // Filter tasks based on selected category
+  // Filter current tasks based on priority
   const filteredTasks = currentTasks.filter((task) => {
     return selectedPriorities.length > 0 ? selectedPriorities.includes(task.priority) : true;
   });
+  // User sorted tasks
   const sortedTasks = [...filteredTasks].sort((a, b) => {
       if (sortOrder === "highToLow") {
         return b.priority - a.priority;
@@ -46,18 +48,18 @@ export const TaskList = ({ selectedCategory, selectedDate, selectedPriorities=[]
       }
     });
   if (isLoading) {
-    return <div className="ml-[5%]">Loading tasks...</div>;
+    return <div className="ml-[5%] text-[30px]">Loading tasks...</div>;
   }
   if (error) {
     return (
-      <div className="ml-[5%]">
+      <div className="ml-[5%] text-[30px]">
         An error occurred while fetching tasks. {error.message}
       </div>
     );
   }
   if (selectedCategory === null || selectedCategory === undefined) {
     return (
-      <div className="text-[30px]">
+      <div className="ml-[5%] text-[30px]">
         Select a category in the sidebar
       </div>
     );
