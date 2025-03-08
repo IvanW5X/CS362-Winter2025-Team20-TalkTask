@@ -16,32 +16,42 @@ import { useAuth } from "../../../contexts/authContext";
 export const Home = () => {
   const { isAuthenticated, user } = useAuth();
   const [menu_open, set_menu_state] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState(null); // Category state
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   if (!isAuthenticated || !user) {
-    return ( 
+    return (
       <div className="bg-white text-red-500 text-lg">
         Access denied: You are not authorized to access this page.
       </div>
     );
   }
-
   return (
     <div className="flex-col bg-[#dedede]">
       <TopBar menu_open={menu_open} set_menu_state={set_menu_state} />
       <div className="flex min-h-[calc(100vh-80px)]">
-        <Sidebar 
-          menu_open={menu_open} 
-          selectedCategory={selectedCategory} 
-          setSelectedCategory={setSelectedCategory} 
+        <Sidebar
+          menu_open={menu_open}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
         <div className="flex flex-col w-full">
           <div className="self-center">
-            <CalendarBar />
+            <CalendarBar
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
           </div>
-          <div className={`flex md:flex-row mt-[40px] ${ menu_open ? 'ml-[2%]' : 'self-center' } w-[90%]`}>
-            <TaskList selectedCategory={selectedCategory} />
-            <TasksManagement/>
+          <div
+            className={`flex md:flex-row mt-[40px] ${
+              menu_open ? "ml-[2%]" : "self-center"
+            } w-[80%]`}
+          >
+            <TaskList
+              selectedCategory={selectedCategory}
+              selectedDate={selectedDate}
+            />
+            <TasksManagement />
           </div>
         </div>
       </div>

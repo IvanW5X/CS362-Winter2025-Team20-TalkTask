@@ -5,13 +5,10 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { useState } from "react";
 import { addDays, subDays, startOfDay, isSameDay, format } from "date-fns";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-export const CalendarBar = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
+export const CalendarBar = ({ selectedDate, setSelectedDate }) => {
   const days = Array.from({ length: 7 }, (_, i) =>
     addDays(startOfDay(selectedDate), i - 3)
   );
@@ -24,7 +21,6 @@ export const CalendarBar = () => {
   function handleNext() {
     setSelectedDate(addDays(selectedDate, 1));
   }
-
   return (
     <div className="flex items-center justify-center space-x-4 mt-[20px]">
       {/* Left arrow button */}
