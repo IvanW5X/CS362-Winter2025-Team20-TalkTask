@@ -14,11 +14,11 @@ import { IoList } from "react-icons/io5";
 
 //react and backend
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
 import { useAuth } from "../../../contexts/authContext.jsx";
 import { startListening, stopListening } from "../../services/webSpeech.js";
+
+import { useDeleteCompletedTasks, useSuggestTask } from "../../hooks/taskHooks.js";
+import { sendTranscript } from "../../services/taskServices.js";
 
 //popups
 import { AddPopUp } from "./addpopup/addpopup.jsx";
@@ -30,43 +30,21 @@ export const TasksManagement = ({ setFilters, filters }) => {
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
-  const queryClient = useQueryClient();
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
-
-
+  const deleteCompletedTasksMutation = useDeleteCompletedTasks(user, isAuthenticated, accessToken);
+  const { refetch: suggestTaskRefetch } = useSuggestTask(user, isAuthenticated, accessToken);
+  
   // Function to handle applying filters and sorting
-    const handleApplyFilters = (newFilters) => {
-      setFilters(newFilters);
-      setFilterMenu(false);
-    };
-
-  const deleteCompletedTasksMutation = useMutation(
-    async () => {
-      if (!isAuthenticated) {
-        console.error("User not authenticated, action denied");
-        return;
-      }
-      const response = await axios.delete(`${VITE_BACKEND_URL}/tasks/delete`, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      return response.data;
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("tasks");
-      },
-      onError: (error) => {
-        console.error("Error deleting completed tasks:", error);
-        alert("Failed to delete completed tasks.");
-      },
-    }
-  );
+  const handleApplyFilters = (newFilters) => {
+    setFilters(newFilters);
+    setFilterMenu(false);
+  };
   const handleDeleteTasks = () => {
     if (
       window.confirm("Are you sure you want to delete all completed tasks?")
     ) {
-      deleteCompletedTasksMutation.mutate();
+      deleteCompletedTasksMutation.mutate("tasks");
     }
   };
   const handleMicClick = () => {
@@ -76,7 +54,8 @@ export const TasksManagement = ({ setFilters, filters }) => {
     } else {
       startListening(
         (transcript) => {
-          sendBackend(transcript);
+          sendTranscript(user, isAuthenticated, accessToken, transcript);
+          console.log(transcript);
         },
         (error) => {
           console.error("Error:", error);
@@ -89,57 +68,18 @@ export const TasksManagement = ({ setFilters, filters }) => {
       setIsListening(true);
     }
   };
-
-  const sendBackend = async (transcript) => {
-    try {
-      if (!isAuthenticated) {
-        console.error("User not authenticated, action denied");
-        return;
-      }
-      const response = await axios.post(
-        `${VITE_BACKEND_URL}/tasks/voice-command/${user.sub}`,
-        {
-          transcript,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      console.log("Backend response:", response.data);
-    } catch (error) {
-      console.error("Error sending transcript to backend:", error);
-    }
-  };
-
-  const suggestTaskQuery = async () => {
-    if (!isAuthenticated) {
-      console.error("User not authenticated, action denied");
-      return;
-    }
-    const response = await axios.get(
-      `${VITE_BACKEND_URL}/tasks/generate-task/${user.sub}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    return response.data;
-  };
-  const { data: suggestedTask, refetch: suggestTaskRefetch } = useQuery(
-    "suggestedTask",
-    suggestTaskQuery,
-    { enabled: false }
-  );
-  const handleSuggestTask = async () => {
-    await suggestTaskRefetch();
+  const handleSuggestTask  = async () => {
+    const { data: suggestedTask} = await suggestTaskRefetch();
+    
+    // Do something with this
     console.log(suggestedTask);
   };
-
   return (
-    <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[495px] min-w-[290px] w-[30%] font-semibold">
+    <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
+      
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
+      
       {/* filter popup */}
       {filterMenu && (
         <FilterSort
@@ -164,7 +104,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
         
         <button
-          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setAddMenuV(!addMenuV)}
         >
           Add Task
@@ -173,7 +113,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* filter/sort*/}
         <button
-          className="flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]"
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setFilterMenu(!filterMenu)}
         >
           Filter/Sort
@@ -182,7 +122,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* clear completed tasks */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={handleDeleteTasks}
         >
           Clear Checked Tasks
@@ -191,15 +131,16 @@ export const TasksManagement = ({ setFilters, filters }) => {
 
         {/* voice commands */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={() => setCommandsMenuV(!commandsMenuV)}
         >
           Voice Commands
           <IoList className="absolute right-3 text-[25px]" />
         </button>
 
+        {/* Suggest task */}
         <button
-          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-300 hover:shadow-xl transition-colors duration-200`}
           onClick={handleSuggestTask}
         >
           Suggest a Task
@@ -210,7 +151,7 @@ export const TasksManagement = ({ setFilters, filters }) => {
         <button
           className={`flex cursor-pointer h-[40px] ${
             isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-green-500 hover:shadow-xl transition-colors duration-200`}
           onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />

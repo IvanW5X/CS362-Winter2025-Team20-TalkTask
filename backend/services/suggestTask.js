@@ -17,7 +17,7 @@ export const suggestTask = async (taskList) => {
     // Add tasks to prompt
     const prompt = `Tasks: ${taskList.join(
       ", "
-    )}\nSuggest one additional related task. Ouput as Task Name - Description. Do not include any extra text.`;
+    )}\nSuggest one additional related task. Ouput as Task Name - Description. Do not include any extra text. If there are major typos or junk text, respond with cannot generate task`;
 
     // Use Gemini 2.0 Flash model
     const model = genAI.getGenerativeModel({

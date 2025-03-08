@@ -66,7 +66,6 @@ export const EditPopUp = ({ onClose, task }) => {
         setTimeEnd("");
         setPriority("");
         setStatus(false);
-        onClose();
       },
       onError: (error) => {
         console.error(
@@ -107,6 +106,7 @@ export const EditPopUp = ({ onClose, task }) => {
 
     console.log("Updating task:", updatedTask);
     updateTaskMutation.mutate(updatedTask);
+    onClose();
   };
 
   return (
