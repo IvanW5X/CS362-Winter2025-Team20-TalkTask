@@ -28,6 +28,7 @@ import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 
 export const TasksManagement = () => {
   const [addMenuV, setAddMenuV] = useState(false);
+  const [filterMenu, setFilterMenu] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
   const queryClient = useQueryClient();
   const { user, isAuthenticated, accessToken } = useAuth();
@@ -132,6 +133,9 @@ export const TasksManagement = () => {
     <div className="bg-[#cdcdcd] ml-[5%] rounded-[10px] h-[495px] min-w-[290px] w-[30%] font-semibold">
       {/* add menu */}
       {addMenuV && <AddPopUp onClose={() => setAddMenuV(false)} />}
+      {/* filter popup */}
+      {filterMenu && <FilterSort onClose={() => setFilterMenu(false)} />}
+      {/* commands pop up */}
       {commandsMenuV && (
         <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
       )}
@@ -143,7 +147,7 @@ export const TasksManagement = () => {
 
       {/* actions */}
       <div className="flex flex-col mx-7 space-y-[29px] text-[16px] relative">
-        {/* add task */}
+        
         <button
           className={`flex mt-[0] cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={() => setAddMenuV(!addMenuV)}
@@ -152,11 +156,13 @@ export const TasksManagement = () => {
           <IoMdAddCircleOutline className="absolute right-3 text-[25px]" />
         </button>
 
-        {/* voice commands */}
+        {/* filter/sort*/}
         <button
           className={`flex cursor-pointer h-[40px] bg-[#F4F3F2] rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
+            onClick={() => setFilterMenu(!filterMenu)}
         >
           Filter/Sort
+          
           <IoList className="absolute right-3 text-[25px]" />
         </button>
 
