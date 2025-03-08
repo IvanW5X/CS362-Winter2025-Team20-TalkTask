@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { IoClose } from "react-icons/io5";
-import commands from "../../../../documents/commands.md?raw";
+import commands from "../../../../../documents/commands.md?raw";
 
 export const CommandsPopUp = ({ onClose }) => {
   const sections = commands.split(/\n---+\r?\n/);

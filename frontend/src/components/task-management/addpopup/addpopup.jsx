@@ -5,12 +5,15 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import React, { useState, useEffect } from "react";
+//icons
 import { IoClose } from "react-icons/io5";
+
+//backend
+import React, { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL } from "../../../utils/variables.js";
-import { useAuth } from "../../../contexts/authContext.jsx";
+import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
+import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const AddPopUp = ({ onClose }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
@@ -22,7 +25,7 @@ export const AddPopUp = ({ onClose }) => {
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState(3);
-  const [status, setStatus] = useState("pending");
+  const [status, setStatus] = useState(false);
 
   //stop scrolling when pop up
   useEffect(() => {
@@ -60,7 +63,7 @@ export const AddPopUp = ({ onClose }) => {
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
-        setStatus("pending");
+        setStatus(false);
         onClose();
       },
       onError: (error) => {
@@ -97,7 +100,7 @@ export const AddPopUp = ({ onClose }) => {
       status,
       dateStart,
       dateCompleted,
-      userId: user.sub,     // Use Auth0 user ID
+      userID: user.sub,     // Use Auth0 user ID
     };
     console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
@@ -156,6 +159,7 @@ export const AddPopUp = ({ onClose }) => {
               <textarea
                 className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2 resize-none"
                 placeholder="Description of the task"
+                required
                 maxLength="100"
                 id="description"
                 onChange={(t) => setDescription(t.target.value)}

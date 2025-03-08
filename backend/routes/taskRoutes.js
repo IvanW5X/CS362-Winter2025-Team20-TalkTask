@@ -19,9 +19,9 @@ const router = express.Router();
 
 // Setup routes
 router.post("/create-task", createTask);
-router.post("/voice-command/:userId", handleCommand);
-router.get("/generate-task/:userId", generateTask);
-router.get("/read-task/:userId", getTasksByUser);
+router.post("/voice-command/:userID", handleCommand);
+router.get("/generate-task/:userID", generateTask);
+router.get("/read-task/:userID", getTasksByUser);
 router.patch("/update-task/:taskID", updateTask);
 router.delete("/delete", deleteAllTask);
 

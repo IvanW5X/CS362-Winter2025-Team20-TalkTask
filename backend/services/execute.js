@@ -7,9 +7,10 @@
 import { Task } from "../db/models/taskModel.js";
 
 
-export const execCommand = async (command, userId) => {
+export const execCommand = async (command, userID) => {
     if (!command) {
-      throw new Error("No command provided.");
+      console.error("No command provided.");
+      return null;
     }
     try {
       switch (command.type) {
@@ -23,14 +24,12 @@ export const execCommand = async (command, userId) => {
             startTime: command.startTime || null, // Optional start time
             endTime: command.endTime || null, // Optional end time
             priority: command.priority || 3,
-            status: "pending", // Default status
-            userId: userId, // Add the userId from the authenticated user
+            status: false, // Default status
+            userID: userID, // Add the userID from the authenticated user
         });
         await newTask.save();
         return { success: true, message: "Task added successfully", task: newTask };
         
-
-
         //remove task
         case "removeAll":
         const result = await Task.deleteMany({ status: "completed" });
@@ -40,21 +39,22 @@ export const execCommand = async (command, userId) => {
           return { success: true, message: "No completed tasks found." };
         }
   
-        
         //remove task
         case "mark":
           const markedTask = await Task.findOneAndUpdate(
             { title: command.task },
-            { status: "completed" },
+            { status: true },
             { new: true }
           );
           if (!markedTask) {
-            throw new Error("Task not found.");
+            console.error("Task not found");
+            return null;
           }
           return { success: true, message: "execute.js marked function", task: markedTask };
 
         default:
-          throw new Error("Unknown command type.");
+          console.error("Unknown command tyor:", error);
+          return null;
       }
     } catch (error) {
       console.error("Error executing command:", error);

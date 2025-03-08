@@ -13,7 +13,7 @@ import { Task } from '../../db/models/taskModel.js';
 
 let mongoServer;
 let taskId;
-let userId;
+let userID;
 
 describe('Task API - Integration Tests', () => {
   beforeAll(async () => {
@@ -25,7 +25,7 @@ describe('Task API - Integration Tests', () => {
     });
 
     // Create a user ID for testing
-    userId = new mongoose.Types.ObjectId();
+    userID = new mongoose.Types.ObjectId();
   });
 
   afterAll(async () => {
@@ -38,7 +38,7 @@ describe('Task API - Integration Tests', () => {
     const res = await request(app).post('/tasks/create-task').send({
       taskID: 5,
       title: 'API Test Task',
-      userId: userId, //  Use generated userId
+      userID: userID, //  Use generated userID
       description: 'Test API Task',
       status: 'pending',
       priority: 2,
@@ -53,7 +53,7 @@ describe('Task API - Integration Tests', () => {
   test('should retrieve the created task via API', async () => {
     await new Promise(resolve => setTimeout(resolve, 500)); //  Allow DB update delay
 
-    const res = await request(app).get(`/tasks/get-task/${userId}`); //  Adjusted route
+    const res = await request(app).get(`/tasks/get-task/${userID}`); //  Adjusted route
     
     expect(res.status).toBe(200);
     expect(res.body).toBeInstanceOf(Array);
