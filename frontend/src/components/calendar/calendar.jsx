@@ -4,7 +4,6 @@
  * Description: React file for calendar UI component
  * Author(s): CS 362-Team 20
  ********************************************************************/
-
 import { useState } from "react";
 import {
   addDays,
@@ -16,13 +15,14 @@ import {
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { DayPopUp } from "./dayPopUp";
 
-export const CalendarBar = () => {
+export const CalendarBar = ({ userID }) => {  // Accept userID as a prop
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [dayPopUpV, setDayPopUpV] = useState(false);
 
   const days = Array.from({ length: 7 }, (_, i) => addDays(startOfDay(selectedDate), i - 3));
 
-  function handleSelect() {
+  function handleSelect(day) {
+    setSelectedDate(day);
     setDayPopUpV(true);
   }
   function handlePrev() {
@@ -31,9 +31,16 @@ export const CalendarBar = () => {
   function handleNext() {
     setSelectedDate(addDays(selectedDate, 1));
   }
+
   return (
     <div className="flex items-center justify-center space-x-4">
-      {dayPopUpV && <DayPopUp onClose={() => setDayPopUpV(false)} />}
+      {dayPopUpV && (
+        <DayPopUp
+          selectedDate={selectedDate}
+          onClose={() => setDayPopUpV(false)}
+          userID={userID}  // Pass the userID to DayPopUp
+        />
+      )}
       {/* Left arrow button */}
       <button
         onClick={handlePrev}
@@ -46,8 +53,8 @@ export const CalendarBar = () => {
       <div className="flex space-x-2">
         {days.map((day) => {
           const isSelected = isSameDay(day, selectedDate);
-          const dayNumber = format(day, "d"); // e.g. "24"
-          const dayLabel = format(day, "EEE"); // e.g. "Fri"
+          const dayNumber = format(day, "d");
+          const dayLabel = format(day, "EEE");
 
           let dayStyle =
             "flex flex-col items-center justify-center w-15 h-20 rounded-2xl bg-[#F4F3F2] text-black cursor-pointer transition-colors duration-200 shadow-md hover:bg-gray-400 hover:shadow-xl";
@@ -60,7 +67,7 @@ export const CalendarBar = () => {
             <div
               key={day.toISOString()}
               className={dayStyle}
-              onClick={() => handleSelect()}
+              onClick={() => handleSelect(day)}
             >
               <div className="text-s">{format(day, "MMM")}</div>
               <div className="font-bold text-3xl">{dayNumber}</div>
