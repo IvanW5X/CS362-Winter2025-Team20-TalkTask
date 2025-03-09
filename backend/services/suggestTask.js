@@ -30,6 +30,7 @@ export const suggestTask = async (taskList) => {
         temperature: 0.6,
       },
     });
+    console.log(`Prompt: ${prompt}\nResult: ${result.response.text()}`);
     return result.response.text();
   } catch (error) {
     logger.error(`\nCouldn't generate response: ${error}`);

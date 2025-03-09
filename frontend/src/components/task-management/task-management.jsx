@@ -46,7 +46,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     accessToken
   );
 
-  //seuggest task refetch
+  //suggest task refetch
   const { suggestedTask, refetch: suggestTaskRefetch } = useSuggestTask(
     user,
     isAuthenticated,
@@ -74,7 +74,13 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     } else {
       startListening(
         (transcript) => {
-          sendTranscript(user, isAuthenticated, accessToken, transcript, selectedCategory);
+          sendTranscript(
+            user,
+            isAuthenticated,
+            accessToken,
+            transcript,
+            selectedCategory
+          );
           console.log(transcript);
         },
         (error) => {
@@ -89,22 +95,24 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     }
   };
 
-  //sugest task handler
+  //suggest task handler
   const handleSuggestTask = async () => {
-    await suggestTaskRefetch(); // Fetch the suggested task
+    const { data: suggestedTask } = await suggestTaskRefetch(); // Fetch the suggested task
+    
+    // Graceful error handling
+    if (suggestedTask.trim() === "Cannot generate task") {
+      alert("Unable to generate a task. Please try again.");
+      return;
+    }
     setSuggestedTaskMenuV(true); // Open the suggested task popup
   };
 
-
   if (selectedCategory === null || selectedCategory === undefined) {
-    return (
-      <div></div>
-    );
+    return <div></div>;
   }
 
   return (
     <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
-      
       {/* add menu */}
       {addMenuV && (
         <AddPopUp

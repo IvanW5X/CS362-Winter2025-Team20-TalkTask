@@ -14,7 +14,7 @@ import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const [title, setTitle] = useState(suggestedTask?.title || "");
   const [description, setDescription] = useState(suggestedTask?.description || "");

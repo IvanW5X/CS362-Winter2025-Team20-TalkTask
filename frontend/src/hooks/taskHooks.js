@@ -53,7 +53,7 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
       }
     );
   } catch (error) {
-    console.error(`Could not fetch tasks`);
+    console.error(`Could not fetch tasks ${error}`);
     return;
   }
 };
@@ -94,11 +94,10 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
       );
       return res;
     } catch (error) {
-      console.error("Could not generate task: ", error);
+      console.error("Could not generate task:", error);
       return null;
     }
   };
-
   const {
     data: suggestedTask,
     refetch,
