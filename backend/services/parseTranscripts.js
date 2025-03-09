@@ -73,7 +73,7 @@ export const parseCommand = (transcript, userID) => {
     if (regex.test(transcript)) {
       const task = transcript.match(regex)[1].trim();
 
-      const descMatch = /with description\s+(.+?)\s/i.exec(transcript);
+      const descMatch = /(?:with\s+)?description\s+(.+?)\s/i.exec(transcript);
       // const startTimeMatch = /start time\s+(.+?)\s/i.exec(transcript);
       // const endTimeMatch = /end time\s+(.+?)\s/i.exec(transcript);
 

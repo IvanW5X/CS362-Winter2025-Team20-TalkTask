@@ -47,21 +47,28 @@ export const execCommand = async (command, userID, selectedCategory) => {
 
       //remove task
       case "mark":
+        // Normalize the task title for exact matching
+        const taskTitle = command.task.trim().toLowerCase();
+
+        // Find and update the task with an exact title match
         const markedTask = await Task.findOneAndUpdate(
-          { title: command.task },
+          { 
+            title: { $regex: `^${taskTitle}$`, $options: "i" }, // Case-insensitive exact match
+            userID, // Ensure the task belongs to the current user
+          },
           { status: true },
           { new: true }
         );
+
         if (!markedTask) {
           console.error("Task not found");
           return null;
         }
         return {
           success: true,
-          message: "execute.js marked function",
+          message: "Task marked as complete",
           task: markedTask,
         };
-
       default:
         console.error("Unknown command tyor:", error);
         return null;
