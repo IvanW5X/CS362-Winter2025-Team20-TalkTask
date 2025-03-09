@@ -108,7 +108,7 @@ export const EditPopUp = ({ onClose, task }) => {
 
   return (
     <>
-      <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
+      <div className="font-bold z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
           className="relative border-3 flex flex-col w-[650px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
@@ -224,7 +224,7 @@ export const EditPopUp = ({ onClose, task }) => {
             {/* Edit Task Button */}
             <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
-                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
                 type="submit"
                 id="submit"
               >

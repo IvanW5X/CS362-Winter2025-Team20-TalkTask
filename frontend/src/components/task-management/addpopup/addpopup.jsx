@@ -223,7 +223,7 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
             {/* Add Task Button */}
             <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
-                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
                 type="submit"
                 id="submit"
               >
