@@ -4,10 +4,14 @@
         "type": "add",
         "description": "Add a new task with description and priority",
         "syntax": [
-          "Add [task name] with description [description] and category [category] priority [1-3]",
-          "Create [task name] with description [description] and category [category] priority [1-3]",
-          "New [task name] with description [description] and category [category] priority [1-3]",
-          "Insert [task name] with description [description] and category [category] priority [1-3]"
+          "Add [task name] with description [description] priority [1-3].",
+          "Add [task name]. Description [description]. Priority [1-3]",
+          "Create [task name] with description [description] priority [1-3].",
+          "Create [task name]. Description [description]. Priority [1-3]",
+          "New [task name] with description [description] priority [1-3].",
+          "New [task name]. Description [description]. Priority [1-3]",
+          "Insert [task name] with description [description] priority [1-3].",
+          "Insert [task name]. Description [description]. Priority [1-3]"
         ]
       },
       {
