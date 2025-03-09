@@ -8,7 +8,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { apiRequest } from "../../utils/utils.js";
 
-export const useCreateCategory = ({ user, isAuthenticated, accessToken }) => {
+export const useCreateCategory = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
   return useMutation(
     async ({ newCategory }) => {

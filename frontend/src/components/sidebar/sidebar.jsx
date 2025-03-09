@@ -33,7 +33,7 @@ export const Sidebar = ({
       tasks: [],
       count: 0,
     };
-    createCategoryMutation.mutate(newCategory);   //jahsgdjhasgd
+    createCategoryMutation.mutate(newCategory);
     setCategories([...categories, newCategoryName]);
     console.log("Created new category:", newCategoryName);
   };
