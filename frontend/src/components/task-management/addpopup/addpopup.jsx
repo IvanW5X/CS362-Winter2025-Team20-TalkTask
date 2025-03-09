@@ -15,13 +15,12 @@ import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
 
-export const AddPopUp = ({ onClose }) => {
+export const AddPopUp = ({ onClose, selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   const [priority, setPriority] = useState(3);
@@ -49,7 +48,7 @@ export const AddPopUp = ({ onClose }) => {
       const response = await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
-        { headers: {Authorization: `Bearer ${accessToken}`}},
+        { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       return response.data;
     },
@@ -59,7 +58,6 @@ export const AddPopUp = ({ onClose }) => {
         queryClient.invalidateQueries("tasks");
         setTitle("");
         setDescription("");
-        setCategory("");
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
@@ -95,22 +93,21 @@ export const AddPopUp = ({ onClose }) => {
       taskID: Date.now(),
       title,
       description,
-      category,
+      category: selectedCategory,
       priority,
       status,
       dateStart,
       dateCompleted,
-      userID: user.sub,     // Use Auth0 user ID
+      userID: user.sub, // Use Auth0 user ID
     };
     console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
   };
-
   return (
     <>
       <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          className="relative border-3 flex flex-col w-[650px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
         >
           {/* Close Button */}
@@ -166,25 +163,6 @@ export const AddPopUp = ({ onClose }) => {
               />
             </p>
 
-            {/* Category */}
-            <p className="flex my-2">
-              <label
-                htmlFor="category"
-                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
-              >
-                Category
-              </label>
-              <input
-                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2"
-                type="text"
-                placeholder="Name of a existing or new category"
-                maxLength="100"
-                id="category"
-                required
-                onChange={(t) => setCategory(t.target.value)}
-              />
-            </p>
-
             {/* Time Start */}
             <p className="flex my-2">
               <label
@@ -198,6 +176,7 @@ export const AddPopUp = ({ onClose }) => {
                 type="time"
                 id="timeStart"
                 value={timeStart}
+                required
                 onChange={(t) => setTimeStart(t.target.value)}
               />
             </p>

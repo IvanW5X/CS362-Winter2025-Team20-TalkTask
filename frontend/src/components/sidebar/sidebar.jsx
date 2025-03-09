@@ -4,14 +4,11 @@
  * Description: Sidebar on Main Page
  * Author(s): CS 362-Team 20
  ********************************************************************/
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import { GoPlus } from "react-icons/go";
-import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js"
-import { useAuth0 } from "@auth0/auth0-react";
 
 export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) => {
-  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const [categories, setTasks] = useState([]);
 
   const addCategory = () => {
@@ -27,9 +24,9 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
     >
       {/* Header Section */}
       <div className="flex items-center justify-between p-3 bg-[#cdcdcd] font-bold text-[18px]">
-        Tasks
+        Categories
         <GoPlus
-          className="cursor-pointer text-[24px] stroke-[.5]"
+          className="cursor-pointer text-[28px] stroke-[.5] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200 rounded-full"
           onClick={addCategory}
         />
       </div>
@@ -39,8 +36,8 @@ export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) =>
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] hover:bg-black/20 odd:bg-[#F4F3F2] text-[16px]
-              accent-black
+            className={`p-3 pl-5 cursor-pointer bg-[#cdcdcd] odd:bg-[#F4F3F2] text-[16px]
+              accent-black hover:bg-black/20 transition-colors duration-200
               ${selectedCategory === category ? "font-bold underline" : ""}`}
             onClick={() => setSelectedCategory(category)}
           >

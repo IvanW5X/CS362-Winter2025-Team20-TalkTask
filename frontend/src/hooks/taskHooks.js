@@ -6,37 +6,107 @@
  ********************************************************************/
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import axios from "axios";
-import { VITE_BACKEND_URL } from "../../utils/variables.js";
+import { apiRequest } from "../../utils/utils.js";
 
 export const useGetTasks = (user, isAuthenticated, accessToken) => {
   return useQuery("tasks", async () => {
-    if (!user || !isAuthenticated) return [];
-    const res = await axios.get(
-      `${VITE_BACKEND_URL}/tasks//read-task/${user.sub}`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
-    return res.data;
+    try {
+      const res = await apiRequest(
+        "GET",
+        `/tasks/read-task/${user.sub}`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+      if (res === null || res === undefined)
+        throw new Error("Recieved null or undefined");
+
+      return res;
+    } catch (error) {
+      console.error(`Error fetching tasks: ${error}`);
+      return [];
+    }
   });
 };
 
 export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
+
+  try {
+    return useMutation(
+      async ({ taskID, newStatus }) => {
+        await apiRequest(
+          "PATCH",
+          `/tasks/update-task/${taskID}`,
+          user,
+          isAuthenticated,
+          accessToken,
+          {
+            status: newStatus,
+          }
+        );
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries("tasks");
+        },
+      }
+    );
+  } catch (error) {
+    console.error(`Could not fetch tasks`);
+    return;
+  }
+};
+
+export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
+  const queryClient = useQueryClient();
   return useMutation(
-    async ({ taskID, newStatus }) => {
-      if (!user || !isAuthenticated) return null;
-      await axios.patch(
-        `${VITE_BACKEND_URL}/tasks/update-task/${taskID}`,
-        { status: newStatus },
-        { headers: { Authorization: `Bearer ${accessToken}` } }
+    async () => {
+      await apiRequest(
+        "DELETE",
+        `/tasks/delete`,
+        user,
+        isAuthenticated,
+        accessToken
       );
     },
     {
       onSuccess: () => {
         queryClient.invalidateQueries("tasks");
       },
+      onError: (error) => {
+        console.error("Failed to delete completed tasks", error);
+        alert("Failed to delete completed tasks.");
+      },
     }
   );
+};
+
+export const useSuggestTask = (user, isAuthenticated, accessToken) => {
+  const getSuggestedTask = async () => {
+    try {
+      const res = await apiRequest(
+        "GET",
+        `/tasks/generate-task/${user.sub}`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+      return res;
+    } catch (error) {
+      console.error("Could not generate task: ", error);
+      return null;
+    }
+  };
+  const {
+    data: suggestedTask,
+    refetch,
+    isLoading,
+    error,
+  } = useQuery("suggestedTask", getSuggestedTask, {
+    enabled: false,
+    onSuccess: (suggestedTask) =>
+      console.log("Generated task: ", suggestedTask),
+  });
+  return { suggestedTask, refetch, isLoading, error };
 };

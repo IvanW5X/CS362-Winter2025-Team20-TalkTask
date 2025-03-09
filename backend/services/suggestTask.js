@@ -17,18 +17,17 @@ export const suggestTask = async (taskList) => {
     // Add tasks to prompt
     const prompt = `Tasks: ${taskList.join(
       ", "
-    )}\nSuggest one additional related task. Ouput as Task Name - Description. Do not include any extra text.`;
+    )}\nSuggest one additional related task. If a task is generated, output in the format: Name - Description. Do not include any extra text.\nIf there are major typos or junk text, respond with Cannot generate task.\nIf "[]" is given, respond with Plan out your day with to-do tasks".`;
 
     // Use Gemini 2.0 Flash model
     const model = genAI.getGenerativeModel({
       model: "gemini-2.0-flash",
     });
-
     // Limit output and low temperture for predicable outputs
     const result = await model.generateContent(prompt, {
       generationConfig: {
-        maxOutputTokens: 35,
-        temperature: 0.5,
+        maxOutputTokens: 30,
+        temperature: 0.6,
       },
     });
     return result.response.text();

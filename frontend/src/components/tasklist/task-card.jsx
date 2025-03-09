@@ -95,7 +95,6 @@ export const TaskCard = ({
         className="form-checkbox color-[#F4F3F2] w-5 h-5 cursor-pointer accent-black"
         checked={status}
         onChange={() => {toggleTaskStatus(taskID)}}
-        
       />
     </div>
   );

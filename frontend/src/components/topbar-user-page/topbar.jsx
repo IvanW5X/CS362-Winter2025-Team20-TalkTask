@@ -27,7 +27,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
       />
       {/* Logout button */}
       <button 
-        className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
+        className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200"
         onClick={() => {
           if (isAuthenticated)
             logout();

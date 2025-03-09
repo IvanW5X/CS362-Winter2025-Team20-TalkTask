@@ -6,15 +6,14 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-
 // get the speech input, send to backend
 // tokenize string in a new task format
 // send that form to the client, with confir or cancel
 // await confimation
 // if (confirm)
-    // manage task -> data base
+// manage task -> data base
 // else
-    // throw away, send response that it cancled
+// throw away, send response that it cancled
 
 // confirm
 
@@ -85,7 +84,10 @@ export const parseCommand = (transcript, userID) => {
       if (priorityMatch) {
         const priorityText = priorityMatch[1].trim().toLowerCase();
         //captured text is a valid number or word
-        if (/^\d+$/.test(priorityText) || wordToNum.hasOwnProperty(priorityText)) {
+        if (
+          /^\d+$/.test(priorityText) ||
+          wordToNum.hasOwnProperty(priorityText)
+        ) {
           priority = convertWordToNum(priorityText);
         } else {
           console.warn(`Invalid priority value: ${priorityText}`);
@@ -94,7 +96,7 @@ export const parseCommand = (transcript, userID) => {
 
       console.log("Priority: ", priority);
       return {
-        type: 'add',
+        type: "add",
         task: task,
         description: descMatch ? descMatch[1].trim() : null,
         category: categoryMatch ? categoryMatch[1].trim() : null,
@@ -109,7 +111,7 @@ export const parseCommand = (transcript, userID) => {
   // handle remove
   for (const regex of removeVariants) {
     if (regex.test(transcript)) {
-      return { type: 'removeAll' };
+      return { type: "removeAll" };
     }
   }
 
@@ -117,10 +119,10 @@ export const parseCommand = (transcript, userID) => {
   for (const regex of markVariants) {
     if (regex.test(transcript)) {
       const task = transcript.match(regex)[1].trim();
-      return { type: 'mark', task };
+      return { type: "mark", task };
     }
   }
 
-  console.warn('No command detected:', transcript);
+  console.warn("No command detected:", transcript);
   return null;
 };
