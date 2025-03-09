@@ -6,40 +6,38 @@
  ********************************************************************/
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { apiRequest } from "../services/taskServices";
+import { apiRequest } from "../../utils/utils.js";
 
 export const useCreateCategory = ({ user, isAuthenticated, accessToken }) => {
   const queryClient = useQueryClient();
-
   return useMutation(
-    async (newCategory) => {
-      const res = await apiRequest(
+    async ({ newCategory }) => {
+      await apiRequest(
         "POST",
         "/categories/create-category",
         user,
         isAuthenticated,
         accessToken,
-        newCategory
+        { newCategory }
       );
     },
     {
       onSuccess: () => {
+        console.log("Created category");
         queryClient.invalidateQueries("categories");
       },
-      onError: (error) => {
-        console.error("Failed to add category: ", error);
+      onError: () => {
+        console.error("Failed to add category");
         alert("Failed to add category");
-      }
+      },
     }
   );
 };
 
-// export const useGetCategories = ({ user, isAuthenticated, accessToken }) => {
-//     return useQuery("categories", async () => {
-//         try {
-//             const res = await apiRequest("GET", );
-//         } catch (error) {
-
-//         }
-//     });
-// };
+export const useGetCategories = ({ user, isAuthenticated, accessToken }) => {
+  return useQuery("categories", async () => {
+    try {
+      const res = await apiRequest("GET");
+    } catch (error) {}
+  });
+};

@@ -7,15 +7,36 @@
 
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";
+import { useAuth } from "../../../contexts/authContext";
+import { useCreateCategory } from "../../hooks/catagoryHooks";
 
-export const Sidebar = ({ menu_open, selectedCategory, setSelectedCategory }) => {
-  const [categories, setTasks] = useState([]);
+export const Sidebar = ({
+  menu_open,
+  selectedCategory,
+  setSelectedCategory,
+}) => {
+  const [categories, setCategories] = useState([]);
+  const { user, isAuthenticated, accessToken } = useAuth();
+  const createCategoryMutation = useCreateCategory(
+    user,
+    isAuthenticated,
+    accessToken
+  );
 
   const addCategory = () => {
-    const newCategory = prompt("Enter a new category:");
-    if (newCategory) setTasks([...categories, newCategory]);
-  };
+    const newCategoryName = prompt("Enter a new category:");
+    if (!newCategoryName) return;
 
+    const newCategory = {
+      name: newCategoryName,
+      userID: user.sub,
+      tasks: [],
+      count: 0,
+    };
+    createCategoryMutation.mutate(newCategory);   //jahsgdjhasgd
+    setCategories([...categories, newCategoryName]);
+    console.log("Created new category:", newCategoryName);
+  };
   return (
     <aside
       className={`flex flex-col bg-[#F4F3F2] shadow-xl w-[200px] min-w-[150px]
