@@ -79,15 +79,15 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
 
     // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
-      ? timeStart
-      : new Date().toTimeString().slice(0, 5);
-    const formattedTimeEnd = timeEnd ? timeEnd : null;
+    ? timeStart
+    : new Date().toTimeString().slice(0, 5);
+
+    // If timeEnd is not provided, set it to the same as timeStart
+    const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
 
     // Remove the 'Z' to treat the time as local time
     const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = formattedTimeEnd
-      ? new Date(`${today}T${formattedTimeEnd}:00`)
-      : null;
+    const dateCompleted = new Date(`${today}T${formattedTimeEnd}:00`);
 
     const newTask = {
       taskID: Date.now(),
