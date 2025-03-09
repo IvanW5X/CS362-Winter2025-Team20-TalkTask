@@ -6,7 +6,7 @@
  ********************************************************************/
 import { Task } from "../db/models/taskModel.js";
 
-export const execCommand = async (command, userID) => {
+export const execCommand = async (command, userID, selectedCategory) => {
   if (!command) {
     console.error("No command provided.");
     return null;
@@ -19,9 +19,9 @@ export const execCommand = async (command, userID) => {
           taskID: Date.now(), // Generate a unique taskID
           title: command.task,
           description: command.description || "placeholder",
-          category: command.category || "placeholder",
-          startTime: command.startTime || null, // Optional start time
-          endTime: command.endTime || null, // Optional end time
+          category: selectedCategory,
+          dateStarted: Date.now(),
+          dateCompleted:  Date.now(), 
           priority: command.priority || 3,
           status: false, // Default status
           userID: userID, // Add the userID from the authenticated user

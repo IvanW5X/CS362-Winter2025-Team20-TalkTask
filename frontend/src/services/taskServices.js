@@ -11,7 +11,8 @@ export const sendTranscript = async (
   user,
   isAuthenticated,
   accessToken,
-  transcript
+  transcript,
+  selectedCategory
 ) => {
   try {
     const res = await apiRequest(
@@ -20,7 +21,7 @@ export const sendTranscript = async (
       user,
       isAuthenticated,
       accessToken,
-      { transcript: transcript }
+      { transcript, selectedCategory }
     );
     console.log(`Backend response: ${res.data}`);
   } catch (error) {

@@ -57,6 +57,8 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
       deleteCompletedTasksMutation.mutate("tasks");
     }
   };
+
+  //mic button handler
   const handleMicClick = () => {
     if (isListening) {
       stopListening();
@@ -64,7 +66,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     } else {
       startListening(
         (transcript) => {
-          sendTranscript(user, isAuthenticated, accessToken, transcript);
+          sendTranscript(user, isAuthenticated, accessToken, transcript, selectedCategory);
           console.log(transcript);
         },
         (error) => {
@@ -78,6 +80,8 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
       setIsListening(true);
     }
   };
+
+
   const handleSuggestTask = async () => {
     const { data: suggestedTask } = await suggestTaskRefetch();
     // Do something with this

@@ -76,7 +76,6 @@ export const parseCommand = (transcript, userID) => {
       const descMatch = /with description\s+(.+?)\s/i.exec(transcript);
       // const startTimeMatch = /start time\s+(.+?)\s/i.exec(transcript);
       // const endTimeMatch = /end time\s+(.+?)\s/i.exec(transcript);
-      const categoryMatch = /and category\s+(.+?)\s/i.exec(transcript);
 
       //priority matching
       const priorityMatch = /priority\s+(\w+)/i.exec(transcript);
@@ -99,7 +98,6 @@ export const parseCommand = (transcript, userID) => {
         type: "add",
         task: task,
         description: descMatch ? descMatch[1].trim() : null,
-        category: categoryMatch ? categoryMatch[1].trim() : null,
         // startTime: startTimeMatch ? startTimeMatch[1].trim() : null,
         // endTime: endTimeMatch ? endTimeMatch[1].trim() : null,
         priority: priority,

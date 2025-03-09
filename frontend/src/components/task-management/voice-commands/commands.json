@@ -1,0 +1,36 @@
+{
+    "commands": [
+      {
+        "type": "add",
+        "description": "Add a new task with description and priority",
+        "syntax": [
+          "Add [task name] with description [description] and category [category] priority [1-3]",
+          "Create [task name] with description [description] and category [category] priority [1-3]",
+          "New [task name] with description [description] and category [category] priority [1-3]",
+          "Insert [task name] with description [description] and category [category] priority [1-3]"
+        ]
+      },
+      {
+        "type": "remove",
+        "description": "Remove completed tasks",
+        "syntax": [
+          "Remove completed task/s",
+          "Delete completed task/s",
+          "Erase completed task/s",
+          "Clear completed task/s"
+        ]
+      },
+      {
+        "type": "mark",
+        "description": "Mark a task as complete",
+        "syntax": [
+          "Mark [task name] as complete",
+          "Mark [task name]",
+          "Complete [task name]",
+          "Finish [task name]",
+          "Done [task name]"
+          
+        ]
+      }
+    ]
+  }
