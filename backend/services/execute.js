@@ -35,7 +35,7 @@ export const execCommand = async (command, userID, selectedCategory) => {
 
       //remove task
       case "removeAll":
-        const result = await Task.deleteMany({ status: "completed" });
+        const result = await Task.deleteMany({ status: true });
         if (result.deletedCount > 0) {
           return {
             success: true,
