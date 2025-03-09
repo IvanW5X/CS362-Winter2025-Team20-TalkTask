@@ -6,7 +6,7 @@
  ********************************************************************/
 import { Task } from "../db/models/taskModel.js";
 
-export const execCommand = async (command, userID) => {
+export const execCommand = async (command, userID, selectedCategory) => {
   if (!command) {
     console.error("No command provided.");
     return null;
@@ -19,9 +19,9 @@ export const execCommand = async (command, userID) => {
           taskID: Date.now(), // Generate a unique taskID
           title: command.task,
           description: command.description || "placeholder",
-          category: command.category || "placeholder",
-          startTime: command.startTime || null, // Optional start time
-          endTime: command.endTime || null, // Optional end time
+          category: selectedCategory,
+          dateStarted: Date.now(),
+          dateCompleted:  Date.now(), 
           priority: command.priority || 3,
           status: false, // Default status
           userID: userID, // Add the userID from the authenticated user
@@ -47,21 +47,28 @@ export const execCommand = async (command, userID) => {
 
       //remove task
       case "mark":
+        // Normalize the task title for exact matching
+        const taskTitle = command.task.trim().toLowerCase();
+
+        // Find and update the task with an exact title match
         const markedTask = await Task.findOneAndUpdate(
-          { title: command.task },
+          { 
+            title: { $regex: `^${taskTitle}$`, $options: "i" }, // Case-insensitive exact match
+            userID, // Ensure the task belongs to the current user
+          },
           { status: true },
           { new: true }
         );
+
         if (!markedTask) {
           console.error("Task not found");
           return null;
         }
         return {
           success: true,
-          message: "execute.js marked function",
+          message: "Task marked as complete",
           task: markedTask,
         };
-
       default:
         console.error("Unknown command tyor:", error);
         return null;

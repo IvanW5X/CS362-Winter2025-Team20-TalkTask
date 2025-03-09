@@ -53,7 +53,7 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
       }
     );
   } catch (error) {
-    console.error(`Could not fetch tasks`);
+    console.error(`Could not fetch tasks ${error}`);
     return;
   }
 };
@@ -94,7 +94,7 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
       );
       return res;
     } catch (error) {
-      console.error("Could not generate task: ", error);
+      console.error("Could not generate task:", error);
       return null;
     }
   };
@@ -105,8 +105,10 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
     error,
   } = useQuery("suggestedTask", getSuggestedTask, {
     enabled: false,
-    onSuccess: (suggestedTask) =>
-      console.log("Generated task: ", suggestedTask),
+    onSuccess: (suggestedTask) => {
+      console.log("Generated task: ", suggestedTask);
+    },
   });
+
   return { suggestedTask, refetch, isLoading, error };
 };

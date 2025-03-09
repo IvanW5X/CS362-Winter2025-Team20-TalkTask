@@ -22,16 +22,22 @@ import {
   useSuggestTask,
 } from "../../hooks/taskHooks.js";
 import { sendTranscript } from "../../services/taskServices.js";
+import { createSuggestTask } from "../../services/create-ai-task.js";
 
 //popups
 import { AddPopUp } from "./addpopup/addpopup.jsx";
 import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
+import { SuggestedTask } from "./suggestpopup/suggestpopup.jsx";
 
 export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
+  //popup consts
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
   const [commandsMenuV, setCommandsMenuV] = useState(false);
+  const [suggestedTaskMenuV, setSuggestedTaskMenuV] = useState(false);
+
+  //services and backend
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
   const deleteCompletedTasksMutation = useDeleteCompletedTasks(
@@ -39,7 +45,9 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     isAuthenticated,
     accessToken
   );
-  const { refetch: suggestTaskRefetch } = useSuggestTask(
+
+  //suggest task refetch
+  const { suggestedTask, refetch: suggestTaskRefetch } = useSuggestTask(
     user,
     isAuthenticated,
     accessToken
@@ -57,6 +65,8 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
       deleteCompletedTasksMutation.mutate("tasks");
     }
   };
+
+  //mic button handler
   const handleMicClick = () => {
     if (isListening) {
       stopListening();
@@ -64,7 +74,13 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     } else {
       startListening(
         (transcript) => {
-          sendTranscript(user, isAuthenticated, accessToken, transcript);
+          sendTranscript(
+            user,
+            isAuthenticated,
+            accessToken,
+            transcript,
+            selectedCategory
+          );
           console.log(transcript);
         },
         (error) => {
@@ -78,18 +94,25 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
       setIsListening(true);
     }
   };
+
+  //suggest task handler
   const handleSuggestTask = async () => {
-    const { data: suggestedTask } = await suggestTaskRefetch();
-    // Do something with this
+    const { data: suggestedTask } = await suggestTaskRefetch(); // Fetch the suggested task
+    
+    // Graceful error handling
+    if (suggestedTask.trim() === "Cannot generate task") {
+      alert("Unable to generate a task. Please try again.");
+      return;
+    }
+    setSuggestedTaskMenuV(true); // Open the suggested task popup
   };
+
   if (selectedCategory === null || selectedCategory === undefined) {
-    return (
-      <div></div>
-    );
+    return <div></div>;
   }
+
   return (
     <div className="bg-[#cdcdcd] ml-[3%] rounded-[10px] h-[495px] min-w-[290px] w-[27%] font-semibold">
-      
       {/* add menu */}
       {addMenuV && (
         <AddPopUp
@@ -111,6 +134,15 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
       {/* commands pop up */}
       {commandsMenuV && (
         <CommandsPopUp onClose={() => setCommandsMenuV(false)} />
+      )}
+
+      {/* suggested task popup */}
+      {suggestedTaskMenuV && suggestedTask && (
+        <SuggestedTask
+          onClose={() => setSuggestedTaskMenuV(false)}
+          suggestedTask={createSuggestTask(suggestedTask)}
+          selectedCategory={selectedCategory}
+        />
       )}
 
       {/* Title */}

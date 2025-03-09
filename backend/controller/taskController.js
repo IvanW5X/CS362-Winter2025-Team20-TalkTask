@@ -27,30 +27,31 @@ export const createTask = async (req, res) => {
 //speech input
 export const handleCommand = async (req, res) => {
   const { userID } = req.params;
-  const { transcript } = req.body; //Get transcript
+  const { transcript, selectedCategory } = req.body;
   console.log("Transcript received:", transcript);
+  // console.log("Selected category:", selectedCategory);
 
   if (!transcript) {
     console.error("Transcript is missing in the request body");
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  const command = parseCommand(transcript, userID); //Parse the transcript into a command
+  const command = parseCommand(transcript, userID);
 
   if (!command) {
     return res.status(400).json({ error: "Invalid command" });
   }
 
-  const result = await execCommand(command, userID); //execute the command
+  // Pass selectedCategory to execCommand if needed
+  const result = await execCommand(command, userID, selectedCategory);
 
   if (result === null) {
-    console.log("TETSAJDHG")
+    console.log("TETSAJDHG");
     return res.status(500).json({ message: "Could not execute command" });
-
   }
+
   return res.status(200).json(result);
 };
-
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
   const { userID } = req.params;
