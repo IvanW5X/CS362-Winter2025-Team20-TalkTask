@@ -12,7 +12,8 @@ import {
   updateTask,
   deleteAllTask,
   handleCommand,
-  generateTask
+  generateTask,
+  getTaskStats
 } from "../controller/taskController.js";
 
 const router = express.Router();
@@ -24,5 +25,7 @@ router.get("/generate-task/:userID", generateTask);
 router.get("/read-task/:userID", getTasksByUser);
 router.patch("/update-task/:taskID", updateTask);
 router.delete("/delete", deleteAllTask);
+router.get("/get-stats/:date", getTaskStats);
+
 
 export default router;
