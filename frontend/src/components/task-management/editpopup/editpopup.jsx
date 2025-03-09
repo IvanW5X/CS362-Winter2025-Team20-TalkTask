@@ -1,7 +1,7 @@
 /********************************************************************
- * File Name: addpopup.jsx
+ * File Name: editpopup.jsx
  * Date: 2/26/2025
- * Description: React file for adding task
+ * Description: React file for editting task
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
@@ -9,22 +9,27 @@ import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
-import { VITE_BACKEND_URL, AUTH0_AUDIENCE } from "../../../utils/variables.js";
-import { useAuth0 } from "@auth0/auth0-react";
+import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
+import { useAuth } from "../../../../contexts/authContext.jsx";
 
-export const AddPopUp = ({ onClose }) => {
-  const { user, getAccessTokenSilently, isAuthenticated } = useAuth0();
+export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
+  const { isAuthenticated, accessToken } = useAuth();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [timeStart, setTimeStart] = useState("");
-  const [timeEnd, setTimeEnd] = useState("");
-  const [priority, setPriority] = useState(3);
-  const [status, setStatus] = useState("pending");
+  const [title, setTitle] = useState(task?.title || "");
+  const [description, setDescription] = useState(task?.description || "");
+  const [category, setCategory] = useState(task?.category || "");
+  const [timeStart, setTimeStart] = useState(
+    task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : ""
+  );
+  const [timeEnd, setTimeEnd] = useState(
+    task?.dateCompleted
+      ? new Date(task.dateCompleted).toTimeString().slice(0, 5)
+      : ""
+  );
+  const [priority, setPriority] = useState(task?.priority || 1);
+  const [status, setStatus] = useState(task?.status || false);
 
-  //stop scrolling when pop up
   useEffect(() => {
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
@@ -37,25 +42,22 @@ export const AddPopUp = ({ onClose }) => {
     };
   }, []);
 
-  const createTaskMutation = useMutation(
-    async (newTask) => {
+  const updateTaskMutation = useMutation(
+    (updatedTask) => {
       if (!isAuthenticated) {
-        console.error("User not authenticated, action denied");
+        console.error("User is not authenticated, action denied");
         return;
       }
-      const accessToken = await getAccessTokenSilently({
-        audience: AUTH0_AUDIENCE,
-      });
-      const response = await axios.post(
-        `${VITE_BACKEND_URL}/tasks/create-task`,
-        newTask,
-        { headers: {Authorization: `Bearer ${accessToken}`}},
+      const response = axios.patch(
+        `${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`,
+        updatedTask,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       return response.data;
     },
     {
       onSuccess: () => {
-        console.log("Task created successfully");
+        console.log("Task updated successfully");
         queryClient.invalidateQueries("tasks");
         setTitle("");
         setDescription("");
@@ -63,36 +65,36 @@ export const AddPopUp = ({ onClose }) => {
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
-        setStatus("pending");
-        onClose();
+        setStatus(false);
       },
       onError: (error) => {
         console.error(
-          "An error occurred while creating the task:",
+          "An error occurred while updating the task:",
           error.response?.data || error.message
         );
       },
     }
   );
+
   const handleSubmit = (t) => {
     t.preventDefault();
 
     const today = new Date().toISOString().split("T")[0];
 
-    // Ensure timeStart is in the correct format (HH:MM)
+    // Format timeStart and timeEnd
     const formattedTimeStart = timeStart
       ? timeStart
       : new Date().toTimeString().slice(0, 5);
     const formattedTimeEnd = timeEnd ? timeEnd : null;
 
-    // Remove the 'Z' to treat the time as local time
+    // Create date objects for start and end times
     const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
     const dateCompleted = formattedTimeEnd
       ? new Date(`${today}T${formattedTimeEnd}:00`)
       : null;
 
-    const newTask = {
-      taskID: Date.now(),
+    // Prepare the updated task object
+    const updatedTask = {
       title,
       description,
       category,
@@ -100,10 +102,11 @@ export const AddPopUp = ({ onClose }) => {
       status,
       dateStart,
       dateCompleted,
-      userId: user.sub,     // Use Auth0 user ID
     };
-    console.log("Creating task:", newTask);
-    createTaskMutation.mutate(newTask);
+
+    console.log("Updating task:", updatedTask);
+    updateTaskMutation.mutate(updatedTask);
+    onClose();
   };
 
   return (
@@ -122,9 +125,9 @@ export const AddPopUp = ({ onClose }) => {
             <IoClose className="cursor-pointer" />
           </button>
 
-          {/* label */}
+          {/* Label */}
           <div className="bg-[#F4F3F2] mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
-            Add Task
+            Edit Task
           </div>
 
           {/* Input Container */}
@@ -144,6 +147,7 @@ export const AddPopUp = ({ onClose }) => {
                 maxLength="100"
                 id="title"
                 required
+                value={title}
                 onChange={(t) => setTitle(t.target.value)}
               />
             </p>
@@ -161,6 +165,7 @@ export const AddPopUp = ({ onClose }) => {
                 placeholder="Description of the task"
                 maxLength="100"
                 id="description"
+                value={description}
                 onChange={(t) => setDescription(t.target.value)}
               />
             </p>
@@ -180,6 +185,7 @@ export const AddPopUp = ({ onClose }) => {
                 maxLength="100"
                 id="category"
                 required
+                value={category}
                 onChange={(t) => setCategory(t.target.value)}
               />
             </p>
@@ -230,9 +236,7 @@ export const AddPopUp = ({ onClose }) => {
                 id="priority"
                 className="border-[2px] bg-[#F4F3F2] w-[50px] m-2 p-2"
                 value={priority}
-                onChange={(t) => {
-                  setPriority(Number(t.target.value));
-                }}
+                onChange={(t) => setPriority(Number(t.target.value))}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -240,14 +244,14 @@ export const AddPopUp = ({ onClose }) => {
               </select>
             </p>
 
-            {/* Add Task Button */}
+            {/* Edit Task Button */}
             <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
                 className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
                 type="submit"
                 id="submit"
               >
-                Add Task
+                Edit Task
               </button>
             </p>
           </div>

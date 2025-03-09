@@ -5,7 +5,7 @@
  * Author(s): CS 362-Team 20
  ********************************************************************/
 
-import { MONGO_URI } from "../utils/variables.js";
+import { MONGO_URI } from "../utils/variables.js"
 import mongoose from "mongoose";
 
 export const connectTTDB = async () => {

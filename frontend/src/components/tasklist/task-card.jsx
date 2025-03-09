@@ -6,7 +6,7 @@
  ********************************************************************/
 
 import { MdOutlineModeEditOutline } from "react-icons/md";
-import { EditPopUp } from "../editpopup/editpopup";
+import { EditPopUp } from "../task-management/editpopup/editpopup";
 import { useState } from "react";
 
 const formatTime = (date) => {
@@ -24,8 +24,6 @@ const formatTime = (date) => {
   const strTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
   return strTime;
 };
-
-
 
 const getPriority = (priority) => {
   switch (Number(priority)) {
@@ -45,11 +43,6 @@ export const TaskCard = ({
   toggleTaskStatus,
 }) => {
   const [editMenu, setEditMenu] = useState(false);
-
-  const handleToggle = () => {
-    toggleTaskStatus(taskID);
-  };
-
 
   return (
     
@@ -100,9 +93,8 @@ export const TaskCard = ({
       <input
         type="checkbox"
         className="form-checkbox color-[#F4F3F2] w-5 h-5 cursor-pointer accent-black"
-        checked={status === "completed"}
-        onChange={handleToggle}
-        
+        checked={status}
+        onChange={() => {toggleTaskStatus(taskID)}}
       />
     </div>
   );

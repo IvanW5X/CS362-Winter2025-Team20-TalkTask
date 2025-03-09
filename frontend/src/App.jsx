@@ -7,12 +7,12 @@
 
 import { Home } from "./pages/home/home";
 import { About } from "./pages/about/about";
-import { Route, Routes, useNavigate, BrowserRouter } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
 import { useEffect } from "react";
 
 function App() {
-  const { isLoading, error, isAuthenticated } = useAuth0();
+  const { isLoading, error, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   // Go to home page after being authenticated
@@ -20,7 +20,7 @@ function App() {
     if (isAuthenticated) {
       navigate("/home");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate]);  
 
   // Something went wrong, return generic error UI
   if (error) {
@@ -39,7 +39,7 @@ function App() {
     );
   }
   return (
-    <div className="bg-[#dedede]">
+    <div>
       <Routes>
         <Route path="/" element={<About />} />
         <Route path="/home" element={<Home />} />

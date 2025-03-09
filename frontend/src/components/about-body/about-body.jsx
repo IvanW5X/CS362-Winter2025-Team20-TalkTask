@@ -7,10 +7,10 @@
 
 import { FaCheckSquare } from "react-icons/fa";
 import { getImageUrl } from "../../../utils/utils";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../../contexts/authContext";
 
 export const AboutBody = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect } = useAuth();
 
   return (
     <div className="flex flex-row ">

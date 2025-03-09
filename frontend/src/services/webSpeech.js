@@ -7,6 +7,7 @@
 
 // Setup
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
 let recognition;
 
 // Check browser support
@@ -14,12 +15,24 @@ if (!SpeechRecognition) {
   console.error("Web Speech API is not supported in this browser.");
 } else {
   recognition = new SpeechRecognition();
+  const speechGrammarList = new SpeechGrammarList();
+
+  // Define grammar for commands
+  const grammar = `
+    #JSGF V1.0;
+    grammar commands;
+    public <command> = add | remove | mark;
+    public <task> = [a-zA-Z0-9 ]+;
+    public <phrase> = <command> <task> | <command> <task> as complete;
+  `;
+  speechGrammarList.addFromString(grammar, 1);
+  recognition.grammars = speechGrammarList;
 
   // Configure recognition settings
-  recognition.continuous = false;         // Stop after one command
-  recognition.lang = 'en-US';             // Set language
-  recognition.interimResults = false;     // Only final results
-  recognition.maxAlternatives = 1;        
+  recognition.continuous = false; // Stop after one command
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
 }
 
 // Function to start listening
@@ -33,7 +46,7 @@ export const startListening = (onResult, onError, onEnd) => {
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript.toLowerCase();
     console.log("Voice input:", transcript);
-    onResult(transcript); // Send the raw transcript to the callback
+    onResult(transcript);
   };
 
   recognition.onerror = (event) => {
@@ -43,7 +56,7 @@ export const startListening = (onResult, onError, onEnd) => {
 
   recognition.onend = () => {
     console.log("Speech recognition ended.");
-    onEnd(); // Notify when recognition ends
+    onEnd();
   };
 
   // Start listening
@@ -53,6 +66,7 @@ export const startListening = (onResult, onError, onEnd) => {
 // Function to stop listening
 export const stopListening = () => {
   if (recognition) {
-    recognition.stop(); // Stop the recognition process
+    recognition.stop();
   }
 };
+

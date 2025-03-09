@@ -10,7 +10,7 @@ import { Task } from "../db/models/taskModel.js";
 import logger from "../utils/logger.js";
 import { parseCommand } from "../services/parseTranscripts.js";
 import { execCommand } from "../services/execute.js";
-
+import { suggestTask } from "../services/suggestTask.js";
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -26,7 +26,7 @@ export const createTask = async (req, res) => {
 
 //speech input
 export const handleCommand = async (req, res) => {
-  const { userId } = req.params;
+  const { userID } = req.params;
   const { transcript } = req.body; //Get transcript
   console.log("Transcript received:", transcript);
 
@@ -35,27 +35,31 @@ export const handleCommand = async (req, res) => {
     return res.status(400).json({ error: "Transcript is required" });
   }
 
-  const command = parseCommand(transcript, userId); //Parse the transcript into a command
+  const command = parseCommand(transcript, userID); //Parse the transcript into a command
 
   if (!command) {
     return res.status(400).json({ error: "Invalid command" });
   }
 
-  const result = await execCommand(command, userId); //execute the command
+  const result = await execCommand(command, userID); //execute the command
+
+  if (result === null) {
+    console.log("TETSAJDHG")
+    return res.status(500).json({ message: "Could not execute command" });
+
+  }
   return res.status(200).json(result);
-
 };
-
 
 // READ All Tasks (for a specific user)
 export const getTasksByUser = async (req, res) => {
-  const { userId } = req.params;
+  const { userID } = req.params;
 
   try {
-    const tasks = await Task.find({ userId });
+    const tasks = await Task.find({ userID });
     res.status(200).json(tasks);
   } catch (error) {
-    logger.error(`getTasksByUser - UserID: ${userId} - Error: ${error.message}`);
+    logger.error(`getTasksByUser - Error: ${error.message}`);
     res.status(500).json({ error: error.message });
   }
 };
@@ -63,11 +67,27 @@ export const getTasksByUser = async (req, res) => {
 // UPDATE Task
 export const updateTask = async (req, res) => {
   const { taskID } = req.params;
-  const { title, description, category, priority, status, dateStart, dateCompleted } = req.body;
+  const {
+    title,
+    description,
+    category,
+    priority,
+    status,
+    dateStart,
+    dateCompleted,
+  } = req.body;
   try {
     const updatedTask = await Task.findOneAndUpdate(
       { taskID: taskID },
-      { title, description, category, priority, status, dateStart, dateCompleted },
+      {
+        title,
+        description,
+        category,
+        priority,
+        status,
+        dateStart,
+        dateCompleted,
+      },
       { new: true }
     );
     if (updatedTask) {
@@ -77,50 +97,48 @@ export const updateTask = async (req, res) => {
     }
   } catch (error) {
     console.error("Error updating task:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
-
 
 // DELETE All Completed Tasks
 export const deleteAllTask = async (req, res) => {
   try {
-    const result = await Task.deleteMany({ status: "completed" });
+    const result = await Task.deleteMany({ status: true });
     if (result.deletedCount > 0) {
-      res.status(200).json({ message: `${result.deletedCount} completed tasks deleted` });
+      res
+        .status(200)
+        .json({ message: `${result.deletedCount} completed tasks deleted` });
     } else {
       res.status(404).json({ message: "No completed tasks found" });
     }
   } catch (error) {
     console.error("Error deleting completed tasks:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
 
-export const testReadDB = async (req, res) => {
+export const generateTask = async (req, res) => {
   try {
-    const tasks = await Task.find();
-    res.status(200).send(tasks);
-  } catch (err) {
-    res.status(500).send({ message: err.message });
-  }
-};
+    const { userID } = req.params;
+    const tasks = await Task.find({ userID });
 
-// // DELETE a Specific Task
-export const deleteTask = async (req, res) => {
-  const { taskID } = req.params;
-  try {
-    const deletedTask = await Task.findOneAndDelete({ taskID: taskID });
-    if (deletedTask) {
-      res.status(200).json({ message: "Task deleted successfully", task: deletedTask });
-    } else {
-      res.status(404).json({ message: "Task not found" });
+    // Get tasks titles from user
+    const taskTitles = tasks.map((task) => task.title);
+    const generatedTask = await suggestTask(taskTitles);
+    console.log(generatedTask);
+
+    // Suggested task service failed
+    if (generatedTask === null) {
+      res.status(500).json({ message: "Error with Gemini API" });
     }
+    res.status(200).json(generatedTask);
   } catch (error) {
-    console.error("Error deleting task:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    logger.error(`generateTask - Error: ${error.message}`);
+    res.status(500).json({ message: "Could not generate task" });
   }
 };
-
-// // Test Route: Fetch All Tasks from DB
-

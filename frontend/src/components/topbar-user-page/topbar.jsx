@@ -8,15 +8,14 @@
 import { FaUserCircle } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { getImageUrl } from "../../../utils/utils";
-import { useAuth0 } from "@auth0/auth0-react";
-
+import { useAuth } from "../../../contexts/authContext";
 export const TopBar = ({ menu_open, set_menu_state }) => {
-  const { logout, user, isAuthenticated } = useAuth0();
+  const { logout, isAuthenticated } = useAuth();
 
   return (
     <div className="w-full h-[80px] bg-[#37E03A] flex justify-between items-center select-none shrink-0">
       <RxHamburgerMenu
-        className="ml-[20px] text-[50px] cursor-pointer text-[#F4F3F2]"
+        className="ml-[20px] text-[50px] cursor-pointer text-[#F4F3F2] min-w-[30px]"
         onClick={() => {
           set_menu_state(!menu_open);
         }}
@@ -28,7 +27,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
       />
       {/* Logout button */}
       <button 
-        className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-black shadow-sm"
+        className="bg-[#F4F3F2] p-2 cursor-pointer text-[18px] border-[1px] rounded-full shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200"
         onClick={() => {
           if (isAuthenticated)
             logout();
@@ -36,7 +35,7 @@ export const TopBar = ({ menu_open, set_menu_state }) => {
         Logout
       </button>
       
-      <FaUserCircle className="text-[#F4F3F2] text-[50px] mr-[20px] cursor-pointer"/>
+      <FaUserCircle className="text-[#F4F3F2] text-[50px] mr-[20px] cursor-pointer min-w-[30px]"/>
     </div>
   );
 };
