@@ -14,7 +14,6 @@ import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
-import { Category } from "../../../../../backend/db/models/categoryModel.js";
 
 export const AddPopUp = ({ onClose, selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
@@ -49,7 +48,7 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
       const response = await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
-        { headers: {Authorization: `Bearer ${accessToken}`}},
+        { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       return response.data;
     },
@@ -99,7 +98,7 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
       status,
       dateStart,
       dateCompleted,
-      userID: user.sub,     // Use Auth0 user ID
+      userID: user.sub, // Use Auth0 user ID
     };
     console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
@@ -164,25 +163,6 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
               />
             </p>
 
-            {/* Category
-            <p className="flex my-2">
-              <label
-                htmlFor="category"
-                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
-              >
-                Category
-              </label>
-              <input
-                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2"
-                type="text"
-                placeholder="Name of a existing or new category"
-                maxLength="100"
-                id="category"
-                required
-                onChange={(t) => setCategory(t.target.value)}
-              />
-            </p> */}
-
             {/* Time Start */}
             <p className="flex my-2">
               <label
@@ -196,6 +176,7 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
                 type="time"
                 id="timeStart"
                 value={timeStart}
+                required
                 onChange={(t) => setTimeStart(t.target.value)}
               />
             </p>

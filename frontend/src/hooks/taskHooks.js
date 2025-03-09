@@ -6,7 +6,7 @@
  ********************************************************************/
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { apiRequest } from "../services/taskServices.js";
+import { apiRequest } from "../../utils/utils.js";
 
 export const useGetTasks = (user, isAuthenticated, accessToken) => {
   return useQuery("tasks", async () => {
@@ -60,31 +60,26 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
 
 export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
-  try {
-    return useMutation(
-      async () => {
-        await apiRequest(
-          "DELETE",
-          `/tasks/delete`,
-          user,
-          isAuthenticated,
-          accessToken
-        );
+  return useMutation(
+    async () => {
+      await apiRequest(
+        "DELETE",
+        `/tasks/delete`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("tasks");
       },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries("tasks");
-        },
-        onError: (error) => {
-          console.error("Failed to delete completed tasks", error);
-          alert("Failed to delete completed tasks.");
-        },
-      }
-    );
-  } catch (error) {
-    console.error("Could not delete tasks: ", error);
-    return;
-  }
+      onError: (error) => {
+        console.error("Failed to delete completed tasks", error);
+        alert("Failed to delete completed tasks.");
+      },
+    }
+  );
 };
 
 export const useSuggestTask = (user, isAuthenticated, accessToken) => {
