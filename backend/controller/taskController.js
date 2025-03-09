@@ -11,6 +11,7 @@ import logger from "../utils/logger.js";
 import { parseCommand } from "../services/parseTranscripts.js";
 import { execCommand } from "../services/execute.js";
 import { suggestTask } from "../services/suggestTask.js";
+import { getStats } from "../services/getStats.js";
 
 // CREATE a Task
 export const createTask = async (req, res) => {
@@ -142,3 +143,22 @@ export const generateTask = async (req, res) => {
     res.status(500).json({ message: "Could not generate task" });
   }
 };
+
+export const getTaskStats = async (req, res) => {
+  const { date } = req.params;
+
+  try {
+    const stats = await getStats(date);  // Call the getStats service to get the stats
+    console.log ("request was made");
+    // If stats were fetched successfully, send them as a response
+    if (stats) {
+      res.status(200).json(stats);
+    } else {
+      res.status(404).json({ message: "No statistics found for this date" });
+    }
+  } catch (error) {
+    logger.error(`getTaskStats - Error: ${error.message}`);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+};
+
