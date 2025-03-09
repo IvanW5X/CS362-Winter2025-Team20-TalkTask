@@ -98,6 +98,7 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
       return null;
     }
   };
+
   const {
     data: suggestedTask,
     refetch,
@@ -105,8 +106,10 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
     error,
   } = useQuery("suggestedTask", getSuggestedTask, {
     enabled: false,
-    onSuccess: (suggestedTask) =>
-      console.log("Generated task: ", suggestedTask),
+    onSuccess: (suggestedTask) => {
+      console.log("Generated task: ", suggestedTask);
+    },
   });
+
   return { suggestedTask, refetch, isLoading, error };
 };
