@@ -12,9 +12,9 @@ import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
 
-export const SuggestedTask = ({ onClose, suggestedTask }) => {
-  const queryClient = useQueryClient();
-  const { isAuthenticated, accessToken } = useAuth();
+export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory }) => {
+  const { user, isAuthenticated, accessToken } = useAuth();
+    const queryClient = useQueryClient();
 
   const [title, setTitle] = useState(suggestedTask?.title || "");
   const [description, setDescription] = useState(suggestedTask?.description || "");
@@ -36,12 +36,12 @@ export const SuggestedTask = ({ onClose, suggestedTask }) => {
   }, []);
 
   const createTaskMutation = useMutation(
-    (newTask) => {
+    async (newTask) => {
       if (!isAuthenticated) {
-        console.error("User is not authenticated, action denied");
+        console.error("User not authenticated, action denied");
         return;
       }
-      const response = axios.post(
+      const response = await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
         { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -58,6 +58,7 @@ export const SuggestedTask = ({ onClose, suggestedTask }) => {
         setTimeEnd("");
         setPriority("");
         setStatus(false);
+        onClose();
       },
       onError: (error) => {
         console.error(
@@ -67,37 +68,36 @@ export const SuggestedTask = ({ onClose, suggestedTask }) => {
       },
     }
   );
-
   const handleSubmit = (t) => {
     t.preventDefault();
 
     const today = new Date().toISOString().split("T")[0];
 
-    // Format timeStart and timeEnd
+    // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
-      ? timeStart
-      : new Date().toTimeString().slice(0, 5);
-    const formattedTimeEnd = timeEnd ? timeEnd : null;
+    ? timeStart
+    : new Date().toTimeString().slice(0, 5);
 
-    // Create date objects for start and end times
+    // If timeEnd is not provided, set it to the same as timeStart
+    const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
+
+    // Remove the 'Z' to treat the time as local time
     const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = formattedTimeEnd
-      ? new Date(`${today}T${formattedTimeEnd}:00`)
-      : null;
+    const dateCompleted = new Date(`${today}T${formattedTimeEnd}:00`);
 
-    // Prepare the new task object
     const newTask = {
+      taskID: Date.now(),
       title,
       description,
+      category: selectedCategory,
       priority,
       status,
       dateStart,
       dateCompleted,
+      userID: user.sub, // Use Auth0 user ID
     };
-
-    console.log("Creating task:", newTask);
+    console.log("Creating task:", newTask.title);
     createTaskMutation.mutate(newTask);
-    onClose();
   };
 
   return (

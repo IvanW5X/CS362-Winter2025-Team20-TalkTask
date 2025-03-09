@@ -133,6 +133,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
         <SuggestedTask
           onClose={() => setSuggestedTaskMenuV(false)}
           suggestedTask={createSuggestTask(suggestedTask)}
+          selectedCategory={selectedCategory}
         />
       )}
 
