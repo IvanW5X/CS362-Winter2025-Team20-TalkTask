@@ -117,7 +117,7 @@ export const useSendTranscript = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
   return useMutation(
     async ({ transcript, selectedCategory }) => {
-      const res = await apiRequest(
+      await apiRequest(
         "POST",
         `/tasks/voice-command/${user.sub}`,
         user,
