@@ -1,27 +1,19 @@
-/********************************************************************
- * File Name: task-card.jsx
- * Date: 2/26/2025
- * Description: React file for displaying task information
- * Author(s): CS 362-Team 20
- ********************************************************************/
-
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { EditPopUp } from "../task-management/editpopup/editpopup";
 import { useState } from "react";
 
 const formatTime = (date) => {
-  
-  // Check if the date is valid
   if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
-    return 'N/A'; // Handle invalid or missing dates
+    return "N/A";
   }
-  // Use getHours() and getMinutes() for local time
   let hours = date.getHours();
   const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  const strTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+  hours = hours ? hours : 12;
+  const strTime = `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")} ${ampm}`;
   return strTime;
 };
 
@@ -43,10 +35,15 @@ export const TaskCard = ({
   toggleTaskStatus,
 }) => {
   const [editMenu, setEditMenu] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
 
   return (
-    
-    <div className="bg-[#F4F3F2] p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
+    <div
+      className={`bg-[#F4F3F2] p-4 rounded-[10px] flex items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] 
+                  transition-all duration-300 ease-in-out overflow-hidden`}
+      onMouseEnter={() => setShowDescription(true)}
+      onMouseLeave={() => setShowDescription(false)}
+    >
       {editMenu && (
         <EditPopUp
           onClose={() => setEditMenu(false)}
@@ -64,6 +61,13 @@ export const TaskCard = ({
       {/* Task text */}
       <div className="w-[35px] flex-1 text-[16px] font-semibold break-words mr-[10px]">
         {title}
+        <div
+          className={`text-sm text-gray-600 mt-1 transition-all duration-300 ease-in-out ${
+            showDescription ? "opacity-100 max-h-[100px]" : "opacity-0 max-h-0"
+          } overflow-hidden`}
+        >
+          {description}
+        </div>
       </div>
 
       {/* Pencil icon */}
@@ -73,18 +77,16 @@ export const TaskCard = ({
           onClick={() => setEditMenu(!editMenu)}
         />
       </div>
-      
+
       {/* Times */}
       <div className="text-[12px] font-semibold ml-[10px] flex-col items-start">
         <div className="flex flex-row">
           <p className="mr-1">Start:</p>
-          
           {formatTime(new Date(dateStart))}
         </div>
         <div className="flex flex-row">
           <p className="mr-2">End: </p>
           {formatTime(new Date(dateCompleted))}
-
         </div>
       </div>
       <div className="text-sm mr-3"></div>
@@ -94,7 +96,9 @@ export const TaskCard = ({
         type="checkbox"
         className="form-checkbox color-[#F4F3F2] w-5 h-5 cursor-pointer accent-black"
         checked={status}
-        onChange={() => {toggleTaskStatus(taskID)}}
+        onChange={() => {
+          toggleTaskStatus(taskID);
+        }}
       />
     </div>
   );

@@ -6,7 +6,7 @@
  ********************************************************************/
 
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { apiRequest } from "../services/taskServices.js";
+import { apiRequest } from "../../utils/utils.js";
 
 export const useGetTasks = (user, isAuthenticated, accessToken) => {
   return useQuery("tasks", async () => {
@@ -53,38 +53,33 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
       }
     );
   } catch (error) {
-    console.error(`Could not fetch tasks`);
+    console.error(`Could not fetch tasks ${error}`);
     return;
   }
 };
 
 export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
   const queryClient = useQueryClient();
-  try {
-    return useMutation(
-      async () => {
-        await apiRequest(
-          "DELETE",
-          `/tasks/delete`,
-          user,
-          isAuthenticated,
-          accessToken
-        );
+  return useMutation(
+    async () => {
+      await apiRequest(
+        "DELETE",
+        `/tasks/delete`,
+        user,
+        isAuthenticated,
+        accessToken
+      );
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("tasks");
       },
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries("tasks");
-        },
-        onError: (error) => {
-          console.error("Failed to delete completed tasks", error);
-          alert("Failed to delete completed tasks.");
-        },
-      }
-    );
-  } catch (error) {
-    console.error("Could not delete tasks: ", error);
-    return;
-  }
+      onError: (error) => {
+        console.error("Failed to delete completed tasks", error);
+        alert("Failed to delete completed tasks.");
+      },
+    }
+  );
 };
 
 export const useSuggestTask = (user, isAuthenticated, accessToken) => {
@@ -99,7 +94,7 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
       );
       return res;
     } catch (error) {
-      console.error("Could not generate task: ", error);
+      console.error("Could not generate task:", error);
       return null;
     }
   };
@@ -110,8 +105,10 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
     error,
   } = useQuery("suggestedTask", getSuggestedTask, {
     enabled: false,
-    onSuccess: (suggestedTask) =>
-      console.log("Generated task: ", suggestedTask),
+    onSuccess: (suggestedTask) => {
+      console.log("Generated task: ", suggestedTask);
+    },
   });
+
   return { suggestedTask, refetch, isLoading, error };
 };

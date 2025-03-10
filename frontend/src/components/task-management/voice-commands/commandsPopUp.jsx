@@ -1,13 +1,27 @@
-import ReactMarkdown from "react-markdown";
 import { IoClose } from "react-icons/io5";
-import commands from "../../../../../documents/commands.md?raw";
+import { useEffect } from "react";
+import commandsData from "./commands.json"; // Adjust the path to your JSON file
 
 export const CommandsPopUp = ({ onClose }) => {
-  const sections = commands.split(/\n---+\r?\n/);
+  const { commands } = commandsData; // Destructure the commands array from the JSON file
+
+  // Stop scrolling when popup is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  }, []);
 
   return (
     <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center">
-      <div className="relative bg-[#CCCCCC] p-11 rounded-3xl max-w-[900px] max-h-[90vh] overflow-auto hide-scrollbar">
+      <div className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto">
+        {/* Close Button */}
         <button
           className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-3xl"
           onClick={onClose}
@@ -16,60 +30,26 @@ export const CommandsPopUp = ({ onClose }) => {
           <IoClose className="cursor-pointer" />
         </button>
 
-        <ReactMarkdown
-          components={{
-            h1: ({ ...props }) => (
-              <h1
-                className="text-3xl font-bold text-black text-center mb-8 bg-[#F4F3F2] p-4 rounded-xl shadow-md"
-                {...props}
-              />
-            ),
-          }}
-        >
-          {sections[0]}
-        </ReactMarkdown>
+        {/* Label */}
+        <div className="bg-[#F4F3F2] mt-4 p-4 w-[400px] text-[40px] font-bold text-center rounded-2xl">
+          Voice Commands
+        </div>
 
-        <div className="mt-8 space-y-10 text-lg">
-          {sections.slice(1).map((section, index) => (
-            <div
-              key={index}
-              className="prose bg-[#37E03A] p-6 rounded-xl shadow-xl text-center"
-            >
-              <ReactMarkdown
-                components={{
-                  h2: ({ ...props }) => (
-                    <h2 className="text-2xl font-bold mb-4 " {...props} />
-                  ),
-                  ul: ({ children, ...props }) => (
-                    <ul
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none"
-                      {...props}
-                    >
-                      {children}
-                    </ul>
-                  ),
-                  li: ({ children, ...props }) => (
-                    <li
-                      className="bg-[#F4F3F2] p-4 rounded-xl shadow-sm"
-                      {...props}
-                    >
-                      {children}
-                    </li>
-                  ),
-                  strong: ({ children, ...props }) => (
-                    <span className="underline font-semibold" {...props}>
-                      {children}
-                    </span>
-                  ),
-                  em: ({ children, ...props }) => (
-                    <span className="italic" {...props}>
-                      {children}
-                    </span>
-                  ),
-                }}
-              >
-                {section}
-              </ReactMarkdown>
+        {/* Commands List */}
+        <div className="flex flex-col mt-4 w-[90%] max-w-[800px] mx-auto space-y-6">
+          {commands.map((command, index) => (
+            <div key={index} className="bg-[#F4F3F2] p-6 rounded-xl shadow-md">
+              <h2 className="text-2xl font-bold mb-4 capitalize">
+                {command.type} Commands
+              </h2>
+              <p className="text-lg mb-4">{command.description}</p>
+              <div className="space-y-2">
+                {command.syntax.map((syntax, idx) => (
+                  <p key={idx} className="text-sm text-gray-600">
+                    {syntax} {/* Display the syntax without numbering */}
+                  </p>
+                ))}
+              </div>
             </div>
           ))}
         </div>

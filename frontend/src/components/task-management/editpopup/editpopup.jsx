@@ -18,7 +18,6 @@ export const EditPopUp = ({ onClose, task }) => {
 
   const [title, setTitle] = useState(task?.title || "");
   const [description, setDescription] = useState(task?.description || "");
-  const [category, setCategory] = useState(task?.category || "");
   const [timeStart, setTimeStart] = useState(
     task?.dateStart ? new Date(task.dateStart).toTimeString().slice(0, 5) : ""
   );
@@ -61,7 +60,6 @@ export const EditPopUp = ({ onClose, task }) => {
         queryClient.invalidateQueries("tasks");
         setTitle("");
         setDescription("");
-        setCategory("");
         setTimeStart("");
         setTimeEnd("");
         setPriority("");
@@ -97,7 +95,6 @@ export const EditPopUp = ({ onClose, task }) => {
     const updatedTask = {
       title,
       description,
-      category,
       priority,
       status,
       dateStart,
@@ -111,9 +108,9 @@ export const EditPopUp = ({ onClose, task }) => {
 
   return (
     <>
-      <div className="z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
+      <div className="font-bold z-[10001] fixed top-0 left-0 w-full h-full bg-black/40 flex items-center justify-center ">
         <form
-          className="relative border-3 flex flex-col w-[900px] h-[700px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
+          className="relative border-3 flex flex-col w-[650px] h-[620px] bg-gray-200 rounded-3xl items-center overflow-x-auto"
           onSubmit={handleSubmit}
         >
           {/* Close Button */}
@@ -167,26 +164,6 @@ export const EditPopUp = ({ onClose, task }) => {
                 id="description"
                 value={description}
                 onChange={(t) => setDescription(t.target.value)}
-              />
-            </p>
-
-            {/* Category */}
-            <p className="flex my-2">
-              <label
-                htmlFor="category"
-                className="bg-[#F4F3F2] m-3 p-2 rounded-2xl text-center w-[150px]"
-              >
-                Category
-              </label>
-              <input
-                className="border-[2px] bg-[#F4F3F2] w-[600px] min-w-[200px] m-2 p-2"
-                type="text"
-                placeholder="Name of a existing or new category"
-                maxLength="100"
-                id="category"
-                required
-                value={category}
-                onChange={(t) => setCategory(t.target.value)}
               />
             </p>
 
@@ -247,7 +224,7 @@ export const EditPopUp = ({ onClose, task }) => {
             {/* Edit Task Button */}
             <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
-                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
                 type="submit"
                 id="submit"
               >
