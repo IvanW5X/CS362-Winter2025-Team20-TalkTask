@@ -199,8 +199,8 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
         {/* mic button */}
         <button
           className={`flex cursor-pointer h-[40px] ${
-            isListening ? "bg-red-500" : "bg-[#37E03A]"
-          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)] hover:bg-green-600 hover:shadow-xl transition-colors duration-200`}
+            isListening ? "bg-red-500" : "bg-[#37E03A] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
+          } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleMicClick}
         >
           <FaMicrophone className="text-[30px] text-[#F4F3F2]" />
