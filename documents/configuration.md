@@ -1,6 +1,6 @@
 # Directions For Web Application
 
-## Installing Packages and Initailizing Directories (Dev)
+## Installing Packages and Initailizing Directories (Local/Dev)
 
 For an automated installation of the npm packages required, run the `npmInstall.sh` script.  
 Otherwise, follow the steps below.
@@ -16,6 +16,24 @@ Otherwise, follow the steps below.
 * cd backend
 * npm install
 * Done, ensure that git marks node_modules as untracked
+
+### Notes
+* You WILL need two .env files, one in each of the frontend and backend home directories.
+* Frontend .env example:
+  * VITE_BACKEND_URL="http://localhost:51710"
+  * VITE_APP_AUTH0_DOMAIN="Auth0 domain obtained from Auth0"
+  * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0"
+  * VITE_APP_AUTH0_AUDIENCE="http://localhost:51710"
+* Backend .env example:
+  * AI_API_KEY="AI API key obtained from Google Gemini"
+  * FRONTEND_URL="http://localhost:5173"
+  * VITE_BACKEND_URL="http://localhost:51710"
+  * SERVER_PORT="51710"
+  * MONGO_URI="MongoDB URI used to connect to your MongoDB database"
+  * VITE_APP_AUTH0_DOMAIN="Auth0 domain obtained from Auth0 that matches the frontend"
+  * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0 that mataches frontend"
+  * VITE_APP_AUTH0_AUDIENCE="http://localhost:51710"
+ 
 
 ## Running Web Application
 
