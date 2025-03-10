@@ -1306,3 +1306,5 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * **Trigger CI Build**
   * Our CI build will be triggered whenever a push or pull requests is committed to the main branch. That being said, we will then create a dev branch to ensure that when we are incrementally implementing code that passes these tests, we are able to push it the to the dev branch, so that the main branch will remain stable at all times.
+
+## Reflections
