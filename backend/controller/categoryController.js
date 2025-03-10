@@ -37,7 +37,7 @@ export const getCategories = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   try {
-    const { name, userID, count } = req.params;
+    const { name, userID } = req.params;
     const deletedCategory = await Category.findOneAndDelete({
       name: name,
       userID: userID,
@@ -45,7 +45,7 @@ export const deleteCategory = async (req, res) => {
 
     if (deletedCategory) {
       // Delete all tasks within category too
-      if (count > 0) await Task.deleteMany({ category: name, userID });
+      await Task.deleteMany({ category: name, userID });
 
       res.status(200).json({
         message: "Category deleted successfully",
