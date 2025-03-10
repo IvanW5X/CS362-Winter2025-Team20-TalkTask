@@ -37,7 +37,7 @@ export const useUpdateTaskStatus = (user, isAuthenticated, accessToken) => {
       async ({ taskID, newStatus }) => {
         await apiRequest(
           "PATCH",
-          `/tasks/update-task/${taskID}`,
+          `/tasks/update-task/${user.sub}/${taskID}`,
           user,
           isAuthenticated,
           accessToken,
@@ -64,7 +64,7 @@ export const useDeleteCompletedTasks = (user, isAuthenticated, accessToken) => {
     async () => {
       await apiRequest(
         "DELETE",
-        `/tasks/delete`,
+        `/tasks/delete/${user.sub}`,
         user,
         isAuthenticated,
         accessToken

@@ -66,7 +66,7 @@ export const getTasksByUser = async (req, res) => {
 
 // UPDATE Task
 export const updateTask = async (req, res) => {
-  const { taskID } = req.params;
+  const { userID, taskID } = req.params;
   const {
     title,
     description,
@@ -78,7 +78,7 @@ export const updateTask = async (req, res) => {
   } = req.body;
   try {
     const updatedTask = await Task.findOneAndUpdate(
-      { taskID: taskID },
+      { taskID: taskID, userID: userID },
       {
         title,
         description,
@@ -106,7 +106,8 @@ export const updateTask = async (req, res) => {
 // DELETE All Completed Tasks
 export const deleteAllTask = async (req, res) => {
   try {
-    const result = await Task.deleteMany({ status: true });
+    const { userID } = req.params;
+    const result = await Task.deleteMany({ userID: userID, status: true });
     if (result.deletedCount > 0) {
       res
         .status(200)

@@ -14,7 +14,7 @@ import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
-  const { isAuthenticated, accessToken } = useAuth();
+  const { user, isAuthenticated, accessToken } = useAuth();
 
   const [title, setTitle] = useState(task?.title || "");
   const [description, setDescription] = useState(task?.description || "");
@@ -48,7 +48,7 @@ export const EditPopUp = ({ onClose, task }) => {
         return;
       }
       const response = axios.patch(
-        `${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`,
+        `${VITE_BACKEND_URL}/tasks/update-task/${user.sub}/${task.taskID}`,
         updatedTask,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
@@ -77,19 +77,20 @@ export const EditPopUp = ({ onClose, task }) => {
   const handleSubmit = (t) => {
     t.preventDefault();
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date();
+    const localDateString = today.toLocaleDateString('en-CA');
 
-    // Format timeStart and timeEnd
+    // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
-      ? timeStart
-      : new Date().toTimeString().slice(0, 5);
-    const formattedTimeEnd = timeEnd ? timeEnd : null;
+    ? timeStart
+    : today.toTimeString().slice(0, 5);
 
-    // Create date objects for start and end times
-    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = formattedTimeEnd
-      ? new Date(`${today}T${formattedTimeEnd}:00`)
-      : null;
+    // If timeEnd is not provided, set it to the same as timeStart
+    const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
+
+    // Remove the 'Z' to treat the time as local time
+    const dateStart = new Date(`${localDateString}T${formattedTimeStart}:00`);
+    const dateCompleted = new Date(`${localDateString}T${formattedTimeEnd}:00`);
 
     // Prepare the updated task object
     const updatedTask = {

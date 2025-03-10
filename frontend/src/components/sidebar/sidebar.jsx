@@ -45,7 +45,7 @@ export const Sidebar = ({
     };
     createCategoryMutation.mutate({ newCategory });
   };
-  const handleDeleteCategory = (categoryName, userID) => {
+  const handleDeleteCategory = async (categoryName, userID) => {
     const confirmResult = confirm(
       "Deleting category will also delete it's associated tasks.\nContinue?"
     );
@@ -76,17 +76,24 @@ export const Sidebar = ({
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`flex justify-between p-3 pl-5 cursor-pointer bg-[#cdcdcd] odd:bg-[#F4F3F2] text-[16px]
-               hover:bg-black/20 transition-colors duration-200
+            className={`flex justify-between items-center p-3 pl-5 cursor-pointer bg-[#cdcdcd] odd:bg-[#F4F3F2] text-[16px]
               ${
                 selectedCategory === category.name ? "font-bold underline" : ""
               }`}
-            onClick={() => setSelectedCategory(category.name)}
           >
-            {category.name}
+            <p
+              className="text-[18px] hover:bg-black/20 transition-colors duration-200 p-[3px] rounded-[10px] max-w-[110px] break-words"
+              onClick={() => setSelectedCategory(category.name)}
+            >
+              {category.name}
+            </p>
             <RiCloseLine
               className="text-[28px] hover:bg-gray-400 hover:shadow-xl transition-colors duration-200 rounded-full"
-              onClick={() => handleDeleteCategory(category.name, user.sub)}
+              onClick={async () => {
+                await handleDeleteCategory(category.name, user.sub);
+                if (selectedCategory === category.name)
+                  setSelectedCategory(null);
+              }}
             />
           </li>
         ))}
