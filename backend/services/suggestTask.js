@@ -27,10 +27,9 @@ export const suggestTask = async (taskList) => {
     const result = await model.generateContent(prompt, {
       generationConfig: {
         maxOutputTokens: 30,
-        temperature: 0.6,
+        temperature: 0.5,
       },
     });
-    console.log(`Prompt: ${prompt}\nResult: ${result.response.text()}`);
     return result.response.text();
   } catch (error) {
     logger.error(`\nCouldn't generate response: ${error}`);
