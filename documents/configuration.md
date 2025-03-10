@@ -2,7 +2,7 @@
 
 ## Installing Packages and Initailizing Directories (Dev)
 
-For an automated installation of the npm packages required, run the npmInstall.sh script.  
+For an automated installation of the npm packages required, run the `npmInstall.sh` script.  
 Otherwise, follow the steps below.
 
 ### Front-End
