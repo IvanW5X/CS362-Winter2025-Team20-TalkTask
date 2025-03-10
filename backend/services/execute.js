@@ -63,7 +63,7 @@ export const execCommand = async (command, userID, selectedCategory) => {
         );
 
         if (!markedTask) {
-          console.error("Task not found");
+          console.error("execute.js: Task not found");
           return null;
         }
         return {

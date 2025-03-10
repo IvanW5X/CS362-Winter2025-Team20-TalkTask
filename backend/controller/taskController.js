@@ -46,7 +46,6 @@ export const handleCommand = async (req, res) => {
   const result = await execCommand(command, userID, selectedCategory);
 
   if (result === null) {
-    console.log("TETSAJDHG");
     return res.status(500).json({ message: "Could not execute command" });
   }
 

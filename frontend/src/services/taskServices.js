@@ -23,7 +23,7 @@ export const sendTranscript = async (
       accessToken,
       { transcript, selectedCategory }
     );
-    console.log(`Backend response: ${res.data}`);
+    console.log(`Backend response: ${res}`);
   } catch (error) {
     console.error("Error sending transcript to backend:", error);
     alert("Failed to send transcript");
