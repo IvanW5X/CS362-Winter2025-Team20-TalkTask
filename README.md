@@ -28,9 +28,11 @@ Our repsitory includes documentaions files in the root directory, a reports dire
 [Link](https://trello.com/b/5mxdUfv6/pt20talktask?utm_source=eval-email&utm_medium=email&utm_campaign=board-invite)
 
 ## Website Link
+
 [Link](https://talktask.netlify.app/)
 
 ## Local Installation
+
 * Refer to ./documents/configurations.md
 
 ## Collaborators
