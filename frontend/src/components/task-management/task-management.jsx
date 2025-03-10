@@ -14,7 +14,7 @@ import { IoList } from "react-icons/io5";
 
 //react and backend
 import { useState } from "react";
-import { useAuth } from "../../../contexts/authContext.jsx";
+import { useAuth } from "../../../contexts/authContext";
 import { startListening, stopListening } from "../../services/webSpeech.js";
 
 import {

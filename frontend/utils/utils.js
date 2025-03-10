@@ -14,7 +14,7 @@ export const getImageUrl = (path) => {
 
 export const apiRequest = async (
   method,
-  enpoint,
+  endpoint,
   user,
   isAuthenticated,
   accessToken,
@@ -25,7 +25,7 @@ export const apiRequest = async (
     return null;
   }
   const config = { headers: { Authorization: `Bearer ${accessToken}` } };
-  const url = `${VITE_BACKEND_URL}${enpoint}`;
+  const url = `${VITE_BACKEND_URL}${endpoint}`;
 
   switch (method) {
     case "POST":

@@ -9,16 +9,15 @@
 import { IoClose } from "react-icons/io5";
 
 //backend
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const AddPopUp = ({ onClose, selectedCategory }) => {
-  const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
-
+  const { user, isAuthenticated, accessToken } = useAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [timeStart, setTimeStart] = useState("");
@@ -45,12 +44,11 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
         console.error("User not authenticated, action denied");
         return;
       }
-      const response = await axios.post(
+      await axios.post(
         `${VITE_BACKEND_URL}/tasks/create-task`,
         newTask,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
-      return response.data;
     },
     {
       onSuccess: () => {
