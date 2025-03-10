@@ -34,9 +34,6 @@ Otherwise, follow the steps below.
   * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0 that mataches frontend"
   * VITE_APP_AUTH0_AUDIENCE="http://localhost:51710"
 
-* After everything is installed and .env files are setup, open two separate terminals. One terminal will be in the the frontend directory (cd frontend) and the other the backend directory (cd backend). In both terminals run the command `npm run dev` and navigate to http://localhost:5173 on a browser.
- 
-
 ## Running Web Application
 
 ## Front-End
