@@ -12,7 +12,7 @@ import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
 
-export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory }) => {
+export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory, selectedDate }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const queryClient = useQueryClient();
 
@@ -71,19 +71,20 @@ export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory }) => {
   const handleSubmit = (t) => {
     t.preventDefault();
 
-    const today = new Date().toISOString().split("T")[0];
+    const localDateString = selectedDate.toLocaleDateString("en-CA")
 
     // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
-    ? timeStart
-    : new Date().toTimeString().slice(0, 5);
+      ? timeStart
+      : selectedDate.toTimeString().slice(0, 5);
 
     // If timeEnd is not provided, set it to the same as timeStart
     const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
 
     // Remove the 'Z' to treat the time as local time
-    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = new Date(`${today}T${formattedTimeEnd}:00`);
+    const dateStart = (`${localDateString}T${formattedTimeEnd}:00`);
+    const dateCompleted = (`${localDateString}T${formattedTimeEnd}:00`);
+
 
     const newTask = {
       taskID: Date.now(),
@@ -218,7 +219,7 @@ export const SuggestedTask = ({ onClose, suggestedTask, selectedCategory }) => {
             {/* Create Task Button */}
             <p className="flex -mt-1 w-full text-[#F4F3F2] justify-center">
               <button
-                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px]"
+                className="font-bold bg-[#37E03A] cursor-pointer m-3 p-2 rounded-2xl text-center w-[150px] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
                 type="submit"
                 id="submit"
               >

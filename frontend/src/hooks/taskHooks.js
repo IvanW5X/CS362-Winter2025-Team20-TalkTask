@@ -112,3 +112,29 @@ export const useSuggestTask = (user, isAuthenticated, accessToken) => {
 
   return { suggestedTask, refetch, isLoading, error };
 };
+
+export const useSendTranscript = (user, isAuthenticated, accessToken) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    async ({ transcript, selectedCategory }) => {
+      await apiRequest(
+        "POST",
+        `/tasks/voice-command/${user.sub}`,
+        user,
+        isAuthenticated,
+        accessToken,
+        { transcript, selectedCategory }
+      );
+    },
+    {
+      onSuccess: () => {
+        console.log("Server captured transcript");
+        queryClient.invalidateQueries("tasks");
+      },
+      onError: () => {
+        console.error("Error sending transcript to server");
+        alert("Failed to send transcript");
+      },
+    }
+  );
+};

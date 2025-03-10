@@ -20,8 +20,8 @@ import { startListening, stopListening } from "../../services/webSpeech.js";
 import {
   useDeleteCompletedTasks,
   useSuggestTask,
+  useSendTranscript,
 } from "../../hooks/taskHooks.js";
-import { sendTranscript } from "../../services/taskServices.js";
 import { createSuggestTask } from "../../services/create-ai-task.js";
 
 //popups
@@ -30,7 +30,7 @@ import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 import { SuggestedTask } from "./suggestpopup/suggestpopup.jsx";
 
-export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
+export const TasksManagement = ({ setFilters, filters, selectedCategory, selectedDate }) => {
   //popup consts
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
@@ -41,6 +41,11 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   const { user, isAuthenticated, accessToken } = useAuth();
   const [isListening, setIsListening] = useState(false);
   const deleteCompletedTasksMutation = useDeleteCompletedTasks(
+    user,
+    isAuthenticated,
+    accessToken
+  );
+  const sendTranscriptMutation = useSendTranscript(
     user,
     isAuthenticated,
     accessToken
@@ -57,6 +62,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
     setFilterMenu(false);
+
   };
   const handleDeleteTasks = () => {
     if (
@@ -74,13 +80,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
     } else {
       startListening(
         (transcript) => {
-          sendTranscript(
-            user,
-            isAuthenticated,
-            accessToken,
-            transcript,
-            selectedCategory
-          );
+          sendTranscriptMutation.mutate({ transcript, selectedCategory });
           console.log(transcript);
         },
         (error) => {
@@ -98,7 +98,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   //suggest task handler
   const handleSuggestTask = async () => {
     const { data: suggestedTask } = await suggestTaskRefetch(); // Fetch the suggested task
-    
+
     // Graceful error handling
     if (suggestedTask.trim() === "Cannot generate task") {
       alert("Unable to generate a task. Please try again.");
@@ -118,6 +118,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
         <AddPopUp
           onClose={() => setAddMenuV(false)}
           selectedCategory={selectedCategory}
+          selectedDate = {selectedDate}
         />
       )}
 
@@ -142,6 +143,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
           onClose={() => setSuggestedTaskMenuV(false)}
           suggestedTask={createSuggestTask(suggestedTask)}
           selectedCategory={selectedCategory}
+          selectedDate = {selectedDate}
         />
       )}
 
@@ -199,7 +201,9 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
         {/* mic button */}
         <button
           className={`flex cursor-pointer h-[40px] ${
-            isListening ? "bg-red-500" : "bg-[#37E03A] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
+            isListening
+              ? "bg-red-500"
+              : "bg-[#37E03A] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
           } rounded-2xl justify-center items-center shadow-[0_0px_20px_rgba(0,0,0,0.25)]`}
           onClick={handleMicClick}
         >

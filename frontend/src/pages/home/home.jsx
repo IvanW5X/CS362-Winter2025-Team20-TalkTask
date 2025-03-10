@@ -61,6 +61,7 @@ export const Home = () => {
               setFilters={setFilters}
               filters={filters}
               selectedCategory={selectedCategory}
+              selectedDate={selectedDate}
             />
           </div>
         </div>

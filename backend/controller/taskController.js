@@ -131,7 +131,6 @@ export const generateTask = async (req, res) => {
     // Get tasks titles from user
     const taskTitles = tasks.map((task) => task.title);
     const generatedTask = await suggestTask(taskTitles);
-    console.log(generatedTask);
 
     // Suggested task service failed
     if (generatedTask === null) {
