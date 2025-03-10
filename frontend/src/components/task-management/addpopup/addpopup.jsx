@@ -15,7 +15,7 @@ import axios from "axios";
 import { VITE_BACKEND_URL } from "../../../../utils/variables.js";
 import { useAuth } from "../../../../contexts/authContext.jsx";
 
-export const AddPopUp = ({ onClose, selectedCategory }) => {
+export const AddPopUp = ({ onClose, selectedCategory, selectedDate }) => {
   const queryClient = useQueryClient();
   const { user, isAuthenticated, accessToken } = useAuth();
   const [title, setTitle] = useState("");
@@ -71,20 +71,20 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
   const handleSubmit = (t) => {
     t.preventDefault();
 
-    const today = new Date();
-    const localDateString = today.toLocaleDateString("en-CA");
+    const localDateString = selectedDate.toLocaleDateString("en-CA")
 
     // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
       ? timeStart
-      : today.toTimeString().slice(0, 5);
+      : selectedDate.toTimeString().slice(0, 5);
 
     // If timeEnd is not provided, set it to the same as timeStart
     const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
 
     // Remove the 'Z' to treat the time as local time
-    const dateStart = new Date(`${localDateString}T${formattedTimeStart}:00`);
-    const dateCompleted = new Date(`${localDateString}T${formattedTimeEnd}:00`);
+    const dateStart = (`${localDateString}T${formattedTimeEnd}:00`);
+    const dateCompleted = (`${localDateString}T${formattedTimeEnd}:00`);
+
 
     const newTask = {
       taskID: Date.now(),

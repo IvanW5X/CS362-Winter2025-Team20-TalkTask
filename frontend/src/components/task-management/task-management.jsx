@@ -30,7 +30,7 @@ import { FilterSort } from "./filter-sort/filter-sort.jsx";
 import { CommandsPopUp } from "./voice-commands/commandsPopUp.jsx";
 import { SuggestedTask } from "./suggestpopup/suggestpopup.jsx";
 
-export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
+export const TasksManagement = ({ setFilters, filters, selectedCategory, selectedDate }) => {
   //popup consts
   const [addMenuV, setAddMenuV] = useState(false);
   const [filterMenu, setFilterMenu] = useState(false);
@@ -62,6 +62,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
     setFilterMenu(false);
+
   };
   const handleDeleteTasks = () => {
     if (
@@ -117,6 +118,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
         <AddPopUp
           onClose={() => setAddMenuV(false)}
           selectedCategory={selectedCategory}
+          selectedDate = {selectedDate}
         />
       )}
 
@@ -141,6 +143,7 @@ export const TasksManagement = ({ setFilters, filters, selectedCategory }) => {
           onClose={() => setSuggestedTaskMenuV(false)}
           suggestedTask={createSuggestTask(suggestedTask)}
           selectedCategory={selectedCategory}
+          selectedDate = {selectedDate}
         />
       )}
 
