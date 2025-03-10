@@ -4442,3 +4442,6 @@ updatePath: ''
 [2025-03-09 19:25:39] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: userId_1 dup key: { userId: null }
 [2025-03-09 19:26:13] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: userId_1 dup key: { userId: null }
 [2025-03-09 19:26:37] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: userId_1 dup key: { userId: null }
+[2025-03-09 20:01:34] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: userID_1 dup key: { userID: "google-oauth2|110161318974678960270" }
+[2025-03-09 20:03:28] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: name_1 dup key: { name: "main" }
+[2025-03-09 20:45:14] ERROR: createCategory - Error: E11000 duplicate key error collection: test.categories index: name_1 dup key: { name: "main" }
