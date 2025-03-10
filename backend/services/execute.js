@@ -14,14 +14,14 @@ export const execCommand = async (command, userID, selectedCategory) => {
   try {
     switch (command.type) {
       //add task
-      case "add":
+      case "add": {
         const newTask = new Task({
           taskID: Date.now(), // Generate a unique taskID
           title: command.task,
           description: command.description || "placeholder",
           category: selectedCategory,
           dateStarted: Date.now(),
-          dateCompleted:  Date.now(), 
+          dateCompleted: Date.now(),
           priority: command.priority || 3,
           status: false, // Default status
           userID: userID, // Add the userID from the authenticated user
@@ -32,9 +32,10 @@ export const execCommand = async (command, userID, selectedCategory) => {
           message: "Task added successfully",
           task: newTask,
         };
+      }
 
       //remove task
-      case "removeAll":
+      case "removeAll": {
         const result = await Task.deleteMany({ status: true });
         if (result.deletedCount > 0) {
           return {
@@ -44,15 +45,16 @@ export const execCommand = async (command, userID, selectedCategory) => {
         } else {
           return { success: true, message: "No completed tasks found." };
         }
+      }
 
       //remove task
-      case "mark":
+      case "mark": {
         // Normalize the task title for exact matching
         const taskTitle = command.task.trim().toLowerCase();
 
         // Find and update the task with an exact title match
         const markedTask = await Task.findOneAndUpdate(
-          { 
+          {
             title: { $regex: `^${taskTitle}$`, $options: "i" }, // Case-insensitive exact match
             userID, // Ensure the task belongs to the current user
           },
@@ -69,8 +71,9 @@ export const execCommand = async (command, userID, selectedCategory) => {
           message: "Task marked as complete",
           task: markedTask,
         };
+      }
       default:
-        console.error("Unknown command tyor:", error);
+        console.error("Unknown command type");
         return null;
     }
   } catch (error) {

@@ -85,7 +85,7 @@ export const parseCommand = (transcript, userID) => {
         //captured text is a valid number or word
         if (
           /^\d+$/.test(priorityText) ||
-          wordToNum.hasOwnProperty(priorityText)
+          Object.prototype.hasOwnProperty.call(wordToNum, priorityText)
         ) {
           priority = convertWordToNum(priorityText);
         } else {
