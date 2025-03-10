@@ -44,11 +44,9 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
         console.error("User not authenticated, action denied");
         return;
       }
-      await axios.post(
-        `${VITE_BACKEND_URL}/tasks/create-task`,
-        newTask,
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
+      await axios.post(`${VITE_BACKEND_URL}/tasks/create-task`, newTask, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
     },
     {
       onSuccess: () => {
@@ -74,19 +72,19 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
     t.preventDefault();
 
     const today = new Date();
-    const localDateString = today.toLocaleDateString('en-CA');
+    const localDateString = today.toLocaleDateString("en-CA");
 
     // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
-    ? timeStart
-    : today.toTimeString().slice(0, 5);
+      ? timeStart
+      : today.toTimeString().slice(0, 5);
 
     // If timeEnd is not provided, set it to the same as timeStart
     const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
 
     // Remove the 'Z' to treat the time as local time
     const dateStart = new Date(`${localDateString}T${formattedTimeStart}:00`);
-  const dateCompleted = new Date(`${localDateString}T${formattedTimeEnd}:00`);
+    const dateCompleted = new Date(`${localDateString}T${formattedTimeEnd}:00`);
 
     const newTask = {
       taskID: Date.now(),
