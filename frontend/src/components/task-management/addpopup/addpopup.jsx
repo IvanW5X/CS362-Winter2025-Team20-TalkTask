@@ -73,19 +73,20 @@ export const AddPopUp = ({ onClose, selectedCategory }) => {
   const handleSubmit = (t) => {
     t.preventDefault();
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date();
+    const localDateString = today.toLocaleDateString('en-CA');
 
     // Ensure timeStart is in the correct format (HH:MM)
     const formattedTimeStart = timeStart
     ? timeStart
-    : new Date().toTimeString().slice(0, 5);
+    : today.toTimeString().slice(0, 5);
 
     // If timeEnd is not provided, set it to the same as timeStart
     const formattedTimeEnd = timeEnd ? timeEnd : formattedTimeStart;
 
     // Remove the 'Z' to treat the time as local time
-    const dateStart = new Date(`${today}T${formattedTimeStart}:00`);
-    const dateCompleted = new Date(`${today}T${formattedTimeEnd}:00`);
+    const dateStart = new Date(`${localDateString}T${formattedTimeStart}:00`);
+  const dateCompleted = new Date(`${localDateString}T${formattedTimeEnd}:00`);
 
     const newTask = {
       taskID: Date.now(),
