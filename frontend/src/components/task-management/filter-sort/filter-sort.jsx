@@ -9,7 +9,7 @@
 import { IoClose } from "react-icons/io5";
 
 //react and backend
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const FilterSort = ({ onClose, onApply, initialSelectedPriorities, initialSortOrder }) => {
     // Initialize state with props
