@@ -22,7 +22,7 @@ router.post("/create-task", createTask);
 router.post("/voice-command/:userID", handleCommand);
 router.get("/generate-task/:userID", generateTask);
 router.get("/read-task/:userID", getTasksByUser);
-router.patch("/update-task/:taskID", updateTask);
-router.delete("/delete", deleteAllTask);
+router.patch("/update-task/:userID/:taskID", updateTask);
+router.delete("/delete/:userID", deleteAllTask);
 
 export default router;

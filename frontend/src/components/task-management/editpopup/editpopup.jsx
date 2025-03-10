@@ -14,7 +14,7 @@ import { useAuth } from "../../../../contexts/authContext.jsx";
 
 export const EditPopUp = ({ onClose, task }) => {
   const queryClient = useQueryClient();
-  const { isAuthenticated, accessToken } = useAuth();
+  const { user, isAuthenticated, accessToken } = useAuth();
 
   const [title, setTitle] = useState(task?.title || "");
   const [description, setDescription] = useState(task?.description || "");
@@ -48,7 +48,7 @@ export const EditPopUp = ({ onClose, task }) => {
         return;
       }
       const response = axios.patch(
-        `${VITE_BACKEND_URL}/tasks/update-task/${task.taskID}`,
+        `${VITE_BACKEND_URL}/tasks/update-task/${user.sub}/${task.taskID}`,
         updatedTask,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
