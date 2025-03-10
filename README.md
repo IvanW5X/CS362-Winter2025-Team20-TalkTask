@@ -30,6 +30,9 @@ Our repsitory includes documentaions files in the root directory, a reports dire
 ## Website Link
 [Link](https://talktask.netlify.app/)
 
+## Local
+* Refer to ./documents/configurations.md
+
 ## Collaborators
 
 * Ivan Wong
