@@ -13,7 +13,6 @@ import {
   useGetCategories,
   useDeleteCategory,
 } from "../../hooks/catagoryHooks";
-import { useEffect } from "react";
 
 export const Sidebar = ({
   menu_open,
