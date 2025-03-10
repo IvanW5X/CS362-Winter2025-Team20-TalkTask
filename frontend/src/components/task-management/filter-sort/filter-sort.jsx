@@ -106,7 +106,7 @@ export const FilterSort = ({ onClose, onApply, initialSelectedPriorities, initia
                         <button
                             type="button"
                             onClick={handleApply}
-                            className="text-white font-bold bg-[#37E03A] cursor-pointer p-2 rounded-2xl text-center w-[150px]"
+                            className="text-white font-bold bg-[#37E03A] cursor-pointer p-2 rounded-2xl text-center w-[150px] hover:bg-green-600 hover:shadow-xl transition-colors duration-200"
                         >
                             Apply
                         </button>
