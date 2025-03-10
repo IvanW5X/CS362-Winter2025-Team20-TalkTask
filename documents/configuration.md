@@ -65,8 +65,3 @@ Otherwise, follow the steps below.
 ### Deploying Instructions
 * Currently investigating   
 
-## Additional Notes
-* To store and hide your own API key and other sensitive information, consider the following directions.
-* cd path/to/project/directory
-* Add a .env file to the project root directory
-* Add "AI_API_KEY=API_KEY" to the .env file and replace API_KEY with the actual API key
