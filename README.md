@@ -12,25 +12,29 @@ Our repsitory includes documentaions files in the root directory, a reports dire
 
 ## Major goals for the project will include
 
-* Creating a website that correctly parses voice input into to-do list commands
-* Implementing a database to store past list items and give access to their tasks over various devices
-* Implement AI functionality to provide reccommended tasks given a users history for free
-* Develop a simple, user-friendly UI that not only looks good, but functions properly and allows for easy navigation
+1. Implement essential task management features such as adding a task, marking a task as complete, and removing a task.
+2. Add categorical based task views.
+3. Add calendar based task views.
+4. Implement a simple, but clean UI, so users can uitilize the full capabilities of TalkTask easily.
+5. Use Google's Gemini AI API to provide personalized suggested tasks for users.
 
 ## Additional stretch goals will include
 
-* Adding reminders for timely tasks
-* Expanding AI functionality to incorporate natural language into to-do list commands
-* Gamifying the UI and website to keep users engaged and promote completing their tasks
+1. Implement reminders for timely tasks to increase the success rate of tasks being completed.  
+2. Extend AI API functionality to process natural language and allow users to communicate naturally to our speech recognition system and convert their commands into a dedicated function for the to-do list management system.
+3. Gamify the web application to keep current users engaged and promote continuation of using the app into continuing using our app for productivity.
+4. Create a responsve UI for both desktop and mobile users.
 
 ## Trello Board
 
 [Link](https://trello.com/b/5mxdUfv6/pt20talktask?utm_source=eval-email&utm_medium=email&utm_campaign=board-invite)
 
 ## Website Link
+
 [Link](https://talktask.netlify.app/)
 
 ## Local Installation
+
 * Refer to ./documents/configurations.md
 
 ## Collaborators
