@@ -1,58 +1,63 @@
-# Project: TalkTask
+# **Project TalkTask**
 
-## Your Personal To-Do List Tracker
+## **Collaborators**
 
-### Problem Statement
+* Ivan Wong
+* Tristan Vosburg
+* Nicholas Woodley
+* Raymond Cen
+* Kai Lindskog
+* Jordan Cowan
+* Bailey Budlong
 
-Modern day to-do list applications rely on manual input from keyboards, mouses and other hands on devices. This creates a problem for users with physical disabilities, multitaskers and those who want to use hands-free applications.
+### **Abstract**
 
-A simple Google search will show you multiple articles and research papers that to-do lists actually work and can increase productivity, self dicipline, and even reduce feelings of stress and/or anxiety if used correctly. To-do lists offer a way to structure/plan your days out, improve time management skills and organization skills, which in turn can making you feel less overwhelmed. The feeling of completing a task has even been shown to release a small spike of dopamine giving yourself a sense of accomplishment.
+TalkTask is a web application that utilizes speech recognition to streamline to-do list management, and an AI model to provide suggested tasks. Using speech recognition, we are able to allow users to add, remove and prioritize tasks, and offer time/categorical based task views. A short article from Harvard Business Review show that effective to-do lists actually work and can release stress as tasks get checked off and/or completed. Most modern to-do list applications today rely on input form keyboards, can become long and overwhelming, and assume an infinite amount of time, hence encourages users to continiously add more tasks. *Why to-do lists don't work* is an article published by Medium and describes these exact issues on how to-do lists can become counter productive. To-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by implementing proven strategies that increase productivity, as well as using speech recognition to make task management accessible for all users. We will also offer users a way to create multiple task lists based on their chosen category or date, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities. Furthermore, we will be using Google's Gemini AI model to provide users suggested tasks based on what the user already has to-do or has completed, offering a personalized experience for all.
 
-Most to-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by using speech recognition in our application, enabling voice-controlled task management. Users will be able add, remove, prioritize, schedule and manipulate tasks through voice commands. This improves accessibility, convience and efficiency that other to-do list applications today don't offer. We will also offer users a way to create multiple task lists based on their chosen category, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities. Furthermore, we are also providing users access to an AI model able to generate suggested tasks based on what the user already has to-do or has completed, offering a personalized experience for all.
+### **Goals**
 
-With TalkTask, we’re turning your to-do list into a seamless, hands-free experience that enhances productivity and accessibility. By leveraging the power of speech recognition and AI, we’re giving you the freedom to manage your tasks more efficiently, so you can focus on what really matters. Say goodbye to overwhelming lists and hello to a more organized, stress-free way to tackle your day.
+TalkTask should provide a hands-free and user-friendly experience for users. The platform prioritizes effective task strategies, ease-of-access, and user privacy, ensuring secure handling of voice input.
 
-### Abstract
+#### **Major Goals**
 
-TalkTask is a web application that utilizes speech recognition to streamline to-do list management. Using speech recognition, we are able to allow users to add, remove, prioritize, and even schedule daily tasks with simple voice commands for multiple languages including, but not limited to English, Spanish, French, and more. Designed with accessibility and flexibility in mind, TalkTask provides a hands-free and user-friendly experience across various devices such as desktops and mobile devices. The platform prioritizes ease-of-access for all users and user privacy, ensuring secure handling of voice input. Stretch goals or future iterations aim to implement a database to allow users to save and store their tasks after going offline, and set reminders for upcoming tasks if given a time requirement.
-
-### Overall Goal
-
-The goal of our application is to improve accessibility to users while allowing users to maintain an optimal lifestyle where they can efficiently plan their day. Our application addresses the issue of accessibility in current to-do list applications. Users today are required to interact with a mouse, keyboard, touchscreen or something similar in order to use such an application. But with our application, by using voice input and voice commands, our application aims to help users perform the essential features of a to-do list application through manual hands-on input and voice input.
-
-### Major Goals
-
-1. Utilize speech recognition to allow for ease-of-access for to-do list management.
-2. Implement a database to store past list items and provide external storage for user tasks.
-3. Use an AI model to recommend tasks based on previous tasks.
+1. Implement essential task management features such as adding a task, marking a task as complete, and removing a task.
+2. Add categorical based task views.
+3. Add calendar based task views.
 4. Implement a simple, but clean UI, so users can uitilize the full capabilities of TalkTask easily.
+5. Use Google's Gemini AI API to provide personalized suggested tasks for users.
 
-### Stretch Goals
+#### **Stretch Goals**
 
 1. Implement reminders for timely tasks to increase the success rate of tasks being completed.  
 2. Extend AI API functionality to process natural language and allow users to communicate naturally to our speech recognition system and convert their commands into a dedicated function for the to-do list management system.
 3. Gamify the web application to keep current users engaged and promote continuation of using the app into continuing using our app for productivity.
+4. Create a responsve UI for both desktop and mobile users.
 
-### Current Practice
+### **Current Practice**
 
-The current practice of today is that users can add and delete tasks, set start or due dates, provide descriptions for the tasks and mark them as completed or incomplete. Tasks can also be categorized into different groups for it to be more easily visualized. Organization of the tasks can depend on due date, priority or status. While these are useful, there are many limits to this current practice. Most of the modern-day to-do list applications require manual input. Requiring users to interact with a mouse, keyboard, touchscreen or something similar. These types of interactions can be inaccessible to many people, especially to those with physical disability in their hands. For example, typing tasks and marking/clicking tasks. It also requires the user to focus on the screen to see what they are doing. Which can be an inconvenience when a hands-free option may be preferred.  
+Current to-do lists fall into one of the two categories; electronic applications or paper lists. We won't dive deep into paper to-do lists much, but the abstract would be that they are highly customizable, but require more time and effort to create. To-do list software today suffer from over complexication or software bloat. Most software focuses on marketing their newest complex feature and stray away from what a to-do list needs to do; organize tasks, prioritizing them, and tracking progress. Traditional to-do list applications rely heavily on mouse and keyboard movement, static lists, and repetitive interactions. While major companies like Microsoft and Apple offer task management solutions, they often lack a truly intuitive and adaptive user experience.
 
-### Novelty
+### **Novelty**
 
-The to-do list is a powerful tool that can be used to help organize, categorize, and optimize a given time period. In our current day, there are many different versions of the to-do list on the market today; including some made by major corporations like Microsoft and Apple. Our team is aiming to create a to-do list that can be tailored to a user-specific time period. We aim to create a UI that is accessible to all users, while putting a unique touch. We plan to implement a database that can be utilized in creating user task suggestions, aiding in user productivity and usability. We plan to implement a speech recognition API that allows users to speak their goals into the page, as well as navigate through menus and actions with their voice.
+With speech recognition, users can add, organize, and manage tasks simply by speaking, reducing friction and making task management more natural and efficient. Unlike standard apps that require constant typing and clicking, TalkTask allows users to navigate menus and execute actions hands-free, making it ideal for multitasking and accessibility.
 
-Our to-do list will be different in the way that it will draw from many common day practices of the present to better aid the person in their own daily lives. The to-do list can be utilized beyond a simple stack of deliverables, and we feel that it can be used to help organize much more than one’s day. Using modern day technology, we are able to create a product that seperates us from other competitors by using speech recognition, AI models, and a database to give users access to a personal to-do list that works on various devices, free of charge.
+Additionally, our AI model integration intelligently analyzes user habits, offering personalized task recommendations based on past behavior, optimizing productivity in ways that traditional to-do lists do not. Combined with a robust database-driven system, TalkTask ensures that users receive context-aware task suggestions, helping them stay organized without the cognitive load of manual planning.
 
-### Effects
+Unlike many competitors, TalkTask is designed to be free of charge, accessible across devices, and built with modern technology to streamline daily productivity in a way that feels effortless and personalized. By merging AI, speech recognition, and intuitive design, TalkTask transforms the to-do list into a smarter, more dynamic productivity assistant—one that adapts to users rather than the other way around.
+
+We offer strict categorical and day based task views to prevent overwhelming users with a long list, time blocking for tasks, prioritizing tasks, and filtering/sorting them based on priority.
+
+### **Effects**
 
 As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.
 
-### Use Cases
+### **Use Cases**
 
 * **Case Designer:** Ivan Wong
+* **Title:**
+  * Website navigation
 * **Actors:**
   * User interacting with the website.
-
 * **Triggers:**
   * The user wants to access a specific feature of section within the web application without unecessary steps or confusion.
 * **Preconditions:**
@@ -78,9 +83,9 @@ As with other to-do list applications, ours will help users plan their time effi
   * Unresponsive navigation system, where the web page does navigate to section as intended; prompted to refresh page.
   * Unclear navigation system, where buttons or labels are confusing; an additional tooltips pop-up or page is provided to help guide users through webpage.
 
-<br>
-
 * **Case Designer:** Tristan Vosburg
+* **Title:**
+  * Persistent task storage
 * **Actors:**
   * All users
 * **Triggers:**
@@ -100,10 +105,9 @@ As with other to-do list applications, ours will help users plan their time effi
 * **Exceptions: failure conditions and scenarios**
   * If the user doesn't save, their inputs won't be saved.
 
-<br>
-
 * **Case Designer:** Nicholas Woodley
-  * As a user, I want to remove tasks using voice commands so that I can update my to-do list hands-free when my tasks are completed.
+* **Title:**
+  * Remove task with voice command
 * **Actors:**
   * All users
 * **Triggers:**
@@ -131,10 +135,9 @@ As with other to-do list applications, ours will help users plan their time effi
   * No tasks exist: the system will notify the user that no tasks exist
   * Speech error: the system will ask the user to repeat their command
 
-<br>
-
 * **Case Designer:** Kai Lindskog-Coffin
-* As a college student who is actively trying to budget and save money, I want to be able to track recurring payments and subscriptions on TalkTask.
+* **Title:**
+  * Free access to web application and it's features
 * Actors: College student who needs to cut down on costs/ be more conscious of their spending.
 * Triggers: The user needs to monitor their spending, as well as when and where their money is leaving their account.
 * Preconditions:
@@ -158,9 +161,9 @@ As with other to-do list applications, ours will help users plan their time effi
   1. Recurring payment was canceled and not updated in TalkTask.
   2. User does not enter a recurring date of payment.
 
-<br>
-
 * **Case Designer:** Raymond Cen
+* **Title:**
+  * Updating a task
 * **Actors:**
   * Student
 * **Triggers:**
@@ -180,9 +183,9 @@ As with other to-do list applications, ours will help users plan their time effi
   * The student leaves in the middle of the creating a task.
   * The student does not meet the deadline of the assignment.
 
-<br>
-
 * **Case Designer:** Bailey Budlong
+* **Title:**
+  * Adding a task via mouse and keyboard input
 * **Actors:**
   * The user who is a student
 * **Triggers:**
@@ -198,15 +201,15 @@ As with other to-do list applications, ours will help users plan their time effi
   4. User fills in data fields in task creation window
   5. User clicks out of the task creation window
   6. Task is created and saved
-* **Extensions/variations of the success scenario** 
+* **Extensions/variations of the success scenario**
   * User duplicates or edits existing task to track new task.
 * **Exceptions: failure conditions and scenarios**
   User enters invalid data into task creation fields, and is presented an error.
   User decides that Talktask is able to sufficiently track their task, and leaves.
 
-<br>
-
 * **Case Designer:** Jordan L Cowan
+* **Title:**
+  * Adding a task via voice commands
 * **Actors:**
   * Users want to add a task hands-free.
 * **Triggers:**
@@ -228,13 +231,13 @@ As with other to-do list applications, ours will help users plan their time effi
   * If the voice input isn’t recognized then provide a prompt for retrying or manual input if it can’t.
   * Background noise interference then prompt the user to try again in a quieter environment.
 
-### Non-functional Requirements
+### **Non-functional Requirements**
 
 * When code is deployed for users to access, it should be kept and maintained with security in mind. Users will not be able to access the database and data will not be shared with any third-parties. Bad-faith actors shouldn't have easy access to any holes.
 * The application should work across all devices ranging from desktop to mobile phone. All features including the voice input and UI should seamlessly work across all platforms.
 * The application should be able to handle a large influx of users. There should be minimal peformance issues and the application should stay functional and responsive if lots of users are using it.
 
-### External Requirements
+### **External Requirements**
 
 * **How we’ll host the application for users to access:**
   * TalkTask will be divided into two servers to seperate concerns for modular, and scalable software. Deployment tools will include Netlify for the frontend server and backend deployment tools are still being researched to find open source tools that are free to use and fit our use cases.
@@ -248,20 +251,42 @@ As with other to-do list applications, ours will help users plan their time effi
   * Important feedback we'll need from people outside of our website will include all aspects of our web page from a user being able to login to a user wanting a suggested task using speech recognition. The most critical point of feedback will be during our speech recognition and AI suggested tasks. The tester should be able to speak into their device and add the desired tasks and be able consider adding the suggested task into their list.
   * We will have a section/page that is dedicated for feedback. It will contain two fields, an email and textbox. The user will have to enter a valid email address and a message that they want to send to the developer.
 
-### Technical Approach
+### **Technical Approach**
 
-Our web application will be implemented using many frameworks and APIs, such as the React framework for frontend development, the Vite build tool for efficient builds and improved performance, JavaScript for backend/business logic, and (hopefully) Netlify to publish our website onto the internet. The main component of the project will be based on the WebSpeech API, which will be used to get input from the user, so that our program will be able to parse it and handle the commands given. We will split up the user interface into components for a modular design, so that with each sprint, we are able to integrate changes and features seamlessly and effectively. Additionally, we will use tools like MongoDB to implement a database and user accounts to store tasks onto the cloud, so that users will be able to exit and return to the application with their previous session data saved on other devices. Another feature we plan to implement will include the use of an open source AI model to recommend tasks based on user's previous task history, to a provide more personalized product for our users. Collaboration and communication will be done via Git, MS Teams, Zoom, text messages, and in-person meetings to increase productivity and push changes into the codebase. Other tools, such as Figma are will be used for a reference as to how our web UI will be designed, so that there’s no room for ambiguity for how the UI shall be implemented. Further research will be conducted by our software configuration coordinator (Ivan) to provide tools that will make our lives as developers easier.
+TalkTask will be created using the MERN technology stack (MongoDB, Express.js, React, Node.js), Tailwind CSS, and Auth0 for user authentication. Once an MVP is developed, we will use Netlify to host our frontend services and Render to host our backend services with GitHub actions for our CI pipeline.
 
-### Risk
+To use TalkTask, a user will have to first enter our URL into a web browser. Once rendered properly, they will be directed to our landing/about page which includes a brief description of what TalkTask is and signup/login button. Both buttons link to the Auth0 authentication page where a user can continue by entering their email and password, or by using an external authentication service like Google or GitHub. Once logged in, the user will be presented to their home page which includes an intuitive UI design and button animations to direct the user into using application accordingly.
 
-There are a few risks facing our group as we attempt to design, create and implement this application. We have worked together as a group before, so underestimating the work required to complete certain tasks could impose deadline risks. To avoid this problem, we plan on setting checkpoints for what we expect to have completed each week. Additionally, each checkpoint will have small tasks associated with it. Each group member will be responsible for completing their small tasks. At each stand-up meeting, the status of each small task will be checked in to see if help is needed, changes need to be made, or if our stretch goals can be attempted because we are ahead of schedule. Our second challenge is implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database managment or have previously taken a database course at OSU will be responsible for leading the database development side of things. The third risk we will come across is implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilitizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks. We plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product.
+Major components we will develop will include...
 
-### Team-Info
+* Task Management System
+  * Core to-do list functionality for CRUD operations.
+* Speech Recognition and Voice Commands
+  * WebSpeech API to capture user speech input.
+* AI Powered Suggested Tasks
+  * Given the titles of a users tasks, this component shall produce a logically related task.
+* User Authentication
+  * Authorizes and authenticates that a user is able to use our app and access their own data.
+* Database Management
+  * Ensures that tasks can be stored securely and allow users to access their data on various devices.
+* Clean/Intuitive UI
+  * Design an easy to use UI ensures that our web app focuses on the user experience and helps them become more productive.
+* CI Pipeline and Testing
+  * Ensures that our push and pull requests aren't breaking or failing previous working features.
 
-* Ivan Wong (Software Configuration Management Coordinator)
+### **Risk**
+
+* We all have different coding styles and levels of coding competence, so pushing effective and efficient code depends on our coding skill. To avoid "bad code" being pushed, we plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product. If any bugs or erros occure, we are able to easily locate where the issue is coming from and discuss a fix for it.
+* Underestimating the work required to complete certain tasks could impose deadline risks. To avoid this problem, we plan on setting checkpoints for what we expect to have completed each week. Additionally, each checkpoint will have small tasks associated with it. Each group member will be responsible for completing their small tasks. At each stand-up meeting, the status of each small task will be checked in to see if help is needed, changes need to be made, or if our stretch goals can be attempted because we are ahead of schedule.
+* Implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database managment or have previously taken a database course at OSU will be responsible for leading the database development side of things.
+* Implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilitizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks.
+
+### **Team-Info**
+
+* Ivan Wong (Fullstack Developer)
   * Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized. This role is needed because with many APIs frameworks being used, their needs to be a dedicated person to research which tools would help speed up production and keep everything orgranized for scalability and future feature implementations. I am best suited for this role because I have experience in configuring build environments for GUI applications and have devloped & deployed my own frontend portfolio website using similar tools.
 * Tristan Vosburg (Back-End Developer)
-  * TalkTask will need a way to communicate between the front-end and the database.  Without this, the website wouldn't be able to store information between log-ins.  Building this bridge will be a large part of what will allow TalkTask to work.
+  * TalkTask will need a way to communicate between the front-end and the database. Without this, the website wouldn't be able to store information between log-ins.  Building this bridge will be a large part of what will allow TalkTask to work.
 * Nicholas Woodley (Front-End Developer)
   * Responsible for front-end navigation, pages, and other accessibility features needed for the to-do list.
 * Kai Lindskog-Coffin (Database Developer)
@@ -273,7 +298,7 @@ There are a few risks facing our group as we attempt to design, create and imple
 * Jordan L Cowan (Front-End Developer)
   * It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
 
-### Software Toolset
+### **Software Toolset**
 
 Because many APIs will be used for developing TalkTask, I will only go over the essentials and define how these tools will be used, as well as why they are being used. More tools will be researched and added to the list as we get closer to the final product, as to not get overwhelmed in the beginning.
 
@@ -287,8 +312,8 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Vite is a blazing fast frontend building tool that utilizes modern JavaScript functionality and is optimized to obtain faster and more high performance websites compared to the widely used Webpack build tool.
 * WebSpeech API
   * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list funcitonality, to provide a hands-free experience and more accesibility features.
-* Hugging Face:
-  * Hugging Face will provide us a wide selection of open source AI models that allow us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use. Further research is being conducted as to which AI model(s) will be used to best fit our use cases.
+* Google Gemini AI API
+  * Allows us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use.
 * MongoDB:
   * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 * Render
@@ -299,680 +324,106 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * The Auth0 API will allow users to create and login to their accounts safely and securely across multiple devices to access their data. The Auth0 API gives us developers to seamlessly authenticate and authorize users to provide them with corresponding data and permissions.
 * TailwindCSS
   * TailwindCSS is a CSS framework that helps simplify the development process by providing pre-designed utility classes. It allows custom designs without writing your own custom CSS and simplifies the development of responsive designs.
+* Jest.js
+  * Jest is a testing library that allows to create unit tests for our components, and display them in a neat way. Jest allows to run all tests using a npm script and displays what tests failed, where it failed, and how long they took, so it makes it really easy to analyze where things go wrong.
 
-### Team Member Schedules
-
-#### Kai Lindskog - Database Developer
-
-**Week 3: Database Design:**
-
-* Deliverables:
-  * Design the database schema for tasks, users, and AI training data.
-  * Identify necessary fields for each collection (e.g., tasks, users, settings).
-  * Create an Entity-Relationship Diagram (ERD) for visualizing relationships between collections.
-* Milestones:
-  * Submit the database schema for team approval.
-  * Upload ERD to the Git repository.
-
-<br>
-
-**Week 4: Database Setup:**
-
-* Deliverables:
-  * Set up a MongoDB cluster.
-  * Implement the connection between the application and the database using Node.js (via Mongoose).
-  * Test the connection with simple read/write operations.
-* Milestones:
-  * Successfully connect the application to MongoDB.
-  * Verify data can be stored and retrieved.
-
-<br>
-
-**Week 5: Basic Task Management:**
-
-* Deliverables:
-  * Implement CRUD (Create, Read, Update, Delete) operations for the tasks collection.
-  * Create endpoints for:
-  * Adding a task
-  * Editing a task
-  * Deleting a task
-  * Fetching all tasks for a specific user
-  * Ensure endpoints follow RESTful principles.
-* Milestones:
-  * Test and demonstrate CRUD functionality using Postman or similar tools.
-
-<br>
-
-**Week 6: User Management:**
-
-* Deliverables:
-  * Design and implement a users collection with authentication details (e.g., email, hashed password).
-  * Create endpoints for user registration, login, and logout.
-  * Ensure secure storage of user credentials (e.g., using bcrypt for hashing passwords).
-* Milestones:
-  * Test user registration and login processes with database integration.
-
-<br>
-
-**Week 7: Task Prioritization and Recurrence:**
-
-* Deliverables:
-  * Add support for recurring tasks (e.g., daily, weekly, monthly) in the tasks schema.
-  * Include fields for priority and recurrence intervals.
-  * Update task-related endpoints to handle recurring tasks.
-* Milestones:
-  * Validate recurring task functionality through testing with mock data.
-
-<br>
-
-**Week 8: Integration with AI module:**
-
-* Deliverables:
-  * Design the ai_training collection to store data for AI training (e.g., task patterns, user preferences).
-  * Implement methods to feed task-related data into the AI module.
-  * Collaborate with back-end developers to integrate AI-generated task suggestions.
-* Milestones:
-  * Demonstrate the AI module fetching data from the database for training and providing suggestions.
-<br>
-
-**Week 9: Testing and Optimization:**
-
-* Deliverables:
-  * Perform database optimization to improve query performance (e.g., indexing, query restructuring).
-  * Conduct load testing to ensure database scalability for multiple users.
-  * Identify and resolve potential bottlenecks or security vulnerabilities.
-* Milestones:
-  * Submit a report on optimization results and changes implemented.
-
-<br>
-
-**Week 10: Final Integration and Documentation:**
-
-* Deliverables:
-  * Finalize database integration with all application modules.
-  * Document the database schema, endpoints, and instructions for deployment in the Git repository.
-  * Create a troubleshooting guide for common database issues.
-* Milestones:
-  * Present a fully functional database integrated into the application.
-  * Share documentation with the team.
-
-#### Ivan Wong - Software Configuration Management Coordinator
-
-**Week 3: Software Research:**
-
-* Deliverables:
-  * Find and create and AI API key from Hugging Face to select an AI model that best fits our use cases.
-  * Find a free backend server deployment tool powerful enough to host our backend logic.
-* Milestones: 
-  * All team members have access to the AI API key and shall ensure that it works.
-  * Deploy backend web server for client-server communication over the internet.
-
-<br>
-
-**Week 4: Modular File Organization:**
-
-* Deliverables:
-  * Create directories and files based on modularization practices for essential front and backend components.
-  * Import necessary APIs and tools for each source code file.
-* Milestones:
-  * Organized Git repository for an MVP.
-
-<br>
-
-**Week 5: Configure Database w/ To-Do List Functionality:**
-
-* Deliverables:
-  * Managing a task through to-do list updates database.
-  * Ensure database data is formatted correctly.
-* Milestones:
-  * Link database with to-do list functionality.
-  * Data in database is parsed correctly and ready for future implementations.
-
-<br>
-
-**Week 6: Configuring AI and Speech Recognition APIs:**
-
-* Deliverables:
-  * Add and configure AI and WebSpeech APIs for developers to use with current to-do list functionality.
-  * Ensure APIs work as intended for implementation of speech recognition and recommended tasks.
-* Milestones:
-  * AI and Speech recognition features are ready to be implemented.
-
-<br>
-
-**Week 7: Assist Developers:**
-
-* Deliverables:
-  * Aid in development of more complex features, such as AI recommended tasks and processing speech inputs.
-  * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
-* Milestones:
-  * Complex features, such as AI recommendations and speech recognition implemented and ready to be debugged.
-  * UI design is fully implemented and needs finishing touches for a clean UI.
-
-<br>
-
-**Week 8: Implementing Stretch Goals:**
-
-* Deliverables:
-  * Add additional AI feature to process natural language into to-do list functionality.
-  * Add email notifications for users that choose to select remind me option for timely tasks.
-* Milestones:
-  * Additional stretch goals, such as reminders and natural language processing implemented and working as intended.
-
-<br>
-
-**Week 9: Finishing Touches:**
-
-* Deliverables:
-  * Create detailed test cases to catch underlying bugs not caught by previous tests.
-  * Update and add finalizing documentation.
-* Milestones:
-  * TalkTask is ready to be deployed.
-  * Documentation is up-to-date and being reviewed.
-
-<br>
-
-**Week 10: Deployment of TalkTask:**
-
-* Deliverables:
-  * TalkTask web page is deployed onto the internet using Netlify and another tool for hosting backend servers.
-  * Documentation is fully completed and published to the Git repository.
-* Milestones:
-  * TalkTask web page complete and deployed.
-  * TalkTask documentation complete and revised.
-
-<br>
-
-#### Nicholas Woodley - Front-End Developer
-
-**Week 3: Front-End Research:**
-
-* Deliverables:
-  * Conduct research on front-end frameworks compatible with speech recognition (React)
-  * Work on designing ways for buttons to call the speech recognition
-* Milestones:
-  * Finalize front-end framework choice
-  * Develop a basic design concept for how users will interact with speech recognition
-
-<br>
-
-**Week 4: Start Implementation:**
-
-* Deliverables:
-  * Set up the front-end project with React
-  * Design the UI for the task management features (add, edit, delete tasks)
-* Milestones:
-  * Complete project setup with React
-  * Finalize initial navigation for webpages
-
-<br>
-
-**Week 5: Connecting to Other Features:**
-
-* Deliverables:
-  * Work on calling back end framework on user navigation
-  * Set up pages for features (task list, task details, task creation)
-  * Implement navigation structure (routes) for the app
-* Milestones:
-  * Set up pages for task management
-  * Finish navigation
-
-<br>
-
-**Week 6: Task Management Integration:**
-
-* Deliverables:
-  * Integrate task data with front-end using back-end API calls
-  * Edit calls to back-end functions
-* Milestones:
-  * Complete task creation and editing
-  * Ensure task data is fetched and updated correctly
-
-<br>
-
-**Week 7: UI Enhancements:**
-
-* Deliverables:
-  *  Refine UI
-  *  Develop user feedback features (such as error messages)
-* Milestones:
-  * Finalize accessibility adjustments
-  * Complete and test user feedback and error handling features
-
-<br>
-
-**Week 8: Task Scheduling:**
-
-* Deliverables:
-  * Implement task scheduling feature calls to back-end
-  * Integrate reminder notifications on the front-end  
-* Milestones:
-  * Complete task scheduling functionality with UI
-  * Test reminder notifications and task scheduling with different use cases
-
-<br>
-
-**Week 9:  Finalizing and Testing:**
-
-* Deliverables:
-  * Finalize all pages and UI
-  * Work on documentation for the front-end
-* Milestones:
-  * Incorporate final design improvements based on testing results
-  * Implement use case feedback
-
-<br>
-
-**Week 10: Documentation:**
-
-* Deliverables:
-  * Optimize code (latency)
-  * Finalize front-end documentation for codebase and user interface
-* Milestones:
-  * Complete the front-end deployment and ensure it works
-  * Make sure no bugs exist
-
-
-<br>
-
-#### Jordan Cowan - Front-End Developer
-
-**Week 3: To-Do List:**
-
-* Deliverables:
-  * Design basic to-do list functionality.
-* Milestones:
-  * To-do is created at a basic level with ability to create, update, and delete tasks.
-
-<br>
-
-**Week 4: Side Bar:**
-
-* Deliverables:
-  * Design a basic side bar allowing the user to look at their profile, settings, and go to the main menu.
-  * Implement a basic "ad" that will pop up in the tasks section.
-* Milestones:
-  * Setup for several pages for different functionality.
-
-<br>
-
-**Week 5:**
-* Deliverables:
-  * 
-* Milestones:
-  * 
-
-<br>
-
-**Week 6:**
-* Deliverables:
-  * 
-* Milestones:
-  * 
-
-<br>
-
-**Week 7:**
-* Deliverables:
-  * 
-* Milestones:
-  * 
-
-<br>
-
-**Week 8:**
-* Deliverables:
-  * 
-* Milestones:
-  * 
-
-<br>
-
-**Week 9: Finalizing and Testing:**
-
-* Deliverables:
-  * Finalize all pages and UI
-  * Work on documentation for the front-end
-* Milestones:
-  * Incorporate final design improvements based on testing results
-  * Implement use case feedback
-
-<br>
-
-**Week 10: Documentation:**
-
-* Deliverables:
-  * Optimize code (latency)
-  * Finalize front-end documentation for codebase and user interface
-* Milestones:
-  *  Complete the front-end deployment and ensure it works
-  * Make sure no bugs exist
-
-<br>
-
-#### Raymond Cen - Back-End Developer
-
-**Week 3: Backend Communication:**
-
-* Deliverables:
-  * Design a way to communciate with Web Speech API using JavaScript.
-  * Find Web Speech API implementation methods and how to communicate with frontend.
-* Milestones:
-  * Web Speech API communication method with backend is shared with other backend developer.
-
-<br>
-
-**Week 4: WebSpeechAPI Commands:**
-
-* Deliverables:
-  * Determine certain phrases and words that the application will use.
-  * Determine which phrases will correlate with which function of the application.
-* Milestones:
-  * List of phrases and words that the correlate with functions created.
-
-<br>
-
-**Week 5: Simple WebSpeechAPI Implementation:**
-
-* Deliverables:
-  * Implement WebSpeechAPI into backend.
-  * Test voice input and ensure the WebSpeechAPI voice input is working properly.
-* Milestones:
-  * WebSpeechAPI implemented for voice input into backend.
-
-<br>
-
-**Week 6: Application Implementation of WebSpeechAPI:**
-
-* Deliverables:
-  * Begin the full implementation of WebSpeechAPI with application, with simple functionalties such as add and remove.
-* Milestones:
-  * WebSpeechAPI add and remove functionality is implemented.
-
-<br>
-
-**Week 7: Full Implementation of WebSpeechAPI:**
-
-* Deliverables:
-  * Add other functionalities of application that use WebSpeechAPI such as edit, sort, and view.
-  * Aid in development of UI and frontend features to ensure user-friendly experiences and accurate information being displayed.
-* Milestones:
-  * WebSpeechAPI is implemented fully into the backend with the rest of the features.
-
-<br>
-
-**Week 8: Testing Backend Implementation of WebSpeechAPI:**
-
-* Deliverables:
-  * Rigourous testing of the WebSpeechAPI application using voice commands.
-  * Ensure WebSpeechAPI and backend functionalities work properly in sync with one another.
-* Milestones:
-  * WebSpeechAPI works properly with voice commands and error handles within the backend.
-
-<br>
-
-**Week 9: Assist Communication with Frontend:**
-
-* Deliverables:
-  * Assist frontend and backend developers with communication with backend.
-  * Assist in seamless communcation with the WebSpeechAPI and frontend.
-* Milestones:
-  * Communication between frontend and backend is fully established and ready to be deployed.
-
-<br>
-
-**Week 10: Maintenance of WebSpeechAPI and backend:**
-
-* Deliverables:
-  * TalkTask is deployed and being maintained ensuring communication between frontend and backend is seamless and working
-* Milestones:
-  * TalkTask web page completed, deployed and being maintained.
-
-<br>
-
-#### Bailey Budlong - UI/UX Designer
-
-**Week 3: UI Sketches:**
-
-* Deliverables: Sketches of overall UI design for group to review
-* Milestones: Application idea and functionality confirmed
-
-<br>
-
-**Week 4: Figma Wireframe Designs:**
-
-* Deliverables: Wireframe designs for the UI, done in Figma
-* Milestones: UI scope determined
-
-<br>
-
-**Week 5: Continue Figma Designs and Incorperate Feedback:**
-
-* Deliverables: Designs in Figma for all UI pages/elements
-* Milestones: Figma designs shared with team
-
-<br>
-
-**Week 6: Visual Styling and Unique Assets:**
-
-* Deliverables: Visual styling sheet/guide, Unique visual assets ex: Logo, backdrops
-* Milestones: Designs for all application pages complete
-
-<br>
-
-**Week 7: Assist Implementing Front End:**
-
-* Deliverables: Assist and communicate with front end developers
-* Milestones: Full UI mockup complete
-
-<br>
-
-**Week 8: UI testing:**
-
-* Deliverables: Document UI testing, going through use cases
-* Milestones: Prototype front end UI
-
-<br>
-
-**Week 9: Final Revisions:**
-
-* Deliverables: Communicate with team about any necessary final changes
-* Milestones: Full functioning front end UI
-
-<br>
-
-**Week 10: Verification:**
-
-* Deliverables: Final approval of implementation
-* Milestones: Deployed application
-
-<br>
-
-### Timeline
+### **Project Schedule**
 
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           |Design Navigation|Start front-end implementation|Test and connect front-end calls to back-end|Implement API to front-end calls|Develop user feedback features|Implement other features (such as notifications)|Finalizing and testing|Deploy and finish documentation|
 | Back End            | Design for communication with WebSpeechAPI completed|List of commands and functions determined|WebSpeechAPI coded into backend|Save Button Works / WebSpeechAPI implemented for add and remove functionality |WebSpeechAPI fully implemented with full functionality into backend|Testing and ensuring proper function of WebSpeechAPI|Communication between frontend and backend is fully established and ready.|TalkTask web page completed, deployed and being maintained.|
 | UI/UX               |UI Sketches|Draft Figma wireframe UI design|Incorporate group feedback, draft designs for all UI elements/pages|Visual styling decided, Unique visual assets generated|Preliminary front end implemented with front end developers|Test UI functionality for revisions|Make final changes for UI design and assets|Verify UI is functioning and correct|
-| Database            |      |      |      |      |      |      |      |       |
-| Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.|Files organized in a modularized manner to allow for easier implementation and OO practices.|Database implementation inputs correctly formatted data.|AI and WebSpeech APIs configured and ready for developers.|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.|Continue developing complex features, such as AI and speech recognition implementations.|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.|Run and test finalized product for any underlying bugs or errors.|
+| Fullstack |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.|Files organized in a modularized manner to allow for easier implementation and OO practices.|Database implementation inputs correctly formatted data.|AI and WebSpeech APIs configured and ready for developers.|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.|Continue developing complex features, such as AI and speech recognition implementations.|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.|Run and test finalized product for any underlying bugs or errors.|
 
-<br>
+### **Software Architectiure**
 
-### Software Architecture
-
-* **Major Components**
-  * To-Do List Functionality
-    * Our web app is a to-do list program, so to-do list functionality is essential to our web app. Since actual to-do list functionality is relatively simple to implement, the software component has been grouped into one big component to avoid over explaining the specific features.
-    * Features will include...
-      * Add/Remove task
-      * Mark task as complete
-      * Clear completed tasks
-      * Catagorize tasks
-      * Add priority to tasks
-      * Add deadlines to tasks
-      * Search and filter tasks by properties
-      * Modify/Update tasks
-      * Count tasks
-      * Undo last action to give flexibility for user mistakes
-  * Speech Recognition- WebSpeechAPI
-    * The speech recognition component shall be able to handle and process voice commands from the user into text for the backend to process and frontend to display.
-  * Frontend Design & Functionality - React
-    * A relatively simple, but clean UI design shall be implemented using React, so that users will be able to interact with the web application and render components.
-    * Web application navigation shall be implemented in the frontend component, so that users are able to view target pages and interact with UI components.
-  * Backend Environment - Node.js
-    * Our backend environment shall be able to handle API calls from the client server and can be easily integrated with our frontend technology (React).
-  * Server Side Logic & Routes- Express.js
-    * Our server side logic component shall be able to handle API routes, so that the client server will be able to interact with the backend server, allowing the user to manage their to-do list. This component will serve to allow the frontend interact with backend components and interact with the database to provide the user's corresponding data.
-  * Database Management - MongoDB
-    * Overview: Our system stores and manages user data, tasks, reminders, and speech  commands using a MongoDB database. The database follows a document-based schema using Mongoose, which defines structured models for each entity.
-    * High level Database Schema:
-     * Users → Stores user information
-     * Tasks → Stores task details
-     * Reminders → Stores scheduled reminders for tasks
-     * Speech Commands → Stores voice-based commands
-    * User Schema
-      |-------------|-----------------|---------------------------------|
-      |Field	      |Type	            |Description                      |
-      |-------------|-----------------|---------------------------------|
-      |CustomerID	  |Number (Unique)	|Unique identifier for each user  |
-      |-------------|-----------------|---------------------------------|
-      |email	      |String (Unique)	|User email (used for login)      |
-      |-------------|-----------------|---------------------------------|
-      |password	    |String	          |                                 |
-      |-------------|-----------------|---------------------------------|
-      |dob	        |Date	            |User’s date of birth             |
-      |-------------|-----------------|---------------------------------|
-      |Fname	      |String	          |First name                       |
-      |-------------|-----------------|---------------------------------|
-      |Mname	      |String	          |Middle name (optional)           |
-      |-------------|-----------------|---------------------------------|
-      |Lname	      |String	          |Last name                        |
-      |-------------|-----------------|---------------------------------|
-      |createdAt	  |Date	            |Timestamp of user registration   |
-      |-------------|-----------------|---------------------------------|
-    * Task Schema
-      |---------------|-----------------------|---------------------------------------------------|
-      |Field	        |Type                   |	Description                                       |
-      |---------------|-----------------------|---------------------------------------------------|
-      |taskID	        |Number (Unique)	      |Unique identifier for each task                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |description	  |String	                |Task description                                   |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCreated	  |Date	                  |Timestamp when task was created                    |
-      |---------------|-----------------------|---------------------------------------------------|
-      |dateCompleted  |Date	                  |Timestamp when task was completed                  |
-      |---------------|-----------------------|---------------------------------------------------|
-      |recurringDate  |Date	                  |If the task repeats, its recurrence date           |
-      |---------------|-----------------------|---------------------------------------------------|
-      |priority	      |Number	                |Priority level (1-5)                               |
-      |---------------|-----------------------|---------------------------------------------------|
-      |status         |String	                |Task status (pending, in-progress, completed)      |
-      |---------------|-----------------------|---------------------------------------------------|
-      |userId	        |ObjectId (Ref: users)  |Links the task to a specific user                  |
-      |---------------|-----------------------|---------------------------------------------------|
-    * Reminder Schema
-      |---------------|-------------------------|-----------------------------------------|
-      |Field	        |Type	                    |Description                              |
-      |---------------|-------------------------|-----------------------------------------|
-      |reminderID	    |Number (Unique)	        |Unique identifier for the reminder       |
-      |---------------|-------------------------|-----------------------------------------|
-      |taskID	        |ObjectId (Ref: tasks)	  |Links to the task this reminder is for   |
-      |---------------|-------------------------|-----------------------------------------|
-      |reminderDate	  |Date	                    |When the reminder should trigger         |
-      |---------------|-------------------------|-----------------------------------------|
-    * Speech Command Schema
-      |-------------|-----------------------|--------------------------------------|
-      |Field	      |Type	                  |Description                           |
-      |-------------|-----------------------|--------------------------------------|
-      |commandID	  |Number (Unique)	      |Unique identifier for each command    |
-      |-------------|-----------------------|--------------------------------------|
-      |commandText	|String	                |The spoken command text               |
-      |-------------|-----------------------|--------------------------------------|
-      |CustomerID	  |ObjectId (Ref: users)	|Links command to a specific user      |
-      |-------------|-----------------------|--------------------------------------|
-    * Specifically  |MongoDB allows for dynamic data, so further down the SDLC, we can implement tasks that may have different properties to give flexibility for users.
-  * AI Model - Hugging Face
-    * An open source AI model shall be used to provide suggested tasks based on user's previous ones. Using a text-generation based AI model, the task it provides will be relative to the given context of the tasks.
-  * Secure Logins & Permissions - Auth0
-    * User's need to be able to login to their accounts securely and safely, so that they can access their tasks on the database and through various devices.
-    * Additionally, since our web application is meant to provide ease of access for users, they shall be able to login via their Google or GitHub account, so that users are able to start managing their to-do lists right away. Auth0 is the technology our team will be using, so security measures can be implemented seamlessly within our app.
-  * Frontend Deployment - Netlify & Vite
-    * To allow users to actually use our web application, we will need to build our source files into strictly HTML, CSS, and JavaScript, so that web browsers are able to render our UI correctly. Once our frontend source files are built, we will need to use a web service hosting platform to allow users to use our application.
-    * Frontend deployement will be considered a software component because this component will serve to host our UI to users to allow rendering of UI components and interaction with the web app.
-  * Backend Deployment - Render
-    * Because we are using client/server architecture to create our to-do list, we will need a backend web service hosting platform to process data, communicate with the database, and handle business logic.
-    * Backend deployemnt will be considered a software component because this component will serve as the applications core functionality and responds to API calls sent from the client and actual users/customers.
-
-<br>
-
-* **General Architecture**
+**Client-Server**
 ![General Architecture](../assignments/architectures/General-Architecture.PNG)
 
-* **User Login Architecture**
+* To maximize the bandwidth usage of our deployement services, we will be using client server architecture. The client will be what the user interacts with. The client is responsible for displaying data for the user and making API calls to the backend server. The server will be used to handling incoming requests from the client and is responsible for processing data.
+
+User Login
 ![User Login Architecture](../assignments/architectures/User-Login-Arch.PNG)
 
-* **Backend Architecture**
-![Backend Architecture](../assignments/architectures/Backend-Database-Arch.PNG)
+* Because a to-do lists contains sensitive information about a user, we need to describe how our web application provides security for users. The OAuth or Auth0 API grants users authorization and authentication to access their data and make API calls to protected URI routes.
 
-* **Backend-Database Architecture**
-![Backend-Database Architecture](../assignments/architectures/Backend-Database-Arch.PNG)
+Backend MVC (Model Views Controller) Architecture
+![Backend Architecture](../assignments/architectures/Backend-Arch.PNG)
 
-* **Todo List Input Architecture**
+* MVC architecture will be used to keep our backend logic modular and provide software maintenance. The client will make an HTTP request to the server which goes through a dedicated CRUD route and go to a controller component. The controller is responsible for the HTTP logic and uses services to process the data before sending a response back to the client to display the views.
+
+To-Do List Input Architecture
 ![Todo List Input Architecture](../assignments/architectures/Todo-List-Input.PNG)
 
-* **Voice Input Architecture**
-![Voice Input](../assignments/architectures/Voice_Input_Architecture.png)
+* Getting input from the user can be done via mouse and keyboard movements, or through voice commands. Once the inputs is obtained by the frontend, it is then sent to the backend to be processed.
 
-* **Todo List Processing Architecture**
+To-Do List Processing Architecture
 ![Todo List Processing Architecture](../assignments/architectures/To-Do_List_Processing_Architecture.PNG)
 
-* **Suggest a Task Architecture**
-![Suggest a Task Architecture](../assignments/architectures/Suggest-A-Task_Architecture.png)
+* Processing the input obtained from the user is done by the frontend or client, which then makes an HTTP request. The server captures the request, sends it to the linked controller, processes the data, edits the database if necessary, and sends back a response for the frontend to be updated.
 
+#### **Schemas**
 
-* **Interfaces**
-  * Frontend (React) and Backend (Node.js)
-     * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
-  * Backend (Node.js) and Database (MongoDB)
-     * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
-  * Frontend (React) and Speech Recognition (Web Speech API)
-     * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
-  * AI Model (Hugging Face) and Backend (Node.js)
-     * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
-  * Authentication (Auth0) and Frontend (React) and Backend (Node.js)
-     * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
-  * Frontend Deployment (Netlify & Vite) and Users
-     * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
-  * Backend Deployment (Render) and Frontend & Database
-     * Render will host backend logic for the frontend and database to interact with.
-  
-<br>
+##### **Task Schema**
 
-* **Assumptions**
-  * WebSpeech API Will Accurately Process Commands
-    * Assumption: The WebSpeech API will correctly interpret voice commands
-    * Justification: Although voice recognition technology has advanced, performance may still be impacted by elements including background noise, accents, and speech clarity. Manual input and error handling act as mitigating measures.
-  * MongoDB Can Handle Dynamic and Scalable Data
-    * Assumption: MongoDB will accommodate an expanding user base while managing structured and unstructured data effectively.
-    * Justification: Because MongoDB is a flexible NoSQL database, it can grow with the system without being constrained by rigid schemas.
-  * AI Task Recommendations Will Improve User Experience
-    * Assumption: AI-powered suggestions (using Hugging Face) will provide relevant and helpful task recommendations.
-    * Justification: The AI model makes the assumption that there is sufficient task data from the past to generate relevant predictions. The accuracy of recommendations may suffer if users have insufficient history.
-  * Authentication via Auth0 Will Be Secure and Reliable
-    * Assumption: Auth0 will provide secure, seamless authentication across devices.
-    * Justification: Third-party authentication services like Auth0 are trusted for handling OAuth logins and security, reducing development overhead.
-  * Hosting Services (Netlify & Render) Will Provide Stable Deployment
-    * Assumption: Netlify (Frontend) and Render (Backend) will offer reliable uptime and performance.
-    * Justification: These platforms are widely used for web applications and include free tiers, but scalability issues may arise with high traffic.
-  * Users Will Want Cross-Device Accessibility
-    * Assumption: Users will want to access their to-do lists from multiple devices.
-    * Justification: A cloud-based approach ensures synchronization across desktops and mobile devices, making the system more convenient.
+| Field | Type | Description |
+|---------------|-----------------------|---------------------------------------------------|
+|taskID|Number (Unique) |Unique identifier for each task|
+|description   |String |Task description |
+|dateStarted   |Date  |Timestamp when task was created  |
+|dateCompleted  |Date |Timestamp when task was completed |
+|recurringDate  |Date |If the task repeats, its recurrence date |
+|priority |Number |Priority level (1-3) |
+|status |Bool |Task status (true - completed) (false - incomplete) |
+|userID |String  |Unique ID linked to a specific user|
 
-<br>
+##### **Category Schema**
 
-### Software Design
+|Field|Type|Description|
+|-----|----|-----------|
+|name|string|Name of category|
+|userID|string|Unique ID linked to a specific user|
+
+#### **Interfaces**
+
+* Frontend (React) and Backend (Node.js)
+  * The frontend will use restful api calls to communicate with backend, using HTTP requests (GET, POST, PUT, DELETE). The frontend interacts with the backend to fetch and modify to-do list data, task management, and other api calls.
+* Backend (Node.js) and Database (MongoDB)
+  * The backend stores and retrieves data from MongoDB, and will use MongoDB to perform CRUD operations on the data entered. The backend also makes sure that these database calls follow data integrity rules.
+* Frontend (React) and Speech Recognition (Web Speech API)
+  * The frontend will use JavaScript API calls to capture voice commands and convert them into text to send to the backend. The API calls will happen when a button is pressed, and the data passed will be plain text.
+* AI Model (Gemini Flash 2.0) and Backend (Node.js)
+  * The backend will send http api calls (JSON format) to get suggested tasks from the AI model. An example of this could be POST /ai/suggest-task, which sends previous tasks and receives AI-generated suggestions
+* Authentication (Auth0) and Frontend (React) and Backend (Node.js)
+  * The page in the frontend will send a call to the Auth0 API when a login button is pressed. The backend then handles the information and makes sure the authentication was successful.
+* Frontend Deployment (Netlify & Vite) and Users
+  * The frontend deployment will use webpages and other assets to allow users to access the to-do list application.
+* Backend Deployment (Render) and Frontend & Database
+  * Render will host backend logic for the frontend and database to interact with.
+
+#### **Assumptions**
+
+* WebSpeech API Will Accurately Process Commands
+  * Assumption: The WebSpeech API will correctly interpret voice commands
+  * Justification: Although voice recognition technology has advanced, performance may still be impacted by elements including background noise, accents, and speech clarity. Manual input and error handling act as mitigating measures.
+* MongoDB Can Handle Dynamic and Scalable Data
+  * Assumption: MongoDB will accommodate an expanding user base while managing structured and unstructured data effectively.
+  * Justification: Because MongoDB is a flexible NoSQL database, it can grow with the system without being constrained by rigid schemas.
+* AI Task Recommendations Will Improve User Experience
+  * Assumption: AI-powered suggestions (using Hugging Face) will provide relevant and helpful task recommendations.
+  * Justification: The AI model makes the assumption that there is sufficient task data from the past to generate relevant predictions. The accuracy of recommendations may suffer if users have insufficient history.
+* Authentication via Auth0 Will Be Secure and Reliable
+  * Assumption: Auth0 will provide secure, seamless authentication across devices.
+  * Justification: Third-party authentication services like Auth0 are trusted for handling OAuth logins and security, reducing development overhead.
+* Hosting Services (Netlify & Render) Will Provide Stable Deployment
+  * Assumption: Netlify (Frontend) and Render (Backend) will offer reliable uptime and performance.
+  * Justification: These platforms are widely used for web applications and include free tiers, but scalability issues may arise with high traffic.
+* Users Will Want Cross-Device Accessibility
+  * Assumption: Users will want to access their to-do lists from multiple devices.
+  * Justification: A cloud-based approach ensures synchronization across desktops and mobile devices, making the system more convenient.
+
+### **Software Design**
 
 * **Speech Recognition Component**
   * Uses WebSpeechAPI to capture and process voice commands.
@@ -988,9 +439,10 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Authentication controller (Backend API) handles registration, login, and logout.
   * Session management maintains user authentication across sessions.
 * **AI-Based Task Recommendation System**
-  * HuggingFace AI analyzes past tasks to suggest new ones.
+  * Gemini Flash AI analyzes past tasks to suggest new ones.
   * Recommendation system learns user habits and prioritization patterns.
   * User preference storage retains AI suggestions and personal task habits.
+  * AI model provides error handling for empty lists and junk task titles
 * **Database & Storage**
   * MongoDB + Mongoose stores user tasks, preferences, and AI data.
   * Data backup & sync ensures consistency across multiple devices.
@@ -1003,79 +455,83 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
   * Middleware validates inputs and enforces security policies.
   * API Routes define endpoints for tasks, authentication, and AI recommendations.
 
-<br>
+#### **UI Mockups**
 
-### Coding Guideline
+About/Landing Page
+![About Page Desktop](../designs/about-page-desktop.png)
+![About Page Mobile](../designs/about-page-mobile.png)
 
-<br>
+User Home Page
+![Home Page Desktop](../designs/user-page-desktop.png)
+![Home Page Mobile](../designs/user-page-mobile.png)
 
-### Process Description
+#### **1️ Risk: Speech Recognition Accuracy Issues**
 
-* Risk Assessment
+* **Likelihood:** **High**
+* **Impact:** **High**
+* **Evidence:**
+  * Speech recognition models struggle with different accents, background noise, and ambiguous commands.
+  * WebSpeech API has limitations, such as requiring internet access and limited offline support.
+  * User testing in different environments exposes inconsistent recognition rates.
+* **Mitigation Steps:**
+  * Conduct **usability testing** with diverse users.
+  * Implement **error handling & retry mechanisms** for unclear commands.
+  * Allow **manual task editing** in case of recognition failure.
+  * Use **AI-powered NLP** to interpret voice commands more flexibly.
+* **Detection Plan:**  
+  * Implement **logging for failed speech-to-text conversions**.
+  * Track **user feedback** for misrecognized commands.
+* **Mitigation Plan (If it Occurs):**  
+  * Implement **fallback manual input methods**.
+  * Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
+* **Changes Since Requirements Document:**  
+  * Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
 
-### 1️ Risk: Speech Recognition Accuracy Issues
-- **Likelihood:** **High**
-- **Impact:** **High**
-- **Evidence:**
-  - Speech recognition models struggle with different accents, background noise, and ambiguous commands.
-  - WebSpeech API has limitations, such as requiring internet access and limited offline support.
-  - User testing in different environments exposes inconsistent recognition rates.
-- **Mitigation Steps:**
-  - Conduct **usability testing** with diverse users.
-  - Implement **error handling & retry mechanisms** for unclear commands.
-  - Allow **manual task editing** in case of recognition failure.
-  - Use **AI-powered NLP** to interpret voice commands more flexibly.
-- **Detection Plan:**  
-  - Implement **logging for failed speech-to-text conversions**.
-  - Track **user feedback** for misrecognized commands.
-- **Mitigation Plan (If it Occurs):**  
-  - Implement **fallback manual input methods**.
-  - Optimize **voice command structure** (e.g., “Add task [task name] due [date]”).
-- **Changes Since Requirements Document:**  
-  - Added **fallback options** (manual input, confirmation prompts, AI-enhanced NLP).
+#### **2️ Risk: Backend & Database Integration Issues**
 
-  ### 2️ Risk: Backend & Database Integration Issues
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - The backend must support **real-time task updates** across devices.
-  - MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
-  - API failures could lead to **data inconsistencies** (e.g., task duplication).
-- **Mitigation Steps:**
-  - Define **clear API endpoints** and test early.
-  - Implement **database indexing** for performance optimization.
-  - Use **MongoDB transactions** to prevent inconsistent task states.
-- **Detection Plan:**  
-  - Write **unit tests** for database operations.
-  - Use **Postman & Jest** for API testing.
-- **Mitigation Plan (If it Occurs):**  
-  - Implement **logging and error recovery** (e.g., retry failed database operations).
-  - **Backup task data** to prevent loss.
-- **Changes Since Requirements Document:**  
-  - More emphasis on **testing and database integrity checks**.
+* **Likelihood:** **Medium**
 
-  ### 3️ Risk: User Adoption & Accessibility Issues
-- **Likelihood:** **Medium**
-- **Impact:** **High**
-- **Evidence:**
-  - Users may struggle with **speech-based navigation**.
-  - Accessibility concerns for **speech-impaired users**.
-  - Some users may prefer **keyboard/mouse over voice input**.
-- **Mitigation Steps:**
-  - Design **multi-modal interaction** (support both speech and manual inputs).
-  - Ensure compliance with **WCAG 2.1 accessibility guidelines**.
-  - Gather **early user feedback** via surveys and beta testing.
-- **Detection Plan:**  
-  - **Track feature usage** (e.g., how often users switch to manual input).
-  - **Monitor support requests** related to accessibility.
-- **Mitigation Plan (If it Occurs):**  
-  - Offer **customizable input options**.
-  - Introduce **keyboard shortcuts** for key functionalities.
-- **Changes Since Requirements Document:**  
-  - Added **manual fallback options** and ensured **accessibility compliance**.
+* **Impact:** **High**
+* **Evidence:**
+  * The backend must support **real-time task updates** across devices.
+  * MongoDB schema must handle **user authentication**, **task management**, and **AI recommendations**.
+  * API failures could lead to **data inconsistencies** (e.g., task duplication).
+* **Mitigation Steps:**
+  * Define **clear API endpoints** and test early.
+  * Implement **database indexing** for performance optimization.
+  * Use **MongoDB transactions** to prevent inconsistent task states.
+* **Detection Plan:**  
+  * Write **unit tests** for database operations.
+  * Use **Postman & Jest** for API testing.
+* **Mitigation Plan (If it Occurs):**  
+  * Implement **logging and error recovery** (e.g., retry failed database operations).
+  * **Backup task data** to prevent loss.
+* **Changes Since Requirements Document:**  
+  * More emphasis on **testing and database integrity checks**.
 
+#### 3️ Risk: User Adoption & Accessibility Issues
 
-### 4️ Risk: AI Task Recommendation Limitations
+* **Likelihood:** **Medium**
+
+* **Impact:** **High**
+* **Evidence:**
+  * Users may struggle with **speech-based navigation**.
+  * Accessibility concerns for **speech-impaired users**.
+  * Some users may prefer **keyboard/mouse over voice input**.
+* **Mitigation Steps:**
+  * Design **multi-modal interaction** (support both speech and manual inputs).
+  * Ensure compliance with **WCAG 2.1 accessibility guidelines**.
+  * Gather **early user feedback** via surveys and beta testing.
+* **Detection Plan:**  
+  * **Track feature usage** (e.g., how often users switch to manual input).
+  * **Monitor support requests** related to accessibility.
+* **Mitigation Plan (If it Occurs):**  
+  * Offer **customizable input options**.
+  * Introduce **keyboard shortcuts** for key functionalities.
+* **Changes Since Requirements Document:**  
+  * Added **manual fallback options** and ensured **accessibility compliance**.
+
+#### **4️ Risk: AI Task Recommendation Limitations**
 
 * **Likelihood:** **High**
 * **Impact:** **Medium**
@@ -1096,7 +552,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * **Changes Since Requirements Document:**  
   * Added **feedback collection mechanism** to refine AI suggestions.
 
-### 5️ Risk: Deployment & Hosting Challenges
+#### **5️ Risk: Deployment & Hosting Challenges**
 
 * **Likelihood:** **Medium**
 * **Impact:** **High**
@@ -1117,18 +573,17 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * **Changes Since Requirements Document:**  
   * More emphasis on **scalability** and **backup hosting solutions**.
 
-<br>
+### **Group Project Schedule**
 
-* Project Schedule
-  * Notable conflicts and updates to our schedule are what features are dependant on others being done to be completed.  Specifically, features that interface with the database need to have the database set up, and back-end support before they can be functional.  Other than this, there have been no changes to the schedule.
-  * Before implementing the frontend: UI design, API design, and basic backend setup.
-  * Before implementing the backend: Database design and frontend design.
-  * Before implementing the database: Backend to make sure data is being stored correctly.
-  * Before testing frontend/backend: Frontend-backend interaction must be functional.
-  * Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
- 
-  * 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
- 
+* Notable conflicts and updates to our schedule are what features are dependant on others being done to be completed.  Specifically, features that interface with the database need to have the database set up, and back-end support before they can be functional.  Other than this, there have been no changes to the schedule.
+* Before implementing the frontend: UI design, API design, and basic backend setup.
+* Before implementing the backend: Database design and frontend design.
+* Before implementing the database: Backend to make sure data is being stored correctly.
+* Before testing frontend/backend: Frontend-backend interaction must be functional.
+* Before small use cases: implementation of frontend and backend must be finished (at least the part that the use case is concerned with).
+
+* 1 is a 1 week milestone, 2 is a 2 week, and 3 is a 3 week.
+
 | Group               | Wk 3 | Wk 4 | Wk 5 | Wk 6 | Wk 7 | Wk 8 | Wk 9 | Wk 10 |
 | --------------------|------|------|------|------|------|------|------|------ |
 | Front End           | Design Navigation (1)|Start front-end implementation (2) |Test and connect front-end calls to back-end(2)|Implement API to front-end calls(1)|Develop user feedback features(1)|Implement other features (such as notifications)(2)|Finalizing and testing(1)|Deploy and finish documentation(1)|
@@ -1137,40 +592,27 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 | Database            |Design database schema (1)|Set up MongoDB (1)|Configure database for tasks(2)|Implement save, update, and delete functionality (2)|Integrate AI and WebSpeech API with database (2)|Ensure data is correct between backend and database(2) |Testing and ensuring database integrity (2)|Final database testing and deployment (1)|
 | Software Management |Essential tools needed for basic web server configuration and to-do lists management added to dependencies.(1)|Files organized in a modularized manner to allow for easier implementation and OO practices.(1)|Database implementation inputs correctly formatted data.(1)|AI and WebSpeech APIs configured and ready for developers.(1)|To-do list functionality completely finished and implemented, so that integrating AI and speech recognition features are done seamlessly.(3)|Continue developing complex features, such as AI and speech recognition implementations.(2)|Implement stretch goal features, such as reminders for timely tasks and processing natural language using WebSpeech API and AI API model.(1)|Run and test finalized product for any underlying bugs or errors.(1)|
 
-<br>
+### Coding Guidelines
 
-* Team Structure
+* JavaScript (React/Node.js)
+  * Guideline: JavaScript Style Guide (<https://github.com/airbnb/javascript>)
+  * Reason: Airbnb's style guide is widely adopted in the industry, comprehensive, and covers both JavaScript and React best practices. It promotes clean, readable, and
+maintainable code.
+  * Enforcement: Use ESLint with the Airbnb configuration (eslint-config-airbnb) to automatically enforce the rules during development.
+* HTML
+  * Guideline: HTML Style Guide (<https://google.github.io/styleguide/htmlcssguide.html>)
+  * Reason: Google's style guide is simple, well-structured, and focuses on best practices for writing clean and semantic HTML.
+  * Enforcement: Use an HTML linter like htmlhint with a configuration aligned with the Google style guide.
+* CSS
+  * Guideline: CSS Style Guide (<https://google.github.io/styleguide/htmlcssguide.html>)
+  * Reason: The same guide covers CSS, ensuring consistency in styling practices and maintainability.
+  * Enforcement: Use a CSS linter like stylelint with a configuration aligned with the Google style guide.
+* MongoDB
+  * Guideline: MongoDB Best Practices/Style Guide (<https://www.mongodb.com/docs/meta/style-guide/>)
+  * Reason: MongoDB's official documentation provides clear and practical guidelines for database design, indexing, and query optimization.
+  * Enforcement: Code reviews and manual checks during development to ensure adherence to best practices
 
-<br>
-
-* Test Plan and Bugs
-  * Notable Tests By Week
-    * Database:
-      * Week 4: Can preform simple SQL operations on non-recurring task related tables through the command line.
-      * Week 5: Full suite of test cases for CRUD operations on the non-recurring task related tables.
-      * Week 6: Full suite of test cases for OAuth functionality
-      * Week 7: Full suite of test cases for recurring test cases
-      * Week 8: When a user gives a set input to the AI chatbot, they should receive a logical output from the AI
-      * Week 9: Optimization updates to meet minimum speed requirements
-      * Week 10: Full functionality tests.
-    * Back-End:
-      * Week 5: Text to speech API will output the given input
-      * Week 6: Speech input support add and delete task functionality.  
-        * This is dependant on the AI functionality being done
-      * Week 7: Remainder of speech input commands are complete.
-        * This is dependant on the AI functionality being done
-      * Week 8: Reoccurring event detection works
-        * This is dependant on the AI functionality being done
-      * Week 10: Full functionality tests.
-    * Front-End:
-      * Week 5: User can open menu buttons to create tasks, view tasks, and task details
-      * Week 6: CRUD operations on non-recurring tasks work
-        * This is dependant on Database team and Back-End Team to create dependant features.
-      * Week 8: CRUD operations on recurring tasks work
-        * This is dependant on Database team and Back-End Team to create dependant features.
-      * Week 9: User accessability tests pass
-      * Week 10: Full functionality tests.
-
+### **Documentation Guides**
 
 * **User Guides (TalkTask)**
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
@@ -1307,4 +749,13 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * **Trigger CI Build**
   * Our CI build will be triggered whenever a push or pull requests is committed to the main branch. That being said, we will then create a dev branch to ensure that when we are incrementally implementing code that passes these tests, we are able to push it the to the dev branch, so that the main branch will remain stable at all times.
 
-## Reflections
+### Reflections
+
+* Ivan Wong - Reflection
+  * Things that I learned about software engineering from the project are about time management, importance of planning/designing, and importance of communication between team members. With a project this large during a school term, learning to manage my time wisely and work effectively is a skill that I believe I became better at from the outcome of the project. The next lesson I learned was about the importance of planning and designing software. 80% of the work done by the project is done by prep work with the other 20% focused on implemenation. The project seamed daunting at first, but as we designed sketches, described software architecture, design, and interfaces, the project seamed less and less difficult to implement. The last lesson is about communication. Talking with team members and being explicit and obvious is important, so that there's no room for ambiguity between whats expected and what is assumed.
+
+### **Citations**
+
+* Sawhney, V. (2022, January 3). Why we continue to rely on (and love) To-Do lists. Harvard Business Review. <https://hbr.org/2022/01/why-we-continue-to-rely-on-and-love-to-do-lists>
+
+* Madhavan, A. (2018, April 17). Why to-do lists don’t work - The Startup - Medium. Medium. <https://medium.com/swlh/why-to-do-lists-dont-work-568063af5067>
