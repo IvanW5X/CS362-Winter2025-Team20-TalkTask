@@ -7,7 +7,7 @@
     "dateCompleted": "2015-03-25T12:50:00Z",
     "recurringDate": null,
     "priority": 1,
-    "status": "pending",
+    "status": false,
     "category": "Work",
     "userID": 9
   },
@@ -19,7 +19,7 @@
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
     "priority": 2,
-    "status": "pending",
+    "status": false,
     "category": "School",
     "userID": 9
   },
@@ -31,7 +31,7 @@
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
     "priority": 3,
-    "status": "pending",
+    "status": false,
     "category": "Chores",
     "userID": 9
   },
@@ -43,7 +43,7 @@
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
     "priority": 1,
-    "status": "pending",
+    "status": false,
     "category": "School",
     "userID": 9
   },
@@ -55,7 +55,7 @@
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
     "priority": 1,
-    "status": "pending",
+    "status": false,
     "category": "Chores",
     "userID": 9
   },
@@ -67,7 +67,7 @@
     "dateCompleted": "2015-03-25T12:20:00Z",
     "recurringDate": null,
     "priority": 2,
-    "status": "pending",
+    "status": false,
     "category": "Work",
     "userID": 9
   },
@@ -79,7 +79,7 @@
     "dateCompleted": "11:12",
     "recurringDate": null,
     "priority": 2,
-    "status": "pending",
+    "status": false,
     "category": "crc",
     "userID": 1
   }

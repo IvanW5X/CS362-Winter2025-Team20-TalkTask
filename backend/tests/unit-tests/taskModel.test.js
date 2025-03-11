@@ -31,8 +31,8 @@ describe('Task Model - Unit Tests', () => {
       taskID: 1,
       title: 'Test Task',  // ✅ Added required title
       description: 'Unit test task',
-      status: 'pending',
-      userID: new mongoose.Types.ObjectId(), // ✅ Simulating user ID
+      status: false,
+      userID: '12345abc', // ✅ Simulating user ID
     });
 
     await task.save();
@@ -40,7 +40,7 @@ describe('Task Model - Unit Tests', () => {
     const foundTask = await Task.findOne({ taskID: 1 });
     expect(foundTask).toBeDefined();
     expect(foundTask.title).toBe('Test Task'); // ✅ Ensuring title exists
-    expect(foundTask.status).toBe('pending');
+    expect(foundTask.status).toBe(false);
   });
 
   it('should update task status', async () => {
@@ -48,13 +48,13 @@ describe('Task Model - Unit Tests', () => {
       taskID: 2,
       title: 'Update Test Task',  // ✅ Added required title
       description: 'Test task for update',
-      status: 'in-progress',
-      userID: new mongoose.Types.ObjectId(),
+      status: false,
+      userID: '12345abc',
     });
 
     await task.save();
 
-    task.status = 'completed';
+    task.status = true;
     await task.save();
 
     const updatedTask = await Task.findById(task._id);
