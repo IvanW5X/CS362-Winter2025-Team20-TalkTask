@@ -8,7 +8,7 @@ TalkTask is a personal to-do list tracker website that includes speech recogniti
 
 ## Repository Layout
 
-Our repsitory includes documentaions files in the root directory, a reports directory for weekly updates on the project, and front and back end directories to keep source code modular and maintainable.
+Our repsitory includes documentaions files in the documents directory, a reports directory for weekly updates on the project, and front and back end directories to keep source code modular and maintainable. Our architecture designs and course assignments are in the assignments directory and out UI mockups are in the designs directory
 
 ## Major goals for the project will include
 
