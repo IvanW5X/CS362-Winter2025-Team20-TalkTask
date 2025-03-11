@@ -1,4 +1,4 @@
-# **Project TalkTask**
+# **TalkTask**
 
 ## **Collaborators**
 

@@ -1,9 +1,10 @@
-# Directions For Web Application
+# Web Application Deployment and Setup
 
 ## Installing Packages and Initailizing Directories (Local/Dev)
 
-For an automated installation of the npm packages required, run the `npmInstall.sh` script.  
-Otherwise, follow the steps below.
+* You will need to install [Node](https://nodejs.org/en/download) to run locally, specifically the `npm` command.
+* For an automated installation of the npm packages required, run the `npmInstall.sh` script. Otherwise, follow the steps below.
+
 
 ### Front-End
 
@@ -75,3 +76,13 @@ Otherwise, follow the steps below.
 ### Deploying Instructions
 
 * Currently investigating
+
+### Database Setup
+* You will to create a [MongoDB](https://cloud.mongodb.com/) account for this to work.
+* After creating an account and logging in, create a new project and select the project after its created.
+* Then on the left sidebar select "Clusters" under Database.
+* Create a new cluster and select an option, but the "Free" option will do.
+* Follow the instructions to create a cluster.
+* When selecting a a connection method choose "Drivers."
+* Once your cluster a setup, click on "Connect" obtain the MongoDB URI.
+* Then in your .env files put in the MongoDB URI.

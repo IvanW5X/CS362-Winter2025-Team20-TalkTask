@@ -35,7 +35,7 @@ Our repsitory includes documentaions files in the documents directory, a reports
 
 ## Local Installation
 
-* Refer to ./documents/configurations.md
+* Refer to ./documents/INSTALL.md and ./documents/SETUP.md
 
 ## Collaborators
 
