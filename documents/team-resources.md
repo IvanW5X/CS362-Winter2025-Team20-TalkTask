@@ -7,7 +7,6 @@
 * Nicholas Woodley (Front-End Developer)
 * Kai Lindskog-Coffin (Database Developer)
 * Raymond Cen (Back-End Developer)
-* Bailey Bundlong (UI/UX Designer)
 * Jordan L Cowan (Front-End Developer)
 
 ## Resource Links

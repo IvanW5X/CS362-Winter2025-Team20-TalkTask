@@ -1,8 +1,8 @@
-# Web Application Deployment and Setup
+# Web Application Setup and Deployment
 
 ## Installing Packages and Initailizing Directories (Local/Dev)
 
-* You will need to install [Node](https://nodejs.org/en/download) to run locally, specifically the `npm` command.
+* You WILL need to install [Node](https://nodejs.org/en/download) to run locally, specifically the `npm` command.
 * For an automated installation of the npm packages required, run the `npmInstall.sh` script. Otherwise, follow the steps below.
 
 
@@ -20,7 +20,7 @@
 * npm install
 * Done, ensure that git marks node_modules as untracked
 
-### Notes
+### Required .env for local development
 
 * You WILL need two .env files, one in each of the frontend and backend home directories.
 * Frontend .env example:
@@ -35,7 +35,7 @@
   * SERVER_PORT="51710"
   * MONGO_URI="MongoDB URI used to connect to your MongoDB database"
   * VITE_APP_AUTH0_DOMAIN="Auth0 domain obtained from Auth0 that matches the frontend"
-  * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0 that mataches frontend"
+  * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0 that matches frontend"
   * VITE_APP_AUTH0_AUDIENCE="<http://localhost:51710>"
 
 ## Running Web Application
@@ -44,7 +44,7 @@
 
 * To run the frontend side of the web application, consider the following directions.
 
-### Developer Instructions
+### Local Development Instructions
 
 * To run the frontend application in developer mode, run the following commands.
 * cd frontend
@@ -65,7 +65,7 @@
 
 * To run the backend side of the web application, consider the following directions.
 
-### Developer Instructions
+### Local Development Instructions
 
 * To run the backend server in developer mode, run the following commands.
 * cd backend
@@ -75,14 +75,6 @@
 
 ### Deploying Instructions
 
-* Currently investigating
+* We chose [Render](https://dashboard.render.com/login) for deployment which uses the GitHub repository directly. But any service would do as long as its able to connect and communicate with the frontend.
 
-### Database Setup
-* You will to create a [MongoDB](https://cloud.mongodb.com/) account for this to work.
-* After creating an account and logging in, create a new project and select the project after its created.
-* Then on the left sidebar select "Clusters" under Database.
-* Create a new cluster and select an option, but the "Free" option will do.
-* Follow the instructions to create a cluster.
-* When selecting a a connection method choose "Drivers."
-* Once your cluster a setup, click on "Connect" obtain the MongoDB URI.
-* Then in your .env files put in the MongoDB URI.
+
