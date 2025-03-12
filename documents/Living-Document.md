@@ -12,7 +12,7 @@
 
 ### **Abstract**
 
-TalkTask is a web application that utilizes speech recognition to streamline to-do list management, and an AI model to provide suggested tasks. Using speech recognition, we are able to allow users to add, remove and prioritize tasks, and offer time/categorical based task views. A short article from Harvard Business Review show that effective to-do lists actually work and can release stress as tasks get checked off and/or completed. Most modern to-do list applications today rely on input form keyboards, can become long and overwhelming, and assume an infinite amount of time, hence encourages users to continiously add more tasks. *Why to-do lists don't work* is an article published by Medium and describes these exact issues on how to-do lists can become counter productive. To-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by implementing proven strategies that increase productivity, as well as using speech recognition to make task management accessible for all users. We will also offer users a way to create multiple task lists based on their chosen category or date, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities. Furthermore, we will be using Google's Gemini AI model to provide users suggested tasks based on what the user already has to-do or has completed, offering a personalized experience for all.
+TalkTask is a web application that utilizes speech recognition to streamline to-do list management, and an AI model to provide suggested tasks. Using speech recognition, we are able to allow users to add, remove and prioritize tasks, and offer time/categorical based task views. A short article from Harvard Business Review show that effective to-do lists actually work and can release stress as tasks get checked off and/or completed. Most modern to-do list applications today rely on input form keyboards, can become long and overwhelming, and assume an infinite amount of time, hence encourages users to continuously add more tasks. *Why to-do lists don't work* is an article published by Medium and describes these exact issues on how to-do lists can become counter productive. To-do lists, either paper or electronic, can quickly become overwhelming and tedious to keep up with. If a user has many different tasks to work on throughout the day, the list can become large and difficult to structure. With TalkTask, we plan to tackle your to-do list, so you can tackle your day. TalkTask addresses the issues mentioned earlier by implementing proven strategies that increase productivity, as well as using speech recognition to make task management accessible for all users. We will also offer users a way to create multiple task lists based on their chosen category or date, so that users are able to view tasks without the daunting feeling of viewing a long list responsibilities. Furthermore, we will be using Google's Gemini AI model to provide users suggested tasks based on what the user already has to-do or has completed, offering a personalized experience for all.
 
 ### **Goals**
 
@@ -23,7 +23,7 @@ TalkTask should provide a hands-free and user-friendly experience for users. The
 1. Implement essential task management features such as adding a task, marking a task as complete, and removing a task.
 2. Add categorical based task views.
 3. Add calendar based task views.
-4. Implement a simple, but clean UI, so users can uitilize the full capabilities of TalkTask easily.
+4. Implement a simple, but clean UI, so users can utilize the full capabilities of TalkTask easily.
 5. Use Google's Gemini AI API to provide personalized suggested tasks for users.
 
 #### **Stretch Goals**
@@ -31,11 +31,11 @@ TalkTask should provide a hands-free and user-friendly experience for users. The
 1. Implement reminders for timely tasks to increase the success rate of tasks being completed.  
 2. Extend AI API functionality to process natural language and allow users to communicate naturally to our speech recognition system and convert their commands into a dedicated function for the to-do list management system.
 3. Gamify the web application to keep current users engaged and promote continuation of using the app into continuing using our app for productivity.
-4. Create a responsve UI for both desktop and mobile users.
+4. Create a response UI for both desktop and mobile users.
 
 ### **Current Practice**
 
-Current to-do lists fall into one of the two categories; electronic applications or paper lists. We won't dive deep into paper to-do lists much, but the abstract would be that they are highly customizable, but require more time and effort to create. To-do list software today suffer from over complexication or software bloat. Most software focuses on marketing their newest complex feature and stray away from what a to-do list needs to do; organize tasks, prioritizing them, and tracking progress. Traditional to-do list applications rely heavily on mouse and keyboard movement, static lists, and repetitive interactions. While major companies like Microsoft and Apple offer task management solutions, they often lack a truly intuitive and adaptive user experience.
+Current to-do lists fall into one of the two categories; electronic applications or paper lists. We won't dive deep into paper to-do lists much, but the abstract would be that they are highly customizable, but require more time and effort to create. To-do list software today suffer from being overly complexor software bloat. Most software focuses on marketing their newest complex feature and stray away from what a to-do list needs to do; organize tasks, prioritizing them, and tracking progress. Traditional to-do list applications rely heavily on mouse and keyboard movement, static lists, and repetitive interactions. While major companies like Microsoft and Apple offer task management solutions, they often lack a truly intuitive and adaptive user experience.
 
 ### **Novelty**
 
@@ -49,7 +49,7 @@ We offer strict categorical and day based task views to prevent overwhelming use
 
 ### **Effects**
 
-As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multitaskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.
+As with other to-do list applications, ours will help users plan their time efficiently. However, TalkTask also has greater accessibility for users, due to the speech recognition. People with disabilities will find it easier to use compared to traditional lists, and not all applications have this accessibility option. Non-native speakers will also have their experience improved, as there are multiple language options. Our application focuses on accessibility first, as that is very important for software that a lot of different people might use. Because of this focus on efficiency and accessibility, multi-taskers will also enjoy using the software. They can use voice recognition to quickly create and edit lists, compared to the more traditional, slower applications. We want to create an application that is simple to use but that also accompanies different types of users. If successful, our application will be easier to use than previous to-do lists and address previous accessibility concerns.
 
 ### **Use Cases**
 
@@ -59,7 +59,7 @@ As with other to-do list applications, ours will help users plan their time effi
 * **Actors:**
   * User interacting with the website.
 * **Triggers:**
-  * The user wants to access a specific feature of section within the web application without unecessary steps or confusion.
+  * The user wants to access a specific feature of section within the web application without unnecessary steps or confusion.
 * **Preconditions:**
   * User's device is connected to the internet or has internet access.
   * User has launched TalkTask web page.
@@ -196,7 +196,7 @@ As with other to-do list applications, ours will help users plan their time effi
   * An entry in TalkTask has been made for their homework assignment
 * **List of steps:**
   1. User opens the TalkTask application
-  2. User logs into Talktalk
+  2. User logs into TalkTask
   3. From the home screen, user clicks on create new task button
   4. User fills in data fields in task creation window
   5. User clicks out of the task creation window
@@ -235,16 +235,16 @@ As with other to-do list applications, ours will help users plan their time effi
 
 * When code is deployed for users to access, it should be kept and maintained with security in mind. Users will not be able to access the database and data will not be shared with any third-parties. Bad-faith actors shouldn't have easy access to any holes.
 * The application should work across all devices ranging from desktop to mobile phone. All features including the voice input and UI should seamlessly work across all platforms.
-* The application should be able to handle a large influx of users. There should be minimal peformance issues and the application should stay functional and responsive if lots of users are using it.
+* The application should be able to handle a large influx of users. There should be minimal performance issues and the application should stay functional and responsive if lots of users are using it.
 
 ### **External Requirements**
 
 * **How we’ll host the application for users to access:**
   * TalkTask will be divided into two servers to seperate concerns for modular, and scalable software. Deployment tools will include Netlify for the frontend server and backend deployment tools are still being researched to find open source tools that are free to use and fit our use cases.
 * **How we’ll handle errors, invalid user inputs, etc:**  
-  * For WebSpeechAPI, when the user uses the voice input feature it will check if the command given matches any of the current commands. If not it will reprompt the user, asking the user to say the command again. But if it does match a functionality, it will prompt a confirmation screen while keep the voice input on. That way the user can confirm the action by saying "yes" or "no".
-  * For the database, if the connection with the database fails a notification will popup to alert the user that their data cold not be retrieved. We'll ask the user to refresh the page and if the issue presists, we'll ask the user to contact the database develoepr or backend developer to resolve the issue.
-  * For adding a task, without using the WebSpeechAPI and manually typing into it, if the user exits out the add task menu without saving the task, it will prompt the user with a confirmation notification only if they have filled in a field. If the user exits out the webpage when adding a task then the task will not be added. If the user accidentally hits the "remove task" button, a confirmation notification will pop up, so they don't immediately remove a task. If they are editting a task, just like adding a task, a confirmation will pop up if they try to exit out only if something has been changed from the original task.
+  * For WebSpeechAPI, when the user uses the voice input feature it will check if the command given matches any of the current commands. If not it will re-prompt the user, asking the user to say the command again. But if it does match a functionality, it will prompt a confirmation screen while keep the voice input on. That way the user can confirm the action by saying "yes" or "no".
+  * For the database, if the connection with the database fails a notification will popup to alert the user that their data cold not be retrieved. We'll ask the user to refresh the page and if the issue persists, we'll ask the user to contact the database developer or backend developer to resolve the issue.
+  * For adding a task, without using the WebSpeechAPI and manually typing into it, if the user exits out the add task menu without saving the task, it will prompt the user with a confirmation notification only if they have filled in a field. If the user exits out the webpage when adding a task then the task will not be added. If the user accidentally hits the "remove task" button, a confirmation notification will pop up, so they don't immediately remove a task. If they are editing a task, just like adding a task, a confirmation will pop up if they try to exit out only if something has been changed from the original task.
 * **How we’ll allow others to setup their own instance of our application:**
   * Refer to configuration.md in our git repository.
 * **How we'll take external feedback:**
@@ -276,15 +276,15 @@ Major components we will develop will include...
 
 ### **Risk**
 
-* We all have different coding styles and levels of coding competence, so pushing effective and efficient code depends on our coding skill. To avoid "bad code" being pushed, we plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product. If any bugs or erros occure, we are able to easily locate where the issue is coming from and discuss a fix for it.
+* We all have different coding styles and levels of coding competence, so pushing effective and efficient code depends on our coding skill. To avoid "bad code" being pushed, we plan on designing our features, so that they will rely on dependencies and by keeping a modular design, we are able to develop features in parallel, increasing productivity and speeding up the SDLC for a MVP and/or a finalized product. If any bugs or errors occur, we are able to easily locate where the issue is coming from and discuss a fix for it.
 * Underestimating the work required to complete certain tasks could impose deadline risks. To avoid this problem, we plan on setting checkpoints for what we expect to have completed each week. Additionally, each checkpoint will have small tasks associated with it. Each group member will be responsible for completing their small tasks. At each stand-up meeting, the status of each small task will be checked in to see if help is needed, changes need to be made, or if our stretch goals can be attempted because we are ahead of schedule.
-* Implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database managment or have previously taken a database course at OSU will be responsible for leading the database development side of things.
-* Implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilitizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks.
+* Implementing a user database so that separate users can use the application, along with state being preserved between uses and devices. To minimize the risk of difficulty of this task, we will ensure that team members with skills in database management or have previously taken a database course at OSU will be responsible for leading the database development side of things.
+* Implementing the main features with the WebSpeechAPI and the open source AI model. These will impose risks because our program must be able to handle all to-do list functionality through speech, so being able to parse and process voice commands will be a challenge. Adding AI features will also include another layer of complexity because our program must be able to handle the AI processing data and producing tangible results that we as developers, must be able to verify with unique test cases. Our plan to simplify these last two processes is by utilizing internet sources, documentation, and implementing these features incrementally, so that we can push a MVP earlier and break down full functionality into smaller, more manageable tasks.
 
 ### **Team-Info**
 
 * Ivan Wong (Fullstack Developer)
-  * Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized. This role is needed because with many APIs frameworks being used, their needs to be a dedicated person to research which tools would help speed up production and keep everything orgranized for scalability and future feature implementations. I am best suited for this role because I have experience in configuring build environments for GUI applications and have devloped & deployed my own frontend portfolio website using similar tools.
+  * Responsible for researching frameworks, APIs, configuring Git repo for easier development, and keeping files modular and organized. This role is needed because with many APIs frameworks being used, their needs to be a dedicated person to research which tools would help speed up production and keep everything organized for scalability and future feature implementations. I am best suited for this role because I have experience in configuring build environments for GUI applications and have developed & deployed my own frontend portfolio website using similar tools.
 * Tristan Vosburg (Back-End Developer)
   * TalkTask will need a way to communicate between the front-end and the database. Without this, the website wouldn't be able to store information between log-ins.  Building this bridge will be a large part of what will allow TalkTask to work.
 * Nicholas Woodley (Front-End Developer)
@@ -292,7 +292,7 @@ Major components we will develop will include...
 * Kai Lindskog-Coffin (Database Developer)
   * TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
 * Raymond Cen (Back-End Developer)
-  * Responsible for the use of the WebSpeechAPI and the communcation between frontend and backend.This role is needed because the use of voice input using WebSpeechAPI is a main component of this project. As well as communication between the frontend and backend. I am best suited for this because I have experience in working with APIs in a web project and designing a communucation pipeline between a frontend file and backend file.
+  * Responsible for the use of the WebSpeechAPI and the communication between frontend and backend.This role is needed because the use of voice input using WebSpeechAPI is a main component of this project. As well as communication between the frontend and backend. I am best suited for this because I have experience in working with APIs in a web project and designing a communication pipeline between a frontend file and backend file.
 * Jordan L Cowan (Front-End Developer)
   * It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
 
@@ -305,15 +305,15 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 * Node.js:
   * Node will be used to not only install dependencies in our build environment, but also run JavaScript in server-side logic to allow high performance, real-time data updates, interacting with the database, and consistency across developers using the same language.
 * Express API:
-  * The Express API will be used to run our backend server and simplify our server setup source code. It will also provide middlware support which makes it easier to extend functionality of to-do lists management functionality and powerful routing functionality.
+  * The Express API will be used to run our backend server and simplify our server setup source code. It will also provide middleware support which makes it easier to extend functionality of to-do lists management functionality and powerful routing functionality.
 * Vite Build Tool:
   * Vite is a blazing fast frontend building tool that utilizes modern JavaScript functionality and is optimized to obtain faster and more high performance websites compared to the widely used Webpack build tool.
 * WebSpeech API
-  * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list funcitonality, to provide a hands-free experience and more accesibility features.
+  * The WebSpeech API is a JavaScript interface that allows users to incorporate speech recognition as data for our web application. This will be one the main APIs for our program, so that we can integrate voice commands from the user into to-do list functionality, to provide a hands-free experience and more accessibility features.
 * Google Gemini AI API
   * Allows us to produce suggested tasks for users based on their previous ones. This tool will primarily be used for recommending tasks and one of our stretch goals is to use this API to process natural language into to-do list functionality, so that our web application is even easier to use.
 * MongoDB:
-  * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database throufh previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
+  * MongoDB is going to be used to grant us access to a database. Team members in our group have free access to the database through previous or current OSU courses, so MongoDB was chosen to store user tasks in a JSON like format. A data base allows users to access tasks across multiple devices and allow our AI model to pull tasks from the database to produce suggestions.
 * Render
   * Render is a web service platform that offers free hosting with limited resources. Since this project isn't expected to go big anytime soon, the free plan Render offers should be enough to allow our peers to test the web application on the internet.
 * Figma
@@ -339,7 +339,7 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 **Client-Server**
 ![General Architecture](../assignments/architectures/General-Architecture.PNG)
 
-* To maximize the bandwidth usage of our deployement services, we will be using client server architecture. The client will be what the user interacts with. The client is responsible for displaying data for the user and making API calls to the backend server. The server will be used to handling incoming requests from the client and is responsible for processing data.
+* To maximize the bandwidth usage of our deployment services, we will be using client server architecture. The client will be what the user interacts with. The client is responsible for displaying data for the user and making API calls to the backend server. The server will be used to handling incoming requests from the client and is responsible for processing data.
 
 **User Login**
 ![User Login Architecture](../assignments/architectures/User-Login-Arch.PNG)
@@ -617,14 +617,14 @@ maintainable code.
   * TalkTask will include a help page that lists all commands/functionality we are providing to help users navigate through our web application and use it to it's full potential.
 
 * **Developer Guide**
-  * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployement strategies will be added.
+  * This section has already been started with our configurations.md file provided in the Git repository. It is currently still in progress, as more APIs are being introduced with some needing specific API keys that need to be added to a developers workspace, so the file will be updated accordingly. The current contents of the file show developers how to run and build the full project on their local host IP, and once the configurations branch is finished, deployment strategies will be added.
 
 * **User Documentation**
   * High Level Description: TalkTask is a voice-controlled task management system designed to help users manage their daily tasks hands-free. The application integrates speech recognition and AI-based task recommendations to provide an intuitive to-do list experience
   * How to install:
     * Prerequisites: Web browser such as Chrome, Mozilla, Safari, etc.
     * Installation Steps:
-      * Talktalk is a web application, no need to install any outside software
+      * TalkTask is a web application, no need to install any outside software
   * How to run:
     * Enter our URL to a web browser of your choice on either desktop or mobile devices.
   * How to use software:
@@ -719,7 +719,7 @@ maintainable code.
   * Jest: Automated Testing
     * Jest is a JavaScript testing framework that to ensure correctness with JavaScript code bases, so since we are creating a JS based application, we can easily adopt Jest into our toolset to add unit and module tests.
     * Jest can be installed via NPM into our front and backend directories as a dev dependency and using a tests directory, we can store our unit and module tests then run ```npm run test``` to run our tests, so Jest will let us know which tests pass or fail.
-  * GitHub Actions: Continious Integration
+  * GitHub Actions: Continuous Integration
     * GitHub Actions has been selected as our CI service. This tool has been selected because it was the easiest to integrate with our current project (since we can add a .yaml file to GitHub repo directly) and it has lots of documentation we can use to learn how to use it effectively. It will also allow us to run our tests automatically via steps in the .yaml files.
   
   | Label | GitHub Actions | CircleCI | TravisCI |
@@ -731,7 +731,7 @@ maintainable code.
   |       | Relies on GitHub, if it's down, cannot test or integrate properly | Can become pricey as project grows, we want to avoid paying for services | Restricted build environments, lack complete access to virtual machine |
 
 * **Executed Tests**
-  * Adding a task to the database - task added with appropiate information.
+  * Adding a task to the database - task added with appropriate information.
   * Removing a task from the database - existing task removed from database.
   * Marking task as complete - existing task displays as completed for the user and no reminders given to user about said task.
   * Filter tasks - only display/ fetch tasks that have a specific attribute.
