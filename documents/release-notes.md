@@ -37,3 +37,4 @@ This is the initial release of TalkTask—a web application for hands-free task 
 - **Voice Add Issue:** The "voice add" command is not adding tasks to the selected date. 
 - **Grey Background Issue:** The grey background only extends to the length of the viewport.
 - **Home Page Responsiveness:** The home page is unresponsive for smaller widths. 
+- **Mobile View:** Currently the mobile view is unresponsive. 

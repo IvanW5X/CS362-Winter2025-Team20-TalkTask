@@ -9,6 +9,7 @@
 * Kai Lindskog
 * Jordan Cowan
 * Bailey Budlong
+  
 
 ### **Abstract**
 
@@ -35,7 +36,7 @@ TalkTask should provide a hands-free and user-friendly experience for users. The
 
 ### **Current Practice**
 
-Current to-do lists fall into one of the two categories; electronic applications or paper lists. We won't dive deep into paper to-do lists much, but the abstract would be that they are highly customizable, but require more time and effort to create. To-do list software today suffer from being overly complexor software bloat. Most software focuses on marketing their newest complex feature and stray away from what a to-do list needs to do; organize tasks, prioritizing them, and tracking progress. Traditional to-do list applications rely heavily on mouse and keyboard movement, static lists, and repetitive interactions. While major companies like Microsoft and Apple offer task management solutions, they often lack a truly intuitive and adaptive user experience.
+Current to-do lists fall into one of the two categories; electronic applications or paper lists. We won't dive deep into paper to-do lists much, but the abstract would be that they are highly customizable, but require more time and effort to create. To-do list software today suffer from being overly complex software bloat. Most software focuses on marketing their newest complex feature and stray away from what a to-do list needs to do; organize tasks, prioritizing them, and tracking progress. Traditional to-do list applications rely heavily on mouse and keyboard movement, static lists, and repetitive interactions. While major companies like Microsoft and Apple offer task management solutions, they often lack a truly intuitive and adaptive user experience.
 
 ### **Novelty**
 
