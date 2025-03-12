@@ -25,6 +25,9 @@ Our repository includes documentations files in the documents directory, a repor
 3. Gamify the web application to keep current users engaged and promote continuation of using the app into continuing using our app for productivity.
 4. Create a responsive UI for both desktop and mobile users.
 
+## Living Document
+[Link](https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask/blob/main/documents/Living-Document.md)
+
 ## Trello Board
 
 [Link](https://trello.com/b/5mxdUfv6/pt20talktask?utm_source=eval-email&utm_medium=email&utm_campaign=board-invite)
