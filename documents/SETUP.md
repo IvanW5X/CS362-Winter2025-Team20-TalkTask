@@ -24,19 +24,19 @@
 
 * You WILL need two .env files, one in each of the frontend and backend home directories.
 * Frontend .env example:
-  * VITE_BACKEND_URL="<http://localhost:51710>"
+  * VITE_BACKEND_URL="This can be any local host URL, we chose <http://localhost:51710>"
   * VITE_APP_AUTH0_DOMAIN="Auth0 domain obtained from Auth0"
   * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0"
-  * VITE_APP_AUTH0_AUDIENCE="<http://localhost:51710>"
+  * VITE_APP_AUTH0_AUDIENCE="Needs to match VITE_BACKEND_URL"
 * Backend .env example:
   * AI_API_KEY="AI API key obtained from Google Gemini"
-  * FRONTEND_URL="<http://localhost:5173>"
-  * VITE_BACKEND_URL="<http://localhost:51710>"
+  * FRONTEND_URL="Needs to match VITE_BACKEND_URL"
+  * VITE_BACKEND_URL="Needs to match VITE_BACKEND_URL"
   * SERVER_PORT="51710"
   * MONGO_URI="MongoDB URI used to connect to your MongoDB database"
   * VITE_APP_AUTH0_DOMAIN="Auth0 domain obtained from Auth0 that matches the frontend"
   * VITE_APP_AUTH0_CLIENT_ID="Auth0 Client ID obtained from Auth0 that matches frontend"
-  * VITE_APP_AUTH0_AUDIENCE="<http://localhost:51710>"
+  * VITE_APP_AUTH0_AUDIENCE="Needs to match VITE_BACKEND_URL"
 
 ## Running Web Application
 
