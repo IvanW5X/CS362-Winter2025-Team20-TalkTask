@@ -77,4 +77,7 @@
 
 * We chose [Render](https://dashboard.render.com/login) for deployment which uses the GitHub repository directly. But any service would do as long as its able to connect and communicate with the frontend.
 
+### Notes
+* Refer to [our resources page](https://github.com/IvanW5X/CS362-Winter2025-Team20-TalkTask/edit/main/documents/team-resources.md) for all the tools, softwares, APIs, and packages used to build this web application.
+
 
