@@ -293,8 +293,6 @@ Major components we will develop will include...
   * TalkTask will need to log user information, including login information, and previous tasks. I really enjoyed CS 340: Introduction to Databases, and I feel that I can create a database that can manage user data in a secure and efficient manner.
 * Raymond Cen (Back-End Developer)
   * Responsible for the use of the WebSpeechAPI and the communcation between frontend and backend.This role is needed because the use of voice input using WebSpeechAPI is a main component of this project. As well as communication between the frontend and backend. I am best suited for this because I have experience in working with APIs in a web project and designing a communucation pipeline between a frontend file and backend file.
-* Bailey Budlong (UI/UX Designer)
-  * Responsible for overall UI design, and assisting front end developers. This role is important for having a cohesive, good looking and functioning UI, which can make or break whether users decided to user our application over competitors. Additonally, I will be responsible for generating or aquiring any unique visual assets we will need for our application such as logos. I am suited to the role as I am very passionate and invested in UI/UX design, I often find myself in team projects, responsible for how the project appears visually. And frankly, being a mechanical engineering major, my other team members are better suited and more adept at implementing the designs than I. Also, I have experience working with photo and vector graphics software, which I imagine will come in handy.
 * Jordan L Cowan (Front-End Developer)
   * It will be very important for the website to look good, work great, and have easy use not only for everyday users but also for those who need proper accessibility in their apps. I am very particular with most styling placing me as a good fit for this section and for creating the accessibility I have grown up having to help with accessibility for family members helping me know the importance of having great accessibility within apps.
 
@@ -343,22 +341,22 @@ Because many APIs will be used for developing TalkTask, I will only go over the 
 
 * To maximize the bandwidth usage of our deployement services, we will be using client server architecture. The client will be what the user interacts with. The client is responsible for displaying data for the user and making API calls to the backend server. The server will be used to handling incoming requests from the client and is responsible for processing data.
 
-User Login
+**User Login**
 ![User Login Architecture](../assignments/architectures/User-Login-Arch.PNG)
 
 * Because a to-do lists contains sensitive information about a user, we need to describe how our web application provides security for users. The OAuth or Auth0 API grants users authorization and authentication to access their data and make API calls to protected URI routes.
 
-Backend MVC (Model Views Controller) Architecture
+**Backend MVC (Model Views Controller) Architecture**
 ![Backend Architecture](../assignments/architectures/Backend-Arch.PNG)
 
 * MVC architecture will be used to keep our backend logic modular and provide software maintenance. The client will make an HTTP request to the server which goes through a dedicated CRUD route and go to a controller component. The controller is responsible for the HTTP logic and uses services to process the data before sending a response back to the client to display the views.
 
-To-Do List Input Architecture
+**To-Do List Input Architecture**
 ![Todo List Input Architecture](../assignments/architectures/Todo-List-Input.PNG)
 
 * Getting input from the user can be done via mouse and keyboard movements, or through voice commands. Once the inputs is obtained by the frontend, it is then sent to the backend to be processed.
 
-To-Do List Processing Architecture
+**To-Do List Processing Architecture**
 ![Todo List Processing Architecture](../assignments/architectures/To-Do_List_Processing_Architecture.PNG)
 
 * Processing the input obtained from the user is done by the frontend or client, which then makes an HTTP request. The server captures the request, sends it to the linked controller, processes the data, edits the database if necessary, and sends back a response for the frontend to be updated.
@@ -457,11 +455,12 @@ To-Do List Processing Architecture
 
 #### **UI Mockups**
 
-About/Landing Page
+### About/Landing Page
+
 ![About Page Desktop](../designs/about-page-desktop.png)
 ![About Page Mobile](../designs/about-page-mobile.png)
 
-User Home Page
+### User Home Page
 ![Home Page Desktop](../designs/user-page-desktop.png)
 ![Home Page Mobile](../designs/user-page-mobile.png)
 
