@@ -752,6 +752,8 @@ maintainable code.
 
 * Ivan Wong - Reflection
   * Things that I learned about software engineering from the project are about time management, importance of planning/designing, and importance of communication between team members. With a project this large during a school term, learning to manage my time wisely and work effectively is a skill that I believe I became better at from the outcome of the project. The next lesson I learned was about the importance of planning and designing software. 80% of the work done by the project is done by prep work with the other 20% focused on implemenation. The project seamed daunting at first, but as we designed sketches, described software architecture, design, and interfaces, the project seamed less and less difficult to implement. The last lesson is about communication. Talking with team members and being explicit and obvious is important, so that there's no room for ambiguity between whats expected and what is assumed.
+  * Nicholas Woodley - Reflection
+    * My biggest takeaways from this term are the importance of research, planning, and team communication. Because of the large scale of this project, we needed to do research into how to implement certain features, such as user authentication. If we did research ahead of time, then the time it took to implement the feature would be massively reduced. The first few weeks were dedicated to this, which was helpful. Planning was another crucial aspect, as it allowed us to break the project into manageable tasks. It also outlined what each person was working on, so there wouldn’t be overlapping work done. Communication was also important, to clarify what needed to be done for the project.
 
 ### **Citations**
 
